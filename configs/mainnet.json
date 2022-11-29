@@ -15,6 +15,9 @@
         },
         {
             "name": "lkt1_usdc1"
+        },
+        {
+            "name": "cel_eth"
         }
     ]
 }
