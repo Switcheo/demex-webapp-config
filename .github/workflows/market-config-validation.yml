@@ -1,11 +1,11 @@
 on:
   pull_request:
     branches:
-      -master
+      - master
 name: Pull request workflow
 jobs: 
   validate_markets:
-    name: Validate Markets
+    name: Validate Featured Markets
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,7 +16,7 @@ jobs:
         with:
           cmd: install --ignore-engines # will run `yarn install` command
 
-      - name: Validate nodes schema
+      - name: Validate featured markets schema
         uses: borales/actions-yarn@v3.0.0
         with:
           cmd: validate # validate using json schema
