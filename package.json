@@ -6,7 +6,7 @@
   "author": "Switcheo <engineering@switcheo.network>",
   "license": "MIT",
   "scripts": {
-    "validate": "pajv validate -s config.schema.json -d configs/mainnet.json --verbose"
+    "validate": "pajv validate -s config.schema.json -d \"configs/*.json\" --verbose"
   },
   "dependencies": {
     "@types/node": "^18.11.9",

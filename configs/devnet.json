@@ -1,0 +1,9 @@
+{
+    "network": "devnet",
+    "featured_markets": [
+        "btc_z29",
+        "eth_dai",
+        "swth_btc",
+        "swth_nex"
+    ]
+}

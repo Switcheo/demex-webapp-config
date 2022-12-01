@@ -1,0 +1,10 @@
+{
+    "network": "testnet",
+    "featured_markets": [
+        "btc_z19",
+        "btc_z29u",
+        "eth_z29",
+        "swth_btc2",
+        "usdc_dai"
+    ]
+}
