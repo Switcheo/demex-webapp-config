@@ -20,3 +20,8 @@ jobs:
         uses: borales/actions-yarn@v3.0.0
         with:
           cmd: validate # validate using json schema
+      
+      - name: Test market entries for invalid/duplicate markets
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: check-configs mainnet testnet devnet # check using check_configs.ts script

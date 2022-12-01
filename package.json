@@ -6,10 +6,13 @@
   "author": "Switcheo <engineering@switcheo.network>",
   "license": "MIT",
   "scripts": {
-    "validate": "pajv validate -s config.schema.json -d \"configs/*.json\" --verbose"
+    "validate": "pajv validate -s config.schema.json -d \"configs/*.json\" --verbose",
+    "check-configs": "ts-node scripts/check_configs"
   },
   "dependencies": {
+    "@cosmjs/tendermint-rpc": "^0.29.4",
     "@types/node": "^18.11.9",
+    "carbon-js-sdk": "^0.3.1",
     "pajv": "^1.2.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.3"
