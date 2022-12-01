@@ -1,6 +1,6 @@
-# New Feature Market Template
+# Feature Market
 
-Please update the below configurations carefully. Each featured markets json file under the [configs](../../configs) folder correspond to their respective networks. For example, [configs/mainnet.json](../../configs/mainnet.json) is for adding maerkets to feature in the `mainnet`. As such, please check which network you would like to feature your market at and add to the correct `configs/<network>.json` file.
+Each featured markets json file under the [configs](../../configs) folder correspond to their respective networks. For example, [configs/mainnet.json](../../configs/mainnet.json) is for markets that are featured on the `mainnet`.
 
 Please make sure to add to the **bottom** of the array.
 
