@@ -1,6 +1,6 @@
 import { Tendermint34Client } from '@cosmjs/tendermint-rpc';
-import { CarbonSDK, GenericUtils } from 'carbon-js-sdk'
-import { NetworkConfig, NetworkConfigs } from 'carbon-js-sdk/lib/constant';
+import { CarbonSDK } from 'carbon-js-sdk'
+import { NetworkConfigs } from 'carbon-js-sdk/lib/constant';
 import * as fs from 'fs'
 
 const cwd = process.cwd();
