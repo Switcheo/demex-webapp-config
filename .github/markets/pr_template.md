@@ -2,8 +2,6 @@
 
 Each featured markets json file under the [configs](../../configs) folder correspond to their respective networks. For example, [configs/mainnet.json](../../configs/mainnet.json) is for markets that are featured on the `mainnet`.
 
-Please make sure to add to the **bottom** of the array.
-
 ## Feature Market Data Structure
 |Field   |Type   |Required  |Description  |Notes   |
 |---|---|---|---|---|
