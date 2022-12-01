@@ -23,7 +23,14 @@ interface DuplicateMarket {
     numberOfDuplicates?: number
 }
 
-let outcome : boolean = true
+type OutcomeMap = { [key in CarbonSDK.Network]: boolean } // true = success, false = failure
+
+const outcomeMap: OutcomeMap = {
+    mainnet: true,
+    testnet: true,
+    devnet: true,
+    localhost: true
+};
 
 //check for valid market entries (match market names in the api)
 function checkValidMarkets(data: string[], markets: string[]): InvalidMarket {
@@ -73,9 +80,8 @@ async function main() {
                 network = CarbonSDK.Network.DevNet
                 break;
             default:
-                console.log("Invalid network keyed, defaulting to mainnet")
-                network = CarbonSDK.Network.MainNet
-                break;
+                console.log("ERROR: Invalid network keyed")
+                process.exit(1)
         }
         const dataString = fs.readFileSync(`${cwd}/configs/${network}.json`, "utf-8")
 
@@ -84,8 +90,8 @@ async function main() {
             jsonData = JSON.parse(dataString) as ConfigJSON;
             console.log(jsonData)
         } catch (err) {
-            console.log(`${network}.json is not a valid JSON file.`)
-            outcome = false
+            console.error(`ERROR: ${network}.json is not a valid JSON file.`)
+            outcomeMap[network] = false
         }
 
         const networkConfig = NetworkConfigs[network]
@@ -105,35 +111,34 @@ async function main() {
             const markets : string[] = []
             allMarkets.markets.forEach(market => {markets.push(market.name)})
             console.log(`markets in ${network}`, markets)
-            outcome = true
 
             //look for invalid market entries
             const hasInvalidMarkets = checkValidMarkets(jsonData.featured_markets, markets)
             if (hasInvalidMarkets.status && hasInvalidMarkets.entry) {
                 let listOfInvalidMarkets: string = hasInvalidMarkets.entry.join(', ')
-                console.error(`${network}.json has the following invalid market entries: ${listOfInvalidMarkets}. Please make sure to only input valid markets in ${network}`)
-                outcome = false
+                console.error(`ERROR: ${network}.json has the following invalid market entries: ${listOfInvalidMarkets}. Please make sure to only input valid markets in ${network}`)
+                outcomeMap[network] = false
             }
 
             //look for duplicate market entries
             const hasDuplicateMarkets = checkDuplicateMarkets(jsonData.featured_markets)
             if (hasDuplicateMarkets.status && hasDuplicateMarkets.entry) {
                 let listOfDuplicates: string = hasDuplicateMarkets.entry.join(", ")
-                console.error(`${network}.json has the following duplicated market entries: ${listOfDuplicates}. Please make sure to only input each market once in ${network}`)
-                outcome = false
+                console.error(`ERROR: ${network}.json has the following duplicated market entries: ${listOfDuplicates}. Please make sure to only input each market once in ${network}`)
+                outcomeMap[network] = false
             }
         }
-
-        if (!outcome) {
-            console.error("Error!");
-            console.log("Please check the error message(s) above to correct the errors.");
-        } else {
-            console.log("Success!")
-            console.log(`${network}.json has passed all checks!`);
-        } 
     }
+    const outcomeArr = Object.values(outcomeMap);
+    if (outcomeArr.includes(false)) {
+        console.error("Error!");
+        console.log("Please check the error message(s) above to correct the errors.");
+        process.exit(1)
+    } else {
+        console.log("Success!")
+        console.log(`Market configs has passed all checks!`);
+    } 
 }
-
 
 main()
 .catch(console.error)
