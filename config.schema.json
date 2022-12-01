@@ -24,16 +24,7 @@
     },
     "$defs": {
         "featured_market": {
-            "type": "object",
-            "required": [
-                "name"
-            ],
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "description": "The denom of the market which is used to generate the list of featured markets in Demex"
-                }
-            }
+            "type": "string"
         }
     }
 }
