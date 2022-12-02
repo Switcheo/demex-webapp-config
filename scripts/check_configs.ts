@@ -96,7 +96,6 @@ async function main() {
 
         const networkConfig = NetworkConfigs[network]
 
-        // const tmClient = GenericUtils.modifyTmClient(await Tendermint34Client.connect(networkConfig.tmRpcUrl))
         const tmClient = await Tendermint34Client.connect(networkConfig.tmRpcUrl)
 
 
