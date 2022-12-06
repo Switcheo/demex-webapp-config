@@ -1,5 +1,8 @@
 {
     "network": "testnet",
     "featured_markets": [
+        "swth_nexo",
+        "swth_nexo",
+        "wrong market"
     ]
 }
