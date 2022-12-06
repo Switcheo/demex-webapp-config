@@ -1,11 +1,5 @@
 {
     "network": "mainnet",
     "featured_markets": [
-        "ETHUSDC_PERP",
-        "WBTCUSDC_PERP",
-        "busd1_usdc1",
-        "zwap.1.18.393529_swth",
-        "lkt1_usdc1",
-        "cel_eth"
     ]
 }

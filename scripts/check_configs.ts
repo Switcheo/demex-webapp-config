@@ -109,7 +109,6 @@ async function main() {
             const allMarkets = await sdk.query.market.MarketAll({})
             const markets : string[] = []
             allMarkets.markets.forEach(market => {markets.push(market.name)})
-            console.log(`markets in ${network}`, markets)
 
             //look for invalid market entries
             const hasInvalidMarkets = checkValidMarkets(jsonData.featured_markets, markets)

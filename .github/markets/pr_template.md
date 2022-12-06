@@ -1,8 +1,9 @@
 # Feature Market
 
-Each featured markets json file under the [configs](../../configs) folder correspond to their respective networks. For example, [configs/mainnet.json](../../configs/mainnet.json) is for markets that are featured on the `mainnet`.
+Each json file under the [configs](../../configs) folder correspond to their respective networks. For example, [configs/mainnet.json](../../configs/mainnet.json) contains metadata pertaining to Carbon `mainnet` network.
 
-## Feature Market Data Structure
+## JSON Data Structure
 |Field   |Type   |Required  |Description  |Notes   |
 |---|---|---|---|---|
-|`name`   |`string`   |true   |The denom of the market which is used to generate the list of featured markets in Demex  |Name **MUST** match the name of the market in the Carbon markets api. Please refer to the [api](https://api.carbon.network/carbon/market/v1/markets?pagination.limit=10000) |
+|`network`   |`string`   |true   |The network in which the json file corresponds with  |The networks available are: **mainnet, testnet, devnet** |
+|`featured_markets`   |`string[]`   |true   |The array of denoms of the markets which will be used to generate the list of featured markets in Demex  |Denom names **MUST** match the markets names in the Carbon markets api. Please refer to the [api](https://api.carbon.network/carbon/market/v1/markets?pagination.limit=10000) |
