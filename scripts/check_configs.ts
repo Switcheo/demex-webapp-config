@@ -107,8 +107,7 @@ async function main() {
         if (jsonData) {
             // query all markets
             const allMarkets = await sdk.query.market.MarketAll({})
-            const markets : string[] = []
-            allMarkets.markets.forEach(market => {markets.push(market.name)})
+            const markets : string[] = allMarkets.markets.map(market => {return market.name})
 
             //look for invalid market entries
             const hasInvalidMarkets = checkValidMarkets(jsonData.featured_markets, markets)
