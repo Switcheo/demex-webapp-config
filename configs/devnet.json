@@ -1,6 +1,5 @@
 {
     "network": "devnet",
     "featured_markets": [
-        "wrong_market"
     ]
 }

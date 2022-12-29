@@ -1,5 +1,7 @@
 {
     "network": "mainnet",
     "featured_markets": [
+        "ETHUSDC_PERP",
+        "cmkt/88"
     ]
 }

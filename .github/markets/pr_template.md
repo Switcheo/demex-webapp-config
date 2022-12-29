@@ -5,5 +5,5 @@ Each json file under the [configs](../../configs) folder correspond to their res
 ## JSON Data Structure
 |Field   |Type   |Required  |Description  |Notes   |
 |---|---|---|---|---|
-|`network`   |`string`   |true   |The network in which the json file corresponds with  |The networks available are: **mainnet, testnet, devnet** |
-|`featured_markets`   |`string[]`   |true   |The array of denom names which will be used to generate the list of featured markets in Demex  |Denom names **MUST** match the market names in the Carbon markets api. Please refer to the api [here](https://api.carbon.network/carbon/market/v1/markets?pagination.limit=10000). |
+|`network`   |`string`   |true   |The network that the json file corresponds to  |The networks available are: **mainnet, testnet, devnet** |
+|`featured_markets`   |`string[]`   |true   |The array of market names which will be listed under the Featured tab on Demex's [Markets page](https://app.dem.exchange/markets)  |The market names listed here **MUST** match the market names listed under the Carbon [Markets API](https://api.carbon.network/carbon/market/v1/markets?pagination.limit=10000). |
