@@ -1,5 +1,8 @@
 {
     "network": "testnet",
     "featured_markets": [
+        "BTC_PERP.USDC",
+        "cmkt/4",
+        "swth_eth"
     ]
 }

@@ -1,5 +1,7 @@
 {
     "network": "devnet",
     "featured_markets": [
+        "BTC_PERP.USDC",
+        "swth_eth"
     ]
 }
