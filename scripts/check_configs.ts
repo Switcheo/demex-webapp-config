@@ -7,6 +7,7 @@ const myArgs = process.argv.slice(2);
 interface ConfigJSON {
   network: CarbonSDK.Network;
   featured_markets: string[];
+  omitted_markets: string[];
 }
 
 interface InvalidMarket {
@@ -63,6 +64,16 @@ function checkDuplicateMarkets(data: string[]): DuplicateMarket {
   };
 }
 
+function getErrorMessage(
+  status: 'invalid' | 'duplicated',
+  field: 'featured_markets' | 'omitted_markets',
+  listOfMarkets: string[],
+  network: CarbonSDK.Network,
+) {
+  const listOfInvalidMarkets: string = listOfMarkets.join(', ');
+  return `ERROR: ${network}.json has the following ${status} market entries: ${listOfInvalidMarkets} under ${field} field. Please make sure to only input ${status === 'invalid' ? 'valid' : 'each'} market${status === 'invalid' ? 's' : ''} in ${network}.json`
+}
+
 async function main() {
   for (const net of myArgs) {
     let network : CarbonSDK.Network;
@@ -97,19 +108,37 @@ async function main() {
       const allMarkets = await sdk.query.market.MarketAll({});
       const markets: string[] = allMarkets.markets.map(market => market.name);
 
-      //look for invalid market entries
-      const hasInvalidMarkets = checkValidMarkets(jsonData.featured_markets, markets);
-      if (hasInvalidMarkets.status && hasInvalidMarkets.entry) {
-        let listOfInvalidMarkets: string = hasInvalidMarkets.entry.join(', ');
-        console.error(`ERROR: ${network}.json has the following invalid market entries: ${listOfInvalidMarkets}. Please make sure to only input valid markets in ${network}`);
+      // FEATURED_MARKETS FIELD
+      // look for invalid market entries
+      const hasInvalidFeaturedMarkets = checkValidMarkets(jsonData.featured_markets, markets);
+      if (hasInvalidFeaturedMarkets.status && hasInvalidFeaturedMarkets.entry) {
+        const errorMsg = getErrorMessage('invalid', 'featured_markets', hasInvalidFeaturedMarkets.entry, network)
+        console.error(errorMsg);
         outcomeMap[network] = false;
       }
 
-      //look for duplicate market entries
-      const hasDuplicateMarkets = checkDuplicateMarkets(jsonData.featured_markets);
-      if (hasDuplicateMarkets.status && hasDuplicateMarkets.entry) {
-        let listOfDuplicates: string = hasDuplicateMarkets.entry.join(", ");
-        console.error(`ERROR: ${network}.json has the following duplicated market entries: ${listOfDuplicates}. Please make sure to only input each market once in ${network}`);
+      // look for duplicate market entries
+      const hasDuplicateFeaturedMarkets = checkDuplicateMarkets(jsonData.featured_markets);
+      if (hasDuplicateFeaturedMarkets.status && hasDuplicateFeaturedMarkets.entry) {
+        const errorMsg = getErrorMessage('duplicated', 'featured_markets', hasDuplicateFeaturedMarkets.entry, network)
+        console.error(errorMsg);
+        outcomeMap[network] = false;
+      }
+
+      // OMITTED_MARKETS FIELD
+      // look for invalid market entries
+      const hasInvalidOmittedMarkets = checkValidMarkets(jsonData.featured_markets, markets);
+      if (hasInvalidOmittedMarkets.status && hasInvalidOmittedMarkets.entry) {
+        const errorMsg = getErrorMessage('invalid', 'omitted_markets', hasInvalidOmittedMarkets.entry, network)
+        console.error(errorMsg);
+        outcomeMap[network] = false;
+      }
+
+      // look for duplicate market entries
+      const hasDuplicateOmittedMarkets = checkDuplicateMarkets(jsonData.omitted_markets);
+      if (hasDuplicateOmittedMarkets.status && hasDuplicateOmittedMarkets.entry) {
+        const errorMsg = getErrorMessage('duplicated', 'omitted_markets', hasDuplicateOmittedMarkets.entry, network)
+        console.error(errorMsg);
         outcomeMap[network] = false;
       }
     }

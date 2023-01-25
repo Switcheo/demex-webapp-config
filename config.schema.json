@@ -4,7 +4,8 @@
     "type": "object",
     "required": [
         "network",
-        "featured_markets"
+        "featured_markets",
+        "omitted_markets"
     ],
     "properties": {
         "network": {
@@ -18,12 +19,18 @@
         "featured_markets": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/featured_market"
+                "$ref": "#/$defs/market"
+            }
+        },
+        "omitted_markets": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/market"
             }
         }
     },
     "$defs": {
-        "featured_market": {
+        "market": {
             "type": "string"
         }
     }

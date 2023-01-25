@@ -13,6 +13,12 @@ Currently, the JSON files only includes the list of markets to be featured on th
         "market_2",
         "market_3",
         ...
+    ],
+    "omitted_markets": [
+        "market_4",
+        "market_5",
+        "market_6",
+        ...
     ]
 }
 ```

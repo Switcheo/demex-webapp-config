@@ -4,5 +4,6 @@
         "BTC_PERP.USDC",
         "cmkt/4",
         "swth_eth"
-    ]
+    ],
+    "omitted_markets": []
 }

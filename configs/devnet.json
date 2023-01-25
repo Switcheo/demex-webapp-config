@@ -3,5 +3,6 @@
     "featured_markets": [
         "BTC_PERP.USDC",
         "swth_eth"
-    ]
+    ],
+    "omitted_markets": []
 }
