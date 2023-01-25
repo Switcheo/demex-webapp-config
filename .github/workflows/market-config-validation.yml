@@ -1,11 +1,11 @@
 on:
   pull_request:
     branches:
-      - master
+      - feat/add_omitted_markets
 name: Pull request workflow
 jobs: 
   validate_markets:
-    name: Validate Featured Markets
+    name: Validate Demex Config
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
