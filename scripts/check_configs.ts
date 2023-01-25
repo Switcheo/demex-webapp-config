@@ -64,14 +64,30 @@ function checkDuplicateMarkets(data: string[]): DuplicateMarket {
   };
 }
 
+function checkNotFeaturedMarkets(data: string[], featuredMarkets: string[]): InvalidMarket {
+  // select only markets that are in featured_markets field
+  const isFeaturedMarkets = data.filter((market: string) => featuredMarkets.includes(market))
+  return isFeaturedMarkets.length > 0 ? {
+    status: true,
+    entry: isFeaturedMarkets,
+  } : {
+    status: false
+  };
+}
+
 function getErrorMessage(
-  status: 'invalid' | 'duplicated',
+  status: 'invalid' | 'duplicated' | 'contains_featured',
   field: 'featured_markets' | 'omitted_markets',
   listOfMarkets: string[],
   network: CarbonSDK.Network,
 ) {
-  const listOfInvalidMarkets: string = listOfMarkets.join(', ');
-  return `ERROR: ${network}.json has the following ${status} market entries: ${listOfInvalidMarkets} under ${field} field. Please make sure to only input ${status === 'invalid' ? 'valid' : 'each'} market${status === 'invalid' ? 's' : ''} in ${network}.json`
+  const listOfMarketsStr: string = listOfMarkets.join(', ');
+  switch (status) {
+    case 'contains_featured':
+      return `ERROR: the following omitted_markets entries are also included inside the featured_markets list: ${listOfMarketsStr}. Please remove these from this field under ${network}.json`;
+    default:
+      return `ERROR: ${network}.json has the following ${status} market entries: ${listOfMarkets} under ${field} field. Please make sure to only input ${status === 'invalid' ? 'valid' : 'each'} market${status === 'invalid' ? 's' : ''} in ${network}.json`;
+  }
 }
 
 async function main() {
@@ -108,9 +124,12 @@ async function main() {
       const allMarkets = await sdk.query.market.MarketAll({});
       const markets: string[] = allMarkets.markets.map(market => market.name);
 
+      const featuredMarkets = jsonData.featured_markets ?? []
+      const omittedMarkets = jsonData.omitted_markets ?? []
+
       // FEATURED_MARKETS FIELD
       // look for invalid market entries
-      const hasInvalidFeaturedMarkets = checkValidMarkets(jsonData.featured_markets, markets);
+      const hasInvalidFeaturedMarkets = checkValidMarkets(featuredMarkets, markets);
       if (hasInvalidFeaturedMarkets.status && hasInvalidFeaturedMarkets.entry) {
         const errorMsg = getErrorMessage('invalid', 'featured_markets', hasInvalidFeaturedMarkets.entry, network)
         console.error(errorMsg);
@@ -118,7 +137,7 @@ async function main() {
       }
 
       // look for duplicate market entries
-      const hasDuplicateFeaturedMarkets = checkDuplicateMarkets(jsonData.featured_markets);
+      const hasDuplicateFeaturedMarkets = checkDuplicateMarkets(featuredMarkets);
       if (hasDuplicateFeaturedMarkets.status && hasDuplicateFeaturedMarkets.entry) {
         const errorMsg = getErrorMessage('duplicated', 'featured_markets', hasDuplicateFeaturedMarkets.entry, network)
         console.error(errorMsg);
@@ -127,7 +146,7 @@ async function main() {
 
       // OMITTED_MARKETS FIELD
       // look for invalid market entries
-      const hasInvalidOmittedMarkets = checkValidMarkets(jsonData.featured_markets, markets);
+      const hasInvalidOmittedMarkets = checkValidMarkets(omittedMarkets, markets);
       if (hasInvalidOmittedMarkets.status && hasInvalidOmittedMarkets.entry) {
         const errorMsg = getErrorMessage('invalid', 'omitted_markets', hasInvalidOmittedMarkets.entry, network)
         console.error(errorMsg);
@@ -135,9 +154,17 @@ async function main() {
       }
 
       // look for duplicate market entries
-      const hasDuplicateOmittedMarkets = checkDuplicateMarkets(jsonData.omitted_markets);
+      const hasDuplicateOmittedMarkets = checkDuplicateMarkets(omittedMarkets);
       if (hasDuplicateOmittedMarkets.status && hasDuplicateOmittedMarkets.entry) {
         const errorMsg = getErrorMessage('duplicated', 'omitted_markets', hasDuplicateOmittedMarkets.entry, network)
+        console.error(errorMsg);
+        outcomeMap[network] = false;
+      }
+
+      // check that omitted markets are not included in featured markets list
+      const hasFeaturedMarkets = checkNotFeaturedMarkets(omittedMarkets, featuredMarkets);
+      if (hasFeaturedMarkets.status && hasFeaturedMarkets.entry) {
+        const errorMsg = getErrorMessage('contains_featured', 'omitted_markets', hasFeaturedMarkets.entry, network)
         console.error(errorMsg);
         outcomeMap[network] = false;
       }
