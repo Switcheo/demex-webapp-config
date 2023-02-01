@@ -51,7 +51,8 @@
             "type": "string"
         },
         "blacklisted_pool": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^\\d+$"
         },
         "blacklisted_token": {
             "type": "string"
