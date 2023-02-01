@@ -3,5 +3,8 @@
     "featured_markets": [
         "BTC_PERP.USDC",
         "swth_eth"
-    ]
+    ],
+    "blacklisted_markets": [],
+    "blacklisted_pools": [],
+    "blacklisted_tokens": []
 }

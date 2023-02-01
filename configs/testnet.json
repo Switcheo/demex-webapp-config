@@ -4,5 +4,8 @@
         "BTC_PERP.USDC",
         "cmkt/4",
         "swth_eth"
-    ]
+    ],
+    "blacklisted_markets": [],
+    "blacklisted_pools": [],
+    "blacklisted_tokens": []
 }

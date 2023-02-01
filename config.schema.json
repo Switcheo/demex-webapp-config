@@ -4,7 +4,10 @@
     "type": "object",
     "required": [
         "network",
-        "featured_markets"
+        "featured_markets",
+        "blacklisted_markets",
+        "blacklisted_pools",
+        "blacklisted_tokens"
     ],
     "properties": {
         "network": {
@@ -20,10 +23,37 @@
             "items": {
                 "$ref": "#/$defs/featured_market"
             }
+        },
+        "blacklisted_markets": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/blacklisted_markets"
+            }
+        },
+        "blacklisted_pools": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/blacklisted_pools"
+            }
+        },
+        "blacklisted_tokens": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/blacklisted_tokens"
+            }
         }
     },
     "$defs": {
         "featured_market": {
+            "type": "string"
+        },
+        "blacklisted_markets": {
+            "type": "string"
+        },
+        "blacklisted_pools": {
+            "type": "string"
+        },
+        "blacklisted_tokens": {
             "type": "string"
         }
     }

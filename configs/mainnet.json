@@ -15,5 +15,8 @@
         "cmkt/94",
         "cmkt/95",
         "cmkt/97"
-    ]
+    ],
+    "blacklisted_markets": [],
+    "blacklisted_pools": [],
+    "blacklisted_tokens": []
 }
