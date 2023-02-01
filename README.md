@@ -3,7 +3,12 @@
 This repository allows frontends to fetch metadata associated with Demex.
 The config JSON schema can be found [here](/config.schema.json).
 
-Currently, the JSON files includes the list of markets to be featured, blacklisted markets, blacklisted pools and blacklisted tokens on their respective networks (mainnet, testnet, devnet). More metadata will be added in the future if required by the Demex frontend. Please see below the structure of the JSON file:
+Currently, each JSON file contain the following data on its corresponding network (mainnet, testnet, devnet):
+- list of markets to be featured
+- blacklisted markets
+- blacklisted pools
+- blacklisted tokens.
+More metadata will be added in the future if required by the Demex frontend. Please see below the structure of the JSON file:
 
 ```
 {
