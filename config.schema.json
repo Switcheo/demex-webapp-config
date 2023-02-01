@@ -27,19 +27,19 @@
         "blacklisted_markets": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/blacklisted_markets"
+                "$ref": "#/$defs/blacklisted_market"
             }
         },
         "blacklisted_pools": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/blacklisted_pools"
+                "$ref": "#/$defs/blacklisted_pool"
             }
         },
         "blacklisted_tokens": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/blacklisted_tokens"
+                "$ref": "#/$defs/blacklisted_token"
             }
         }
     },
@@ -47,13 +47,13 @@
         "featured_market": {
             "type": "string"
         },
-        "blacklisted_markets": {
+        "blacklisted_market": {
             "type": "string"
         },
-        "blacklisted_pools": {
+        "blacklisted_pool": {
             "type": "string"
         },
-        "blacklisted_tokens": {
+        "blacklisted_token": {
             "type": "string"
         }
     }
