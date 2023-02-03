@@ -7,7 +7,8 @@ Currently, each JSON file contain the following data on its corresponding networ
 - list of markets to be featured
 - blacklisted markets
 - blacklisted pools
-- blacklisted tokens.
+- blacklisted tokens
+
 More metadata will be added in the future if required by the Demex frontend. Please see below the structure of the JSON file:
 
 ```
