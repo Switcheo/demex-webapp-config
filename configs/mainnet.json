@@ -16,7 +16,16 @@
         "cmkt/95",
         "cmkt/97"
     ],
-    "blacklisted_markets": [],
-    "blacklisted_pools": [],
-    "blacklisted_tokens": []
+    "blacklisted_markets": [
+        "cmkt/97",
+        "1inch1_usdc1",
+    ],
+    "blacklisted_pools": [
+        "clpt/3",
+        "4",
+    ],
+    "blacklisted_tokens": [
+        "ankr.1.6.fd0433",
+        "ankr.1.6.fd0433",
+    ]
 }
