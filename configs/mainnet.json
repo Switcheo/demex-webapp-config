@@ -18,14 +18,14 @@
     ],
     "blacklisted_markets": [
         "cmkt/97",
-        "1inch1_usdc1",
+        "1inch1_usdc1"
     ],
     "blacklisted_pools": [
         "3",
-        "4",
+        "4"
     ],
     "blacklisted_tokens": [
         "ankr.1.6.fd0433",
-        "ankr.1.6.fd0433",
+        "ankr.1.6.fd0433"
     ]
 }
