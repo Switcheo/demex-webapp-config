@@ -22,10 +22,11 @@
     ],
     "blacklisted_pools": [
         "3",
-        "4"
+        "3"
     ],
     "blacklisted_tokens": [
         "ankr.1.6.fd0433",
-        "ankr.1.6.fd0433"
+        "ankr.1.6.fd0433",
+        "hex"
     ]
 }

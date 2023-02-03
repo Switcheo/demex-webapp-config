@@ -5,6 +5,12 @@
         "swth_eth"
     ],
     "blacklisted_markets": [],
-    "blacklisted_pools": [],
-    "blacklisted_tokens": []
+    "blacklisted_pools": [
+        "1",
+        "1"
+    ],
+    "blacklisted_tokens": [
+        "swth",
+        "bnb"
+    ]
 }
