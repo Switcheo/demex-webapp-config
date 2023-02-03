@@ -17,12 +17,13 @@
         "cmkt/97"
     ],
     "blacklisted_markets": [
-        "cmkt/97",
-        "1inch1_usdc1"
+        "1inch1_usdc1",
+        "AAVE_BUSD",
+        "AAVE_BUSD"
     ],
     "blacklisted_pools": [
         "3",
-        "3"
+        "1000"
     ],
     "blacklisted_tokens": [
         "ankr.1.6.fd0433",
