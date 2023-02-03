@@ -4,12 +4,18 @@
         "BTC_PERP.USDC",
         "swth_eth"
     ],
-    "blacklisted_markets": [],
+    "blacklisted_markets": [
+        "swth_usdc",
+        "swth_eth",
+        "swth_eth"
+    ],
     "blacklisted_pools": [
         "1",
-        "1"
+        "1",
+        "10"
     ],
     "blacklisted_tokens": [
+        "swth",
         "swth",
         "bnb"
     ]

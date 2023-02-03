@@ -19,9 +19,11 @@
     "blacklisted_markets": [
         "1inch1_usdc1",
         "AAVE_BUSD",
-        "AAVE_BUSD"
+        "AAVE_BUSD",
+        "cmkt/1000"
     ],
     "blacklisted_pools": [
+        "3",
         "3",
         "1000"
     ],
