@@ -7,7 +7,8 @@
         "featured_markets",
         "blacklisted_markets",
         "blacklisted_pools",
-        "blacklisted_tokens"
+        "blacklisted_tokens",
+        "ibc_tokens_total_supply"
     ],
     "properties": {
         "network": {
@@ -26,20 +27,30 @@
         },
         "blacklisted_markets": {
             "type": "array",
+            "description": "List of blacklisted market names",
             "items": {
                 "$ref": "#/$defs/blacklisted_market"
             }
         },
         "blacklisted_pools": {
             "type": "array",
+            "description": "List of blacklisted pool ids",
             "items": {
                 "$ref": "#/$defs/blacklisted_pool"
             }
         },
         "blacklisted_tokens": {
             "type": "array",
+            "description": "List of blacklisted token denoms",
             "items": {
                 "$ref": "#/$defs/blacklisted_token"
+            }
+        },
+        "ibc_tokens_total_supply": {
+            "type": "array",
+            "description": "List of ibc denoms with their respective total supply on Coingecko",
+            "items": {
+                "$ref": "#/$defs/ibc_total_supply"
             }
         }
     },
@@ -48,14 +59,36 @@
             "type": "string"
         },
         "blacklisted_market": {
-            "type": "string"
+            "type": "string",
+            "description": "Blacklisted market name"
         },
         "blacklisted_pool": {
             "type": "string",
+            "description": "Blacklisted pool id (type: string)",
             "pattern": "^\\d+$"
         },
         "blacklisted_token": {
-            "type": "string"
+            "type": "string",
+            "description": "Blacklisted token denom"
+        },
+        "ibc_total_supply": {
+            "type": "object",
+            "description": "Total supply amount of each IBC token listed here",
+            "required": [
+                "denom",
+                "amount"
+            ],
+            "properties": {
+                "denom": {
+                    "type": "string",
+                    "description": "Denom of IBC token on Carbon (e.g. ibc/07FA7831E1920D0C87C9388F86B0108677F6ED0C9DE7E4063F05ED675192405C => STARS)"
+                },
+                "amount": {
+                    "type": "string",
+                    "description": "total supply of each IBC token on Coingecko",
+                    "pattern": "^\\d+$"
+                },
+            }
         }
     }
 }

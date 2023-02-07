@@ -5,12 +5,18 @@ import Long from 'long';
 const cwd = process.cwd();
 const myArgs = process.argv.slice(2);
 
+interface TotalSupplyItem {
+  denom: string;
+  amount: string;
+}
+
 interface ConfigJSON {
   network: CarbonSDK.Network;
   featured_markets: string[];
   blacklisted_markets: string[];
   blacklisted_pools: string[];
   blacklisted_tokens: string[];
+  ibc_tokens_total_supply: TotalSupplyItem[]
 }
 
 interface InvalidEntry {

@@ -9,5 +9,6 @@
         "swth_btc2"
     ],
     "blacklisted_pools": [],
-    "blacklisted_tokens": []
+    "blacklisted_tokens": [],
+    "ibc_tokens_total_supply": []
 }

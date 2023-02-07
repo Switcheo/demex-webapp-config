@@ -8,6 +8,7 @@ Currently, each JSON file contain the following data on its corresponding networ
 - blacklisted markets
 - blacklisted pools
 - blacklisted tokens
+- total supply of IBC fee tokens on Mintscan
 
 More metadata will be added in the future if required by the Demex frontend. Please see below the structure of the JSON file:
 
@@ -37,6 +38,13 @@ More metadata will be added in the future if required by the Demex frontend. Ple
         "blacklisted_token_2",
         "blacklisted_token_3",
         ...
-    ]
+    ],
+    "": [{
+        denom: "ibc-token-denom-1",
+        amount: "1000000",
+    }, {
+        denom: "ibc-token-denom-2",
+        amount: "1000000000",
+    }]
 }
 ```
