@@ -1,5 +1,6 @@
 import { CarbonSDK } from 'carbon-js-sdk';
 import * as fs from 'fs';
+import Long from 'long';
 
 const cwd = process.cwd();
 const myArgs = process.argv.slice(2);
@@ -113,7 +114,15 @@ async function main() {
 
     if (jsonData) {
       // query all markets
-      const allMarkets = await sdk.query.market.MarketAll({});
+      const allMarkets = await sdk.query.market.MarketAll({
+        pagination: {
+          limit: new Long(100000),
+          offset: new Long(0),
+          key: new Uint8Array(),
+          countTotal: true,
+          reverse: false,
+        },
+      });
       const markets: string[] = allMarkets.markets.map(market => market.name);
 
       // look for invalid market entries
@@ -155,7 +164,15 @@ async function main() {
       }
 
       // query all liquidity pools
-      const allPools = await sdk.query.liquiditypool.PoolAll({});
+      const allPools = await sdk.query.liquiditypool.PoolAll({
+        pagination: {
+          limit: new Long(100000),
+          offset: new Long(0),
+          key: new Uint8Array(),
+          countTotal: true,
+          reverse: false,
+        }
+      });
       const pools: string[] = allPools.pools.map(pool => pool.pool?.id.toString() ?? "");
       
       const hasInvalidPools = checkValidEntries(jsonData.blacklisted_pools, pools);
@@ -173,7 +190,15 @@ async function main() {
       }
 
       // query all tokens
-      const allTokens = await sdk.query.coin.TokenAll({});
+      const allTokens = await sdk.query.coin.TokenAll({
+        pagination: {
+          limit: new Long(100000),
+          offset: new Long(0),
+          key: new Uint8Array(),
+          countTotal: true,
+          reverse: false,
+        }
+      });
       const tokens: string[] = allTokens.tokens.map(token => token.denom);
 
       const hasInvalidTokens = checkValidEntries(jsonData.blacklisted_tokens, tokens);
