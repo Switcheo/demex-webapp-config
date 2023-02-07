@@ -17,7 +17,28 @@
         "cmkt/97",
         "cmkt/100"
     ],
-    "blacklisted_markets": [],
-    "blacklisted_pools": [],
-    "blacklisted_tokens": []
+    "blacklisted_markets": [
+        "gm1_busd1",
+        "SWTH_UST",
+        "LUNA_SWTH"
+    ],
+    "blacklisted_pools": [
+        "34",
+        "43",
+        "44",
+        "74",
+        "83"
+    ],
+    "blacklisted_tokens": [
+        "swthb.1.6.d04123",
+        "swth.1.18.94d5fe",
+        "bneo.1.14.59a1d7",
+        "ibc/F7E92EE59B5428793F3EF5C1A4CB2494F61A9D0C9A69469D02390714A1372E16",
+        "ibc/4128D5DDF2EF8776B5C704C3153E1CBEC5DABC04DB0CC6221EDCC342EB04779C",
+        "ibc/1B03A71B8E6F6EF424411DC9326A8E0D25D096E4D2616425CFAF2AF06F0FE717",
+        "ibc/731D16914CB3304BD7D177D3D4B210D82C04E5DF86E08AC994A8675C3E00C366",
+        "ibc/A59A9C955F1AB8B76671B00C1A0482C64A6590352944BB5880E5122358F7E1CE",
+        "ibc/D70B0FBF97AEB04491E9ABF4467A7F66CD6250F4382CE5192D856114B83738D2",
+        "ibc/4294C3DB67564CF4A0B2BFACC8415A59B38243F6FF9E288FBA34F9B4823BA16E"
+    ]
 }

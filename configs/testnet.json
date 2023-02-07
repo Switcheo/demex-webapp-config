@@ -5,7 +5,9 @@
         "cmkt/4",
         "swth_eth"
     ],
-    "blacklisted_markets": [],
+    "blacklisted_markets": [
+        "swth_btc2"
+    ],
     "blacklisted_pools": [],
     "blacklisted_tokens": []
 }
