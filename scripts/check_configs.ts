@@ -191,7 +191,7 @@ async function main() {
       const hasDuplicatePools = checkDuplicateEntries(jsonData.blacklisted_pools);
       if (hasDuplicatePools.status && hasDuplicatePools.entry) {
         let listOfDuplicates: string = hasDuplicatePools.entry.join(", ");
-        console.error(`ERROR: ${network}.json has the following duplicated pool id entries: ${listOfDuplicates}. Please make sure to only input each pool id once in ${network}`);
+        console.error(`ERROR: ${network}.json has the following duplicated pool id entries: ${listOfDuplicates}. Please make sure to input each pool id only once in ${network}`);
         outcomeMap[network] = false;
       }
 
@@ -217,7 +217,33 @@ async function main() {
       const hasDuplicateTokens = checkDuplicateEntries(jsonData.blacklisted_tokens);
       if (hasDuplicateTokens.status && hasDuplicateTokens.entry) {
         let listOfDuplicates: string = hasDuplicateTokens.entry.join(", ");
-        console.error(`ERROR: ${network}.json has the following duplicated token denom entries: ${listOfDuplicates}. Please make sure to only input each token denom once in ${network}`);
+        console.error(`ERROR: ${network}.json has the following duplicated token denom entries: ${listOfDuplicates}. Please make sure to input each token denom only once in ${network}`);
+        outcomeMap[network] = false;
+      }
+
+      // IBC total supply map checks
+      const feeTokens = await sdk.query.fee.MinGasPriceAll({
+        pagination: {
+          limit: new Long(100000),
+          offset: new Long(0),
+          key: new Uint8Array(),
+          countTotal: true,
+          reverse: false,
+        }
+      });
+      const feeTokensArr: string[] = feeTokens.minGasPrices.map(gasPrice => gasPrice.denom);
+      const denomsArr = jsonData.ibc_tokens_total_supply.map((totalSupply: TotalSupplyItem) => totalSupply.denom);
+      const hasInvalidIbcFeeTokens = checkValidEntries(denomsArr, feeTokensArr);
+      if (hasInvalidIbcFeeTokens.status && hasInvalidIbcFeeTokens.entry) {
+        let listOfInvalidIbcTokens: string = hasInvalidIbcFeeTokens.entry.join(', ');
+        console.error(`ERROR: ${network}.json has the following invalid fee token denom entries under ibc_tokens_total_supply field: ${listOfInvalidIbcTokens}. Please make sure to only input valid fee token denom in ${network}`);
+        outcomeMap[network] = false;
+      }
+
+      const hasDuplicateIbcFeeTokens = checkDuplicateEntries(denomsArr);
+      if (hasDuplicateIbcFeeTokens.status && hasDuplicateIbcFeeTokens.entry) {
+        let listOfIbcFeeDuplicates: string = hasDuplicateIbcFeeTokens.entry.join(", ");
+        console.error(`ERROR: ${network}.json has the following duplicated fee token denom entries under ibc_tokens_total_supply field: ${listOfIbcFeeDuplicates}. Please make sure to input each fee token denom only once in ${network}`);
         outcomeMap[network] = false;
       }
     }
