@@ -3,21 +3,21 @@
     "featured_markets": [
         "ETHUSDC_PERP",
         "WBTCUSDC_PERP",
-        "cmkt/100", 
-        "cmkt/106", 
-        "cmkt/94", 
+        "cmkt/100",
+        "cmkt/106",
+        "cmkt/94",
         "cmkt/115",
         "cmkt/109",
-        "cmkt/95", 
-        "cmkt/88", 
+        "cmkt/95",
+        "cmkt/88",
         "cmkt/87",
-        "cmkt/104", 
+        "cmkt/104",
         "cmkt/111",
         "cmkt/110",
         "cmkt/108",
         "cmkt/107",
         "swth_eth1",
-        "cmkt/101", 
+        "cmkt/101",
         "cmkt/116",
         "cmkt/117",
         "cmkt/118",
@@ -54,23 +54,23 @@
     "ibc_tokens_total_supply": [
         {
             "denom": "ibc/07FA7831E1920D0C87C9388F86B0108677F6ED0C9DE7E4063F05ED675192405C",
-            "amount": "1182017294629260"
+            "amount": "1211295187587220"
         },
         {
             "denom": "ibc/2B58B8C147E8718EECCB3713271DF46DEE8A3A00A27242628604E31C2F370EF5",
-            "amount": "211947401925763"
+            "amount": "234539813829036"
         },
         {
             "denom": "ibc/3552CECB7BCE1891DB6070D37EC6E954C972B1400141308FCD85FD148BD06DE5",
-            "amount": "82861053737409"
+            "amount": "83113042879650"
         },
         {
             "denom": "ibc/662914D0C1CEBCB070C68F061D035E8B10A07C79AB286E7342C85F3BE74612C5",
-            "amount": "109360239489822"
+            "amount": "110573917446855"
         },
         {
             "denom": "ibc/92E974290AF9E2BC3AEEEC35305C8FD76AC5A22A74CF8D91270FDF5A1C41E861",
-            "amount": "424564341321095000000000000"
+            "amount": "443310308648195000000000000"
         },
         {
             "denom": "ibc/A4DB47A9D3CF9A068D454513891B526702455D3EF08FB9EB558C561F9DC2B701",
@@ -82,7 +82,7 @@
         },
         {
             "denom": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
-            "amount": "527109569000000"
+            "amount": "547383122000000"
         }
     ]
 }
