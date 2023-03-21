@@ -25,13 +25,13 @@
         "cmkt/120",
         "cmkt/121",
         "cmkt/124",
-        "cmkt/126"
+        "cmkt/126",
+        "cmkt/129"
     ],
     "blacklisted_markets": [
         "gm1_busd1",
         "SWTH_UST",
-        "LUNA_SWTH",
-        "cmkt/129"
+        "LUNA_SWTH"
     ],
     "blacklisted_pools": [
         "34",
