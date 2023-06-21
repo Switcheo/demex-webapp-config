@@ -46,27 +46,27 @@
     "ibc_tokens_total_supply": [
         {
             "denom": "ibc/07FA7831E1920D0C87C9388F86B0108677F6ED0C9DE7E4063F05ED675192405C",
-            "amount": "1256615590886810"
+            "amount": "1289451288622070"
         },
         {
             "denom": "ibc/2B58B8C147E8718EECCB3713271DF46DEE8A3A00A27242628604E31C2F370EF5",
-            "amount": "273118798121413"
+            "amount": "297139581048487"
         },
         {
             "denom": "ibc/3552CECB7BCE1891DB6070D37EC6E954C972B1400141308FCD85FD148BD06DE5",
-            "amount": "84676625011360"
+            "amount": "85594497558724"
         },
         {
             "denom": "ibc/35E771B8682D828173F4B795F6C307780F96DC64D6F914FAE4CC9B4666F66364",
-            "amount": "501970899501136000000000000"
+            "amount": "525080023117301000000000000"
         },
         {
             "denom": "ibc/662914D0C1CEBCB070C68F061D035E8B10A07C79AB286E7342C85F3BE74612C5",
-            "amount": "114764826563477"
+            "amount": "115213863862302"
         },
         {
             "denom": "ibc/92E974290AF9E2BC3AEEEC35305C8FD76AC5A22A74CF8D91270FDF5A1C41E861",
-            "amount": "490234302988399000000000000"
+            "amount": "502370222129589000000000000"
         },
         {
             "denom": "ibc/A4DB47A9D3CF9A068D454513891B526702455D3EF08FB9EB558C561F9DC2B701",
@@ -78,7 +78,7 @@
         },
         {
             "denom": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
-            "amount": "581351323000000"
+            "amount": "600527806000000"
         }
     ]
 }
