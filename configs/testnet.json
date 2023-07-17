@@ -2,15 +2,10 @@
     "network": "testnet",
     "featured_markets": [
         "BTC_PERP.USDC",
-        "cmkt/4",
         "swth_eth"
     ],
     "blacklisted_markets": [
-        "swth_btc2",
-        "cmkt/11",
-        "cmkt/12",
-        "cmkt/17",
-        "cmkt/28"
+        "swth_btc2"
     ],
     "blacklisted_pools": [],
     "blacklisted_tokens": [],
