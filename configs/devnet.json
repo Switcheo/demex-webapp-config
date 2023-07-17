@@ -9,5 +9,11 @@
     ],
     "blacklisted_pools": [],
     "blacklisted_tokens": [],
-    "ibc_tokens_total_supply": []
+    "ibc_tokens_total_supply": [],
+    "transfer_options": {},
+    "network_fees": {
+      "swth": 0,
+      "usdc": 1,
+      "eth": 2
+    }
 }
