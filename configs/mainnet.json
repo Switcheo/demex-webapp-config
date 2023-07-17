@@ -17,7 +17,8 @@
         "cmkt/132",
         "cmkt/137",
         "cmkt/138",
-        "cmkt/141"
+        "cmkt/141",
+        "cmkt/142"
     ],
     "blacklisted_markets": [
         "gm1_busd1",
