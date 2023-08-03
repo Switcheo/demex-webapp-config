@@ -8,7 +8,8 @@
         "swth_btc",
         "swth_btc2",
         "swth_nex",
-        "swth_nexo"
+        "swth_nexo",
+        "swth_dai"
     ],
     "blacklisted_pools": [],
     "blacklisted_tokens": [],
