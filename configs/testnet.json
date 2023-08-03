@@ -5,7 +5,10 @@
         "swth_eth"
     ],
     "blacklisted_markets": [
-        "swth_btc2"
+        "swth_btc",
+        "swth_btc2",
+        "swth_nex",
+        "swth_nexo"
     ],
     "blacklisted_pools": [],
     "blacklisted_tokens": [],
