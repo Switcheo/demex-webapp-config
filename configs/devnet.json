@@ -1,8 +1,8 @@
 {
     "network": "devnet",
     "featured_markets": [
-        "BTC_PERP.USDC",
-        "swth_eth"
+        "cmkt/1",
+        "cmkt/2"
     ],
     "blacklisted_markets": [
         "swth_btc2"
