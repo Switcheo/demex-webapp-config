@@ -52,6 +52,26 @@
             "items": {
                 "$ref": "#/$defs/ibc_total_supply"
             }
+        },
+        "transfer_options": {
+          "type": "object",
+          "description": "List of blockchain networks and their priority numbers, used to set their preferred order in deposit and withdrawal forms transfer option dropdown",
+          "patternProperties": {
+            ".*": {
+              "type": "integer"
+            }
+          },
+          "additionalProperties": false
+        },
+        "network_fees": {
+          "type": "object",
+          "description": "List of token denoms and their priority numbers, used to set their preferred order in network fee preferences",
+          "patternProperties": {
+            ".*": {
+              "type": "integer"
+            }
+          },
+          "additionalProperties": false
         }
     },
     "$defs": {
