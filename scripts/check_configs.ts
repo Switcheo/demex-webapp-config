@@ -17,6 +17,12 @@ interface ConfigJSON {
   blacklisted_pools: string[];
   blacklisted_tokens: string[];
   ibc_tokens_total_supply: TotalSupplyItem[]
+  transfer_options: {
+    [chainKey: string]: number
+  },
+  network_fees: {
+    [denom: string]: number
+  },
 }
 
 interface InvalidEntry {
@@ -41,7 +47,7 @@ const outcomeMap: OutcomeMap = {
 
 // check for valid entries (match data to the api query)
 function checkValidEntries(data: string[], query: string[]): InvalidEntry {
-  let invalidEntries : string[] = [];
+  let invalidEntries: string[] = [];
   data.forEach(entry => {
     if (!query.includes(entry)) {
       invalidEntries.push(entry);
@@ -75,7 +81,7 @@ function checkDuplicateEntries(data: string[]): DuplicateEntry {
 
 // check for featured markets to ensure that it does not have blacklisted markets 
 function checkBlacklistedMarkets(featuredMarkets: string[], blacklistedMarkets: string[]): InvalidEntry {
-  let overlappingMarkets : string[] = [];
+  let overlappingMarkets: string[] = [];
   featuredMarkets.forEach(market => {
     if (blacklistedMarkets.includes(market)) {
       overlappingMarkets.push(market);
@@ -91,8 +97,8 @@ function checkBlacklistedMarkets(featuredMarkets: string[], blacklistedMarkets: 
 
 async function main() {
   for (const net of myArgs) {
-    let network : CarbonSDK.Network;
-    switch(net.toLowerCase()) {
+    let network: CarbonSDK.Network;
+    switch (net.toLowerCase()) {
       case "mainnet":
         network = CarbonSDK.Network.MainNet;
         break;
@@ -153,7 +159,7 @@ async function main() {
         console.error(`ERROR: ${network}.json has the following duplicated market entries: ${listOfDuplicates}. Please make sure to only input each market once in ${network}`);
         outcomeMap[network] = false;
       }
-      
+
       const hasDuplicateBlacklistedMarkets = checkDuplicateEntries(jsonData.blacklisted_markets);
       if (hasDuplicateBlacklistedMarkets.status && hasDuplicateBlacklistedMarkets.entry) {
         let listOfDuplicates: string = hasDuplicateBlacklistedMarkets.entry.join(", ");
@@ -180,7 +186,7 @@ async function main() {
         }
       });
       const pools: string[] = allPools.pools.map(pool => pool.pool?.id.toString() ?? "");
-      
+
       const hasInvalidPools = checkValidEntries(jsonData.blacklisted_pools, pools);
       if (hasInvalidPools.status && hasInvalidPools.entry) {
         let listOfInvalidPools: string = hasInvalidPools.entry.join(', ');
@@ -246,6 +252,50 @@ async function main() {
         console.error(`ERROR: ${network}.json has the following duplicated fee token denom entries under ibc_tokens_total_supply field: ${listOfIbcFeeDuplicates}. Please make sure to input each fee token denom only once in ${network}`);
         outcomeMap[network] = false;
       }
+
+      // Checking transfer options
+      const transferOptionsArr = Object.keys(jsonData.transfer_options)
+      const bridgesQuery = await sdk.query.coin.BridgeAll({
+        pagination: {
+          key: new Uint8Array(),
+          limit: new Long(10000),
+          offset: Long.UZERO,
+          countTotal: true,
+          reverse: false,
+        },
+      })
+      const bridges = bridgesQuery.bridges
+      const validTransferOptionChains = bridges.map(bridge => bridge.chainName)
+      validTransferOptionChains.push('Carbon')
+
+      const hasInvalidChains = checkValidEntries(transferOptionsArr, validTransferOptionChains);
+      if (hasInvalidChains.status && hasInvalidChains.entry) {
+        let listOfInvalidChains: string = hasInvalidChains.entry.join(', ');
+        console.error(`ERROR: ${network}.json has the following chain name entries under transfer_options field: ${listOfInvalidChains}. Please make sure to only input valid chain names in ${network}`);
+        outcomeMap[network] = false;
+      }
+
+      // Checking network fees
+      const networkFeeDenomOptions = Object.keys(jsonData.network_fees)
+      const gasPricesQuery = await sdk.query.fee.MinGasPriceAll({
+        pagination: {
+          limit: new Long(10000),
+          offset: new Long(0),
+          key: new Uint8Array(),
+          countTotal: true,
+          reverse: false,
+        },
+      })
+
+      const minGasPrices = gasPricesQuery.minGasPrices
+      const validNetworkFeeDenoms = minGasPrices.map(gasPrice => gasPrice.denom)
+
+      const hasInvalidFeeDenoms = checkValidEntries(networkFeeDenomOptions, validNetworkFeeDenoms);
+      if (hasInvalidFeeDenoms.status && hasInvalidFeeDenoms.entry) {
+        let listOfInvalidFeeDenoms: string = hasInvalidFeeDenoms.entry.join(', ');
+        console.error(`ERROR: ${network}.json has the following network fee token denoms under network_fees field: ${listOfInvalidFeeDenoms}. Please make sure to only input valid network fee token denoms in ${network}`);
+        outcomeMap[network] = false;
+      }
     }
   }
   const outcomeArr = Object.values(outcomeMap);
@@ -260,5 +310,5 @@ async function main() {
 }
 
 main()
-.catch(console.error)
-.finally(() => process.exit(0));
+  .catch(console.error)
+  .finally(() => process.exit(0));
