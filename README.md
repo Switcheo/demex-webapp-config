@@ -9,8 +9,8 @@ Currently, each JSON file contain the following data on its corresponding networ
 - blacklisted pools
 - blacklisted tokens
 - total supply of IBC fee tokens on Mintscan
-- preferred blockchain transfer option order
-- preferred network token fee order
+- default blockchain transfer option order in deposit/withdrawal forms dropdown
+- default network token fee order
 
 More metadata will be added in the future if required by the Demex frontend. Please see below the structure of the JSON file:
 

@@ -55,7 +55,7 @@
         },
         "transfer_options": {
           "type": "object",
-          "description": "List of blockchain networks and their priority numbers, used to set their preferred order in deposit and withdrawal forms transfer option dropdown",
+          "description": "List of blockchain networks and their priority numbers, used to set their order in deposit and withdrawal forms transfer option dropdown",
           "patternProperties": {
             ".*": {
               "type": "integer"
@@ -65,7 +65,7 @@
         },
         "network_fees": {
           "type": "object",
-          "description": "List of token denoms and their priority numbers, used to set their preferred order in network fee preferences",
+          "description": "List of token denoms and their priority numbers, used to set their order in network fee preferences",
           "patternProperties": {
             ".*": {
               "type": "integer"
