@@ -7,8 +7,7 @@
         "featured_markets",
         "blacklisted_markets",
         "blacklisted_pools",
-        "blacklisted_tokens",
-        "ibc_tokens_total_supply"
+        "blacklisted_tokens"
     ],
     "properties": {
         "network": {
@@ -44,13 +43,6 @@
             "description": "List of blacklisted token denoms",
             "items": {
                 "$ref": "#/$defs/blacklisted_token"
-            }
-        },
-        "ibc_tokens_total_supply": {
-            "type": "array",
-            "description": "List of ibc denoms with their respective total supply on Coingecko",
-            "items": {
-                "$ref": "#/$defs/ibc_total_supply"
             }
         },
         "transfer_options": {

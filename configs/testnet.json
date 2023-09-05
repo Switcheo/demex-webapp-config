@@ -13,7 +13,6 @@
     ],
     "blacklisted_pools": [],
     "blacklisted_tokens": [],
-    "ibc_tokens_total_supply": [],
     "transfer_options": {},
     "network_fees": {
       "swth": 0,
