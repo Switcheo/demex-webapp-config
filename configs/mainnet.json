@@ -27,7 +27,8 @@
     "blacklisted_markets": [
         "gm1_busd1",
         "SWTH_UST",
-        "LUNA_SWTH"
+        "LUNA_SWTH",
+        "cmkt/147"
     ],
     "blacklisted_pools": [
         "34",
