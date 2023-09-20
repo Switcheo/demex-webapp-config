@@ -1,9 +1,6 @@
 {
     "network": "devnet",
-    "featured_markets": [
-        "cmkt/1",
-        "cmkt/2"
-    ],
+    "featured_markets": [],
     "blacklisted_markets": [
         "swth_btc2"
     ],
