@@ -1,28 +1,19 @@
 {
     "network": "mainnet",
     "featured_markets": [
-        "cmkt/115",
-        "cmkt/109",
-        "cmkt/111",
-        "cmkt/110",
-        "swth_eth1",
         "cmkt/117",
         "cmkt/118",
-        "cmkt/119",
-        "cmkt/120",
-        "cmkt/121",
-        "cmkt/124",
-        "cmkt/126",
         "cmkt/129",
-        "cmkt/132",
-        "cmkt/137",
-        "cmkt/138",
-        "cmkt/141",
+        "cmkt/120",
+        "cmkt/147",
         "cmkt/142",
-        "cmkt/143",
-        "cmkt/144",
-        "cmkt/145",
-        "cmkt/146"
+        "cmkt/109",
+        "cmkt/115",
+        "cmkt/110",
+        "cmkt/149",
+        "cmkt/151",
+        "cmkt/152",
+        "cmkt/153"
     ],
     "blacklisted_markets": [
         "gm1_busd1",
@@ -46,7 +37,8 @@
         "ibc/731D16914CB3304BD7D177D3D4B210D82C04E5DF86E08AC994A8675C3E00C366",
         "ibc/A59A9C955F1AB8B76671B00C1A0482C64A6590352944BB5880E5122358F7E1CE",
         "ibc/D70B0FBF97AEB04491E9ABF4467A7F66CD6250F4382CE5192D856114B83738D2",
-        "ibc/4294C3DB67564CF4A0B2BFACC8415A59B38243F6FF9E288FBA34F9B4823BA16E"
+        "ibc/4294C3DB67564CF4A0B2BFACC8415A59B38243F6FF9E288FBA34F9B4823BA16E",
+         "usdc.1.6.e70e14"
     ],
     "transfer_options": {
       "Cosmos Hub": 0,
@@ -63,15 +55,17 @@
       "Stargaze": 11,
       "Canto": 12,
       "Sommelier": 13,
-      "Ethereum": 14,
-      "Arbitrum": 15,
-      "Polygon": 16,
-      "OKC": 17,
-      "Binance Smart Chain": 18,
-      "Carbon": 19,
-      "Neo": 20,
-      "Neo3": 21,
-      "Zilliqa": 22
+      "IRIS Hub": 14,
+      "Noble": 15,
+      "Ethereum": 16,
+      "Arbitrum": 17,
+      "Polygon": 18,
+      "OKC": 19,
+      "Binance Smart Chain": 20,
+      "Carbon": 21,
+      "Neo": 22,
+      "Neo3": 23,
+      "Zilliqa": 24
     },
     "network_fees": {
       "swth": 0,
@@ -87,14 +81,18 @@
       "ibc/07FA7831E1920D0C87C9388F86B0108677F6ED0C9DE7E4063F05ED675192405C": 10,
       "ibc/75249A18DEFBEFE55F83B1C70CAD234DF164F174C6BC51682EE92C2C81C18C93": 11,
       "ibc/B7864B03E1B9FD4F049243E92ABD691586F682137037A9F3FCA5222815620B3C": 12,
-      "bnb.1.6.773edb": 13,
-      "usdc.1.6.53ff75": 14,
-      "busd.1.6.754a80": 15,
-      "eth.1.19.c3b805": 16,
-      "cglp.1.19.1698d3": 17,
-      "zil.1.18.1a4a06": 18,
-      "bneo.1.14.e2e5f6": 19,
-      "eth.1.2.942d87": 20,
-      "usdc.1.2.343151": 21
+      "ibc/4E06CF24FEBFB3F5AF645377DCC0B70AA6183BAF6B918B8B6243FCDEB7D38118": 13,
+      "bnb.1.6.773edb": 14,
+      "usdc.1.6.53ff75": 15,
+      "busd.1.6.754a80": 16,
+      "eth.1.19.c3b805": 17,
+      "cglp.1.19.1698d3": 18,
+      "zil.1.18.1a4a06": 19,
+      "bneo.1.14.e2e5f6": 20,
+      "eth.1.2.942d87": 21,
+      "usdc.1.2.343151": 22
+    },
+    "maintenance": {
+      "title": ""
     }
   }
