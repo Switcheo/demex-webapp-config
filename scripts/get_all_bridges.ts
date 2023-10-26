@@ -2,7 +2,6 @@ import { CarbonSDK } from "carbon-js-sdk";
 import Long from "long";
 const myArgs = process.argv.slice(2);
 
-
 (async () => {
   const net = myArgs[0]
   let network: CarbonSDK.Network;

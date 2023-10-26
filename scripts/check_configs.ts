@@ -5,11 +5,6 @@ import Long from 'long';
 const cwd = process.cwd();
 const myArgs = process.argv.slice(2);
 
-interface TotalSupplyItem {
-  denom: string;
-  amount: string;
-}
-
 interface ConfigJSON {
   network: CarbonSDK.Network;
   featured_markets: string[];

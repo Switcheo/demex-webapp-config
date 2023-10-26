@@ -1,22 +1,22 @@
 {
-    "network": "testnet",
-    "featured_markets": [
-        "BTC_PERP.USDC",
-        "swth_eth"
-    ],
-    "blacklisted_markets": [
-        "swth_btc",
-        "swth_btc2",
-        "swth_nex",
-        "swth_nexo",
-        "swth_dai"
-    ],
-    "blacklisted_pools": [],
-    "blacklisted_tokens": [],
-    "transfer_options": {},
-    "network_fees": {
-      "swth": 0,
-      "usdc": 1,
-      "eth": 2
-    }
+  "network": "testnet",
+  "featured_markets": [
+    "BTC_PERP.USDC",
+    "swth_eth"
+  ],
+  "blacklisted_markets": [
+    "swth_btc",
+    "swth_btc2",
+    "swth_nex",
+    "swth_nexo",
+    "swth_dai"
+  ],
+  "blacklisted_pools": [],
+  "blacklisted_tokens": [],
+  "transfer_options": {},
+  "network_fees": {
+    "swth": 0,
+    "usdc": 1,
+    "eth": 2
   }
+}

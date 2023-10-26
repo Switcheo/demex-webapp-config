@@ -1,89 +1,89 @@
 {
-    "title": "Demex Webapp Config",
-    "description": "demex-webapp-config is a repository to allow frontends to fetch metadata associated with Demex",
-    "type": "object",
-    "required": [
-        "network",
-        "featured_markets",
-        "blacklisted_markets",
-        "blacklisted_pools",
-        "blacklisted_tokens",
-        "transfer_options",
-        "network_fees"
-    ],
-    "properties": {
-        "network": {
-            "type": "string",
-            "enum": [
-                "mainnet",
-                "testnet",
-                "devnet"
-            ]
-        },
-        "featured_markets": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/featured_market"
-            }
-        },
-        "blacklisted_markets": {
-            "type": "array",
-            "description": "List of blacklisted market names",
-            "items": {
-                "$ref": "#/$defs/blacklisted_market"
-            }
-        },
-        "blacklisted_pools": {
-            "type": "array",
-            "description": "List of blacklisted pool ids",
-            "items": {
-                "$ref": "#/$defs/blacklisted_pool"
-            }
-        },
-        "blacklisted_tokens": {
-            "type": "array",
-            "description": "List of blacklisted token denoms",
-            "items": {
-                "$ref": "#/$defs/blacklisted_token"
-            }
-        },
-        "transfer_options": {
-          "type": "object",
-          "description": "List of blockchain networks and their priority numbers, used to set their order in deposit and withdrawal forms transfer option dropdown",
-          "patternProperties": {
-            ".*": {
-              "type": "integer"
-            }
-          },
-          "additionalProperties": false
-        },
-        "network_fees": {
-          "type": "object",
-          "description": "List of token denoms and their priority numbers, used to set their order in network fee preferences",
-          "patternProperties": {
-            ".*": {
-              "type": "integer"
-            }
-          },
-          "additionalProperties": false
-        }
+  "title": "Demex Webapp Config",
+  "description": "demex-webapp-config is a repository to allow frontends to fetch metadata associated with Demex",
+  "type": "object",
+  "required": [
+    "network",
+    "featured_markets",
+    "blacklisted_markets",
+    "blacklisted_pools",
+    "blacklisted_tokens",
+    "transfer_options",
+    "network_fees"
+  ],
+  "properties": {
+    "network": {
+      "type": "string",
+      "enum": [
+        "mainnet",
+        "testnet",
+        "devnet"
+      ]
     },
-    "$defs": {
-        "featured_market": {
-            "type": "string"
-        },
-        "blacklisted_market": {
-            "type": "string",
-            "description": "Blacklisted market name"
-        },
-        "blacklisted_pool": {
-            "type": "string",
-            "description": "Blacklisted pool id (type: string)",
-            "pattern": "^\\d+$"
-        },
-        "blacklisted_token": {
-            "type": "string",
-            "description": "Blacklisted token denom"
+    "featured_markets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/featured_market"
+      }
+    },
+    "blacklisted_markets": {
+      "type": "array",
+      "description": "List of blacklisted market names",
+      "items": {
+        "$ref": "#/$defs/blacklisted_market"
+      }
+    },
+    "blacklisted_pools": {
+      "type": "array",
+      "description": "List of blacklisted pool ids",
+      "items": {
+        "$ref": "#/$defs/blacklisted_pool"
+      }
+    },
+    "blacklisted_tokens": {
+      "type": "array",
+      "description": "List of blacklisted token denoms",
+      "items": {
+        "$ref": "#/$defs/blacklisted_token"
+      }
+    },
+    "transfer_options": {
+      "type": "object",
+      "description": "List of blockchain networks and their priority numbers, used to set their order in deposit and withdrawal forms transfer option dropdown",
+      "patternProperties": {
+        ".*": {
+          "type": "integer"
         }
+      },
+      "additionalProperties": false
+    },
+    "network_fees": {
+      "type": "object",
+      "description": "List of token denoms and their priority numbers, used to set their order in network fee preferences",
+      "patternProperties": {
+        ".*": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
     }
+  },
+  "$defs": {
+    "featured_market": {
+      "type": "string"
+    },
+    "blacklisted_market": {
+      "type": "string",
+      "description": "Blacklisted market name"
+    },
+    "blacklisted_pool": {
+      "type": "string",
+      "description": "Blacklisted pool id (type: string)",
+      "pattern": "^\\d+$"
+    },
+    "blacklisted_token": {
+      "type": "string",
+      "description": "Blacklisted token denom"
+    }
+  }
 }
