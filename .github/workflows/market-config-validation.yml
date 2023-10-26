@@ -17,16 +17,10 @@ jobs:
           node-version: '18.14.2'
 
       - name: Install Dependencies
-        uses: borales/actions-yarn@v3.0.0
-        with:
-          cmd: install --ignore-engines # will run `yarn install` command
+        run: yarn install --ignore-engines # will run `yarn install` command
 
       - name: Validate featured markets schema
-        uses: borales/actions-yarn@v3.0.0
-        with:
-          cmd: validate # validate using json schema
+        run: yarn validate # validate using json schema
       
       - name: Test market entries for invalid/duplicate markets
-        uses: borales/actions-yarn@v3.0.0
-        with:
-          cmd: check-configs mainnet testnet devnet # check using check_configs.ts script
+        run: yarn check-configs mainnet testnet devnet # check using check_configs.ts script
