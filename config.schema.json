@@ -7,7 +7,9 @@
         "featured_markets",
         "blacklisted_markets",
         "blacklisted_pools",
-        "blacklisted_tokens"
+        "blacklisted_tokens",
+        "transfer_options",
+        "network_fees"
     ],
     "properties": {
         "network": {
@@ -82,25 +84,6 @@
         "blacklisted_token": {
             "type": "string",
             "description": "Blacklisted token denom"
-        },
-        "ibc_total_supply": {
-            "type": "object",
-            "description": "Total supply amount of each IBC token listed here",
-            "required": [
-                "denom",
-                "amount"
-            ],
-            "properties": {
-                "denom": {
-                    "type": "string",
-                    "description": "Denom of IBC token on Carbon (e.g. ibc/07FA7831E1920D0C87C9388F86B0108677F6ED0C9DE7E4063F05ED675192405C => STARS)"
-                },
-                "amount": {
-                    "type": "string",
-                    "description": "total supply of each IBC token on Coingecko",
-                    "pattern": "^\\d+$"
-                }
-            }
         }
     }
 }
