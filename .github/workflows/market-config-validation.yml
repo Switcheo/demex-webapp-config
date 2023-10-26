@@ -7,12 +7,14 @@ jobs:
   validate_markets:
     name: Validate Featured Markets
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [ 18 ]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      
+      - name: Set Node-js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.14.2'
 
       - name: Install Dependencies
         uses: borales/actions-yarn@v3.0.0
