@@ -14,7 +14,7 @@ jobs:
       - name: Install node-gyp
         uses: borales/actions-yarn@v3.0.0
         with:
-          cmd: add node-gyp
+          cmd: add node-gyp --ignore-engines
 
       - name: Install Dependencies
         uses: borales/actions-yarn@v3.0.0
