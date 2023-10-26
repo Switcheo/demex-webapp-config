@@ -11,11 +11,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install node-gyp
-        uses: borales/actions-yarn@v3.0.0
-        with:
-          cmd: add node-gyp --ignore-engines
-
       - name: Install Dependencies
         uses: borales/actions-yarn@v3.0.0
         with:
