@@ -11,10 +11,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set node version
-        uses: actions/setup-node@v3
+      - name: Install node-gyp
+        uses: borales/actions-yarn@v3.0.0
         with:
-          node-version: 18
+          cmd: add node-gyp
 
       - name: Install Dependencies
         uses: borales/actions-yarn@v3.0.0
