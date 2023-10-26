@@ -6,7 +6,7 @@
   "author": "Switcheo <engineering@switcheo.network>",
   "license": "MIT",
   "scripts": {
-    "preinstall": "yarn config set ignore-engines true",
+    "preinstall": "yarn config set ignore-engines true && yarn config set python python2.7",
     "validate": "pajv validate -s config.schema.json -d \"configs/*.json\" --verbose",
     "check-configs": "ts-node scripts/check_configs",
     "upgrade-sdk": "yarn upgrade carbon-js-sdk@latest",
