@@ -17,7 +17,7 @@
     "@cosmjs/tendermint-rpc": "^0.29.4",
     "@types/node": "^18.11.9",
     "@types/node-fetch": "^2.6.2",
-    "carbon-js-sdk": "^0.4.16-beta.6",
+    "carbon-js-sdk": "^0.7.1-beta.2",
     "long": "^4.0.0",
     "node-fetch": "^2.6.1",
     "pajv": "^1.2.0",
