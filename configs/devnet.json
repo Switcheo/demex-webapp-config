@@ -11,8 +11,5 @@
     "swth": 0,
     "usdc": 1,
     "eth": 2
-  },
-  "maintenance": {
-    "message": "Chain down right now: more updates later."
   }
 } 
