@@ -12,5 +12,7 @@
     "usdc": 1,
     "eth": 2
   },
-  "maintenance": {}
+  "maintenance": {
+    "title": "We're working on it"
+  }
 } 
