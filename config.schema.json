@@ -66,6 +66,20 @@
         }
       },
       "additionalProperties": false
+    },
+    "maintenance": {
+      "type": "object",
+      "description": "Dictates whether or not the maintenance page is displayed on each particular network.",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title shown on maintenance page (optional). If not provided, the title of the page will default to \"Service Maintenance\""
+        },
+        "message": {
+          "type": "string",
+          "description": "Description shown on maintenance page (optional). If not provided, the description of the page will default to \"Website is temporily unavailable due to planned maintenance. We will be back soon.\""
+        }
+      }
     }
   },
   "$defs": {
