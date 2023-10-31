@@ -1,7 +1,7 @@
 on:
   pull_request:
     branches:
-      - master
+      - feat/maintenance-page-docs
 name: Pull request workflow
 jobs: 
   validate_markets:
