@@ -13,7 +13,6 @@
     "eth": 2
   },
   "maintenance": {
-    "title": "We're working on it",
     "message": "Chain down right now: more updates later."
   }
 } 
