@@ -2,7 +2,9 @@
   "network": "devnet",
   "featured_markets": [],
   "blacklisted_markets": [
-    "swth_btc2"
+    "swth_btc2",
+    "ETH_PERP.USDC",
+    "BTC_PERP.USDC"
   ],
   "blacklisted_pools": [],
   "blacklisted_tokens": [],
