@@ -4,6 +4,7 @@
     "BTC_PERP.USDC",
     "swth_eth"
   ],
+  "prelaunch_markets": [],
   "blacklisted_markets": [
     "swth_btc",
     "swth_btc2",
