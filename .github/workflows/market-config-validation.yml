@@ -1,7 +1,7 @@
 on:
   pull_request:
     branches:
-      - master
+      - feat/prelaunch-markets
 name: Pull request workflow
 jobs: 
   validate_markets:
