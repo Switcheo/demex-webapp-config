@@ -5,6 +5,7 @@
   "required": [
     "network",
     "featured_markets",
+    "prelaunch_markets",
     "blacklisted_markets",
     "blacklisted_pools",
     "blacklisted_tokens",
@@ -22,8 +23,16 @@
     },
     "featured_markets": {
       "type": "array",
+      "description": "List of market names to be added to the Featured List",
       "items": {
         "$ref": "#/$defs/featured_market"
+      }
+    },
+    "prelaunch_markets": {
+      "type": "array",
+      "description": "List of market names designated as Pre-Launch markets",
+      "items": {
+        "$ref": "#/$defs/prelaunch_market"
       }
     },
     "blacklisted_markets": {
@@ -84,7 +93,12 @@
   },
   "$defs": {
     "featured_market": {
-      "type": "string"
+      "type": "string",
+      "description": "Market name of market to be added to Featured list"
+    },
+    "prelaunch_market": {
+      "type": "string",
+      "description": "Market name of Pre-launch market"
     },
     "blacklisted_market": {
       "type": "string",
