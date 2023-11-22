@@ -8,6 +8,7 @@ const myArgs = process.argv.slice(2);
 interface ConfigJSON {
   network: CarbonSDK.Network;
   featured_markets: string[];
+  prelaunch_markets: string[];
   blacklisted_markets: string[];
   blacklisted_pools: string[];
   blacklisted_tokens: string[];
@@ -139,6 +140,13 @@ async function main() {
         outcomeMap[network] = false;
       }
 
+      const hasInvalidPrelaunchMarkets = checkValidEntries(jsonData.prelaunch_markets, markets);
+      if (hasInvalidPrelaunchMarkets.status && hasInvalidPrelaunchMarkets.entry) {
+        let listOfInvalidMarkets: string = hasInvalidPrelaunchMarkets.entry.join(', ');
+        console.error(`ERROR: ${network}.json has the following invalid pre-launch market entries: ${listOfInvalidMarkets}. Please make sure to only input valid markets in ${network}`);
+        outcomeMap[network] = false;
+      }
+
       const hasInvalidBlacklistedMarkets = checkValidEntries(jsonData.blacklisted_markets, markets);
       if (hasInvalidBlacklistedMarkets.status && hasInvalidBlacklistedMarkets.entry) {
         let listOfInvalidMarkets: string = hasInvalidBlacklistedMarkets.entry.join(', ');
@@ -154,6 +162,13 @@ async function main() {
         outcomeMap[network] = false;
       }
 
+      const hasDuplicatePrelaunchMarkets = checkDuplicateEntries(jsonData.prelaunch_markets);
+      if (hasDuplicatePrelaunchMarkets.status && hasDuplicatePrelaunchMarkets.entry) {
+        let listOfDuplicates: string = hasDuplicatePrelaunchMarkets.entry.join(", ");
+        console.error(`ERROR: ${network}.json has the following duplicated pre-launch market entries: ${listOfDuplicates}. Please make sure to only input each market once in ${network}`);
+        outcomeMap[network] = false;
+      }
+
       const hasDuplicateBlacklistedMarkets = checkDuplicateEntries(jsonData.blacklisted_markets);
       if (hasDuplicateBlacklistedMarkets.status && hasDuplicateBlacklistedMarkets.entry) {
         let listOfDuplicates: string = hasDuplicateBlacklistedMarkets.entry.join(", ");
@@ -166,6 +181,14 @@ async function main() {
       if (hasBlacklistedMarkets.status && hasBlacklistedMarkets.entry) {
         let listOfBlacklistedMarkets: string = hasBlacklistedMarkets.entry.join(", ");
         console.error(`ERROR: ${network}.json has the following blacklisted market entries in featured markets entries: ${listOfBlacklistedMarkets}. Please make sure that blacklisted markets are not found in featured markets in ${network}`);
+        outcomeMap[network] = false;
+      }
+
+      // check that market names in blacklisted_markets is not found inside prelaunch_markets
+      const hasBlacklistedMarketsInPrelaunch = checkBlacklistedMarkets(jsonData.prelaunch_markets, jsonData.blacklisted_markets);
+      if (hasBlacklistedMarketsInPrelaunch.status && hasBlacklistedMarketsInPrelaunch.entry) {
+        let listOfBlacklistedMarkets: string = hasBlacklistedMarketsInPrelaunch.entry.join(", ");
+        console.error(`ERROR: ${network}.json has the following blacklisted market entries in pre-launch markets entries: ${listOfBlacklistedMarkets}. Please make sure that blacklisted markets are not found in pre-launch markets in ${network}`);
         outcomeMap[network] = false;
       }
 
