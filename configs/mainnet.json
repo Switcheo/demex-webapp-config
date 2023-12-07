@@ -17,9 +17,12 @@
     "cmkt/155",
     "cmkt/156",
     "cmkt/157",
-    "cmkt/158"
+    "cmkt/158",
+    "cmkt/159"
   ],
-  "prelaunch_markets": [],
+  "prelaunch_markets": [
+    "cmkt/159"
+  ],
   "blacklisted_markets": [
     "gm1_busd1",
     "SWTH_UST",
