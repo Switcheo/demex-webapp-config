@@ -18,6 +18,7 @@ interface ConfigJSON {
   network_fees: {
     [denom: string]: number
   },
+  perp_pool_banners: PerpPoolBanner[]
 }
 
 interface InvalidEntry {
@@ -29,6 +30,14 @@ interface DuplicateEntry {
   status: boolean;
   entry?: string[];
   numberOfDuplicates?: number;
+}
+
+interface PerpPoolBanner {
+  perp_pool_id: string;
+  show_from: string;
+  show_until: string;
+  title: string;
+  subtext: string;
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -285,6 +294,35 @@ async function main() {
       if (hasInvalidFeeDenoms.status && hasInvalidFeeDenoms.entry) {
         let listOfInvalidFeeDenoms: string = hasInvalidFeeDenoms.entry.join(', ');
         console.error(`ERROR: ${network}.json has the following network fee token denoms under network_fees field: ${listOfInvalidFeeDenoms}. Please make sure to only input valid network fee token denoms in ${network}`);
+        outcomeMap[network] = false;
+      }
+
+      // Checking perp pool banners
+      const perpPoolsQuery = await sdk.query.perpspool.PoolInfoAll({
+        pagination: {
+          key: new Uint8Array(),
+          limit: new Long(10000),
+          offset: Long.UZERO,
+          countTotal: true,
+          reverse: false,
+        },
+      })
+
+      const perpPoolIds = perpPoolsQuery.pools.map((pool) => pool.poolId.toString())
+      const perpPoolBannerIds = Object.values(jsonData.perp_pool_banners).map((banner) => banner.perp_pool_id)
+
+      const hasInvalidPerpPoolIds = checkValidEntries(perpPoolBannerIds, perpPoolIds)
+      const hasDuplicatePerpPoolIds = checkDuplicateEntries(perpPoolBannerIds)
+
+      if(hasInvalidPerpPoolIds.status && hasInvalidPerpPoolIds.entry) {
+        let listOfInvalidIds: string = hasInvalidPerpPoolIds.entry.join(", ");
+        console.error(`ERROR: ${network}.json has the following invalid perp pool ids under the perp_pool_banners field: ${listOfInvalidIds}`)
+        outcomeMap[network] = false;
+      }
+
+      if (hasDuplicatePerpPoolIds.status && hasDuplicatePerpPoolIds.entry) {
+        let listOfDuplicates: string = hasDuplicatePerpPoolIds.entry.join(", ");
+        console.error(`ERROR: ${network}.json has duplicated perp pool banners for the following perp pool ids: ${listOfDuplicates}. Please make sure to input each perp pool banner only once in ${network}`);
         outcomeMap[network] = false;
       }
     }

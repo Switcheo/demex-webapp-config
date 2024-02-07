@@ -19,5 +19,14 @@
     "swth": 0,
     "usdc": 1,
     "eth": 2
-  }
+  },
+  "perp_pool_banners": [
+    {
+      "perp_pool_id": "1",
+      "show_from" : "2024-02-06T09:00+00:00",
+      "show_until" : "2024-03-06T09:00+00:00",
+      "title": "Market changes pending",
+      "subtext": "BTCETH Perp will be removed on 6 Mar, 09:00AM UTC"
+    }
+  ]
 }

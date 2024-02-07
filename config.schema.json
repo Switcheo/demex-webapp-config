@@ -10,7 +10,8 @@
     "blacklisted_pools",
     "blacklisted_tokens",
     "transfer_options",
-    "network_fees"
+    "network_fees",
+    "perp_pool_banners"
   ],
   "properties": {
     "network": {
@@ -89,6 +90,35 @@
           "description": "Description shown on maintenance page (optional). If not provided, the description of the page will default to \"Website is temporily unavailable due to planned maintenance. We will be back soon.\""
         }
       }
+    },
+    "perp_pool_banners": {
+      "type": "array",
+      "description": "List of blacklisted token denoms",
+      "items": {
+        "type": "object",
+        "required": [
+          "perp_pool_id",
+          "title",
+          "subtext"
+        ],  
+        "properties": {
+          "perp_pool_id": {
+            "$ref": "#/$defs/perp_pool_id"
+          },
+          "show_from": {
+            "$ref": "#/$defs/show_from"
+          },
+          "show_until": {
+            "$ref": "#/$defs/show_until"
+          },
+          "title": {
+            "$ref": "#/$defs/title"
+          },
+          "subtext": {
+            "$ref": "#/$defs/subtext"
+          }
+        }
+      }
     }
   },
   "$defs": {
@@ -112,6 +142,29 @@
     "blacklisted_token": {
       "type": "string",
       "description": "Blacklisted token denom"
+    },
+    "perp_pool_id": {
+      "type": "string",
+      "description": "Perp pool id (type: string)",
+      "pattern": "^\\d+$"
+    },
+    "show_from": {
+      "type": "string",
+      "description": "The date and time when the perp pool banner is scheduled to begin displaying (optional). If not provided, the banner will be shown immediately.",
+      "pattern": "^\\d{4}(-\\d\\d(-\\d\\d(T\\d\\d:\\d\\d(:\\d\\d)?(\\.\\d+)?(([+-]\\d\\d:\\d\\d)|Z)?)?)?)?$"
+    },
+    "show_until": {
+      "type": "string",
+      "description": "The date and time when the perp pool banner is scheduled to stop displaying (optional). If not provided, the banner will continue to display indefinitely.",
+      "pattern": "^\\d{4}(-\\d\\d(-\\d\\d(T\\d\\d:\\d\\d(:\\d\\d)?(\\.\\d+)?(([+-]\\d\\d:\\d\\d)|Z)?)?)?)?$"
+    },
+    "title": {
+      "type": "string",
+      "description": "The title shown on the banner"
+    },
+    "subtext": {
+      "type": "string",
+      "description": "The subtext shown on the banner"
     }
   }
 }

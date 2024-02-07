@@ -14,5 +14,6 @@
     "swth": 0,
     "usdc": 1,
     "eth": 2
-  }
+  },
+  "perp_pool_banners": []
 } 
