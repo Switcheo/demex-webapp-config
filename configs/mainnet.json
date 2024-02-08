@@ -92,13 +92,5 @@
     "eth.1.2.942d87": 21,
     "usdc.1.2.343151": 22
   },
-  "perp_pool_banners": [
-    {
-      "perp_pool_id": "4",
-      "show_from": "2024-02-07T08:00+00:00",
-      "show_until": "2024-02-08T08:00+00:00",
-      "title": "Changes to Perp Pool",
-      "subtext": "DYM-PERP Market will be added on 8th Feb, 08:00AM UTC"
-    }
-  ]
+  "perp_pool_banners": []
 }
