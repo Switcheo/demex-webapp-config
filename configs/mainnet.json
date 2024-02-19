@@ -1,8 +1,8 @@
 {
   "network": "mainnet",
   "featured_markets": [
-    "cmkt/109", 
-    "cmkt/115", 
+    "cmkt/109",
+    "cmkt/115",
     "cmkt/117",
     "cmkt/118",
     "cmkt/129",
@@ -97,7 +97,7 @@
   "perp_pool_banners": [
     {
       "perp_pool_id": "5",
-      "show_until" : "2024-02-22T07:30+00:00",
+      "show_until": "2024-02-22T07:30+00:00",
       "title": "Changes to Perp Pool",
       "subtext": "RNDR-PERP will be added on 22nd Feb, 08:00AM UTC"
     }
