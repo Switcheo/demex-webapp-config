@@ -126,6 +126,7 @@
     "cmkt/160": "BINANCE:STRKUSD",
     "cmkt/163": "BINANCE:STXUSD",
     "cmkt/164": "COINBASE:SEIUSD",
+    "cmkt/168": "BINANCE:OPUSD"
     "cmkt/159": "KRAKEN:JUPUSD"
   },
   "perp_pool_pie_chart_colors": {
