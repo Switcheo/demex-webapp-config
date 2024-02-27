@@ -131,7 +131,8 @@
     "cmkt/171": "BINANCE:GASUSD",
     "cmkt/167": "BINANCE:BNBUSD",
     "cmkt/169": "BINANCE:RNDRUSD",
-    "cmkt/166": "BINANCE:DYMUSD"
+    "cmkt/166": "BINANCE:DYMUSD",
+    "cmkt/174": "BINANCE:WLDUSD"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/118": "#0772FF",
