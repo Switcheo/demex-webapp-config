@@ -123,7 +123,7 @@
     "cmkt/142": "CRYPTO:MNTUSD",
     "cmkt/149": "CRYPTO:TONUSD",
     "cmkt/156": "PYTH:MEMEUSD",
-    "cmkt/160": "CRYPTO:STRKUSD",
+    "cmkt/160": "BINANCE:STRKUSD",
     "cmkt/163": "BINANCE:STXUSD",
     "cmkt/164": "COINBASE:SEIUSD",
     "cmkt/159": "KRAKEN:JUPUSD"
