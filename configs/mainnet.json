@@ -11,7 +11,8 @@
     "cmkt/169",
     "cmkt/174",
     "cmkt/175",
-    "cmkt/176"
+    "cmkt/176",
+    "cmkt/177"
   ],
   "prelaunch_markets": [],
   "blacklisted_markets": [
@@ -104,6 +105,13 @@
       "show_until": "2024-02-20T14:00+00:00",
       "title": "Changes to Perp Pool",
       "subtext": "STRK-PERP will be added on 20 Feb, 02:00PM UTC."
+    },
+    {
+      "perp_pool_id": "7",
+      "show_from": "2024-03-04T09:00+00:00",
+      "show_until": "2024-03-05T09:30+00:00",
+      "title": "Changes to Perp Pool",
+      "subtext": "The static market multiplier for this pool will be increased to 3x on 5th March, 08:30 AM UTC."
     }
   ],
   "spot_history_market_list": {
@@ -134,7 +142,7 @@
     "cmkt/166": "BINANCE:DYMUSD",
     "cmkt/174": "BINANCE:WLDUSD",
     "cmkt/175": "CRYPTO:PEPEUSD",
-    "cmkt/176": "BINANCE:DOGEUSD"
+    "cmkt/176": "BINANCE:DOGEUSD",
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/118": "#0772FF",
