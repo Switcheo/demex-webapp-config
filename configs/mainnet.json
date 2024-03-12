@@ -9,10 +9,10 @@
     "cmkt/155",
     "cmkt/166",
     "cmkt/174",
-    "cmkt/175",
     "cmkt/176",
     "cmkt/178",
-    "cmkt/180"
+    "cmkt/180",
+    "cmkt/181"
   ],
   "prelaunch_markets": [],
   "blacklisted_markets": [
@@ -138,7 +138,8 @@
     "cmkt/176": "BINANCE:DOGEUSD",
     "cmkt/177": "KRAKEN:WIFUSD",
     "cmkt/178": "BINANCE:AXLUSD",
-    "cmkt/180": "COINBASE:METISUSD"
+    "cmkt/180": "COINBASE:METISUSD",
+    "cmkt/181": "BINANCE:1000PEPEUSDT.P"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#482BFF",
@@ -159,10 +160,10 @@
     "cmkt/167": "#E8B12B",
     "cmkt/168": "#C53B4A",
     "cmkt/174": "#007AFF",
-    "cmkt/175": "#00A862",
     "cmkt/176": "#C0993A",
     "cmkt/178": "#007AFF",
     "cmkt/180": "#00D2FF",
+    "cmkt/181": "#00A862",
     "Unused": "#7798E4"
   }
 }
