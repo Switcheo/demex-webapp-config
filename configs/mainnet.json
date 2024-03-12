@@ -9,10 +9,10 @@
     "cmkt/155",
     "cmkt/166",
     "cmkt/174",
-    "cmkt/175",
     "cmkt/176",
     "cmkt/177",
-    "cmkt/178"
+    "cmkt/178",
+    "cmkt/179"
   ],
   "prelaunch_markets": [],
   "blacklisted_markets": [
@@ -97,14 +97,20 @@
       "perp_pool_id": "5",
       "show_until": "2024-02-22T07:30+00:00",
       "title": "Changes to Perp Pool",
-      "subtext": "RNDR-PERP will be added on 22nd Feb, 08:00AM UTC"
+      "subtext": "RNDR-PERP will be added on 22nd Feb, 08:00 AM UTC"
     },
     {
       "perp_pool_id": "6",
       "show_from": "2024-02-20T09:10+00:00",
       "show_until": "2024-02-20T14:00+00:00",
       "title": "Changes to Perp Pool",
-      "subtext": "STRK-PERP will be added on 20 Feb, 02:00PM UTC."
+      "subtext": "METIS-PERP will be added to this Perp Pool on 12 March, 09:00 AM UTC."
+    },
+    {
+      "perp_pool_id": "7",
+      "show_until": "2024-03-12T09:00+00:00",
+      "title": "Changes to Perp Pool",
+      "subtext": "PEPE-PERP will be removed from this Perp Pool, and 1000PEPE-PERP will be added on 12 March, 09:00 AM UTC."
     }
   ],
   "spot_history_market_list": {
@@ -137,7 +143,8 @@
     "cmkt/175": "CRYPTO:PEPEUSD",
     "cmkt/176": "BINANCE:DOGEUSD",
     "cmkt/177": "KRAKEN:WIFUSD",
-    "cmkt/178": "BINANCE:AXLUSD"
+    "cmkt/178": "BINANCE:AXLUSD",
+    "cmkt/179": "BINANCE:1000PEPEUSD"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#482BFF",
@@ -161,6 +168,7 @@
     "cmkt/175": "#00A862",
     "cmkt/176": "#C0993A",
     "cmkt/178": "#007AFF",
+    "cmkt/179": "#00A862",
     "Unused": "#7798E4"
   }
 }
