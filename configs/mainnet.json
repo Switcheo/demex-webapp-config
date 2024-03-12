@@ -11,8 +11,8 @@
     "cmkt/174",
     "cmkt/175",
     "cmkt/176",
-    "cmkt/177",
-    "cmkt/178"
+    "cmkt/178",
+    "cmkt/180"
   ],
   "prelaunch_markets": [],
   "blacklisted_markets": [
@@ -137,7 +137,8 @@
     "cmkt/175": "CRYPTO:PEPEUSD",
     "cmkt/176": "BINANCE:DOGEUSD",
     "cmkt/177": "KRAKEN:WIFUSD",
-    "cmkt/178": "BINANCE:AXLUSD"
+    "cmkt/178": "BINANCE:AXLUSD",
+    "cmkt/180": "COINBASE:METISUSD"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#482BFF",
@@ -161,6 +162,7 @@
     "cmkt/175": "#00A862",
     "cmkt/176": "#C0993A",
     "cmkt/178": "#007AFF",
+    "cmkt/180": "#00D2FF",
     "Unused": "#7798E4"
   }
 }
