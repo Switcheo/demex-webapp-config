@@ -12,7 +12,7 @@
     "cmkt/176",
     "cmkt/180",
     "cmkt/181",
-    "cmkt/182"
+    "cmkt/183"
   ],
   "prelaunch_markets": [],
   "blacklisted_markets": [
@@ -140,7 +140,7 @@
     "cmkt/178": "BINANCE:AXLUSD",
     "cmkt/180": "COINBASE:METISUSD",
     "cmkt/181": "BINANCE:1000PEPEUSDT.P",
-    "cmkt/182": "CRYPTO:LUNAUSD"
+    "cmkt/183": "CRYPTO:LUNAUSD"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#482BFF",
@@ -167,7 +167,7 @@
     "cmkt/181": "#00A862",
     "cmkt/175": "#5ACC93",
     "cmkt/177": "#D9A468",
-    "cmkt/182": "#ffd83d",
+    "cmkt/183": "#ffd83d",
     "Unused": "#7798E4"
   },
  "markets_override": {
