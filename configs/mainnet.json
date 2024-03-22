@@ -13,7 +13,8 @@
     "cmkt/180",
     "cmkt/181",
     "cmkt/183",
-    "cmkt/190"
+    "cmkt/190",
+    "cmkt/191"
   ],
   "prelaunch_markets": [],
   "blacklisted_markets": [
@@ -95,17 +96,10 @@
   },
   "perp_pool_banners": [
     {
-      "perp_pool_id": "5",
-      "show_until": "2024-02-22T07:30+00:00",
+      "perp_pool_id": "7",
+      "show_until": "2024-03-24T07:30+00:00",
       "title": "Changes to Perp Pool",
-      "added_markets": "RNDR-PERP will be added on 22nd Feb, 08:00AM UTC"
-    },
-    {
-      "perp_pool_id": "6",
-      "show_from": "2024-02-20T09:10+00:00",
-      "show_until": "2024-02-20T14:00+00:00",
-      "title": "Changes to Perp Pool",
-      "added_markets": "STRK-PERP will be added on 20 Feb, 02:00PM UTC."
+      "added_markets": "FTM-PERP will be added on 22nd Mar, 08:00AM UTC"
     }
   ],
   "spot_history_market_list": {
@@ -142,7 +136,8 @@
     "cmkt/180": "COINBASE:METISUSD",
     "cmkt/181": "BINANCE:1000PEPEUSDT.P",
     "cmkt/183": "CRYPTO:LUNAUSD",
-    "cmkt/190": "BITGET:SLERFUSDT"
+    "cmkt/190": "BITGET:SLERFUSDT",
+    "cmkt/191": "BINANCE:FTMUSD"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#482BFF",
@@ -171,6 +166,7 @@
     "cmkt/177": "#D9A468",
     "cmkt/183": "#ffd83d",
     "cmkt/190": "#fd8f00",
+    "cmkt/191": "#1869fe",
     "Unused": "#7798E4"
   },
  "markets_override": {
