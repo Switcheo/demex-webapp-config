@@ -14,7 +14,8 @@
     "cmkt/181",
     "cmkt/183",
     "cmkt/190",
-    "cmkt/191"
+    "cmkt/191",
+    "cmkt/149"
   ],
   "prelaunch_markets": [],
   "blacklisted_markets": [
@@ -97,9 +98,9 @@
   "perp_pool_banners": [
     {
       "perp_pool_id": "7",
-      "show_until": "2024-03-24T07:30+00:00",
+      "show_until": "2024-03-29T07:30+00:00",
       "title": "Changes to Perp Pool",
-      "added_markets": "FTM-PERP will be added on 22nd Mar, 08:00AM UTC"
+      "added_markets": "FTM-PERP will be removed on 28 Mar, 08:00AM UTC"
     }
   ],
   "spot_history_market_list": {
@@ -167,6 +168,7 @@
     "cmkt/183": "#ffd83d",
     "cmkt/190": "#fd8f00",
     "cmkt/191": "#1869fe",
+    "cmkt/149": "#0099e8",
     "Unused": "#7798E4"
   },
  "markets_override": {
