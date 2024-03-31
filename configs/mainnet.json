@@ -1,22 +1,5 @@
 {
   "network": "mainnet",
-  "featured_markets": [
-    "cmkt/109",
-    "cmkt/115",
-    "cmkt/117",
-    "cmkt/118",
-    "cmkt/147",
-    "cmkt/155",
-    "cmkt/166",
-    "cmkt/174",
-    "cmkt/176",
-    "cmkt/180",
-    "cmkt/181",
-    "cmkt/183",
-    "cmkt/190",
-    "cmkt/191",
-    "cmkt/149"
-  ],
   "prelaunch_markets": [],
   "blacklisted_markets": [
     "gm1_busd1",

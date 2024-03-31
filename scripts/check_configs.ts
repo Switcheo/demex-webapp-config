@@ -7,7 +7,6 @@ const myArgs = process.argv.slice(2);
 
 interface ConfigJSON {
   network: CarbonSDK.Network;
-  featured_markets: string[];
   prelaunch_markets: string[];
   blacklisted_markets: string[];
   blacklisted_pools: string[];
@@ -85,10 +84,10 @@ function checkDuplicateEntries(data: string[]): DuplicateEntry {
   };
 }
 
-// check for featured markets to ensure that it does not have blacklisted markets 
-function checkBlacklistedMarkets(featuredMarkets: string[], blacklistedMarkets: string[]): InvalidEntry {
+// check list of markets to ensure that it does not have blacklisted markets 
+function checkBlacklistedMarkets(marketData: string[], blacklistedMarkets: string[]): InvalidEntry {
   let overlappingMarkets: string[] = [];
-  featuredMarkets.forEach(market => {
+  marketData.forEach(market => {
     if (blacklistedMarkets.includes(market)) {
       overlappingMarkets.push(market);
     }
@@ -144,13 +143,6 @@ async function main() {
       const markets: string[] = allMarkets.markets.map(market => market.name);
 
       // look for invalid market entries
-      const hasInvalidMarkets = checkValidEntries(jsonData.featured_markets, markets);
-      if (hasInvalidMarkets.status && hasInvalidMarkets.entry) {
-        let listOfInvalidMarkets: string = hasInvalidMarkets.entry.join(', ');
-        console.error(`ERROR: ${network}.json has the following invalid market entries: ${listOfInvalidMarkets}. Please make sure to only input valid markets in ${network}`);
-        outcomeMap[network] = false;
-      }
-
       const hasInvalidPrelaunchMarkets = checkValidEntries(jsonData.prelaunch_markets, markets);
       if (hasInvalidPrelaunchMarkets.status && hasInvalidPrelaunchMarkets.entry) {
         let listOfInvalidMarkets: string = hasInvalidPrelaunchMarkets.entry.join(', ');
@@ -166,13 +158,6 @@ async function main() {
       }
 
       // look for duplicate market entries
-      const hasDuplicateMarkets = checkDuplicateEntries(jsonData.featured_markets);
-      if (hasDuplicateMarkets.status && hasDuplicateMarkets.entry) {
-        let listOfDuplicates: string = hasDuplicateMarkets.entry.join(", ");
-        console.error(`ERROR: ${network}.json has the following duplicated market entries: ${listOfDuplicates}. Please make sure to only input each market once in ${network}`);
-        outcomeMap[network] = false;
-      }
-
       const hasDuplicatePrelaunchMarkets = checkDuplicateEntries(jsonData.prelaunch_markets);
       if (hasDuplicatePrelaunchMarkets.status && hasDuplicatePrelaunchMarkets.entry) {
         let listOfDuplicates: string = hasDuplicatePrelaunchMarkets.entry.join(", ");
@@ -184,14 +169,6 @@ async function main() {
       if (hasDuplicateBlacklistedMarkets.status && hasDuplicateBlacklistedMarkets.entry) {
         let listOfDuplicates: string = hasDuplicateBlacklistedMarkets.entry.join(", ");
         console.error(`ERROR: ${network}.json has the following duplicated blacklisted market entries: ${listOfDuplicates}. Please make sure to only input each market once in ${network}`);
-        outcomeMap[network] = false;
-      }
-
-      // check that market names in blacklisted_markets is not found inside featured_markets
-      const hasBlacklistedMarkets = checkBlacklistedMarkets(jsonData.featured_markets, jsonData.blacklisted_markets);
-      if (hasBlacklistedMarkets.status && hasBlacklistedMarkets.entry) {
-        let listOfBlacklistedMarkets: string = hasBlacklistedMarkets.entry.join(", ");
-        console.error(`ERROR: ${network}.json has the following blacklisted market entries in featured markets entries: ${listOfBlacklistedMarkets}. Please make sure that blacklisted markets are not found in featured markets in ${network}`);
         outcomeMap[network] = false;
       }
 

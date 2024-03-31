@@ -1,6 +1,5 @@
 {
   "network": "devnet",
-  "featured_markets": [],
   "prelaunch_markets": [],
   "blacklisted_markets": [
     "swth_btc2",

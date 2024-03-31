@@ -1,6 +1,5 @@
 {
   "network": "testnet",
-  "featured_markets": ["BTC_PERP.USDC", "swth_eth"],
   "prelaunch_markets": [],
   "blacklisted_markets": [
     "swth_btc",
