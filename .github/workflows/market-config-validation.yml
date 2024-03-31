@@ -5,7 +5,7 @@ on:
 name: Pull request workflow
 jobs: 
   validate_markets:
-    name: Validate Featured Markets
+    name: Validate Config Data
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,7 +19,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install --ignore-engines # will run `yarn install` command
 
-      - name: Validate featured markets schema
+      - name: Validate config schema
         run: yarn validate # validate using json schema
       
       - name: Test market entries for invalid/duplicate markets
