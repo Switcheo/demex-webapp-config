@@ -97,10 +97,10 @@
   },
   "perp_pool_banners": [
     {
-      "perp_pool_id": "7",
-      "show_until": "2024-03-29T07:30+00:00",
+      "perp_pool_id": "8",
+      "show_until": "2024-04-02T08:00+00:00",
       "title": "Changes to Perp Pool",
-      "added_markets": "FTM-PERP will be removed on 28 Mar, 08:00AM UTC"
+      "added_markets": "FTM-PERP will be added on 1 Apr, 08:00AM UTC"
     }
   ],
   "spot_history_market_list": {
