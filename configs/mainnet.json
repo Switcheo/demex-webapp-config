@@ -80,10 +80,10 @@
   },
   "perp_pool_banners": [
     {
-      "perp_pool_id": "8",
-      "show_until": "2024-04-02T08:00+00:00",
-      "title": "Changes to Perp Pool",
-      "added_markets": "FTM-PERP was added to this perp pool on 1 Apr, 08:00AM UTC"
+      "perp_pool_id": "7",
+      "show_until": "2024-04-03T08:00+00:00",
+      "title": "Changes to FOMO Perp Pool",
+      "added_markets": "DEGEN-PERP will be added to this perp pool on 2 Apr, 10:00AM UTC"
     }
   ],
   "spot_history_market_list": {
@@ -121,7 +121,8 @@
     "cmkt/181": "BINANCE:1000PEPEUSDT.P",
     "cmkt/183": "CRYPTO:LUNAUSD",
     "cmkt/190": "BITGET:SLERFUSDT",
-    "cmkt/191": "BINANCE:FTMUSD"
+    "cmkt/191": "BINANCE:FTMUSD",
+    "cmkt/192": "BYBIT:DEGENUSDT"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#482BFF",
@@ -152,6 +153,7 @@
     "cmkt/190": "#fd8f00",
     "cmkt/191": "#1869fe",
     "cmkt/149": "#0099e8",
+    "cmkt/192": "#ad6aff",
     "Unused": "#7798E4"
   },
  "markets_override": {
