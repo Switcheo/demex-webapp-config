@@ -133,11 +133,12 @@
     "cmkt/181": "BINANCE:1000PEPEUSDT.P",
     "cmkt/183": "CRYPTO:LUNAUSD",
     "cmkt/190": "BITGET:SLERFUSDT",
-    "cmkt/191": "BINANCE:FTMUSD"
+    "cmkt/191": "BINANCE:FTMUSD",
+    "cmkt/200": "BINANCE:ETHBTC"
   },
   "perp_pool_pie_chart_colors": {
-    "cmkt/117": "#482BFF",
-    "cmkt/118": "#f6921a",
+    "cmkt/117": "#875DFF",
+    "cmkt/118": "#FFAC49",
     "cmkt/120": "#34395E",
     "cmkt/121": "#5E12A0",
     "cmkt/129": "#10a5f6",
@@ -174,6 +175,7 @@
     "cmkt/169": "#d11c1f",
     "cmkt/198": "#ffffff",
     "cmkt/199": "#152f50",
+    "cmkt/200": "FFDC91",
     "Unused": "#7798E4"
   },
   "markets_override": {
