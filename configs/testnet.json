@@ -32,5 +32,6 @@
         "symbol": "1000PEPE"
       }
     }
-  }
+  },
+  "cross_selling_source_tokens": ["swth"]
 }
