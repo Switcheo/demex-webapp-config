@@ -196,5 +196,9 @@
       "perpPoolDepositBoost": 2,
       "perpTradingBoost": 3
     }
+  },
+  "maintenance": {
+    "title": "Sorry, we're down for maintenance right now",
+    "message": "Website is temporarily unavailable due to planned maintenance. We will be back soon."
   }
 }
