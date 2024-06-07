@@ -10,6 +10,7 @@ Currently, each JSON file contain the following data on its corresponding networ
 - blacklisted tokens
 - default blockchain transfer option order in deposit/withdrawal forms dropdown
 - default network token fee order
+- cross selling source tokens
 
 Additionally, the JSON file for mainnet contains the following data to support ongoing campaigns/promotions:
 - demex points config
@@ -48,6 +49,7 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "token_denom_1": 0,
     "token_denom_2": 1,
     "token_denom_3": 2
-  }
+  },
+  "cross_selling_source_tokens": ["source_token_1"]
 }
 ```
