@@ -134,6 +134,7 @@
     "cmkt/183": "CRYPTO:LUNAUSD",
     "cmkt/190": "BITGET:SLERFUSDT",
     "cmkt/191": "BINANCE:FTMUSD",
+    "cmkt/192": "BYBIT:DEGENUSDT",
     "cmkt/200": "BINANCE:ETHBTC"
   },
   "perp_pool_pie_chart_colors": {
