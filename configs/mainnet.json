@@ -135,7 +135,8 @@
     "cmkt/190": "BITGET:SLERFUSDT",
     "cmkt/191": "BINANCE:FTMUSD",
     "cmkt/192": "BYBIT:DEGENUSDT",
-    "cmkt/200": "BINANCE:ETHBTC"
+    "cmkt/200": "BINANCE:ETHBTC",
+    "cmkt/201": "GATEIO:ARCHUSDT"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -177,6 +178,7 @@
     "cmkt/198": "#ffffff",
     "cmkt/199": "#152f50",
     "cmkt/200": "#FFDC91",
+    "cmkt/201": "#ff4c01",
     "Unused": "#7798E4"
   },
   "markets_override": {
