@@ -200,5 +200,6 @@
       "perpTradingBoost": 3
     }
   },
-  "cross_selling_source_tokens": ["swth"]
+  "cross_selling_source_tokens": ["swth"],
+  "maintenance": {}
 }
