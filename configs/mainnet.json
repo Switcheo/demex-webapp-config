@@ -199,5 +199,6 @@
       "perpPoolDepositBoost": 2,
       "perpTradingBoost": 3
     }
-  }
+  },
+  "cross_selling_source_tokens": ["swth"]
 }

@@ -21,7 +21,8 @@ interface ConfigJSON {
   demex_points_config: DemexPointsConfig,
   perp_pool_promo: {
     [perpPoolId: string]: PerpPoolPromo,
-  }
+  },
+  cross_selling_source_tokens: string[];
 }
 
 interface InvalidEntry {
@@ -234,17 +235,31 @@ async function main() {
       });
       const tokens: string[] = allTokens.tokens.map(token => token.denom);
 
-      const hasInvalidTokens = checkValidEntries(jsonData.blacklisted_tokens, tokens);
-      if (hasInvalidTokens.status && hasInvalidTokens.entry) {
-        let listOfInvalidTokens: string = hasInvalidTokens.entry.join(', ');
-        console.error(`ERROR: ${network}.json has the following invalid token denom entries: ${listOfInvalidTokens}. Please make sure to only input valid token denom in ${network}`);
+      const hasInvalidBlacklistedTokens = checkValidEntries(jsonData.blacklisted_tokens, tokens);
+      if (hasInvalidBlacklistedTokens.status && hasInvalidBlacklistedTokens.entry) {
+        let listOfInvalidTokens: string = hasInvalidBlacklistedTokens.entry.join(', ');
+        console.error(`ERROR: ${network}.json has the following invalid blacklisted token denom entries: ${listOfInvalidTokens}. Please make sure to only input valid token denom in ${network}`);
         outcomeMap[network] = false;
       }
 
-      const hasDuplicateTokens = checkDuplicateEntries(jsonData.blacklisted_tokens);
-      if (hasDuplicateTokens.status && hasDuplicateTokens.entry) {
-        let listOfDuplicates: string = hasDuplicateTokens.entry.join(", ");
-        console.error(`ERROR: ${network}.json has the following duplicated token denom entries: ${listOfDuplicates}. Please make sure to input each token denom only once in ${network}`);
+      const hasDuplicateBlacklistedTokens = checkDuplicateEntries(jsonData.blacklisted_tokens);
+      if (hasDuplicateBlacklistedTokens.status && hasDuplicateBlacklistedTokens.entry) {
+        let listOfDuplicates: string = hasDuplicateBlacklistedTokens.entry.join(", ");
+        console.error(`ERROR: ${network}.json has the following duplicated blacklisted token denom entries: ${listOfDuplicates}. Please make sure to input each token denom only once in ${network}`);
+        outcomeMap[network] = false;
+      }
+
+      const hasInvalidCrossSellingTokens = checkValidEntries(jsonData.cross_selling_source_tokens, tokens);
+      if (hasInvalidCrossSellingTokens.status && hasInvalidCrossSellingTokens.entry) {
+        let listOfInvalidTokens: string = hasInvalidCrossSellingTokens.entry.join(', ');
+        console.error(`ERROR: ${network}.json has the following invalid cross selling source token denom entries: ${listOfInvalidTokens}. Please make sure to only input valid token denom in ${network}`);
+        outcomeMap[network] = false;
+      }
+
+      const hasDuplicateCrossSellingTokens = checkDuplicateEntries(jsonData.cross_selling_source_tokens);
+      if (hasDuplicateCrossSellingTokens.status && hasDuplicateCrossSellingTokens.entry) {
+        let listOfDuplicates: string = hasDuplicateCrossSellingTokens.entry.join(", ");
+        console.error(`ERROR: ${network}.json has the following duplicated cross selling source token denom entries: ${listOfDuplicates}. Please make sure to input each token denom only once in ${network}`);
         outcomeMap[network] = false;
       }
 
