@@ -10,7 +10,9 @@
     "blacklisted_tokens",
     "transfer_options",
     "network_fees",
-    "perp_pool_banners"
+    "perp_pool_banners",
+    "external_chain_channels",
+    "additional_ibc_token_config"
   ],
   "properties": {
     "network": {
@@ -159,6 +161,28 @@
       }
     }
   },
+  "external_chain_channels": {
+    "type": "object",
+    "description": "Map of destination channels for external IBC chains",
+    "patternProperties": {
+      "^[\\w ]+$": {
+        "type": "object",
+        "patternProperties": {
+          "^[\\w ]+$": {
+            "type": "string",
+            "pattern": "^channel-[\\d]+$"
+          }
+        }
+      }
+    }
+  },
+  "additional_ibc_token_config": {
+    "type": "array",
+    "description": "List of information for tokens that (1) are not added on Carbon blockchain or (2) require packet forwarding",
+    "items": {
+      "$ref": "#/$defs/additional_ibc_token_info"
+    }
+  },
   "$defs": {
     "prelaunch_market": {
       "type": "string",
@@ -225,6 +249,32 @@
     "perpTradingBoost": {
       "type": "integer",
       "description": "The spin boost multiplier for boosted perp markets trading volume"
+    },
+    "additional_ibc_token_info": {
+      "type": "object",
+      "description": "Information for token that (1) is not added on Carbon blockchain or (2) requires packet forwarding.",
+      "required": [
+        "baseDenom",
+        "chainRoutes"
+      ],
+      "properties": {
+        "baseDenom": {
+          "type": "string",
+          "description": "Denom of token on its native chain"
+        },
+        "chainRoutes": {
+          "type": "array",
+          "description": "List of IBC chains that token needs to be forwarded through before being deposited into Carbon",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "denomOnCarbon": {
+          "type": "string",
+          "description": "Denom of token on Carbon chain (omit if token is not added to Carbon chain)"
+        }
+      }
     }
   }
 }
