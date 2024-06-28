@@ -14,5 +14,7 @@
     "usdc": 1,
     "eth": 2
   },
-  "perp_pool_banners": []
+  "perp_pool_banners": [],
+  "external_chain_channels": {},
+  "additional_ibc_token_config": []
 } 

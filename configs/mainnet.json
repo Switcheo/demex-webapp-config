@@ -199,5 +199,7 @@
       "perpPoolDepositBoost": 2,
       "perpTradingBoost": 3
     }
-  }
+  },
+  "external_chain_channels": {},
+  "additional_ibc_token_config": []
 }
