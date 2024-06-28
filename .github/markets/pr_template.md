@@ -16,6 +16,8 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`perp_pool_banners`   |`PerpPoolBanner`   |true   |List of Objects that indicate the banner content on specific perp pool pages.   |
 |`demex_points_config`   |`DemexPointsConfig`   |false   |Object that contains the parameters to earn demex points.   |This object **must be included** for mainnet.json as demex points is already live on mainnet.   |
 |`perp_pool_promo`   |`PerpPoolPromo`   |false   |Map of Objects that contains perp pool promo parameters for each pool   |If the `perp_pool_promo` property is omitted, no promo will be shown. The key of each entry is the ids of the perp pools with existing promo.   |
+|`external_chain_channels`   |`obj`   |true   |Map of Objects containing destination channels for external IBC chains (e.g. Osmosis, Noble, etc.)   |1. To transfer tokens from Osmosis => Noble, you need to look for the `Osmosis` object, then search for `Noble` in the object to get the channel to be input in `sourceChannel` for MsgTransfer tx msg (in this case channel-750)<br /><br />2. Blockchain names in this object **MUST** match the valid chainName of the bridges listed under BridgeAll RPC call.<br /><br /> To view the values of BridgeAll RPC call, simply run `yarn get-bridges [network]` on the command line. Sample for mainnet: `yarn get-bridges mainnet`   |
+|`additional_ibc_token_config`   |`AdditionalIBCTokenConfig[]`   |true   |List of information about IBC tokens that are not added on chain or require packet forwarding.   |
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
@@ -40,10 +42,17 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`depositsPerSpin`   |`integer`  |true   |Amount deposited in the perp pool that will earn 1 spin after 1 week.   |
 |`tradingVolumePerSpin`   |`integer`  |true   |Volume traded on perp markets that will earn 1 spin.   |
 
-## PerpPoolPromo
+## PerpPoolPromo Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
 |---|---|---|---|---|
 |`start`   |`string`  |true   |Start time of the promo.   |
 |`end`   |`string`  |true   |End time of the promo.   |
 |`perpPoolDepositBoost`   |`integer`  |true   |Boost to perp pool deposits required to earn 1 demex point spin.   |
 |`perpTradingBoost`   |`integer`  |true   |Boost to trading volume required to earn 1 demex point spin.   |
+
+## AdditionalIBCTokenConfig Data Structure
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`baseDenom`   |`string`  |true   |The denom of this token on its native chain (e.g. `uosmo` for $OSMO on Osmosis, `uatom` for $ATOM on CosmosHub)   |
+|`chainRoutes`   |`string[]`  |true   |The list of IBC chains that this token needs to be forwarded through in order to be deposited into Carbon blockchain.    |Blockchain networks in this array **MUST** match the valid chainName of the bridges listed under BridgeAll RPC call.<br /><br /> To view the values of BridgeAll RPC call, simply run `yarn get-bridges [network]` on the command line. Sample for mainnet: `yarn get-bridges mainnet`   |
+|`denomOnCarbon`   |`string`  |false   |Denom of token that is added to Carbon chain but still requires packet-forwarding (omit if this token is **NOT** added to Carbon chain)   |The denom in this field **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000).   |

@@ -10,7 +10,7 @@ Currently, each JSON file contain the following data on its corresponding networ
 - blacklisted tokens
 - default blockchain transfer option order in deposit/withdrawal forms dropdown
 - default network token fee order
-- config of IBC channels for external IBC chains (such as Osmosis, Noble, etc.)
+- map of IBC channels for external IBC chains (such as Osmosis, Noble, etc.)
 - information about IBC tokens that are not added on chain or require packet forwarding
 
 Additionally, the JSON file for mainnet contains the following data to support ongoing campaigns/promotions:
@@ -52,14 +52,14 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "token_denom_3": 2
   },
   "external_chain_channels": {
-    "blockchain_1_from": {
-      "blockchain_1_to_1": "channel_1",
-      "blockchain_1_to_2": "channel_2"
+    "from_blockchain_1": {
+      "to_blockchain_1": "channel_1",
+      "to_blockchain_2": "channel_2"
     },
-    "blockchain_2_from": {
-      "blockchain_2_to_1": "channel_3",
-      "blockchain_2_to_2": "channel_4",
-      "blockchain_2_to_3": "channel_5"
+    "from_blockchain_2": {
+      "to_blockchain_3": "channel_3",
+      "to_blockchain_4": "channel_4",
+      "to_blockchain_5": "channel_5"
     }
   },
   "additional_ibc_token_config": [{
