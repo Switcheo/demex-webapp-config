@@ -14,6 +14,18 @@
     "usdc": 1,
     "eth": 2
   },
+  "markets_override": {
+    "cmkt/181": {
+      "base": {
+        "symbol": "1000PEPE"
+      }
+    },
+    "cmkt/1": {
+      "base": {
+        "symbol": "1000SHIB"
+      }
+    }
+  },
   "perp_pool_banners": [],
   "cross_selling_source_tokens": []
-} 
+}
