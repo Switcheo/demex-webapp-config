@@ -1,4 +1,5 @@
 import { CarbonSDK } from "carbon-js-sdk";
+import { PageRequest } from "carbon-js-sdk/lib/codec/cosmos/base/query/v1beta1/pagination";
 import Long from "long";
 const myArgs = process.argv.slice(2);
 
@@ -28,13 +29,9 @@ const myArgs = process.argv.slice(2);
   const sdk = await CarbonSDK.instance({ network });
   const feeQueryClient =  sdk.query.fee
   const gasPrices = await feeQueryClient.MinGasPriceAll({
-    pagination: {
+    pagination: PageRequest.fromPartial({
       limit: new Long(10000),
-      offset: new Long(0),
-      key: new Uint8Array(),
-      countTotal: true,
-      reverse: false,
-    },
+    }),
   })
 
   console.log(gasPrices)

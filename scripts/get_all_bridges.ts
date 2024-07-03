@@ -1,4 +1,5 @@
 import { CarbonSDK } from "carbon-js-sdk";
+import { PageRequest } from "carbon-js-sdk/lib/codec/cosmos/base/query/v1beta1/pagination";
 import Long from "long";
 const myArgs = process.argv.slice(2);
 
@@ -22,13 +23,9 @@ const myArgs = process.argv.slice(2);
 
   const sdk = await CarbonSDK.instance({ network });
   const bridges = await sdk.query.coin.BridgeAll({
-    pagination: {
-      key: new Uint8Array(),
+    pagination: PageRequest.fromPartial({
       limit: new Long(10000),
-      offset: Long.UZERO,
-      countTotal: true,
-      reverse: false,
-    },
+    }),
   })
   console.log(bridges)
 })().catch(console.error).finally(() => process.exit(0));
