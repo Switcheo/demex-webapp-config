@@ -165,16 +165,17 @@
     "type": "object",
     "description": "Map of destination channels for external IBC chains",
     "patternProperties": {
-      "^[\\w ]+$": {
+      "^[0-9A-Za-z ]+$": {
         "type": "object",
         "patternProperties": {
-          "^[\\w ]+$": {
+          "^[0-9A-Za-z ]+$": {
             "type": "string",
-            "pattern": "^channel-[\\d]+$"
+            "pattern": "^channel-([0-9]+)$"
           }
         }
       }
-    }
+    },
+    "additionalProperties": false
   },
   "additional_ibc_token_config": {
     "type": "array",
