@@ -137,7 +137,8 @@
     "cmkt/192": "BYBIT:DEGENUSDT",
     "cmkt/200": "BINANCE:ETHBTC",
     "cmkt/201": "GATEIO:ARCHUSDT",
-    "cmkt/203": "BYBIT:CANTOUSDT.P"
+    "cmkt/203": "BYBIT:CANTOUSDT.P",
+    "cmkt/205": "BYBIT:BRETTUSDT"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -182,6 +183,8 @@
     "cmkt/201": "#ff4c01",
     "cmkt/202": "#08fc9c",
     "cmkt/203": "#ffa500",
+    "cmkt/204": "#6b9cf6",
+    "cmkt/205": "#61ddff",
     "Unused": "#7798E4"
   },
   "markets_override": {
