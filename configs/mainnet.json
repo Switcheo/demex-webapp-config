@@ -1,6 +1,9 @@
 {
   "network": "mainnet",
   "prelaunch_markets": [],
+  "promo_markets": [
+    "cmkt/201"
+  ],
   "blacklisted_markets": [
     "gm1_busd1",
     "SWTH_UST",

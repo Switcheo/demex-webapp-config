@@ -5,6 +5,7 @@ The config JSON schema can be found [here](/config.schema.json).
 
 Currently, each JSON file contain the following data on its corresponding network (mainnet, testnet, devnet):
 - list of pre-launch markets
+- promo markets
 - blacklisted markets
 - blacklisted pools
 - blacklisted tokens
@@ -24,6 +25,11 @@ More metadata will be added in the future if required by the Demex frontend. Ple
   "prelaunch_markets": [
     "market_1",
     "market_2"
+  ],
+  "promo_markets": [
+    "promo_market_1",
+    "promo_market_2",
+    "promo_market_3"
   ],
   "blacklisted_markets": [
     "blacklisted_market_1",

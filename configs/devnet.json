@@ -1,6 +1,7 @@
 {
   "network": "devnet",
   "prelaunch_markets": [],
+  "promo_markets": [],
   "blacklisted_markets": [
     "swth_btc2",
     "ETH_PERP.USDC",

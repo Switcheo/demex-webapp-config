@@ -1,6 +1,9 @@
 {
   "network": "testnet",
   "prelaunch_markets": [],
+  "promo_markets": [
+    "ATOM_PERP.CGUSD"
+  ],
   "blacklisted_markets": [
     "swth_btc",
     "swth_btc2",
