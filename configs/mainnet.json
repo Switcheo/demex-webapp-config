@@ -138,7 +138,7 @@
     "cmkt/200": "BINANCE:ETHBTC",
     "cmkt/201": "GATEIO:ARCHUSDT",
     "cmkt/203": "BYBIT:CANTOUSDT.P",
-    "cmkt/205": "BYBIT:BRETTUSDT"
+    "cmkt/205": "CRYPTO:BRETT2USD"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -185,6 +185,8 @@
     "cmkt/203": "#ffa500",
     "cmkt/204": "#6b9cf6",
     "cmkt/205": "#61ddff",
+    "cmkt/206": "#dc1576",
+    "cmkt/207": "#f38a02",
     "Unused": "#7798E4"
   },
   "markets_override": {
