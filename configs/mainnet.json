@@ -202,7 +202,7 @@
       "base": {
         "symbol": "1000BONK"
       }
-    },
+    }
   },
   "demex_points_config": {
     "depositsPerSpin": 1000,
