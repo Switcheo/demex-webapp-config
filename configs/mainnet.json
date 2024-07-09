@@ -197,7 +197,12 @@
       "base": {
         "symbol": "1000SHIB"
       }
-    }
+    },
+   "cmkt/207": {
+      "base": {
+        "symbol": "1000BONK"
+      }
+    },
   },
   "demex_points_config": {
     "depositsPerSpin": 1000,
