@@ -261,7 +261,8 @@
       "properties": {
         "baseDenom": {
           "type": "string",
-          "description": "Denom of token on its native chain"
+          "description": "Denom of token on its native chain",
+          "minLength": 2
         },
         "chainRoutes": {
           "type": "array",
@@ -273,7 +274,8 @@
         },
         "denomOnCarbon": {
           "type": "string",
-          "description": "Denom of token on Carbon chain (omit if token is not added to Carbon chain)"
+          "description": "Denom of token on Carbon chain (omit if token is not added to Carbon chain)",
+          "minLength": 2
         }
       }
     }
