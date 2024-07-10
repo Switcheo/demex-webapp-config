@@ -22,8 +22,8 @@ jobs:
       - name: Validate config schema
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
-          INPUT_SCHEMA: ../../config.schema.json
-          INPUT_JSONS: ../../configs/mainnet.json,../../configs/testnet.json,../../configs/devnet.json
+          INPUT_SCHEMA: config.schema.json
+          INPUT_JSONS: configs/mainnet.json,configs/testnet.json,configs/devnet.json
       
       - name: Test market entries for invalid/duplicate markets
         run: yarn check-configs mainnet testnet devnet # check using check_configs.ts script
