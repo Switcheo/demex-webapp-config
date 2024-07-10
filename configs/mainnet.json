@@ -248,11 +248,11 @@
     }
   },
   "additional_ibc_token_config": [{
-    "baseDenom": "u",
+    "baseDenom": "uusdc",
     "chainRoutes": ["Archway", "Noble"]
   }, {
     "baseDenom": "uusdc",
-    "chainRoutes": []
+    "chainRoutes": ["Cosmos Hub", "Noble"]
   }, {
     "baseDenom": "uusdc",
     "chainRoutes": ["DYDX", "Noble"]
