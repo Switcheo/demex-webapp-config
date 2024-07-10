@@ -1,7 +1,7 @@
 on:
-  pull_request:
+  push:
     branches:
-      - master
+      - feat/packet-forwarding-config
 name: Pull request workflow
 jobs: 
   validate_markets:
@@ -20,7 +20,10 @@ jobs:
         run: yarn install --ignore-engines # will run `yarn install` command
 
       - name: Validate config schema
-        run: yarn validate # validate using json schema
+        uses: docker://orrosenblatt/validate-json-action:latest
+        env:
+          INPUT_SCHEMA: ../../config.schema.json
+          INPUT_JSONS: ../../configs/mainnet.json,../../configs/testnet.json,../../configs/devnet.json
       
       - name: Test market entries for invalid/duplicate markets
         run: yarn check-configs mainnet testnet devnet # check using check_configs.ts script
