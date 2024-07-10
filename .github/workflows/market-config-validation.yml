@@ -1,7 +1,7 @@
 on:
-  push:
+  pull_request:
     branches:
-      - feat/packet-forwarding-config
+      - master
 name: Pull request workflow
 jobs: 
   validate_markets:
