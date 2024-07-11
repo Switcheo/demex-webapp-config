@@ -52,6 +52,6 @@ Each json file under the [configs](../../configs) folder correspond to their res
 ## TypeformWidgetConfig
 |Field   |Type   |Required   |Description   |Notes   |
 |---|---|---|---|---|
-|`surveyLink`   |`string`  |true   |The link to the survey that will be shown when user clicks ont he widget.   |
+|`surveyLink`   |`string`  |true   |The link to the survey that will be shown when user clicks on the widget.   |
 |`endTime`   |`string`  |true   |End time of the survey   |
 |`pages`   |`string[]`   | true   |The paths to the pages on which the typeform widget must be shown.   

@@ -219,12 +219,14 @@
     }
   },
   "cross_selling_source_tokens": ["swth"],
-  "typeform_widget_config": {
-    "surveyLink": "https://switcheonetwork.typeform.com/to/C1rheplK",
-    "endTime": "2024-07-26T23:00:00Z",
-    "pages": [
-      "/account/overview",
-      "/account/balance"
-    ]
-  }
+  "typeform_widget_config": [
+    {
+      "surveyLink": "https://switcheonetwork.typeform.com/to/C1rheplK",
+      "endTime": "2024-07-26T23:00:00Z",
+      "pages": [
+        "/account/overview",
+        "/account/balance"
+      ]
+    }
+  ]
 }

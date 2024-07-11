@@ -168,17 +168,25 @@
     }
   },
   "typeform_widget_config": {
-    "type": "object",
-    "description": "Config for typeform survey widget",
-    "properties": {
-      "surveyLink": {
-        "type": "string"
-      },
-      "endTime": {
-        "$ref": "#/$defs/survey_end"
-      },
-      "pages": {
-        "type": "array"
+    "type": "array",
+    "description": "Ongoing survey configs for typeform survey widget",
+    "items": {
+      "type": "object",
+      "required": [
+        "surveyLink",
+        "endTime",
+        "pages"
+      ],
+      "properties": {
+        "surveyLink": {
+          "type": "string"
+        },
+        "endTime": {
+          "$ref": "#/$defs/survey_end"
+        },
+        "pages": {
+          "type": "array"
+        }
       }
     }
   },
