@@ -398,7 +398,7 @@ async function main() {
           const endTime = new Date(config.endTime)
           // Check if end time is before start time
           if (endTime < startTime) {
-            console.error(`ERROR: ${network}.json has invalid end time (${endTime}) is before start time (${startTime.toString()}) for a typeform survey config.`);
+            console.error(`ERROR: ${network}.json has invalid end time (${endTime}) is before start time (${startTime}) for a typeform survey config.`);
             outcomeMap[network] = false;
             break; // Exit the loop early upon encountering an error
           }
