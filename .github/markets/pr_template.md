@@ -17,7 +17,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`demex_points_config`   |`DemexPointsConfig`   |false   |Object that contains the parameters to earn demex points.   |This object **must be included** for mainnet.json as demex points is already live on mainnet.   |
 |`perp_pool_promo`   |`PerpPoolPromo`   |false   |Map of Objects that contains perp pool promo parameters for each pool   |If the `perp_pool_promo` property is omitted, no promo will be shown. The key of each entry is the ids of the perp pools with existing promo.   |
 |`cross_selling_source_tokens`   |`string[]`   |true   |The array of cross selling source tokens. Acquiring these tokens on the spot market will trigger a help wizard, prompting users to borrow USDG and trade perps on Demex. |The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000). |
-|`typeform_widget_config`   |`TypeformWidgetConfig`   |false   |Object that contains the parameters for ongoing surveys.   | If the `message` property is omitted, default message is shown: "We want to hear from you!"   |
+|`typeform_widget_config`   |`TypeformWidgetConfig`   |false   |Object that contains the parameters for ongoing surveys.   | If the `message` property is omitted, default message is shown: "We want to hear from you!". Multiple widgets being displayed on the same page is not supported. Ensure pages don't overlap between configs.  |
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
 |---|---|---|---|---|

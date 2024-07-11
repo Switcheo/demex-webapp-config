@@ -394,6 +394,7 @@ async function main() {
       if (jsonData.typeform_widget_config) {
         const typeFormWidgetConfigs = jsonData.typeform_widget_config
         const links: string[] = []
+        let pages: string[] = []
         for (const config of typeFormWidgetConfigs) {
           const startTime = new Date()
           const endTime = new Date(config.endTime)
@@ -402,14 +403,8 @@ async function main() {
             console.error(`ERROR: ${network}.json has invalid end time (${endTime}) is before start time (${startTime}) for a typeform survey config.`);
             outcomeMap[network] = false;
             break; // Exit the loop early upon encountering an error
-          }
-          // look for duplicate pages
-          const hasDuplicatePages = checkDuplicateEntries(config.pages);
-          if (hasDuplicatePages.status && hasDuplicatePages.entry) {
-            let listOfDuplicates: string = hasDuplicatePages.entry.join(", ");
-            console.error(`ERROR: ${network}.json has the following duplicated pages in a typeform survey config: ${listOfDuplicates}. Please make sure to only input each page once in ${network}`);
-            outcomeMap[network] = false;
-          }
+          }          
+          pages = pages.concat(config.pages)
           links.push(config.surveyLink)
         }
         // look for duplicate links
@@ -417,6 +412,13 @@ async function main() {
         if (hasDuplicateLinks.status && hasDuplicateLinks.entry) {
           let listOfDuplicates: string = hasDuplicateLinks.entry.join(", ");
           console.error(`ERROR: ${network}.json has the following duplicated links in the typeform survey configs: ${listOfDuplicates}. Please make sure to only input each link once in ${network}`);
+          outcomeMap[network] = false;
+        }
+        // look for duplicate pages
+        const hasDuplicatePages = checkDuplicateEntries(pages);
+        if (hasDuplicatePages.status && hasDuplicatePages.entry) {
+          let listOfDuplicates: string = hasDuplicatePages.entry.join(", ");
+          console.error(`ERROR: ${network}.json has the following duplicated pages in the typeform survey configs: ${listOfDuplicates}. Please make sure to only input each page once in ${network}`);
           outcomeMap[network] = false;
         }
       }

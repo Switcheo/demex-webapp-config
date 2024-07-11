@@ -227,15 +227,6 @@
         "/account/overview",
         "/account/balance"
       ]
-    },
-    {
-      "message": "testing",
-      "surveyLink": "www.google.com",
-      "endTime": "2024-07-26T23:00:00Z",
-      "pages": [
-        "/account/overview",
-        "/account/balance"
-      ]
     }
   ]
 }
