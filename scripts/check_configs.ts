@@ -393,6 +393,7 @@ async function main() {
       }
       if (jsonData.typeform_widget_config) {
         const typeFormWidgetConfigs = jsonData.typeform_widget_config
+        const links: string[] = []
         for (const config of typeFormWidgetConfigs) {
           const startTime = new Date()
           const endTime = new Date(config.endTime)
@@ -409,8 +410,15 @@ async function main() {
             console.error(`ERROR: ${network}.json has the following duplicated pages in a typeform survey config: ${listOfDuplicates}. Please make sure to only input each page once in ${network}`);
             outcomeMap[network] = false;
           }
+          links.push(config.surveyLink)
         }
-        
+        // look for duplicate links
+        const hasDuplicateLinks = checkDuplicateEntries(links);
+        if (hasDuplicateLinks.status && hasDuplicateLinks.entry) {
+          let listOfDuplicates: string = hasDuplicateLinks.entry.join(", ");
+          console.error(`ERROR: ${network}.json has the following duplicated links in the typeform survey configs: ${listOfDuplicates}. Please make sure to only input each link once in ${network}`);
+          outcomeMap[network] = false;
+        }
       }
       
     }
