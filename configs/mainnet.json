@@ -137,8 +137,11 @@
     "cmkt/192": "BYBIT:DEGENUSDT",
     "cmkt/200": "BINANCE:ETHBTC",
     "cmkt/201": "GATEIO:ARCHUSDT",
+    "cmkt/202": "BINANCE:1000SHIBUSDT.P"
     "cmkt/203": "BYBIT:CANTOUSDT.P",
-    "cmkt/205": "CRYPTO:BRETT2USD"
+    "cmkt/205": "CRYPTO:BRETT2USD",
+    "cmkt/207": "BINANCE:1000BONKUSDT.P",
+    "cmkt/209": "BINANCE:1000FLOKIUSDT.P"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -187,6 +190,8 @@
     "cmkt/205": "#61ddff",
     "cmkt/206": "#dc1576",
     "cmkt/207": "#f38a02",
+    "cmkt/208": "#fe97d7",
+    "cmkt/209": "#f99423",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -203,6 +208,11 @@
    "cmkt/207": {
       "base": {
         "symbol": "1000BONK"
+      }
+    },
+   "cmkt/209": {
+      "base": {
+        "symbol": "1000FLOKI"
       }
     }
   },
