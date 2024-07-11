@@ -17,7 +17,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`demex_points_config`   |`DemexPointsConfig`   |false   |Object that contains the parameters to earn demex points.   |This object **must be included** for mainnet.json as demex points is already live on mainnet.   |
 |`perp_pool_promo`   |`PerpPoolPromo`   |false   |Map of Objects that contains perp pool promo parameters for each pool   |If the `perp_pool_promo` property is omitted, no promo will be shown. The key of each entry is the ids of the perp pools with existing promo.   |
 |`cross_selling_source_tokens`   |`string[]`   |true   |The array of cross selling source tokens. Acquiring these tokens on the spot market will trigger a help wizard, prompting users to borrow USDG and trade perps on Demex. |The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000). |
-
+|`typeform_widget_config`   |`TypeformWidgetConfig`   |false   |Object that contains the parameters for ongoing surveys.   |
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
 |---|---|---|---|---|
@@ -48,3 +48,10 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`end`   |`string`  |true   |End time of the promo.   |
 |`perpPoolDepositBoost`   |`integer`  |true   |Boost to perp pool deposits required to earn 1 demex point spin.   |
 |`perpTradingBoost`   |`integer`  |true   |Boost to trading volume required to earn 1 demex point spin.   |
+
+## TypeformWidgetConfig
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`surveyLink`   |`string`  |true   |The link to the survey that will be shown when user clicks ont he widget.   |
+|`endTime`   |`string`  |true   |End time of the survey   |
+|`pages`   |`string[]`   | true   |The paths to the pages on which the typeform widget must be shown.   
