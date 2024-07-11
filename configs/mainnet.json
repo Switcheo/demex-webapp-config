@@ -209,11 +209,6 @@
       "base": {
         "symbol": "1000BONK"
       }
-    },
-   "cmkt/209": {
-      "base": {
-        "symbol": "1000FLOKI"
-      }
     }
   },
   "demex_points_config": {
