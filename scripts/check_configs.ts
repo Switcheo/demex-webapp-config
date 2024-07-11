@@ -23,6 +23,7 @@ interface ConfigJSON {
     [perpPoolId: string]: PerpPoolPromo,
   },
   cross_selling_source_tokens: string[];
+  typeform_widget_config: TypeFormWidgetConfig[]
 }
 
 interface InvalidEntry {
@@ -56,6 +57,12 @@ interface PerpPoolPromo {
   end: string;
   perpPoolDepositBoost: string;
   perpTradingBoost: string;
+}
+
+interface TypeFormWidgetConfig {
+  surveyLink: string
+  endTime: string
+  pages: string[]
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -384,6 +391,28 @@ async function main() {
           }
         }
       }
+      if (jsonData.typeform_widget_config) {
+        const typeFormWidgetConfigs = jsonData.typeform_widget_config
+        for (const config of typeFormWidgetConfigs) {
+          const startTime = new Date()
+          const endTime = new Date(config.endTime)
+          // Check if end time is before start time
+          if (endTime < startTime) {
+            console.error(`ERROR: ${network}.json has invalid end time (${endTime}) is before start time (${startTime.toString()}) for a typeform survey config.`);
+            outcomeMap[network] = false;
+            break; // Exit the loop early upon encountering an error
+          }
+          // look for duplicate pages
+          const hasDuplicatePages = checkDuplicateEntries(config.pages);
+          if (hasDuplicatePages.status && hasDuplicatePages.entry) {
+            let listOfDuplicates: string = hasDuplicatePages.entry.join(", ");
+            console.error(`ERROR: ${network}.json has the following duplicated pages in a typeform survey config: ${listOfDuplicates}. Please make sure to only input each page once in ${network}`);
+            outcomeMap[network] = false;
+          }
+        }
+        
+      }
+      
     }
   }
   const outcomeArr = Object.values(outcomeMap);

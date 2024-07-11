@@ -178,6 +178,9 @@
         "pages"
       ],
       "properties": {
+        "message": {
+          "type": "string"
+        },
         "surveyLink": {
           "type": "string"
         },
