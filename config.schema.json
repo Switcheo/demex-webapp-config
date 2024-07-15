@@ -11,6 +11,7 @@
     "transfer_options",
     "network_fees",
     "perp_pool_banners",
+    "cross_selling_source_tokens",
     "external_chain_channels",
     "additional_ibc_token_config"
   ],
@@ -159,6 +160,13 @@
           }
         }
       }
+    },
+    "cross_selling_source_tokens": {
+      "type": "array",
+      "description": "List of cross selling source token denoms",
+      "items": {
+        "$ref": "#/$defs/cross_selling_source_token"
+      }
     }
   },
   "external_chain_channels": {
@@ -250,6 +258,10 @@
     "perpTradingBoost": {
       "type": "integer",
       "description": "The spin boost multiplier for boosted perp markets trading volume"
+    },
+    "cross_selling_source_token": {
+      "type": "string",
+      "description": "Cross selling source token denom"
     },
     "additional_ibc_token_info": {
       "type": "object",

@@ -10,6 +10,7 @@ Currently, each JSON file contain the following data on its corresponding networ
 - blacklisted tokens
 - default blockchain transfer option order in deposit/withdrawal forms dropdown
 - default network token fee order
+- cross selling source tokens
 - map of IBC channels for external IBC chains (such as Osmosis, Noble, etc.)
 - information about IBC tokens that are not added on chain or require packet forwarding
 
@@ -51,6 +52,7 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "token_denom_2": 1,
     "token_denom_3": 2
   },
+  "cross_selling_source_tokens": ["source_token_1"],
   "external_chain_channels": {
     "from_blockchain_1": {
       "to_blockchain_1": "channel_1",
