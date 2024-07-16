@@ -238,5 +238,6 @@
         "/account/balance"
       ]
     }
-  ]
+  ],
+  "maintenance": {}
 }
