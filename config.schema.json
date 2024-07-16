@@ -167,6 +167,32 @@
       }
     }
   },
+  "typeform_widget_config": {
+    "type": "array",
+    "description": "Ongoing survey configs for typeform survey widget",
+    "items": {
+      "type": "object",
+      "required": [
+        "surveyLink",
+        "endTime",
+        "pages"
+      ],
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "surveyLink": {
+          "type": "string"
+        },
+        "endTime": {
+          "$ref": "#/$defs/survey_end"
+        },
+        "pages": {
+          "type": "array"
+        }
+      }
+    }
+  },
   "$defs": {
     "prelaunch_market": {
       "type": "string",
@@ -237,6 +263,11 @@
     "cross_selling_source_token": {
       "type": "string",
       "description": "Cross selling source token denom"
+    },
+    "survey_end": {
+      "type": "string",
+      "description": "The end time of the tyepform survey",
+      "pattern": "^\\d{4}(-\\d\\d(-\\d\\d(T\\d\\d:\\d\\d(:\\d\\d)?(\\.\\d+)?(([+-]\\d\\d:\\d\\d)|Z)?)?)?)?$"
     }
   }
 }

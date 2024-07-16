@@ -15,6 +15,7 @@ Currently, each JSON file contain the following data on its corresponding networ
 Additionally, the JSON file for mainnet contains the following data to support ongoing campaigns/promotions:
 - demex points config
 - perp pool promotion parameters
+- typeform survey parameters
 
 More metadata will be added in the future if required by the Demex frontend. Please see below the structure of the JSON file:
 
