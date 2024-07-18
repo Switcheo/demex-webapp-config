@@ -220,6 +220,11 @@
       "base": {
         "symbol": "1000FLOKI"
       }
+    },
+    "cmkt/215": {
+      "base": {
+        "symbol": "1000000MOG"
+      }
     }
   },
   "demex_points_config": {
