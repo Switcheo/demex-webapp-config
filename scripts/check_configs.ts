@@ -24,6 +24,7 @@ interface ConfigJSON {
     [perpPoolId: string]: PerpPoolPromo;
   };
   cross_selling_source_tokens: string[];
+  typeform_widget_config: TypeFormWidgetConfig[];
   external_chain_channels: ExternalChannelsObj;
   additional_ibc_token_config: AdditionalIbcTokenConfigItem[];
 }
@@ -59,6 +60,12 @@ interface PerpPoolPromo {
   end: string;
   perpPoolDepositBoost: string;
   perpTradingBoost: string;
+}
+
+interface TypeFormWidgetConfig {
+  surveyLink: string
+  endTime: string
+  pages: string[]
 }
 
 type ChainToChannelMap = Record<string, string>;
@@ -437,9 +444,43 @@ async function main() {
         }
       }
 
+      if (jsonData.typeform_widget_config) {
+        const typeFormWidgetConfigs = jsonData.typeform_widget_config
+        const links: string[] = []
+        let pages: string[] = []
+        for (const config of typeFormWidgetConfigs) {
+          const startTime = new Date()
+          const endTime = new Date(config.endTime)
+          // Check if end time is before start time
+          if (endTime < startTime) {
+            console.error(`ERROR: ${network}.json has invalid end time (${endTime}) is before start time (${startTime}) for a typeform survey config.`);
+            outcomeMap[network] = false;
+            break; // Exit the loop early upon encountering an error
+          }          
+          pages = pages.concat(config.pages)
+          links.push(config.surveyLink)
+        }
+        // look for duplicate links
+        const hasDuplicateLinks = checkDuplicateEntries(links);
+        if (hasDuplicateLinks.status && hasDuplicateLinks.entry) {
+          let listOfDuplicates: string = hasDuplicateLinks.entry.join(", ");
+          console.error(`ERROR: ${network}.json has the following duplicated links in the typeform survey configs: ${listOfDuplicates}. Please make sure to only input each link once in ${network}`);
+          outcomeMap[network] = false;
+        }
+        // look for duplicate pages
+        const hasDuplicatePages = checkDuplicateEntries(pages);
+        if (hasDuplicatePages.status && hasDuplicatePages.entry) {
+          let listOfDuplicates: string = hasDuplicatePages.entry.join(", ");
+          console.error(`ERROR: ${network}.json has the following duplicated pages in the typeform survey configs: ${listOfDuplicates}. Please make sure to only input each page once in ${network}`);
+          outcomeMap[network] = false;
+        }
+      }
+      
+      // external chain channels check
       const isExternalChannelsValid = isValidExternalChainChannels(jsonData.external_chain_channels, ibcBridgeNames, network);
       if (!isExternalChannelsValid) outcomeMap[network] = false;
 
+      // additional ibc token config check
       const isAdditionalTokensConfigValid = isValidAdditionalIbcTokenConfig(jsonData.additional_ibc_token_config, ibcBridgeNames, tokens, network);
       if (!isAdditionalTokensConfigValid) outcomeMap[network] = false;
     }

@@ -80,22 +80,16 @@
   },
   "perp_pool_banners": [
     {
-      "perp_pool_id": "8",
-      "show_until": "2024-04-07T08:00+00:00",
-      "title": "Changes to Perp Pool",
-      "added_markets": "BNB, NEO, STX, and ZIL Perp Markets will be added to this Perp Pool on 6 Apr, 08:00 AM UTC."
-    },
-    {
       "perp_pool_id": "7",
-      "show_until": "2024-04-07T08:00+00:00",
-      "title": "Changes to Perp Pool",
-      "added_markets": "BLUR and MEME Perp Markets will be added to this Perp Pool on 6 Apr, 08:00 AM UTC."
+      "show_until": "2024-07-19T08:00+00:00",
+      "title": "New Markets added",
+      "added_markets": "POPCAT Perp Market will be added to this Perp Pool on 16 Jul, 08:00 AM UTC. This banner will disappear on 2024-07-19."
     },
     {
-      "perp_pool_id": "6",
-      "show_until": "2024-04-07T08:00+00:00",
-      "title": "Changes to Perp Pool",
-      "removed_markets": "BNB Perp Market will be removed from this Perp Pool and added to the Layer 1 Perp Pool on 6 Apr, 08:00 AM UTC."
+      "perp_pool_id": "8",
+      "show_until": "2024-07-19T08:00+00:00",
+      "title": "New Markets added",
+      "removed_markets": "BCH Perp Market will be added to this Perp Pool on 16 Jul, 08:00 AM UTC. This banner will disappear on 2024-07-19."
     }
   ],
   "spot_history_market_list": {
@@ -141,7 +135,8 @@
     "cmkt/203": "BYBIT:CANTOUSDT.P",
     "cmkt/205": "CRYPTO:BRETT2USD",
     "cmkt/207": "BINANCE:1000BONKUSDT.P",
-    "cmkt/209": "BINANCE:1000FLOKIUSDT.P"
+    "cmkt/209": "BINANCE:1000FLOKIUSDT.P",
+    "cmkt/212": "CRYPTOCOM:POPCATUSD"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -192,6 +187,8 @@
     "cmkt/207": "#f38a02",
     "cmkt/208": "#fe97d7",
     "cmkt/209": "#f99423",
+    "cmkt/211": "#0ac18e",
+    "cmkt/212": "#eedfdd",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -229,6 +226,16 @@
     }
   },
   "cross_selling_source_tokens": ["swth"],
+  "typeform_widget_config": [
+    {
+      "surveyLink": "https://switcheonetwork.typeform.com/to/C1rheplK",
+      "endTime": "2024-07-26T23:00:00Z",
+      "pages": [
+        "/account/overview",
+        "/account/balance"
+      ]
+    }
+  ],
   "external_chain_channels": {
     "Archway": {
       "Noble": "channel-29"
