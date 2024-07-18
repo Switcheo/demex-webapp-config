@@ -235,5 +235,89 @@
         "/account/balance"
       ]
     }
-  ]
+  ],
+  "external_chain_channels": {
+    "Archway": {
+      "Noble": "channel-29"
+    },
+    "Axelar": {
+      "Osmosis": "channel-3"
+    },
+    "DYDX": {
+      "Noble": "channel-0"
+    },
+    "Osmosis": {
+      "Axelar": "channel-208",
+      "Carbon": "channel-188",
+      "Cosmos Hub": "channel-0",
+      "Kujira": "channel-259",
+      "Noble": "channel-750",
+      "Stride": "channel-326"
+    },
+    "Cosmos Hub": {
+      "Stride": "channel-391",
+      "Noble": "channel-536",
+      "Osmosis": "channel-141"
+    },
+    "Kujira": {
+      "Noble": "channel-62",
+      "Osmosis": "channel-3"
+    },
+    "Noble": {
+      "Archway": "channel-12",
+      "Cosmos Hub": "channel-4",
+      "DYDX": "channel-33",
+      "Kujira": "channel-2",
+      "Osmosis": "channel-1",
+      "Stargaze": "channel-11",
+      "Terra": "channel-30"
+    },
+    "Stargaze": {
+      "Noble": "channel-204"
+    },
+    "Stride": {
+      "Cosmos Hub": "channel-0",
+      "Osmosis": "channel-5"
+    },
+    "Terra": {
+      "Noble": "channel-253"
+    }
+  },
+  "additional_ibc_token_config": [{
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Archway", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Cosmos Hub", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["DYDX", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Kujira", "Noble"]
+  }, {
+    "baseDenom": "swth",
+    "chainRoutes": ["Osmosis"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Osmosis", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Stargaze", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Terra", "Noble"]
+  }, {
+    "baseDenom": "uatom",
+    "chainRoutes": ["Osmosis", "Cosmos Hub"],
+    "denomOnCarbon": "ibc/6CDD4663F2F09CD62285E2D45891FC149A3568E316CE3EBBE201A71A78A69388"
+  }, {
+    "baseDenom": "ustrd",
+    "chainRoutes": ["Osmosis", "Stride"],
+    "denomOnCarbon": "ibc/FCFF8B19C61677F3B78E2A5AE3B4A34A8D23858D16905F253B8438B3AFD07FF8"
+  }, {
+    "baseDenom": "ustrd",
+    "chainRoutes": ["Cosmos Hub", "Stride"],
+    "denomOnCarbon": "ibc/B8D03406E060650ECE2D521287AC9A94D036C4C78B4AB871AC740A5FF2030D79"
+  }]
 }

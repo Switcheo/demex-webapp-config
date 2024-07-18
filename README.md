@@ -11,6 +11,8 @@ Currently, each JSON file contain the following data on its corresponding networ
 - default blockchain transfer option order in deposit/withdrawal forms dropdown
 - default network token fee order
 - cross selling source tokens
+- map of IBC channels for external IBC chains (such as Osmosis, Noble, etc.)
+- information about IBC tokens that are not added on chain or require packet forwarding
 
 Additionally, the JSON file for mainnet contains the following data to support ongoing campaigns/promotions:
 - demex points config
@@ -51,6 +53,28 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "token_denom_2": 1,
     "token_denom_3": 2
   },
-  "cross_selling_source_tokens": ["source_token_1"]
+  "cross_selling_source_tokens": ["source_token_1"],
+  "external_chain_channels": {
+    "from_blockchain_1": {
+      "to_blockchain_1": "channel_1",
+      "to_blockchain_2": "channel_2"
+    },
+    "from_blockchain_2": {
+      "to_blockchain_3": "channel_3",
+      "to_blockchain_4": "channel_4",
+      "to_blockchain_5": "channel_5"
+    }
+  },
+  "additional_ibc_token_config": [{
+    "baseDenom": "denom_1",
+    "chainRoutes": ["blockchain_1", "blockchain_2"]
+  }, {
+    "baseDenom": "denom_2",
+    "chainRoutes": ["blockchain_3", "blockchain_4"]
+  }, {
+    "baseDenom": "denom_3",
+    "chainRoutes": ["blockchain_5", "blockchain_6"],
+    "denomOnCarbon": "carbon_denom_1"
+  }]
 }
 ```

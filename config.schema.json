@@ -11,7 +11,9 @@
     "transfer_options",
     "network_fees",
     "perp_pool_banners",
-    "cross_selling_source_tokens"
+    "cross_selling_source_tokens",
+    "external_chain_channels",
+    "additional_ibc_token_config"
   ],
   "properties": {
     "network": {
@@ -192,6 +194,29 @@
         }
       }
     }
+  },  
+  "external_chain_channels": {
+    "type": "object",
+    "description": "Map of destination channels for external IBC chains",
+    "patternProperties": {
+      "^[0-9A-Za-z ]+$": {
+        "type": "object",
+        "patternProperties": {
+          "^[0-9A-Za-z ]+$": {
+            "type": "string",
+            "pattern": "^channel-([0-9]+)$"
+          }
+        }
+      }
+    },
+    "additionalProperties": false
+  },
+  "additional_ibc_token_config": {
+    "type": "array",
+    "description": "List of information for tokens that (1) are not added on Carbon blockchain or (2) require packet forwarding",
+    "items": {
+      "$ref": "#/$defs/additional_ibc_token_info"
+    }
   },
   "$defs": {
     "prelaunch_market": {
@@ -268,6 +293,34 @@
       "type": "string",
       "description": "The end time of the tyepform survey",
       "pattern": "^\\d{4}(-\\d\\d(-\\d\\d(T\\d\\d:\\d\\d(:\\d\\d)?(\\.\\d+)?(([+-]\\d\\d:\\d\\d)|Z)?)?)?)?$"
+    },
+    "additional_ibc_token_info": {
+      "type": "object",
+      "description": "Information for token that (1) is not added on Carbon blockchain or (2) requires packet forwarding.",
+      "required": [
+        "baseDenom",
+        "chainRoutes"
+      ],
+      "properties": {
+        "baseDenom": {
+          "type": "string",
+          "description": "Denom of token on its native chain",
+          "minLength": 2
+        },
+        "chainRoutes": {
+          "type": "array",
+          "description": "List of IBC chains that token needs to be forwarded through before being deposited into Carbon",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "denomOnCarbon": {
+          "type": "string",
+          "description": "Denom of token on Carbon chain (omit if token is not added to Carbon chain)",
+          "minLength": 2
+        }
+      }
     }
   }
 }
