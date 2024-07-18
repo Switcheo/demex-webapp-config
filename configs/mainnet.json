@@ -81,15 +81,21 @@
   "perp_pool_banners": [
     {
       "perp_pool_id": "7",
-      "show_until": "2024-07-19T08:00+00:00",
+      "show_until": "2024-07-23T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "POPCAT Perp Market will be added to this Perp Pool on 16 Jul, 08:00 AM UTC. This banner will disappear on 2024-07-19."
+      "added_markets": "1000000MOG Perp Market will be added to this Perp Pool on 18 Jul, 08:00 AM UTC. This banner will disappear on 2024-07-23."
+    },
+    {
+      "perp_pool_id": "9",
+      "show_until": "2024-07-23T08:00+00:00",
+      "title": "New Markets added",
+      "added_markets": "MKR Perp Market will be added to this Perp Pool on 18 Jul, 08:00 AM UTC. This banner will disappear on 2024-07-23."
     },
     {
       "perp_pool_id": "8",
-      "show_until": "2024-07-19T08:00+00:00",
+      "show_until": "2024-07-15T08:00+00:00",
       "title": "New Markets added",
-      "removed_markets": "BCH Perp Market will be added to this Perp Pool on 16 Jul, 08:00 AM UTC. This banner will disappear on 2024-07-19."
+      "removed_markets": "[Ticker] Perp Market will be added to this Perp Pool on [Date]. This banner will disappear on [Date] 08:00 AM UTC."
     }
   ],
   "spot_history_market_list": {
@@ -136,7 +142,8 @@
     "cmkt/205": "CRYPTO:BRETT2USD",
     "cmkt/207": "BINANCE:1000BONKUSDT.P",
     "cmkt/209": "BINANCE:1000FLOKIUSDT.P",
-    "cmkt/212": "CRYPTOCOM:POPCATUSD"
+    "cmkt/212": "CRYPTOCOM:POPCATUSD",
+    "cmkt/214": "BYBIT:1000000MOGUSDT.P"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -189,6 +196,8 @@
     "cmkt/209": "#f99423",
     "cmkt/211": "#0ac18e",
     "cmkt/212": "#eedfdd",
+    "cmkt/213": "#20ac9c",
+    "cmkt/214": "#0b39d6",
     "Unused": "#7798E4"
   },
   "markets_override": {
