@@ -333,5 +333,8 @@
     "baseDenom": "ustrd",
     "chainRoutes": ["Cosmos Hub", "Stride"],
     "denomOnCarbon": "ibc/B8D03406E060650ECE2D521287AC9A94D036C4C78B4AB871AC740A5FF2030D79"
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Cosmos Hub", "Axelar"]
   }]
 }
