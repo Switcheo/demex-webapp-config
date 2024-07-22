@@ -255,6 +255,7 @@
       "Noble": "channel-29"
     },
     "Axelar": {
+      "Cosmos Hub": "channel-293",
       "Osmosis": "channel-3"
     },
     "DYDX": {
@@ -269,6 +270,7 @@
       "Stride": "channel-326"
     },
     "Cosmos Hub": {
+      "Axelar": "channel-2",
       "Stride": "channel-391",
       "Noble": "channel-536",
       "Osmosis": "channel-141"
