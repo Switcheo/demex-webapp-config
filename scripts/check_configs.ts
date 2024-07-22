@@ -1,6 +1,7 @@
-import { CarbonSDK } from 'carbon-js-sdk';
-import * as fs from 'fs';
-import Long from 'long';
+import { BlockchainUtils, CarbonSDK } from "carbon-js-sdk";
+import { PageRequest } from "carbon-js-sdk/lib/codec/cosmos/base/query/v1beta1/pagination";
+import * as fs from "fs";
+import Long from "long";
 
 const cwd = process.cwd();
 const myArgs = process.argv.slice(2);
@@ -13,17 +14,20 @@ interface ConfigJSON {
   blacklisted_pools: string[];
   blacklisted_tokens: string[];
   transfer_options: {
-    [chainKey: string]: number
-  },
+    [chainKey: string]: number;
+  };
   network_fees: {
-    [denom: string]: number
-  },
-  perp_pool_banners: PerpPoolBanner[],
-  demex_points_config: DemexPointsConfig,
+    [denom: string]: number;
+  };
+  perp_pool_banners: PerpPoolBanner[];
+  demex_points_config: DemexPointsConfig;
   perp_pool_promo: {
-    [perpPoolId: string]: PerpPoolPromo,
-  },
+    [perpPoolId: string]: PerpPoolPromo;
+  };
   cross_selling_source_tokens: string[];
+  typeform_widget_config: TypeFormWidgetConfig[];
+  external_chain_channels: ExternalChannelsObj;
+  additional_ibc_token_config: AdditionalIbcTokenConfigItem[];
 }
 
 interface InvalidEntry {
@@ -59,6 +63,23 @@ interface PerpPoolPromo {
   perpTradingBoost: string;
 }
 
+interface TypeFormWidgetConfig {
+  surveyLink: string
+  endTime: string
+  pages: string[]
+}
+
+type ChainToChannelMap = Record<string, string>;
+type ExternalChannelsObj = Record<string, ChainToChannelMap>;
+
+type ChainRoutes = [string, ...string[]];
+
+interface AdditionalIbcTokenConfigItem {
+  baseDenom: string;
+  chainRoutes: ChainRoutes; // i.e. should have at least 1 item
+  denomOnCarbon?: string;
+}
+
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
 
 const outcomeMap: OutcomeMap = {
@@ -68,9 +89,11 @@ const outcomeMap: OutcomeMap = {
   localhost: true,
 };
 
+const channelRegex = /^channel-([\d]+)$/;
+
 // check for valid entries (match data to the api query)
 function checkValidEntries(data: string[], query: string[]): InvalidEntry {
-  let invalidEntries: string[] = [];
+  const invalidEntries: string[] = [];
   data.forEach(entry => {
     if (!query.includes(entry)) {
       invalidEntries.push(entry);
@@ -82,6 +105,15 @@ function checkValidEntries(data: string[], query: string[]): InvalidEntry {
   } : {
     status: false
   };
+}
+
+function checkValuesAgainstRegex(data: string[], regex: RegExp): InvalidEntry {
+  const invalidValues: string[] = data.reduce((prev: string[], dataItem: string) => {
+    if (regex.test(dataItem)) return prev;
+    prev.push(dataItem);
+    return prev;
+  }, []);
+  return { status: invalidValues.length > 0 };
 }
 
 // check for duplicate entries
@@ -118,6 +150,67 @@ function checkBlacklistedMarkets(marketData: string[], blacklistedMarkets: strin
   };
 }
 
+function isValidExternalChainChannels(chainChannels: ExternalChannelsObj, bridges: string[], network: CarbonSDK.Network): boolean {
+  const duplicateChainKeys: string[] = [];
+  const invalidChainKeys: string[] = [];
+  const invalidChannelRegexValues: string[] = [];
+  Object.entries(chainChannels).forEach(([chain, channelMap]: [string, ChainToChannelMap]) => {
+    const chainsArr = Object.keys(channelMap).concat([chain]);
+    const duplicateCheckOutcome = checkDuplicateEntries(chainsArr);
+    if (duplicateCheckOutcome.status) duplicateChainKeys.push(chain);
+
+    const invalidCheckOutcome = checkValidEntries(chainsArr, bridges);
+    if (invalidCheckOutcome.status) invalidChainKeys.push(chain);
+
+    const channelsArr = Object.values(channelMap);
+    const invalidRegexValuesOutcome = checkValuesAgainstRegex(channelsArr, channelRegex);
+    if (invalidRegexValuesOutcome.status) invalidChannelRegexValues.push(chain);
+  });
+
+  if (duplicateChainKeys.length > 0) {
+    const duplicateChainsStr = duplicateChainKeys.length > 1 ? `${duplicateChainKeys.slice(0, -1).join(", ")} and ${duplicateChainKeys[duplicateChainKeys.length - 1]}` : duplicateChainKeys[0];
+    console.error(`[ERROR] external_chain_channels of ${network}.json has duplicate chains in the ${duplicateChainsStr} object(s). Please make sure to input each chain only once in each object.`);
+    return false;
+  }
+  if (invalidChainKeys.length > 0) {
+    const invalidChainsStr = invalidChainKeys.length > 1 ? `${invalidChainKeys.slice(0, -1).join(", ")} and ${invalidChainKeys[invalidChainKeys.length - 1]}` : invalidChainKeys[0];
+    console.error(`[ERROR] external_chain_channels of ${network}.json has invalid chains in the ${invalidChainsStr} object(s). Please make sure to input only IBC chains in each object.`);
+    return false;
+  }
+  if (invalidChannelRegexValues.length > 0) {
+    const invalidChannelIdStr = invalidChannelRegexValues.length > 1 ? `${invalidChannelRegexValues.slice(0, -1).join(", ")} and ${invalidChannelRegexValues[invalidChannelRegexValues.length - 1]}` : invalidChannelRegexValues[0];
+    console.error(`[ERROR] external_chain_channels of ${network}.json has invalid channel ids in the ${invalidChannelIdStr} object(s). Please make sure to input valid IBC channel ids in each object.`);
+    return false;
+  }
+  return true;
+}
+
+function isValidAdditionalIbcTokenConfig(addTokenConfigArr: AdditionalIbcTokenConfigItem[], bridges: string[], tokenDenoms: string[], network: CarbonSDK.Network): boolean {
+  const invalidChainIndexes: number[] = [];
+  const invalidDenomIndexes: number[] = [];
+  addTokenConfigArr.forEach((configItem: AdditionalIbcTokenConfigItem, index: number) => {
+    const invalidChainsOutcome = checkValidEntries(configItem.chainRoutes, bridges);
+    if (invalidChainsOutcome.status) invalidChainIndexes.push(index);
+
+    if (configItem.denomOnCarbon) {
+      const invalidTokensOutcome = checkValidEntries([configItem.denomOnCarbon], tokenDenoms);
+      if (invalidTokensOutcome.status) invalidDenomIndexes.push(index);
+    }
+  });
+
+  if (invalidChainIndexes.length > 0) {
+    const invalidChainsStr = invalidChainIndexes.length > 1 ? `${invalidChainIndexes.slice(0, -1).join(", ")} and ${invalidChainIndexes[invalidChainIndexes.length - 1]}` : invalidChainIndexes[0].toString(10);
+    console.error(`[ERROR] additional_ibc_token_config of ${network}.json has invalid chains in the objects at index position(s) ${invalidChainsStr}. Please make sure to input only IBC chains in each object.`);
+    return false;
+  }
+  if (invalidDenomIndexes.length > 0) {
+    const invalidDenomsStr = invalidDenomIndexes.length > 1 ? `${invalidDenomIndexes.slice(0, -1).join(", ")} and ${invalidDenomIndexes[invalidDenomIndexes.length - 1]}` : invalidDenomIndexes[0].toString(10);
+    console.error(`[ERROR] additional_ibc_token_config of ${network}.json has invalid denomInCarbon values in the objects at index position(s) ${invalidDenomsStr}. Please make sure to input valid token denoms in each object.`);
+    return false;
+  }
+  return true;
+}
+
 async function main() {
   for (const net of myArgs) {
     let network: CarbonSDK.Network;
@@ -150,20 +243,16 @@ async function main() {
     if (jsonData) {
       // query all markets
       const allMarkets = await sdk.query.market.MarketAll({
-        pagination: {
+        pagination: PageRequest.fromPartial({
           limit: new Long(100000),
-          offset: new Long(0),
-          key: new Uint8Array(),
-          countTotal: true,
-          reverse: false,
-        },
+        }),
       });
       const markets: string[] = allMarkets.markets.map(market => market.id);
 
       // look for invalid market entries
       const hasInvalidPrelaunchMarkets = checkValidEntries(jsonData.prelaunch_markets, markets);
       if (hasInvalidPrelaunchMarkets.status && hasInvalidPrelaunchMarkets.entry) {
-        let listOfInvalidMarkets: string = hasInvalidPrelaunchMarkets.entry.join(', ');
+        let listOfInvalidMarkets: string = hasInvalidPrelaunchMarkets.entry.join(", ");
         console.error(`ERROR: ${network}.json has the following invalid pre-launch market entries: ${listOfInvalidMarkets}. Please make sure to only input valid markets in ${network}`);
         outcomeMap[network] = false;
       }
@@ -177,7 +266,7 @@ async function main() {
 
       const hasInvalidBlacklistedMarkets = checkValidEntries(jsonData.blacklisted_markets, markets);
       if (hasInvalidBlacklistedMarkets.status && hasInvalidBlacklistedMarkets.entry) {
-        let listOfInvalidMarkets: string = hasInvalidBlacklistedMarkets.entry.join(', ');
+        let listOfInvalidMarkets: string = hasInvalidBlacklistedMarkets.entry.join(", ");
         console.error(`ERROR: ${network}.json has the following invalid blacklisted market entries: ${listOfInvalidMarkets}. Please make sure to only input valid markets in ${network}`);
         outcomeMap[network] = false;
       }
@@ -221,19 +310,15 @@ async function main() {
 
       // query all liquidity pools
       const allPools = await sdk.query.liquiditypool.PoolAll({
-        pagination: {
+        pagination: PageRequest.fromPartial({
           limit: new Long(100000),
-          offset: new Long(0),
-          key: new Uint8Array(),
-          countTotal: true,
-          reverse: false,
-        }
+        }),
       });
       const pools: string[] = allPools.pools.map(pool => pool.pool?.id.toString() ?? "");
 
       const hasInvalidPools = checkValidEntries(jsonData.blacklisted_pools, pools);
       if (hasInvalidPools.status && hasInvalidPools.entry) {
-        let listOfInvalidPools: string = hasInvalidPools.entry.join(', ');
+        let listOfInvalidPools: string = hasInvalidPools.entry.join(", ");
         console.error(`ERROR: ${network}.json has the following invalid pool id entries: ${listOfInvalidPools}. Please make sure to only input valid pool id in ${network}`);
         outcomeMap[network] = false;
       }
@@ -247,13 +332,9 @@ async function main() {
 
       // query all tokens
       const allTokens = await sdk.query.coin.TokenAll({
-        pagination: {
+        pagination: PageRequest.fromPartial({
           limit: new Long(100000),
-          offset: new Long(0),
-          key: new Uint8Array(),
-          countTotal: true,
-          reverse: false,
-        }
+        }),
       });
       const tokens: string[] = allTokens.tokens.map(token => token.denom);
 
@@ -287,22 +368,13 @@ async function main() {
 
       // Checking transfer options
       const transferOptionsArr = Object.keys(jsonData.transfer_options)
-      const bridgesQuery = await sdk.query.coin.BridgeAll({
-        pagination: {
-          key: new Uint8Array(),
-          limit: new Long(10000),
-          offset: Long.UZERO,
-          countTotal: true,
-          reverse: false,
-        },
-      })
-      const bridges = bridgesQuery.bridges
-      const validTransferOptionChains = bridges.map(bridge => bridge.chainName)
-      validTransferOptionChains.push('Carbon')
+      const ibcBridgeNames = sdk.token.getIbcBlockchainNames();
+      if (!ibcBridgeNames.includes("Carbon")) ibcBridgeNames.push("Carbon");
+      const validTransferOptionChains = sdk.token.getPolynetworkBlockchainNames().concat(ibcBridgeNames);
 
       const hasInvalidChains = checkValidEntries(transferOptionsArr, validTransferOptionChains);
       if (hasInvalidChains.status && hasInvalidChains.entry) {
-        let listOfInvalidChains: string = hasInvalidChains.entry.join(', ');
+        let listOfInvalidChains: string = hasInvalidChains.entry.join(", ");
         console.error(`ERROR: ${network}.json has the following chain name entries under transfer_options field: ${listOfInvalidChains}. Please make sure to only input valid chain names in ${network}`);
         outcomeMap[network] = false;
       }
@@ -310,13 +382,9 @@ async function main() {
       // Checking network fees
       const networkFeeDenomOptions = Object.keys(jsonData.network_fees)
       const gasPricesQuery = await sdk.query.fee.MinGasPriceAll({
-        pagination: {
+        pagination: PageRequest.fromPartial({
           limit: new Long(10000),
-          offset: new Long(0),
-          key: new Uint8Array(),
-          countTotal: true,
-          reverse: false,
-        },
+        }),
       })
 
       const minGasPrices = gasPricesQuery.minGasPrices
@@ -324,20 +392,16 @@ async function main() {
 
       const hasInvalidFeeDenoms = checkValidEntries(networkFeeDenomOptions, validNetworkFeeDenoms);
       if (hasInvalidFeeDenoms.status && hasInvalidFeeDenoms.entry) {
-        let listOfInvalidFeeDenoms: string = hasInvalidFeeDenoms.entry.join(', ');
+        let listOfInvalidFeeDenoms: string = hasInvalidFeeDenoms.entry.join(", ");
         console.error(`ERROR: ${network}.json has the following network fee token denoms under network_fees field: ${listOfInvalidFeeDenoms}. Please make sure to only input valid network fee token denoms in ${network}`);
         outcomeMap[network] = false;
       }
 
       // Checking perp pool banners
       const perpPoolsQuery = await sdk.query.perpspool.PoolInfoAll({
-        pagination: {
-          key: new Uint8Array(),
+        pagination: PageRequest.fromPartial({
           limit: new Long(10000),
-          offset: Long.UZERO,
-          countTotal: true,
-          reverse: false,
-        },
+        }),
       })
 
       const perpPoolIds = perpPoolsQuery.pools.map((pool) => pool.poolId.toString())
@@ -357,11 +421,6 @@ async function main() {
         console.error(`ERROR: ${network}.json has duplicated perp pool banners for the following perp pool ids: ${listOfDuplicates}. Please make sure to input each perp pool banner only once in ${network}`);
         outcomeMap[network] = false;
       }
-
-      if (jsonData.perp_pool_promo) {
-
-      }
-
 
       if (network === CarbonSDK.Network.MainNet && !jsonData.demex_points_config) {
         console.error(`ERROR: ${network}.json is missing demex_points_config`)
@@ -406,6 +465,46 @@ async function main() {
           }
         }
       }
+
+      if (jsonData.typeform_widget_config) {
+        const typeFormWidgetConfigs = jsonData.typeform_widget_config
+        const links: string[] = []
+        let pages: string[] = []
+        for (const config of typeFormWidgetConfigs) {
+          const startTime = new Date()
+          const endTime = new Date(config.endTime)
+          // Check if end time is before start time
+          if (endTime < startTime) {
+            console.error(`ERROR: ${network}.json has invalid end time (${endTime}) is before start time (${startTime}) for a typeform survey config.`);
+            outcomeMap[network] = false;
+            break; // Exit the loop early upon encountering an error
+          }          
+          pages = pages.concat(config.pages)
+          links.push(config.surveyLink)
+        }
+        // look for duplicate links
+        const hasDuplicateLinks = checkDuplicateEntries(links);
+        if (hasDuplicateLinks.status && hasDuplicateLinks.entry) {
+          let listOfDuplicates: string = hasDuplicateLinks.entry.join(", ");
+          console.error(`ERROR: ${network}.json has the following duplicated links in the typeform survey configs: ${listOfDuplicates}. Please make sure to only input each link once in ${network}`);
+          outcomeMap[network] = false;
+        }
+        // look for duplicate pages
+        const hasDuplicatePages = checkDuplicateEntries(pages);
+        if (hasDuplicatePages.status && hasDuplicatePages.entry) {
+          let listOfDuplicates: string = hasDuplicatePages.entry.join(", ");
+          console.error(`ERROR: ${network}.json has the following duplicated pages in the typeform survey configs: ${listOfDuplicates}. Please make sure to only input each page once in ${network}`);
+          outcomeMap[network] = false;
+        }
+      }
+      
+      // external chain channels check
+      const isExternalChannelsValid = isValidExternalChainChannels(jsonData.external_chain_channels, ibcBridgeNames, network);
+      if (!isExternalChannelsValid) outcomeMap[network] = false;
+
+      // additional ibc token config check
+      const isAdditionalTokensConfigValid = isValidAdditionalIbcTokenConfig(jsonData.additional_ibc_token_config, ibcBridgeNames, tokens, network);
+      if (!isAdditionalTokensConfigValid) outcomeMap[network] = false;
     }
   }
   const outcomeArr = Object.values(outcomeMap);

@@ -83,22 +83,22 @@
   },
   "perp_pool_banners": [
     {
-      "perp_pool_id": "8",
-      "show_until": "2024-04-07T08:00+00:00",
-      "title": "Changes to Perp Pool",
-      "added_markets": "BNB, NEO, STX, and ZIL Perp Markets will be added to this Perp Pool on 6 Apr, 08:00 AM UTC."
-    },
-    {
       "perp_pool_id": "7",
-      "show_until": "2024-04-07T08:00+00:00",
-      "title": "Changes to Perp Pool",
-      "added_markets": "BLUR and MEME Perp Markets will be added to this Perp Pool on 6 Apr, 08:00 AM UTC."
+      "show_until": "2024-07-23T08:00+00:00",
+      "title": "New Markets added",
+      "added_markets": "1000000MOG Perp Market will be added to this Perp Pool on 18 Jul, 08:00 AM UTC. This banner will disappear on 2024-07-23."
     },
     {
-      "perp_pool_id": "6",
-      "show_until": "2024-04-07T08:00+00:00",
-      "title": "Changes to Perp Pool",
-      "removed_markets": "BNB Perp Market will be removed from this Perp Pool and added to the Layer 1 Perp Pool on 6 Apr, 08:00 AM UTC."
+      "perp_pool_id": "9",
+      "show_until": "2024-07-23T08:00+00:00",
+      "title": "New Markets added",
+      "added_markets": "MKR Perp Market will be added to this Perp Pool on 18 Jul, 08:00 AM UTC. This banner will disappear on 2024-07-23."
+    },
+    {
+      "perp_pool_id": "8",
+      "show_until": "2024-07-15T08:00+00:00",
+      "title": "New Markets added",
+      "removed_markets": "[Ticker] Perp Market will be added to this Perp Pool on [Date]. This banner will disappear on [Date] 08:00 AM UTC."
     }
   ],
   "spot_history_market_list": {
@@ -140,7 +140,13 @@
     "cmkt/192": "BYBIT:DEGENUSDT",
     "cmkt/200": "BINANCE:ETHBTC",
     "cmkt/201": "GATEIO:ARCHUSDT",
-    "cmkt/203": "BYBIT:CANTOUSDT.P"
+    "cmkt/202": "BINANCE:1000SHIBUSDT.P",
+    "cmkt/203": "BYBIT:CANTOUSDT.P",
+    "cmkt/205": "CRYPTO:BRETT2USD",
+    "cmkt/207": "BINANCE:1000BONKUSDT.P",
+    "cmkt/209": "BINANCE:1000FLOKIUSDT.P",
+    "cmkt/212": "CRYPTOCOM:POPCATUSD",
+    "cmkt/214": "BYBIT:1000000MOGUSDT.P"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -185,6 +191,16 @@
     "cmkt/201": "#ff4c01",
     "cmkt/202": "#08fc9c",
     "cmkt/203": "#ffa500",
+    "cmkt/204": "#6b9cf6",
+    "cmkt/205": "#61ddff",
+    "cmkt/206": "#dc1576",
+    "cmkt/207": "#f38a02",
+    "cmkt/208": "#fe97d7",
+    "cmkt/209": "#f99423",
+    "cmkt/211": "#0ac18e",
+    "cmkt/212": "#eedfdd",
+    "cmkt/213": "#20ac9c",
+    "cmkt/214": "#0b39d6",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -196,6 +212,21 @@
    "cmkt/202": {
       "base": {
         "symbol": "1000SHIB"
+      }
+    },
+   "cmkt/207": {
+      "base": {
+        "symbol": "1000BONK"
+      }
+    },
+   "cmkt/209": {
+      "base": {
+        "symbol": "1000FLOKI"
+      }
+    },
+    "cmkt/215": {
+      "base": {
+        "symbol": "1000000MOG"
       }
     }
   },
@@ -211,5 +242,99 @@
       "perpTradingBoost": 3
     }
   },
-  "cross_selling_source_tokens": ["swth"]
+  "cross_selling_source_tokens": ["swth"],
+  "typeform_widget_config": [
+    {
+      "surveyLink": "https://switcheonetwork.typeform.com/to/C1rheplK",
+      "endTime": "2024-07-26T23:00:00Z",
+      "pages": [
+        "/account/overview",
+        "/account/balance"
+      ]
+    }
+  ],
+  "external_chain_channels": {
+    "Archway": {
+      "Noble": "channel-29"
+    },
+    "Axelar": {
+      "Osmosis": "channel-3"
+    },
+    "DYDX": {
+      "Noble": "channel-0"
+    },
+    "Osmosis": {
+      "Axelar": "channel-208",
+      "Carbon": "channel-188",
+      "Cosmos Hub": "channel-0",
+      "Kujira": "channel-259",
+      "Noble": "channel-750",
+      "Stride": "channel-326"
+    },
+    "Cosmos Hub": {
+      "Stride": "channel-391",
+      "Noble": "channel-536",
+      "Osmosis": "channel-141"
+    },
+    "Kujira": {
+      "Noble": "channel-62",
+      "Osmosis": "channel-3"
+    },
+    "Noble": {
+      "Archway": "channel-12",
+      "Cosmos Hub": "channel-4",
+      "DYDX": "channel-33",
+      "Kujira": "channel-2",
+      "Osmosis": "channel-1",
+      "Stargaze": "channel-11",
+      "Terra": "channel-30"
+    },
+    "Stargaze": {
+      "Noble": "channel-204"
+    },
+    "Stride": {
+      "Cosmos Hub": "channel-0",
+      "Osmosis": "channel-5"
+    },
+    "Terra": {
+      "Noble": "channel-253"
+    }
+  },
+  "additional_ibc_token_config": [{
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Archway", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Cosmos Hub", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["DYDX", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Kujira", "Noble"]
+  }, {
+    "baseDenom": "swth",
+    "chainRoutes": ["Osmosis"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Osmosis", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Stargaze", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Terra", "Noble"]
+  }, {
+    "baseDenom": "uatom",
+    "chainRoutes": ["Osmosis", "Cosmos Hub"],
+    "denomOnCarbon": "ibc/6CDD4663F2F09CD62285E2D45891FC149A3568E316CE3EBBE201A71A78A69388"
+  }, {
+    "baseDenom": "ustrd",
+    "chainRoutes": ["Osmosis", "Stride"],
+    "denomOnCarbon": "ibc/FCFF8B19C61677F3B78E2A5AE3B4A34A8D23858D16905F253B8438B3AFD07FF8"
+  }, {
+    "baseDenom": "ustrd",
+    "chainRoutes": ["Cosmos Hub", "Stride"],
+    "denomOnCarbon": "ibc/B8D03406E060650ECE2D521287AC9A94D036C4C78B4AB871AC740A5FF2030D79"
+  }]
 }

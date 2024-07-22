@@ -8,7 +8,7 @@
   "scripts": {
     "preinstall": "yarn config set ignore-engines true",
     "validate": "pajv validate -s config.schema.json -d \"configs/*.json\" --verbose",
-    "check-configs": "ts-node scripts/check_configs",
+    "check-configs": "ts-node scripts/check_configs mainnet testnet devnet",
     "upgrade-sdk": "yarn upgrade carbon-js-sdk@latest",
     "get-bridges": "ts-node scripts/get_all_bridges",
     "get-min-gas-prices": "ts-node scripts/get_all_network_fees",

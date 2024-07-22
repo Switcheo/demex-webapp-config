@@ -36,5 +36,7 @@
       }
     }
   },
-  "cross_selling_source_tokens": ["swth"]
+  "cross_selling_source_tokens": ["swth"],
+  "external_chain_channels": {},
+  "additional_ibc_token_config": []
 }
