@@ -2256,11 +2256,10 @@ camelcase@^6.0.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-6.3.0.tgz#5685b95eb209ac9c0c177467778c9c84df58ba9a"
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
-
-carbon-js-sdk@^0.11.1:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/carbon-js-sdk/-/carbon-js-sdk-0.11.1.tgz#d61f446d61161c5b0be613848ec97f229c7d0ec3"
-  integrity sha512-MMt/JbcqCPMxXqSvyoC7R87uMe5ZEa3K5qtZ9VSeG0O+P1jMENuNswMQWSMK+RESYITAbGj8rpe3HYXwvyR5qQ==
+carbon-js-sdk@^0.11.6:
+  version "0.11.6"
+  resolved "https://registry.yarnpkg.com/carbon-js-sdk/-/carbon-js-sdk-0.11.6.tgz#24ed05ba75107b7e60e763bcb03305a58773369d"
+  integrity sha512-DRk2yHMOEIUfeMIqxHEnML4qT6xXCqYCb0SHlk+NLZEwFPFT0e4LWKbfIez0fj4Y7kSaozfzz7zBHZVz5ab61w==
   dependencies:
     "@cityofzion/neon-api" "^4.9.0"
     "@cityofzion/neon-core" "^4.9.0"
