@@ -81,15 +81,15 @@
   "perp_pool_banners": [
     {
       "perp_pool_id": "7",
-      "show_until": "2024-07-23T08:00+00:00",
+      "show_until": "2024-07-25T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "1000000MOG Perp Market will be added to this Perp Pool on 18 Jul, 08:00 AM UTC. This banner will disappear on 2024-07-23."
+      "added_markets": "1000MEW Perp Market will be added to this Perp Pool on 23 Jul, 08:00 AM UTC. This banner will disappear on 25 Jul."
     },
     {
-      "perp_pool_id": "9",
-      "show_until": "2024-07-23T08:00+00:00",
+      "perp_pool_id": "8",
+      "show_until": "2024-07-25T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "MKR Perp Market will be added to this Perp Pool on 18 Jul, 08:00 AM UTC. This banner will disappear on 2024-07-23."
+      "added_markets": "XRP Perp Market will be added to this Perp Pool on 23 Jul, 08:00 AM UTC. This banner will disappear on 25 Jul."
     },
     {
       "perp_pool_id": "8",
@@ -144,6 +144,7 @@
     "cmkt/209": "BINANCE:1000FLOKIUSDT.P",
     "cmkt/212": "CRYPTOCOM:POPCATUSD",
     "cmkt/214": "BYBIT:1000000MOGUSDT.P"
+    "cmkt/216": "BINANCE:MEWUSDT.P"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -198,6 +199,8 @@
     "cmkt/212": "#eedfdd",
     "cmkt/213": "#20ac9c",
     "cmkt/214": "#0b39d6",
+    "cmkt/215": "#282e34",
+    "cmkt/216": "#ea1d24",
     "Unused": "#7798E4"
   },
   "markets_override": {
