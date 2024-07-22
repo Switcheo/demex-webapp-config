@@ -92,7 +92,7 @@
       "added_markets": "XRP Perp Market will be added to this Perp Pool on 23 Jul, 08:00 AM UTC. This banner will disappear on 25 Jul."
     },
     {
-      "perp_pool_id": "8",
+      "perp_pool_id": "1",
       "show_until": "2024-07-15T08:00+00:00",
       "title": "New Markets added",
       "removed_markets": "[Ticker] Perp Market will be added to this Perp Pool on [Date]. This banner will disappear on [Date] 08:00 AM UTC."
