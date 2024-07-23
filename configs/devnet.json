@@ -1,7 +1,6 @@
 {
   "network": "devnet",
   "prelaunch_markets": [],
-  "promo_markets": [],
   "blacklisted_markets": [
     "swth_btc2",
     "ETH_PERP.USDC",
@@ -30,5 +29,10 @@
   "perp_pool_banners": [],
   "cross_selling_source_tokens": [],
   "external_chain_channels": {},
-  "additional_ibc_token_config": []
+  "additional_ibc_token_config": [],
+  "demex_trading_league_config": {
+    "promo_markets": [],
+    "current_market_symbol": "USDC",
+    "current_comp_perp_pool_id": 1
+  }
 }

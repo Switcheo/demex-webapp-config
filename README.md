@@ -17,6 +17,7 @@ Currently, each JSON file contain the following data on its corresponding networ
 
 Additionally, the JSON file for mainnet contains the following data to support ongoing campaigns/promotions:
 - demex points config
+- demex trading league config
 - perp pool promotion parameters
 - typeform survey parameters
 
@@ -81,6 +82,15 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "baseDenom": "denom_3",
     "chainRoutes": ["blockchain_5", "blockchain_6"],
     "denomOnCarbon": "carbon_denom_1"
-  }]
+  }], 
+  "demex_trading_league_config": {
+    "promo_markets": : [
+      "promo_market_1",
+      "promo_market_2",
+      "promo_market_3"
+    ],
+    "current_market_symbol": "market_symbol",
+    "current_comp_perp_pool_id": 1
+  },
 }
 ```

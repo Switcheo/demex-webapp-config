@@ -5,7 +5,6 @@
   "required": [
     "network",
     "prelaunch_markets",
-    "promo_markets",
     "blacklisted_markets",
     "blacklisted_pools",
     "blacklisted_tokens",
@@ -14,7 +13,8 @@
     "perp_pool_banners",
     "cross_selling_source_tokens",
     "external_chain_channels",
-    "additional_ibc_token_config"
+    "additional_ibc_token_config",
+    "demex_trading_league_config"
   ],
   "properties": {
     "network": {
@@ -30,13 +30,6 @@
       "description": "List of market names designated as Pre-Launch markets",
       "items": {
         "$ref": "#/$defs/prelaunch_market"
-      }
-    },
-    "promo_markets": {
-      "type": "array",
-      "description": "List of market names designated as Promo markets",
-      "items": {
-        "$ref": "#/$defs/promo_market"
       }
     },
     "blacklisted_markets": {
@@ -224,6 +217,31 @@
     "description": "List of information for tokens that (1) are not added on Carbon blockchain or (2) require packet forwarding",
     "items": {
       "$ref": "#/$defs/additional_ibc_token_info"
+    }
+  },
+  "demex_trading_league_config": {
+    "type": "object",
+    "description": "Config for Demex Trading League",
+    "properties": {
+      "type": "object",
+      "promo_markets": {
+        "type": "array",
+        "description": "List of market names designated as Promo markets",
+        "items": {
+          "$ref": "#/$defs/promo_market"
+        }
+      },
+      "current_market_symbol": {
+        "type": "string",
+        "description": "Current market symbol used for main trading league market icon"
+      },
+      "current_comp_perp_pool_id": {
+        "type": "integer",
+        "description": "Current competition perp pool id which contains the promo markets",
+        "items": {
+          "$ref": "#/$defs/perp_pool_id"
+        }
+      }
     }
   },
   "$defs": {
