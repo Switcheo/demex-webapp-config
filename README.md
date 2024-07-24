@@ -30,7 +30,7 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "market_1",
     "market_2"
   ],
-  "promo_markets": [
+  "promoMarkets": [
     "promo_market_1",
     "promo_market_2",
     "promo_market_3"
@@ -84,13 +84,13 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "denomOnCarbon": "carbon_denom_1"
   }], 
   "demex_trading_league_config": {
-    "promo_markets": : [
+    "promoMarkets": : [
       "promo_market_1",
       "promo_market_2",
       "promo_market_3"
     ],
-    "current_market_symbol": "market_symbol",
-    "current_comp_perp_pool_id": 1
+    "currentMarketSymbol": "market_symbol",
+    "currentCompPerpPoolId": 1
   },
 }
 ```

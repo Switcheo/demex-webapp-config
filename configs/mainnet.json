@@ -335,10 +335,10 @@
     "denomOnCarbon": "ibc/B8D03406E060650ECE2D521287AC9A94D036C4C78B4AB871AC740A5FF2030D79"
   }], 
   "demex_trading_league_config": {
-    "promo_markets": [
+    "promoMarkets": [
       "cmkt/201"
     ],
-    "current_market_symbol": "USDC",
-    "current_comp_perp_pool_id": 3
+    "currentMarketSymbol": "USDC",
+    "currentCompPerpPoolId": 3
   }
 }

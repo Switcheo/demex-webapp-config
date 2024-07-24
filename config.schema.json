@@ -224,18 +224,18 @@
     "description": "Config for Demex Trading League",
     "properties": {
       "type": "object",
-      "promo_markets": {
+      "promoMarkets": {
         "type": "array",
         "description": "List of market names designated as Promo markets",
         "items": {
           "$ref": "#/$defs/promo_market"
         }
       },
-      "current_market_symbol": {
+      "currentMarketSymbol": {
         "type": "string",
         "description": "Current market symbol used for main trading league market icon"
       },
-      "current_comp_perp_pool_id": {
+      "currentCompPerpPoolId": {
         "type": "integer",
         "description": "Current competition perp pool id which contains the promo markets",
         "items": {

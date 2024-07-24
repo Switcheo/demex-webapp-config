@@ -37,8 +37,8 @@
   "external_chain_channels": {},
   "additional_ibc_token_config": [],
   "demex_trading_league_config": {
-    "promo_markets": ["ATOM_PERP.CGUSD"],
-    "current_market_symbol": "USDC",
-    "current_comp_perp_pool_id": 1
+    "promoMarkets": ["ATOM_PERP.CGUSD"],
+    "currentMarketSymbol": "USDC",
+    "currentCompPerpPoolId": 1
   }
 }
