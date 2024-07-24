@@ -80,16 +80,16 @@
   },
   "perp_pool_banners": [
     {
-      "perp_pool_id": "7",
-      "show_until": "2024-07-25T08:00+00:00",
+      "perp_pool_id": "8",
+      "show_until": "2024-07-29T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "1000MEW Perp Market will be added to this Perp Pool on 23 Jul, 08:00 AM UTC. This banner will disappear on 25 Jul."
+      "added_markets": "ETC Perp Market will be added to this Perp Pool on 24 Jul, 08:00 AM UTC. This banner will disappear on 29 Jul."
     },
     {
-      "perp_pool_id": "8",
-      "show_until": "2024-07-25T08:00+00:00",
+      "perp_pool_id": "9",
+      "show_until": "2024-07-29T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "XRP Perp Market will be added to this Perp Pool on 23 Jul, 08:00 AM UTC. This banner will disappear on 25 Jul."
+      "added_markets": "LDO Perp Market will be added to this Perp Pool on 24 Jul, 08:00 AM UTC. This banner will disappear on 29 Jul."
     },
     {
       "perp_pool_id": "1",
@@ -201,6 +201,8 @@
     "cmkt/214": "#0b39d6",
     "cmkt/215": "#282e34",
     "cmkt/216": "#ea1d24",
+    "cmkt/217": "#ea9793",
+    "cmkt/218": "#3cba3c",
     "Unused": "#7798E4"
   },
   "markets_override": {
