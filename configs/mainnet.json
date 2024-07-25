@@ -142,9 +142,7 @@
     "cmkt/205": "CRYPTO:BRETT2USD",
     "cmkt/207": "BINANCE:1000BONKUSDT.P",
     "cmkt/209": "BINANCE:1000FLOKIUSDT.P",
-    "cmkt/212": "CRYPTOCOM:POPCATUSD",
-    "cmkt/214": "BYBIT:1000000MOGUSDT.P",
-    "cmkt/216": "BINANCE:MEWUSDT.P"
+    "cmkt/212": "BYBIT:POPCATUSDT"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -197,12 +195,12 @@
     "cmkt/209": "#f99423",
     "cmkt/211": "#0ac18e",
     "cmkt/212": "#eedfdd",
-    "cmkt/213": "#20ac9c",
-    "cmkt/214": "#0b39d6",
-    "cmkt/215": "#282e34",
-    "cmkt/216": "#ea1d24",
-    "cmkt/217": "#ea9793",
-    "cmkt/218": "#3cba3c",
+    "cmkt/214": "#20ac9c",
+    "cmkt/215": "#0b39d6",
+    "cmkt/216": "#282e34",
+    "cmkt/217": "#ea1d24",
+    "cmkt/218": "#ea9793",
+    "cmkt/219": "#3cba3c",
     "Unused": "#7798E4"
   },
   "markets_override": {
