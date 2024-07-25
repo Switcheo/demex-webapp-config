@@ -38,7 +38,7 @@
   "additional_ibc_token_config": [],
   "demex_trading_league_config": {
     "promoMarkets": ["ATOM_PERP.CGUSD"],
-    "currentMarketSymbol": "USDC",
+    "currentPrizeSymbol": "USDC",
     "currentCompPerpPoolId": 1
   }
 }

@@ -5,7 +5,6 @@ The config JSON schema can be found [here](/config.schema.json).
 
 Currently, each JSON file contain the following data on its corresponding network (mainnet, testnet, devnet):
 - list of pre-launch markets
-- promo markets
 - blacklisted markets
 - blacklisted pools
 - blacklisted tokens
@@ -17,7 +16,7 @@ Currently, each JSON file contain the following data on its corresponding networ
 
 Additionally, the JSON file for mainnet contains the following data to support ongoing campaigns/promotions:
 - demex points config
-- demex trading league config
+- config for the Demex Trading League competition
 - perp pool promotion parameters
 - typeform survey parameters
 
@@ -29,11 +28,6 @@ More metadata will be added in the future if required by the Demex frontend. Ple
   "prelaunch_markets": [
     "market_1",
     "market_2"
-  ],
-  "promoMarkets": [
-    "promo_market_1",
-    "promo_market_2",
-    "promo_market_3"
   ],
   "blacklisted_markets": [
     "blacklisted_market_1",
@@ -89,7 +83,7 @@ More metadata will be added in the future if required by the Demex frontend. Ple
       "promo_market_2",
       "promo_market_3"
     ],
-    "currentMarketSymbol": "market_symbol",
+    "currentPrizeSymbol": "market_symbol",
     "currentCompPerpPoolId": 1
   },
 }

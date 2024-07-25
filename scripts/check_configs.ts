@@ -58,7 +58,7 @@ interface DemexPointsConfig {
 
 interface DemexTradingLeagueConfig {
   promoMarkets: string[];
-  currentMarketSymbol: string;
+  currentPrizeSymbol: string;
   currentCompPerpPoolId: number;
 }
 
@@ -228,33 +228,33 @@ function isValidDemexTradingLeagueConfig(
   const hasInvalidPromoMarkets = checkValidEntries(demexTradingLeagueConfig.promoMarkets, marketIds);
   if (hasInvalidPromoMarkets.status && hasInvalidPromoMarkets.entry) {
     let listOfInvalidMarkets: string = hasInvalidPromoMarkets.entry.join(', ');
-    console.error(`ERROR: ${network}.json has the following invalid promo market entries: ${listOfInvalidMarkets}. Please make sure to only input valid markets in ${network}`);
+    console.error(`ERROR: ${network}.json has the following invalid promo market entries in demex_trading_league_config: ${listOfInvalidMarkets}. Please make sure to only input valid markets in ${network}`);
     return false;
   }
 
   const hasDuplicatePromoMarkets = checkDuplicateEntries(demexTradingLeagueConfig.promoMarkets);
   if (hasDuplicatePromoMarkets.status && hasDuplicatePromoMarkets.entry) {
     let listOfDuplicates: string = hasDuplicatePromoMarkets.entry.join(", ");
-    console.error(`ERROR: ${network}.json has the following duplicated promo market entries: ${listOfDuplicates}. Please make sure to only input each market once in ${network}`);
+    console.error(`ERROR: ${network}.json has the following duplicated promo market entries in demex_trading_league_config: ${listOfDuplicates}. Please make sure to only input each market once in ${network}`);
     return false;
   }
   
   const hasBlacklistedMarketsInPromo = checkBlacklistedMarkets(demexTradingLeagueConfig.promoMarkets, blacklistedMarkets);
   if (hasBlacklistedMarketsInPromo.status && hasBlacklistedMarketsInPromo.entry) {
     let listOfBlacklistedMarkets: string = hasBlacklistedMarketsInPromo.entry.join(", ");
-    console.error(`ERROR: ${network}.json has the following blacklisted market entries in promo markets entries: ${listOfBlacklistedMarkets}. Please make sure that blacklisted markets are not found in promo markets in ${network}`);
+    console.error(`ERROR: ${network}.json has the following blacklisted market entries in promo markets entries in demex_trading_league_config: ${listOfBlacklistedMarkets}. Please make sure that blacklisted markets are not found in promo markets in ${network}`);
     return false;
   }
 
   const hasInvalidCurrentCompPerpPoolId = checkValidEntries([demexTradingLeagueConfig.currentCompPerpPoolId.toString()], perpPoolIds)
   if (perpPoolIds && hasInvalidCurrentCompPerpPoolId.status && hasInvalidCurrentCompPerpPoolId.entry) {
-    console.error(`ERROR: ${network}.json has the following invalid perp pool id under the currentCompPerpPoolId field: ${hasInvalidCurrentCompPerpPoolId.entry[0]}`);
+    console.error(`ERROR: ${network}.json has an invalid perp pool id in the currentCompPerpPoolId field: ${hasInvalidCurrentCompPerpPoolId.entry[0]}`);
     return false;
   }
 
-  const hasInvalidCurrentMarketSymbol = checkValidEntries([demexTradingLeagueConfig.currentMarketSymbol], tokenSymbols)
-  if (hasInvalidCurrentMarketSymbol.status && hasInvalidCurrentMarketSymbol.entry) {
-    console.error(`ERROR: ${network}.json has the following invalid token symbol under the currentMarketSymbol field: ${hasInvalidCurrentMarketSymbol.entry[0]}`);
+  const hasInvalidcurrentPrizeSymbol = checkValidEntries([demexTradingLeagueConfig.currentPrizeSymbol], tokenSymbols)
+  if (hasInvalidcurrentPrizeSymbol.status && hasInvalidcurrentPrizeSymbol.entry) {
+    console.error(`ERROR: ${network}.json has an invalid token symbol in the currentPrizeSymbol field: ${hasInvalidcurrentPrizeSymbol.entry[0]}`);
     return false;
   }
 
@@ -537,8 +537,10 @@ async function main() {
       if (!isAdditionalTokensConfigValid) outcomeMap[network] = false;
 
       // demex trading league config check
-      const isDemexTradingLeagueConfigValid = isValidDemexTradingLeagueConfig(jsonData.demex_trading_league_config, network, marketIds, jsonData.blacklisted_markets, perpPoolIds, tokenSymbols)
-      if (!isDemexTradingLeagueConfigValid) outcomeMap[network] = false;
+      if (jsonData.demex_trading_league_config) {
+        const isDemexTradingLeagueConfigValid = isValidDemexTradingLeagueConfig(jsonData.demex_trading_league_config, network, marketIds, jsonData.blacklisted_markets, perpPoolIds, tokenSymbols)
+        if (!isDemexTradingLeagueConfigValid) outcomeMap[network] = false;
+      }
     }
   }
   const outcomeArr = Object.values(outcomeMap);

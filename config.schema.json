@@ -226,21 +226,18 @@
       "type": "object",
       "promoMarkets": {
         "type": "array",
-        "description": "List of market names designated as Promo markets",
+        "description": "List of market names designated as promo markets during the Demex Trading League competition",
         "items": {
           "$ref": "#/$defs/promo_market"
         }
       },
-      "currentMarketSymbol": {
+      "currentPrizeSymbol": {
         "type": "string",
-        "description": "Current market symbol used for main trading league market icon"
+        "description": "The symbol of the prize token, mainly used to display the prize symbol and token icon on the Demex Trading League page."
       },
       "currentCompPerpPoolId": {
         "type": "integer",
-        "description": "Current competition perp pool id which contains the promo markets",
-        "items": {
-          "$ref": "#/$defs/perp_pool_id"
-        }
+        "description": "Id of the perp pool that provides liquidity for the promo markets of the Demex Trading League event."
       }
     }
   },

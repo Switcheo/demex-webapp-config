@@ -338,7 +338,7 @@
     "promoMarkets": [
       "cmkt/201"
     ],
-    "currentMarketSymbol": "USDC",
+    "currentPrizeSymbol": "USDC",
     "currentCompPerpPoolId": 3
   }
 }
