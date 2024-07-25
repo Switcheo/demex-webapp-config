@@ -142,9 +142,7 @@
     "cmkt/205": "CRYPTO:BRETT2USD",
     "cmkt/207": "BINANCE:1000BONKUSDT.P",
     "cmkt/209": "BINANCE:1000FLOKIUSDT.P",
-    "cmkt/212": "CRYPTOCOM:POPCATUSD",
-    "cmkt/214": "BYBIT:1000000MOGUSDT.P",
-    "cmkt/216": "BINANCE:MEWUSDT.P"
+    "cmkt/212": "BYBIT:POPCATUSDT"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
