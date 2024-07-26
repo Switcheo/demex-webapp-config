@@ -13,8 +13,7 @@
     "perp_pool_banners",
     "cross_selling_source_tokens",
     "external_chain_channels",
-    "additional_ibc_token_config",
-    "demex_trading_league_config"
+    "additional_ibc_token_config"
   ],
   "properties": {
     "network": {
