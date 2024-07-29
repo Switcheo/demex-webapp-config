@@ -98,6 +98,13 @@
       "removed_markets": "[Ticker] Perp Market will be added to this Perp Pool on [Date]. This banner will disappear on [Date] 08:00 AM UTC."
     }
   ],
+  "perp_pools": {
+    "incentives": {
+      "proxy": "0x43138036d1283413035B8eca403559737E8f7980",
+      "distributors": ["0x43138036d1283413035B8eca403559737E8f7980"]
+    }
+  },
+  "perp_pools_reward_proxy": [],
   "spot_history_market_list": {
     "cmkt/117": "BINANCE:ETHUSD",
     "cmkt/118": "BINANCE:BTCUSD",
