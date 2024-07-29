@@ -78,13 +78,13 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "denomOnCarbon": "carbon_denom_1"
   }], 
   "demex_trading_league_config": {
-    "promoMarkets": : [
+    "promoMarkets": [
       "promo_market_1",
       "promo_market_2",
       "promo_market_3"
     ],
     "currentPrizeSymbol": "market_symbol",
     "currentCompPerpPoolId": 1
-  },
+  }
 }
 ```

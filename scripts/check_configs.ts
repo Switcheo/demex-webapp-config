@@ -27,7 +27,7 @@ interface ConfigJSON {
   typeform_widget_config: TypeFormWidgetConfig[];
   external_chain_channels: ExternalChannelsObj;
   additional_ibc_token_config: AdditionalIbcTokenConfigItem[];
-  demex_trading_league_config: DemexTradingLeagueConfig;
+  demex_trading_league_config?: DemexTradingLeagueConfig;
 }
 
 interface InvalidEntry {
@@ -246,15 +246,15 @@ function isValidDemexTradingLeagueConfig(
     return false;
   }
 
-  const hasInvalidCurrentCompPerpPoolId = checkValidEntries([demexTradingLeagueConfig.currentCompPerpPoolId.toString()], perpPoolIds)
-  if (perpPoolIds && hasInvalidCurrentCompPerpPoolId.status && hasInvalidCurrentCompPerpPoolId.entry) {
-    console.error(`ERROR: ${network}.json has an invalid perp pool id in the currentCompPerpPoolId field: ${hasInvalidCurrentCompPerpPoolId.entry[0]}`);
+  const hasInvalidCurrentCompPerpPoolId = !perpPoolIds.includes(demexTradingLeagueConfig.currentCompPerpPoolId.toString());
+  if (hasInvalidCurrentCompPerpPoolId) {
+    console.error(`ERROR: ${network}.json has an invalid perp pool id in the currentCompPerpPoolId field: ${demexTradingLeagueConfig.currentCompPerpPoolId}`);
     return false;
   }
 
-  const hasInvalidcurrentPrizeSymbol = checkValidEntries([demexTradingLeagueConfig.currentPrizeSymbol], tokenSymbols)
-  if (hasInvalidcurrentPrizeSymbol.status && hasInvalidcurrentPrizeSymbol.entry) {
-    console.error(`ERROR: ${network}.json has an invalid token symbol in the currentPrizeSymbol field: ${hasInvalidcurrentPrizeSymbol.entry[0]}`);
+  const hasInvalidCurrentPrizeSymbol = !tokenSymbols.includes(demexTradingLeagueConfig.currentPrizeSymbol);
+  if (hasInvalidCurrentPrizeSymbol) {
+    console.error(`ERROR: ${network}.json has an invalid token symbol in the currentPrizeSymbol field: ${demexTradingLeagueConfig.currentPrizeSymbol}`);
     return false;
   }
 
