@@ -104,7 +104,6 @@
       "distributors": ["0x43138036d1283413035B8eca403559737E8f7980"]
     }
   },
-  "perp_pools_reward_proxy": [],
   "spot_history_market_list": {
     "cmkt/117": "BINANCE:ETHUSD",
     "cmkt/118": "BINANCE:BTCUSD",
