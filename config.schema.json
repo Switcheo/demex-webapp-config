@@ -194,7 +194,7 @@
         }
       }
     }
-  },  
+  },
   "external_chain_channels": {
     "type": "object",
     "description": "Map of destination channels for external IBC chains",
@@ -217,6 +217,25 @@
     "items": {
       "$ref": "#/$defs/additional_ibc_token_info"
     }
+  },
+  "incentives_distributors": {
+    "type": "array",
+    "description": "List of ERC-20 distributor contracts for Perp Pool Incentives",
+    "items": {
+      "type": "string"
+    }
+  },
+  "incentives_proxy_claimer": {
+    "type": "string",
+    "description": "ERC-20 contract claim and unwrap from incentives distributor for wrapped SWTH"
+  },
+  "wswth_contract": {
+    "type": "string",
+    "description": "ERC-20 contract for wrapped SWTH"
+  },
+  "removed_markets": {
+    "type": "string",
+    "description": "The message shown on the banner describing markets being removed"
   },
   "$defs": {
     "prelaunch_market": {

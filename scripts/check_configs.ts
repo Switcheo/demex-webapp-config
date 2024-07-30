@@ -27,6 +27,9 @@ interface ConfigJSON {
   typeform_widget_config: TypeFormWidgetConfig[];
   external_chain_channels: ExternalChannelsObj;
   additional_ibc_token_config: AdditionalIbcTokenConfigItem[];
+  incentives_distributors?: string[];
+  incentives_proxy_claimer?: string,
+  wswth_contract?: string,
 }
 
 interface InvalidEntry {
@@ -131,6 +134,11 @@ function checkDuplicateEntries(data: string[]): DuplicateEntry {
   } : {
     status: false
   };
+}
+
+function checkAddressIsEVM(address: string): Boolean {
+  const regex = /^0x[a-fA-F0-9]{40}$/
+  return regex.test(address)
 }
 
 // check list of markets to ensure that it does not have blacklisted markets 
@@ -456,7 +464,7 @@ async function main() {
             console.error(`ERROR: ${network}.json has invalid end time (${endTime}) is before start time (${startTime}) for a typeform survey config.`);
             outcomeMap[network] = false;
             break; // Exit the loop early upon encountering an error
-          }          
+          }
           pages = pages.concat(config.pages)
           links.push(config.surveyLink)
         }
@@ -475,7 +483,40 @@ async function main() {
           outcomeMap[network] = false;
         }
       }
-      
+
+      if (jsonData.incentives_distributors) {
+        const distributorsArr = jsonData.incentives_distributors
+
+        // look for duplicate contract addresses
+        const hasDuplicateLinks = checkDuplicateEntries(distributorsArr)
+        if (hasDuplicateLinks.status && hasDuplicateLinks.entry) {
+          let listOfDuplicates: string = hasDuplicateLinks.entry.join(", ");
+          console.error(`ERROR: ${network}.json has the following duplicated links in the typeform survey configs: ${listOfDuplicates}. Please make sure to only input each link once in ${network}`);
+          outcomeMap[network] = false;
+        }
+
+        distributorsArr.forEach((address) => {
+          if (!checkAddressIsEVM(address)) {
+            console.error(`ERROR: ${network}.json has invalid EVM address in incentives_distributor: ${address}`);
+            outcomeMap[network] = false;
+          }
+        })
+      }
+
+      if (jsonData.wswth_contract) {
+        if (!checkAddressIsEVM(jsonData.wswth_contract)) {
+          console.error(`ERROR: ${network}.json has invalid EVM address in wswth_contract: ${jsonData.wswth_contract}`);
+          outcomeMap[network] = false;
+        }
+      }
+
+      if (jsonData.incentives_proxy_claimer) {
+        if (!checkAddressIsEVM(jsonData.incentives_proxy_claimer)) {
+          console.error(`ERROR: ${network}.json has invalid EVM address in wswth_contract: ${jsonData.incentives_proxy_claimer}`);
+          outcomeMap[network] = false;
+        }
+      }
+
       // external chain channels check
       const isExternalChannelsValid = isValidExternalChainChannels(jsonData.external_chain_channels, ibcBridgeNames, network);
       if (!isExternalChannelsValid) outcomeMap[network] = false;
