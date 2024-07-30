@@ -339,10 +339,10 @@
   }], 
   "demex_trading_league_config": {
     "promoMarkets": [
-      "cmkt/118"
+      "cmkt/201"
     ],
     "currentPrizeSymbol": "USDC",
-    "currentCompPerpPoolId": 4
+    "currentCompPerpPoolId": 3
   },
   "nitron_promo_label": "Lending this asset is incentivised as part of the Cosmos Trading Competition.",
   "nitron_promo_tokens": [
