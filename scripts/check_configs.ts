@@ -27,9 +27,7 @@ interface ConfigJSON {
   typeform_widget_config: TypeFormWidgetConfig[];
   external_chain_channels: ExternalChannelsObj;
   additional_ibc_token_config: AdditionalIbcTokenConfigItem[];
-  incentives_distributors?: string[];
-  incentives_proxy_claimer?: string,
-  wswth_contract?: string,
+  perp_pools?: PerpPoolConfig;
 }
 
 interface InvalidEntry {
@@ -80,6 +78,16 @@ interface AdditionalIbcTokenConfigItem {
   baseDenom: string;
   chainRoutes: ChainRoutes; // i.e. should have at least 1 item
   denomOnCarbon?: string;
+}
+
+interface Incentives {
+  proxy?: string,
+  distributors?: string[]
+  wswth_contract?: string,
+}
+
+interface PerpPoolConfig {
+  incentives: Incentives
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -484,35 +492,41 @@ async function main() {
         }
       }
 
-      if (jsonData.incentives_distributors) {
-        const distributorsArr = jsonData.incentives_distributors
+      if (jsonData.perp_pools) {
+        const perpPoolConfig = jsonData.perp_pools
+        const distributorsArr = perpPoolConfig.incentives.distributors
+
+        if (!distributorsArr) return
 
         // look for duplicate contract addresses
         const hasDuplicateLinks = checkDuplicateEntries(distributorsArr)
         if (hasDuplicateLinks.status && hasDuplicateLinks.entry) {
           let listOfDuplicates: string = hasDuplicateLinks.entry.join(", ");
-          console.error(`ERROR: ${network}.json has the following duplicated links in the typeform survey configs: ${listOfDuplicates}. Please make sure to only input each link once in ${network}`);
+          console.error(`ERROR: ${network}.json has the following duplicated distributors in the perp pools incentives configs: ${listOfDuplicates}. Please make sure to only input each link once in ${network}`);
           outcomeMap[network] = false;
         }
 
         distributorsArr.forEach((address) => {
           if (!checkAddressIsEVM(address)) {
-            console.error(`ERROR: ${network}.json has invalid EVM address in incentives_distributor: ${address}`);
+            console.error(`ERROR: ${network}.json has invalid EVM address in perp pools incentives configs: ${address}`);
             outcomeMap[network] = false;
+            return
           }
         })
       }
 
-      if (jsonData.wswth_contract) {
-        if (!checkAddressIsEVM(jsonData.wswth_contract)) {
-          console.error(`ERROR: ${network}.json has invalid EVM address in wswth_contract: ${jsonData.wswth_contract}`);
+      if (jsonData.perp_pools?.incentives?.proxy) {
+        const proxy = jsonData.perp_pools?.incentives.proxy
+        if (!checkAddressIsEVM(proxy)) {
+          console.error(`ERROR: ${network}.json has invalid EVM address in perp pools incentives proxy configs: ${proxy}`);
           outcomeMap[network] = false;
         }
       }
 
-      if (jsonData.incentives_proxy_claimer) {
-        if (!checkAddressIsEVM(jsonData.incentives_proxy_claimer)) {
-          console.error(`ERROR: ${network}.json has invalid EVM address in wswth_contract: ${jsonData.incentives_proxy_claimer}`);
+      if (jsonData.perp_pools?.incentives?.wswth_contract) {
+        const wSWTH = jsonData.perp_pools?.incentives?.wswth_contract
+        if (!checkAddressIsEVM(wSWTH)) {
+          console.error(`ERROR: ${network}.json has invalid EVM address in perp pools incentives wswth_contract configs: ${wSWTH}`);
           outcomeMap[network] = false;
         }
       }
