@@ -242,9 +242,7 @@
       "perpTradingBoost": 3
     }
   },
-  "cross_selling_source_tokens": [
-    "swth"
-  ],
+  "cross_selling_source_tokens": ["swth"],
   "typeform_widget_config": [
     {
       "surveyLink": "https://form.typeform.com/to/HmxYnxVr",
