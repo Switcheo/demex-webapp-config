@@ -302,87 +302,43 @@
       "Noble": "channel-253"
     }
   },
-  "additional_ibc_token_config": [
-    {
-      "baseDenom": "uusdc",
-      "chainRoutes": [
-        "Archway",
-        "Noble"
-      ]
-    },
-    {
-      "baseDenom": "uusdc",
-      "chainRoutes": [
-        "Cosmos Hub",
-        "Noble"
-      ]
-    },
-    {
-      "baseDenom": "uusdc",
-      "chainRoutes": [
-        "DYDX",
-        "Noble"
-      ]
-    },
-    {
-      "baseDenom": "uusdc",
-      "chainRoutes": [
-        "Kujira",
-        "Noble"
-      ]
-    },
-    {
-      "baseDenom": "swth",
-      "chainRoutes": [
-        "Osmosis"
-      ]
-    },
-    {
-      "baseDenom": "uusdc",
-      "chainRoutes": [
-        "Osmosis",
-        "Noble"
-      ]
-    },
-    {
-      "baseDenom": "uusdc",
-      "chainRoutes": [
-        "Stargaze",
-        "Noble"
-      ]
-    },
-    {
-      "baseDenom": "uusdc",
-      "chainRoutes": [
-        "Terra",
-        "Noble"
-      ]
-    },
-    {
-      "baseDenom": "uatom",
-      "chainRoutes": [
-        "Osmosis",
-        "Cosmos Hub"
-      ],
-      "denomOnCarbon": "ibc/6CDD4663F2F09CD62285E2D45891FC149A3568E316CE3EBBE201A71A78A69388"
-    },
-    {
-      "baseDenom": "ustrd",
-      "chainRoutes": [
-        "Osmosis",
-        "Stride"
-      ],
-      "denomOnCarbon": "ibc/FCFF8B19C61677F3B78E2A5AE3B4A34A8D23858D16905F253B8438B3AFD07FF8"
-    },
-    {
-      "baseDenom": "ustrd",
-      "chainRoutes": [
-        "Cosmos Hub",
-        "Stride"
-      ],
-      "denomOnCarbon": "ibc/B8D03406E060650ECE2D521287AC9A94D036C4C78B4AB871AC740A5FF2030D79"
-    }
-  ],
+  "additional_ibc_token_config": [{
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Archway", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Cosmos Hub", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["DYDX", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Kujira", "Noble"]
+  }, {
+    "baseDenom": "swth",
+    "chainRoutes": ["Osmosis"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Osmosis", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Stargaze", "Noble"]
+  }, {
+    "baseDenom": "uusdc",
+    "chainRoutes": ["Terra", "Noble"]
+  }, {
+    "baseDenom": "uatom",
+    "chainRoutes": ["Osmosis", "Cosmos Hub"],
+    "denomOnCarbon": "ibc/6CDD4663F2F09CD62285E2D45891FC149A3568E316CE3EBBE201A71A78A69388"
+  }, {
+    "baseDenom": "ustrd",
+    "chainRoutes": ["Osmosis", "Stride"],
+    "denomOnCarbon": "ibc/FCFF8B19C61677F3B78E2A5AE3B4A34A8D23858D16905F253B8438B3AFD07FF8"
+  }, {
+    "baseDenom": "ustrd",
+    "chainRoutes": ["Cosmos Hub", "Stride"],
+    "denomOnCarbon": "ibc/B8D03406E060650ECE2D521287AC9A94D036C4C78B4AB871AC740A5FF2030D79"
+  }],
   "nitron_promo_label": "Lending this asset is incentivised as part of the Cosmos Trading Competition.",
   "nitron_promo_tokens": [
     "ibc/652218B355FBD814037EEF28505F3D91F0489325A64FA5D865EF425DD59317BC",
