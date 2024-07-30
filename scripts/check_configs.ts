@@ -27,6 +27,8 @@ interface ConfigJSON {
   typeform_widget_config: TypeFormWidgetConfig[];
   external_chain_channels: ExternalChannelsObj;
   additional_ibc_token_config: AdditionalIbcTokenConfigItem[];
+  perp_pools: PerpPoolConfig;
+  wswth_contract?: string
 }
 
 interface InvalidEntry {
@@ -77,6 +79,17 @@ interface AdditionalIbcTokenConfigItem {
   baseDenom: string;
   chainRoutes: ChainRoutes; // i.e. should have at least 1 item
   denomOnCarbon?: string;
+}
+
+interface Incentives {
+  proxy?: string,
+  distributors?: string[]
+  wswth_contract?: string,
+}
+
+interface PerpPoolConfig {
+  incentives: Incentives
+  banners: PerpPoolBanner
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -131,6 +144,11 @@ function checkDuplicateEntries(data: string[]): DuplicateEntry {
   } : {
     status: false
   };
+}
+
+function checkAddressIsEVM(address: string): Boolean {
+  const regex = /^0x[a-fA-F0-9]{40}$/
+  return regex.test(address)
 }
 
 // check list of markets to ensure that it does not have blacklisted markets 
@@ -456,7 +474,7 @@ async function main() {
             console.error(`ERROR: ${network}.json has invalid end time (${endTime}) is before start time (${startTime}) for a typeform survey config.`);
             outcomeMap[network] = false;
             break; // Exit the loop early upon encountering an error
-          }          
+          }
           pages = pages.concat(config.pages)
           links.push(config.surveyLink)
         }
@@ -475,7 +493,75 @@ async function main() {
           outcomeMap[network] = false;
         }
       }
-      
+
+      if (jsonData.perp_pools) {
+        const perpPoolConfig = jsonData.perp_pools
+        if (perpPoolConfig.incentives) {
+          const distributorsArr = perpPoolConfig.incentives.distributors
+
+          if (distributorsArr) {
+            // look for duplicate contract addresses
+            const hasDuplicateLinks = checkDuplicateEntries(distributorsArr)
+            if (hasDuplicateLinks.status && hasDuplicateLinks.entry) {
+              let listOfDuplicates: string = hasDuplicateLinks.entry.join(", ");
+              console.error(`ERROR: ${network}.json has the following duplicated distributors in the perp pools incentives configs: ${listOfDuplicates}. Please make sure to only input each link once in ${network}`);
+              outcomeMap[network] = false;
+            }
+
+            distributorsArr.forEach((address) => {
+              if (!checkAddressIsEVM(address)) {
+                console.error(`ERROR: ${network}.json has invalid EVM address in perp pools incentives configs: ${address}`);
+                outcomeMap[network] = false;
+              }
+            })
+          }
+
+          const proxy = perpPoolConfig.incentives.proxy
+          if (proxy) {
+            if (!checkAddressIsEVM(proxy)) {
+              console.error(`ERROR: ${network}.json has invalid EVM address in perp pools incentives proxy configs: ${proxy}`);
+              outcomeMap[network] = false;
+            }
+          }
+        }
+        if (perpPoolConfig.banners) {
+          const banners = perpPoolConfig.banners
+          // Checking perp pool banners
+          const perpPoolsQuery = await sdk.query.perpspool.PoolInfoAll({
+            pagination: PageRequest.fromPartial({
+              limit: new Long(10000),
+            }),
+          })
+
+          const perpPoolIds = perpPoolsQuery.pools.map((pool) => pool.poolId.toString())
+          const perpPoolBannerIds = Object.values(banners).map((banner) => banner.perp_pool_id)
+
+          const hasInvalidPerpPoolBannerIds = checkValidEntries(perpPoolBannerIds, perpPoolIds)
+          const hasDuplicatePerpPoolBannerIds = checkDuplicateEntries(perpPoolBannerIds)
+
+          if (hasInvalidPerpPoolBannerIds.status && hasInvalidPerpPoolBannerIds.entry) {
+            let listOfInvalidIds: string = hasInvalidPerpPoolBannerIds.entry.join(", ");
+            console.error(`ERROR: ${network}.json has the following invalid perp pool ids under the perp_pool_banners field: ${listOfInvalidIds}`)
+            outcomeMap[network] = false;
+          }
+
+          if (hasDuplicatePerpPoolBannerIds.status && hasDuplicatePerpPoolBannerIds.entry) {
+            let listOfDuplicates: string = hasDuplicatePerpPoolBannerIds.entry.join(", ");
+            console.error(`ERROR: ${network}.json has duplicated perp pool banners for the following perp pool ids: ${listOfDuplicates}. Please make sure to input each perp pool banner only once in ${network}`);
+            outcomeMap[network] = false;
+          }
+
+        }
+      }
+
+      if (jsonData.wswth_contract) {
+        const wSWTH = jsonData.wswth_contract
+        if (!checkAddressIsEVM(wSWTH)) {
+          console.error(`ERROR: ${network}.json has invalid EVM address in perp pools incentives wswth_contract configs: ${wSWTH}`);
+          outcomeMap[network] = false;
+        }
+      }
+
       // external chain channels check
       const isExternalChannelsValid = isValidExternalChainChannels(jsonData.external_chain_channels, ibcBridgeNames, network);
       if (!isExternalChannelsValid) outcomeMap[network] = false;

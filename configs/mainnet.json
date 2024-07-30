@@ -209,17 +209,17 @@
         "symbol": "1000PEPE"
       }
     },
-   "cmkt/202": {
+    "cmkt/202": {
       "base": {
         "symbol": "1000SHIB"
       }
     },
-   "cmkt/207": {
+    "cmkt/207": {
       "base": {
         "symbol": "1000BONK"
       }
     },
-   "cmkt/209": {
+    "cmkt/209": {
       "base": {
         "symbol": "1000FLOKI"
       }
@@ -362,5 +362,34 @@
     "ibc/50345B6B85884DC41E831047EEE01805B289171DBF105AB3EA42BCC72B3926CC",
     "ibc/C688EBE80ECC20865331A18D8D19654754F6B189977715FED00FBA2BE41F144F",
     "ibc/62A3870B9804FC3A92EAAA1F0F3F07E089DBF76CC521466CA33F5AAA8AD42290"
-  ]
+  ],
+  "perp_pools": {
+    "incentives": {
+      "proxy": "0x7b1C7216C117cC62D875e3086518B238392cf04d",
+      "distributors": [
+        "0x43138036d1283413035B8eca403559737E8f7980"
+      ]
+    },
+    "banners": [
+      {
+        "perp_pool_id": "8",
+        "show_until": "2024-07-29T08:00+00:00",
+        "title": "New Markets added",
+        "added_markets": "ETC Perp Market will be added to this Perp Pool on 24 Jul, 08:00 AM UTC. This banner will disappear on 29 Jul."
+      },
+      {
+        "perp_pool_id": "9",
+        "show_until": "2024-07-29T08:00+00:00",
+        "title": "New Markets added",
+        "added_markets": "LDO Perp Market will be added to this Perp Pool on 24 Jul, 08:00 AM UTC. This banner will disappear on 29 Jul."
+      },
+      {
+        "perp_pool_id": "1",
+        "show_until": "2024-07-15T08:00+00:00",
+        "title": "New Markets added",
+        "removed_markets": "[Ticker] Perp Market will be added to this Perp Pool on [Date]. This banner will disappear on [Date] 08:00 AM UTC."
+      }
+    ]
+  },
+  "wswth_contract": "0x0e59f6Cf81B5Fae9F7a5912062Fe53909e7221C2"
 }

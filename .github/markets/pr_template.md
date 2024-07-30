@@ -20,6 +20,9 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`typeform_widget_config`   |`TypeformWidgetConfig[]`   |false   |Object that contains the parameters for ongoing surveys.   | If the `message` property is omitted, default message is shown: "We want to hear from you!". Multiple widgets being displayed on the same page is not supported. Ensure pages don't overlap between configs.  |
 |`external_chain_channels`   |`obj`   |true   |Map of Objects containing destination channels for external IBC chains (e.g. Osmosis, Noble, etc.)   |1. To transfer tokens from Osmosis => Noble, you need to look for the `Osmosis` object, then search for `Noble` in the object to get the channel to be input in `sourceChannel` for MsgTransfer tx msg (in this case channel-750)<br /><br />2. Blockchain names in this object **MUST** match the valid chainName of the bridges listed under BridgeAll RPC call.<br /><br /> To view the values of BridgeAll RPC call, simply run `yarn get-bridges [network]` on the command line. Sample for mainnet: `yarn get-bridges mainnet`   |
 |`additional_ibc_token_config`   |`AdditionalIBCTokenConfig[]`   |true   |List of information about IBC tokens that are not added on chain or require packet forwarding.   |
+|`perp_pools`   |`PerpPoolConfig`   |false   |Object that contains the configs for Perp Pools   |
+|`wswth_contract`   |`string`   |false   |wSWTH ERC-20 contract.   |
+
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
@@ -66,3 +69,15 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`baseDenom`   |`string`  |true   |The denom of this token on its native chain (e.g. `uosmo` for $OSMO on Osmosis, `uatom` for $ATOM on CosmosHub)   |
 |`chainRoutes`   |`string[]`  |true   |The list of IBC chains that this token needs to be forwarded through in order to be deposited into Carbon blockchain.    |1. You need to add **at least 1** blockchain network to this array.<br /><br />2. Blockchain networks in this array **MUST** match the valid chainName of the bridges listed under BridgeAll RPC call.<br /><br /> To view the values of BridgeAll RPC call, simply run `yarn get-bridges [network]` on the command line. Sample for mainnet: `yarn get-bridges mainnet`   |
 |`denomOnCarbon`   |`string`  |false   |Denom of token that is added to Carbon chain but still requires packet-forwarding (omit if this token is **NOT** added to Carbon chain)   |The denom in this field **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000).   |
+
+## PerpPoolConfig
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`incentives`   |`PerpPoolIncentives`   |false   |List of incentives distributors contracts for Perp Pool Incentives.   |
+|`banners`   |`PerpPoolBanner`   |true   |List of Objects that indicate the banner content on specific perp pool pages.   |
+
+## PerpPoolIncentives
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`distributors`   |`string[]`   |false   |List of incentives distributors contracts for Perp Pool Incentives.   |
+|`proxy`   |`string`   |false   |Reward proxy claimer for wSWTH rewards.   |If rewards for Perp Pool Incentives is in wSWTH, this contract must be added as an operator to the respective distributor contract.   |
