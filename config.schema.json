@@ -218,6 +218,28 @@
       "$ref": "#/$defs/additional_ibc_token_info"
     }
   },
+  "demex_trading_league_config": {
+    "type": "object",
+    "description": "Config for Demex Trading League",
+    "properties": {
+      "type": "object",
+      "promoMarkets": {
+        "type": "array",
+        "description": "List of market names designated as promo markets during the Demex Trading League competition",
+        "items": {
+          "$ref": "#/$defs/promo_market"
+        }
+      },
+      "currentPrizeSymbol": {
+        "type": "string",
+        "description": "The symbol of the prize token, mainly used to display the prize symbol and token icon on the Demex Trading League page."
+      },
+      "currentCompPerpPoolId": {
+        "type": "integer",
+        "description": "Id of the perp pool that provides liquidity for the promo markets of the Demex Trading League event."
+      }
+    }
+  },
   "perp_pools": {
     "type": "object",
     "description": "Perp pool configs",
@@ -238,6 +260,10 @@
     "prelaunch_market": {
       "type": "string",
       "description": "Market name of Pre-launch market"
+    },
+    "promo_market": {
+      "type": "string",
+      "description": "Market name of Promo market"
     },
     "blacklisted_market": {
       "type": "string",

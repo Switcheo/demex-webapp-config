@@ -35,5 +35,10 @@
   },
   "cross_selling_source_tokens": ["swth"],
   "external_chain_channels": {},
-  "additional_ibc_token_config": []
+  "additional_ibc_token_config": [],
+  "demex_trading_league_config": {
+    "promoMarkets": ["ATOM_PERP.CGUSD"],
+    "currentPrizeSymbol": "USDC",
+    "currentCompPerpPoolId": 1
+  }
 }
