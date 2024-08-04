@@ -1,6 +1,5 @@
 {
   "network": "mainnet",
-  "maintenance": {},
   "prelaunch_markets": [],
   "blacklisted_markets": [
     "gm1_busd1",
