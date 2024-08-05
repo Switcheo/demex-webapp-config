@@ -239,9 +239,15 @@
     "tradingVolumePerSpin": 10000
   },
   "perp_pool_promo": {
-    "2": {
-      "start": "2024-06-03T08:00:00Z",
-      "end": "2024-06-10T08:00:00Z",
+    "7": {
+      "start": "2024-08-05T08:00:00Z",
+      "end": "2024-08-19T08:00:00Z",
+      "perpPoolDepositBoost": 2,
+      "perpTradingBoost": 3
+    },
+    "9": {
+      "start": "2024-08-05T08:00:00Z",
+      "end": "2024-08-19T08:00:00Z",
       "perpPoolDepositBoost": 2,
       "perpTradingBoost": 3
     }
