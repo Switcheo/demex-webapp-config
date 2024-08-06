@@ -81,15 +81,15 @@
   "perp_pool_banners": [
     {
       "perp_pool_id": "8",
-      "show_until": "2024-08-05T08:00+00:00",
+      "show_until": "2024-08-08T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "ICP Perp Market will be added to this Perp Pool on 1 Aug, 08:00 AM UTC. This banner will disappear on 5 Aug."
+      "added_markets": "AVAX Perp Market will be added to this Perp Pool on 6 Aug, 08:00 AM UTC. This banner will disappear on 8 Aug."
     },
     {
       "perp_pool_id": "9",
-      "show_until": "2024-08-05T08:00+00:00",
+      "show_until": "2024-08-08T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "ONDO Perp Market will be added to this Perp Pool on 1 Aug, 08:00 AM UTC. This banner will disappear on 5 Aug."
+      "added_markets": "AAVE Perp Market will be added to this Perp Pool on 6 Aug, 08:00 AM UTC. This banner will disappear on 8 Aug."
     },
     {
       "perp_pool_id": "1",
@@ -205,6 +205,8 @@
     "cmkt/221": "#090909",
     "cmkt/222": "#090909",
     "cmkt/223": "#3d1c91",
+    "cmkt/224": "#9391fe",
+    "cmkt/225": "#e84142",
     "Unused": "#7798E4"
   },
   "markets_override": {
