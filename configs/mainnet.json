@@ -83,19 +83,25 @@
       "perp_pool_id": "8",
       "show_until": "2024-08-08T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "AVAX Perp Market will be added to this Perp Pool on 6 Aug, 08:00 AM UTC. This banner will disappear on 8 Aug."
+      "added_markets": "AVAX will be added to this Perp Pool on 6 Aug, 08:00 AM UTC. This banner will disappear on 8 Aug."
     },
     {
       "perp_pool_id": "9",
       "show_until": "2024-08-08T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "AAVE Perp Market will be added to this Perp Pool on 6 Aug, 08:00 AM UTC. This banner will disappear on 8 Aug."
+      "added_markets": "AAVE will be added to this Perp Pool on 6 Aug, 08:00 AM UTC. This banner will disappear on 8 Aug."
     },
     {
-      "perp_pool_id": "1",
-      "show_until": "2024-07-15T08:00+00:00",
+      "perp_pool_id": "4",
+      "show_until": "2024-08-30T08:00+00:00",
+      "title": "New Markets added",
+      "added_markets": "On 20 Aug, 08:00 AM UTC, This perp pool will be renamed to 'Modular' and MNT, MANTA, ARB, OP will be added to this Perp Pool"
+    },
+    {
+      "perp_pool_id": "6",
+      "show_until": "2024-08-30T08:00+00:00",
       "title": "Markets removed",
-      "removed_markets": "[Ticker] Perp Market will be added to this Perp Pool on [Date]. This banner will disappear on [Date] 08:00 AM UTC."
+      "removed_markets": "On 20 Aug 8AM UTC, all markets in this perp pool will be moved to the Celestia Perp Pool to consolidate liquidity."
     }
   ],
   "spot_history_market_list": {
@@ -258,7 +264,7 @@
   "typeform_widget_config": [
     {
       "surveyLink": "https://form.typeform.com/to/HmxYnxVr",
-      "endTime": "2024-08-02T23:00:00Z",
+      "endTime": "2024-08-06T23:00:00Z",
       "pages": [
         "/account/overview",
         "/account/balance"
