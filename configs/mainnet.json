@@ -80,16 +80,16 @@
   },
   "perp_pool_banners": [
     {
-      "perp_pool_id": "8",
-      "show_until": "2024-08-08T08:00+00:00",
+      "perp_pool_id": "5",
+      "show_until": "2024-08-13T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "AVAX will be added to this Perp Pool on 6 Aug, 08:00 AM UTC. This banner will disappear on 8 Aug."
+      "added_markets": "SOLETH will be added to this Perp Pool on 8 Aug, 08:00 AM UTC. This banner will disappear on 13 Aug."
     },
     {
-      "perp_pool_id": "9",
-      "show_until": "2024-08-08T08:00+00:00",
+      "perp_pool_id": "8",
+      "show_until": "2024-08-15T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "AAVE will be added to this Perp Pool on 6 Aug, 08:00 AM UTC. This banner will disappear on 8 Aug."
+      "added_markets": "DOT and TRX will be added to this Perp Pool on 13 Aug, 08:00 AM UTC. This banner will disappear on 15 Aug."
     },
     {
       "perp_pool_id": "4",
@@ -148,7 +148,8 @@
     "cmkt/205": "CRYPTO:BRETT2USD",
     "cmkt/207": "BINANCE:1000BONKUSDT.P",
     "cmkt/209": "BINANCE:1000FLOKIUSDT.P",
-    "cmkt/212": "BYBIT:POPCATUSDT"
+    "cmkt/212": "BYBIT:POPCATUSDT",
+    "cmkt/226": "BINANCE:SOLETH"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -213,6 +214,7 @@
     "cmkt/223": "#3d1c91",
     "cmkt/224": "#9391fe",
     "cmkt/225": "#e84142",
+    "cmkt/226": "#49a8cf",
     "Unused": "#7798E4"
   },
   "markets_override": {
