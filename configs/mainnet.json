@@ -104,6 +104,12 @@
       "removed_markets": "On 20 Aug 8AM UTC, all markets in this perp pool will be moved to the Celestia Perp Pool to consolidate liquidity."
     }
   ],
+  "perp_pools": {
+    "incentives": {
+      "proxy": "0x43138036d1283413035B8eca403559737E8f7980",
+      "distributors": ["0x43138036d1283413035B8eca403559737E8f7980"]
+    }
+  },
   "spot_history_market_list": {
     "cmkt/117": "BINANCE:ETHUSD",
     "cmkt/118": "BINANCE:BTCUSD",
