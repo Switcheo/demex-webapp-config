@@ -80,16 +80,16 @@
   },
   "perp_pool_banners": [
     {
-      "perp_pool_id": "5",
-      "show_until": "2024-08-13T08:00+00:00",
+      "perp_pool_id": "9",
+      "show_until": "2024-08-20T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "SOLETH will be added to this Perp Pool on 8 Aug, 08:00 AM UTC. This banner will disappear on 13 Aug."
+      "added_markets": "LINK will be added to this Perp Pool on 15 Aug, 08:00 AM UTC. This banner will disappear on 20 Aug."
     },
     {
       "perp_pool_id": "8",
       "show_until": "2024-08-15T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "DOT and TRX will be added to this Perp Pool on 13 Aug, 08:00 AM UTC. This banner will disappear on 15 Aug."
+      "added_markets": "TRX will be added to this Perp Pool on 15 Aug, 08:00 AM UTC. This banner will disappear on 20 Aug."
     },
     {
       "perp_pool_id": "4",
@@ -215,6 +215,10 @@
     "cmkt/224": "#9391fe",
     "cmkt/225": "#e84142",
     "cmkt/226": "#49a8cf",
+    "cmkt/227": "#5099ce",
+    "cmkt/228": "#040404",
+    "cmkt/229": "#2a5ada",
+    "cmkt/230": "#c83424",
     "Unused": "#7798E4"
   },
   "markets_override": {
