@@ -101,7 +101,7 @@
       "perp_pool_id": "6",
       "show_until": "2024-08-30T08:00+00:00",
       "title": "Markets removed",
-      "removed_markets": "On 20 Aug 8AM UTC, all markets in this perp pool will be moved to the Celestia Perp Pool to consolidate liquidity."
+      "removed_markets": "On 20 Aug 8AM UTC, all markets in this perp pool have been moved to the Celestia Perp Pool to consolidate liquidity."
     }
   ],
   "spot_history_market_list": {
