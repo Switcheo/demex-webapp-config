@@ -81,21 +81,21 @@
   "perp_pool_banners": [
     {
       "perp_pool_id": "9",
-      "show_until": "2024-08-20T08:00+00:00",
+      "show_until": "2024-08-25T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "LINK will be added to this Perp Pool on 15 Aug, 08:00 AM UTC. This banner will disappear on 20 Aug."
+      "added_markets": "CRV will be added to this Perp Pool on 22 Aug, 08:00 AM UTC. This banner will disappear on 25 Aug."
     },
     {
-      "perp_pool_id": "8",
-      "show_until": "2024-08-15T08:00+00:00",
+      "perp_pool_id": "7",
+      "show_until": "2024-08-25T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "TRX will be added to this Perp Pool on 15 Aug, 08:00 AM UTC. This banner will disappear on 20 Aug."
+      "added_markets": "SUN will be added to this Perp Pool on 22 Aug, 08:00 AM UTC. This banner will disappear on 25 Aug."
     },
     {
       "perp_pool_id": "4",
       "show_until": "2024-08-30T08:00+00:00",
       "title": "New Markets added",
-      "added_markets": "On 20 Aug, 08:00 AM UTC, This perp pool was renamed to 'Modular'. MNT, MANTA, ARB, OP were added to this Perp Pool"
+      "added_markets": "On 20 Aug, 08:00 AM UTC, this perp pool was renamed to 'Modular'. MNT, MANTA, ARB, OP were added to this Perp Pool"
     },
     {
       "perp_pool_id": "6",
@@ -219,6 +219,8 @@
     "cmkt/228": "#040404",
     "cmkt/229": "#2a5ada",
     "cmkt/230": "#c83424",
+    "cmkt/231": "#4dfba9",
+    "cmkt/232": "#f9a755",
     "Unused": "#7798E4"
   },
   "markets_override": {
