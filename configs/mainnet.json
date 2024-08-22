@@ -241,21 +241,21 @@
     }
   },
   "demex_points_config": {
-    "depositsPerSpin": 500,
-    "tradingVolumePerSpin": 5000
+    "depositsPerSpin": 1000,
+    "tradingVolumePerSpin": 10000
   },
   "perp_pool_promo": {
     "8": {
       "start": "2024-08-22T08:00:00Z",
       "end": "2024-09-05T08:00:00Z",
-      "perpPoolDepositBoost": 2,
-      "perpTradingBoost": 3
+      "perpPoolDepositBoost": 4,
+      "perpTradingBoost": 6
     },
     "9": {
       "start": "2024-08-22T08:00:00Z",
       "end": "2024-09-05T08:00:00Z",
-      "perpPoolDepositBoost": 2,
-      "perpTradingBoost": 3
+      "perpPoolDepositBoost": 4,
+      "perpTradingBoost": 6
     }
   },
   "cross_selling_source_tokens": ["swth"],
