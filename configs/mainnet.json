@@ -1,18 +1,8 @@
 {
   "network": "mainnet",
   "prelaunch_markets": [],
-  "blacklisted_markets": [
-    "gm1_busd1",
-    "SWTH_UST",
-    "LUNA_SWTH"
-  ],
-  "blacklisted_pools": [
-    "34",
-    "43",
-    "44",
-    "74",
-    "83"
-  ],
+  "blacklisted_markets": ["gm1_busd1", "SWTH_UST", "LUNA_SWTH"],
+  "blacklisted_pools": ["34", "43", "44", "74", "83"],
   "blacklisted_tokens": [
     "swthb.1.6.d04123",
     "swth.1.18.94d5fe",
@@ -256,14 +246,14 @@
   },
   "perp_pool_promo": {
     "7": {
-      "start": "2024-08-05T08:00:00Z",
-      "end": "2024-08-19T08:00:00Z",
+      "start": "2024-08-22T08:00:00Z",
+      "end": "2024-09-05T08:00:00Z",
       "perpPoolDepositBoost": 2,
       "perpTradingBoost": 3
     },
     "9": {
-      "start": "2024-08-05T08:00:00Z",
-      "end": "2024-08-19T08:00:00Z",
+      "start": "2024-08-22T08:00:00Z",
+      "end": "2024-09-05T08:00:00Z",
       "perpPoolDepositBoost": 2,
       "perpTradingBoost": 3
     }
@@ -316,47 +306,57 @@
       "Noble": "channel-253"
     }
   },
-  "additional_ibc_token_config": [{
-    "baseDenom": "uusdc",
-    "chainRoutes": ["Archway", "Noble"]
-  }, {
-    "baseDenom": "uusdc",
-    "chainRoutes": ["Cosmos Hub", "Noble"]
-  }, {
-    "baseDenom": "uusdc",
-    "chainRoutes": ["DYDX", "Noble"]
-  }, {
-    "baseDenom": "uusdc",
-    "chainRoutes": ["Kujira", "Noble"]
-  }, {
-    "baseDenom": "swth",
-    "chainRoutes": ["Osmosis"]
-  }, {
-    "baseDenom": "uusdc",
-    "chainRoutes": ["Osmosis", "Noble"]
-  }, {
-    "baseDenom": "uusdc",
-    "chainRoutes": ["Stargaze", "Noble"]
-  }, {
-    "baseDenom": "uusdc",
-    "chainRoutes": ["Terra", "Noble"]
-  }, {
-    "baseDenom": "uatom",
-    "chainRoutes": ["Osmosis", "Cosmos Hub"],
-    "denomOnCarbon": "ibc/6CDD4663F2F09CD62285E2D45891FC149A3568E316CE3EBBE201A71A78A69388"
-  }, {
-    "baseDenom": "ustrd",
-    "chainRoutes": ["Osmosis", "Stride"],
-    "denomOnCarbon": "ibc/FCFF8B19C61677F3B78E2A5AE3B4A34A8D23858D16905F253B8438B3AFD07FF8"
-  }, {
-    "baseDenom": "ustrd",
-    "chainRoutes": ["Cosmos Hub", "Stride"],
-    "denomOnCarbon": "ibc/B8D03406E060650ECE2D521287AC9A94D036C4C78B4AB871AC740A5FF2030D79"
-  }], 
+  "additional_ibc_token_config": [
+    {
+      "baseDenom": "uusdc",
+      "chainRoutes": ["Archway", "Noble"]
+    },
+    {
+      "baseDenom": "uusdc",
+      "chainRoutes": ["Cosmos Hub", "Noble"]
+    },
+    {
+      "baseDenom": "uusdc",
+      "chainRoutes": ["DYDX", "Noble"]
+    },
+    {
+      "baseDenom": "uusdc",
+      "chainRoutes": ["Kujira", "Noble"]
+    },
+    {
+      "baseDenom": "swth",
+      "chainRoutes": ["Osmosis"]
+    },
+    {
+      "baseDenom": "uusdc",
+      "chainRoutes": ["Osmosis", "Noble"]
+    },
+    {
+      "baseDenom": "uusdc",
+      "chainRoutes": ["Stargaze", "Noble"]
+    },
+    {
+      "baseDenom": "uusdc",
+      "chainRoutes": ["Terra", "Noble"]
+    },
+    {
+      "baseDenom": "uatom",
+      "chainRoutes": ["Osmosis", "Cosmos Hub"],
+      "denomOnCarbon": "ibc/6CDD4663F2F09CD62285E2D45891FC149A3568E316CE3EBBE201A71A78A69388"
+    },
+    {
+      "baseDenom": "ustrd",
+      "chainRoutes": ["Osmosis", "Stride"],
+      "denomOnCarbon": "ibc/FCFF8B19C61677F3B78E2A5AE3B4A34A8D23858D16905F253B8438B3AFD07FF8"
+    },
+    {
+      "baseDenom": "ustrd",
+      "chainRoutes": ["Cosmos Hub", "Stride"],
+      "denomOnCarbon": "ibc/B8D03406E060650ECE2D521287AC9A94D036C4C78B4AB871AC740A5FF2030D79"
+    }
+  ],
   "demex_trading_league_config": {
-    "promoMarkets": [
-      "cmkt/201"
-    ],
+    "promoMarkets": ["cmkt/201"],
     "currentPrizeSymbol": "USDC",
     "currentCompPerpPoolId": 3
   },
@@ -389,9 +389,7 @@
   "perp_pools": {
     "incentives": {
       "proxy": "0x7b1C7216C117cC62D875e3086518B238392cf04d",
-      "distributors": [
-        "0x5268d461317f2f39b5023fCC25cFF31210C4b947"
-      ]
+      "distributors": ["0x5268d461317f2f39b5023fCC25cFF31210C4b947"]
     },
     "banners": [
       {
