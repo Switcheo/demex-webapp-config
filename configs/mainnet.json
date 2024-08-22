@@ -241,8 +241,8 @@
     }
   },
   "demex_points_config": {
-    "depositsPerSpin": 1000,
-    "tradingVolumePerSpin": 10000
+    "depositsPerSpin": 500,
+    "tradingVolumePerSpin": 5000
   },
   "perp_pool_promo": {
     "8": {
