@@ -10,7 +10,6 @@
     "blacklisted_tokens",
     "transfer_options",
     "network_fees",
-    "perp_pool_banners",
     "cross_selling_source_tokens",
     "external_chain_channels",
     "additional_ibc_token_config"
@@ -83,40 +82,6 @@
         "message": {
           "type": "string",
           "description": "Description shown on maintenance page (optional). If not provided, the description of the page will default to \"Website is temporily unavailable due to planned maintenance. We will be back soon.\""
-        }
-      }
-    },
-    "perp_pool_banners": {
-      "type": "array",
-      "description": "List of perp pool banners",
-      "items": {
-        "type": "object",
-        "required": [
-          "perp_pool_id",
-          "title"
-        ],
-        "properties": {
-          "perp_pool_id": {
-            "$ref": "#/$defs/perp_pool_id"
-          },
-          "show_from": {
-            "$ref": "#/$defs/show_from"
-          },
-          "show_until": {
-            "$ref": "#/$defs/show_until"
-          },
-          "title": {
-            "$ref": "#/$defs/title"
-          },
-          "removed_markets": {
-            "$ref": "#/$defs/removed_markets"
-          },
-          "added_markets": {
-            "$ref": "#/$defs/added_markets"
-          },
-          "subtext": {
-            "$ref": "#/$defs/subtext"
-          }
         }
       }
     },
@@ -301,6 +266,10 @@
       "type": "string",
       "description": "The message shown on the banner describing markets being removed"
     },
+    "past_tense_text": {
+      "type": "string",
+      "description": "The alternative message shown after the date of markets being added or removed has passed"
+    },
     "added_markets": {
       "type": "string",
       "description": "The message shown on the banner describing markets being added"
@@ -404,6 +373,9 @@
           },
           "added_markets": {
             "$ref": "#/$defs/added_markets"
+          },
+          "past_tense_text": {
+            "$ref": "#/$defs/past_tense_text"
           },
           "subtext": {
             "$ref": "#/$defs/subtext"

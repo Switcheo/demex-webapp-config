@@ -18,7 +18,6 @@ interface ConfigJSON {
   network_fees: {
     [denom: string]: number;
   };
-  perp_pool_banners: PerpPoolBanner[];
   demex_points_config: DemexPointsConfig;
   perp_pool_promo: {
     [perpPoolId: string]: PerpPoolPromo;
@@ -96,7 +95,7 @@ interface Incentives {
 
 interface PerpPoolConfig {
   incentives: Incentives
-  banners: PerpPoolBanner
+  banners: PerpPoolBanner[]
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -236,13 +235,13 @@ function isValidAdditionalIbcTokenConfig(addTokenConfigArr: AdditionalIbcTokenCo
 }
 
 function isValidDemexTradingLeagueConfig(
-  demexTradingLeagueConfig: DemexTradingLeagueConfig, 
-  network: CarbonSDK.Network, 
+  demexTradingLeagueConfig: DemexTradingLeagueConfig,
+  network: CarbonSDK.Network,
   marketIds: string[],
   blacklistedMarkets: string[],
   perpPoolIds: string[],
   tokenSymbols: string[]) {
-  
+
   const hasInvalidPromoMarkets = checkValidEntries(demexTradingLeagueConfig.promoMarkets, marketIds);
   if (hasInvalidPromoMarkets.status && hasInvalidPromoMarkets.entry) {
     let listOfInvalidMarkets: string = hasInvalidPromoMarkets.entry.join(', ');
@@ -256,7 +255,7 @@ function isValidDemexTradingLeagueConfig(
     console.error(`ERROR: ${network}.json has the following duplicated promo market entries in demex_trading_league_config: ${listOfDuplicates}. Please make sure to only input each market once in ${network}`);
     return false;
   }
-  
+
   const hasBlacklistedMarketsInPromo = checkBlacklistedMarkets(demexTradingLeagueConfig.promoMarkets, blacklistedMarkets);
   if (hasBlacklistedMarketsInPromo.status && hasBlacklistedMarketsInPromo.entry) {
     let listOfBlacklistedMarkets: string = hasBlacklistedMarketsInPromo.entry.join(", ");
@@ -453,22 +452,6 @@ async function main() {
       })
 
       const perpPoolIds = perpPoolsQuery.pools.map((pool) => pool.poolId.toString())
-      const perpPoolBannerIds = Object.values(jsonData.perp_pool_banners).map((banner) => banner.perp_pool_id)
-
-      const hasInvalidPerpPoolBannerIds = checkValidEntries(perpPoolBannerIds, perpPoolIds)
-      const hasDuplicatePerpPoolBannerIds = checkDuplicateEntries(perpPoolBannerIds)
-
-      if (hasInvalidPerpPoolBannerIds.status && hasInvalidPerpPoolBannerIds.entry) {
-        let listOfInvalidIds: string = hasInvalidPerpPoolBannerIds.entry.join(", ");
-        console.error(`ERROR: ${network}.json has the following invalid perp pool ids under the perp_pool_banners field: ${listOfInvalidIds}`)
-        outcomeMap[network] = false;
-      }
-
-      if (hasDuplicatePerpPoolBannerIds.status && hasDuplicatePerpPoolBannerIds.entry) {
-        let listOfDuplicates: string = hasDuplicatePerpPoolBannerIds.entry.join(", ");
-        console.error(`ERROR: ${network}.json has duplicated perp pool banners for the following perp pool ids: ${listOfDuplicates}. Please make sure to input each perp pool banner only once in ${network}`);
-        outcomeMap[network] = false;
-      }
 
       if (network === CarbonSDK.Network.MainNet && !jsonData.demex_points_config) {
         console.error(`ERROR: ${network}.json is missing demex_points_config`)
@@ -556,13 +539,13 @@ async function main() {
             const hasDuplicateLinks = checkDuplicateEntries(distributorsArr)
             if (hasDuplicateLinks.status && hasDuplicateLinks.entry) {
               let listOfDuplicates: string = hasDuplicateLinks.entry.join(", ");
-              console.error(`ERROR: ${network}.json has the following duplicated distributors in the perp pools incentives configs: ${listOfDuplicates}. Please make sure to only input each link once in ${network}`);
+              console.error(`ERROR: ${network}.json has the following duplicated distributors in the perp_pools incentives configs: ${listOfDuplicates}. Please make sure to only input each link once in ${network}`);
               outcomeMap[network] = false;
             }
 
             distributorsArr.forEach((address) => {
               if (!checkAddressIsEVM(address)) {
-                console.error(`ERROR: ${network}.json has invalid EVM address in perp pools incentives configs: ${address}`);
+                console.error(`ERROR: ${network}.json has invalid EVM address in perp_pools incentives configs: ${address}`);
                 outcomeMap[network] = false;
               }
             })
@@ -571,19 +554,15 @@ async function main() {
           const proxy = perpPoolConfig.incentives.proxy
           if (proxy) {
             if (!checkAddressIsEVM(proxy)) {
-              console.error(`ERROR: ${network}.json has invalid EVM address in perp pools incentives proxy configs: ${proxy}`);
+              console.error(`ERROR: ${network}.json has invalid EVM address in perp_pools incentives proxy configs: ${proxy}`);
               outcomeMap[network] = false;
             }
           }
         }
+
         if (perpPoolConfig.banners) {
           const banners = perpPoolConfig.banners
           // Checking perp pool banners
-          const perpPoolsQuery = await sdk.query.perpspool.PoolInfoAll({
-            pagination: PageRequest.fromPartial({
-              limit: new Long(10000),
-            }),
-          })
 
           const perpPoolIds = perpPoolsQuery.pools.map((pool) => pool.poolId.toString())
           const perpPoolBannerIds = Object.values(banners).map((banner) => banner.perp_pool_id)
@@ -593,7 +572,7 @@ async function main() {
 
           if (hasInvalidPerpPoolBannerIds.status && hasInvalidPerpPoolBannerIds.entry) {
             let listOfInvalidIds: string = hasInvalidPerpPoolBannerIds.entry.join(", ");
-            console.error(`ERROR: ${network}.json has the following invalid perp pool ids under the perp_pool_banners field: ${listOfInvalidIds}`)
+            console.error(`ERROR: ${network}.json has the following invalid perp pool ids under the perp_pools banners field: ${listOfInvalidIds}`)
             outcomeMap[network] = false;
           }
 

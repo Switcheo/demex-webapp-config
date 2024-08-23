@@ -1,8 +1,18 @@
 {
   "network": "mainnet",
   "prelaunch_markets": [],
-  "blacklisted_markets": ["gm1_busd1", "SWTH_UST", "LUNA_SWTH"],
-  "blacklisted_pools": ["34", "43", "44", "74", "83"],
+  "blacklisted_markets": [
+    "gm1_busd1",
+    "SWTH_UST",
+    "LUNA_SWTH"
+  ],
+  "blacklisted_pools": [
+    "34",
+    "43",
+    "44",
+    "74",
+    "83"
+  ],
   "blacklisted_tokens": [
     "swthb.1.6.d04123",
     "swth.1.18.94d5fe",
@@ -68,32 +78,6 @@
     "eth.1.2.942d87": 21,
     "usdc.1.2.343151": 22
   },
-  "perp_pool_banners": [
-    {
-      "perp_pool_id": "9",
-      "show_until": "2024-08-25T08:00+00:00",
-      "title": "New Markets added",
-      "added_markets": "CRV will be added to this Perp Pool on 22 Aug, 08:00 AM UTC. This banner will disappear on 25 Aug."
-    },
-    {
-      "perp_pool_id": "7",
-      "show_until": "2024-08-25T08:00+00:00",
-      "title": "New Markets added",
-      "added_markets": "SUN will be added to this Perp Pool on 22 Aug, 08:00 AM UTC. This banner will disappear on 25 Aug."
-    },
-    {
-      "perp_pool_id": "4",
-      "show_until": "2024-08-30T08:00+00:00",
-      "title": "New Markets added",
-      "added_markets": "On 20 Aug, 08:00 AM UTC, this perp pool was renamed to 'Modular'. MNT, MANTA, ARB, OP were added to this Perp Pool"
-    },
-    {
-      "perp_pool_id": "6",
-      "show_until": "2024-08-30T08:00+00:00",
-      "title": "Markets removed",
-      "removed_markets": "On 20 Aug 8AM UTC, all markets in this perp pool have been moved to the Celestia Perp Pool to consolidate liquidity."
-    }
-  ],
   "spot_history_market_list": {
     "cmkt/117": "BINANCE:ETHUSD",
     "cmkt/118": "BINANCE:BTCUSD",
@@ -258,7 +242,9 @@
       "perpTradingBoost": 6
     }
   },
-  "cross_selling_source_tokens": ["swth"],
+  "cross_selling_source_tokens": [
+    "swth"
+  ],
   "external_chain_channels": {
     "Archway": {
       "Noble": "channel-29"
@@ -309,54 +295,88 @@
   "additional_ibc_token_config": [
     {
       "baseDenom": "uusdc",
-      "chainRoutes": ["Archway", "Noble"]
+      "chainRoutes": [
+        "Archway",
+        "Noble"
+      ]
     },
     {
       "baseDenom": "uusdc",
-      "chainRoutes": ["Cosmos Hub", "Noble"]
+      "chainRoutes": [
+        "Cosmos Hub",
+        "Noble"
+      ]
     },
     {
       "baseDenom": "uusdc",
-      "chainRoutes": ["DYDX", "Noble"]
+      "chainRoutes": [
+        "DYDX",
+        "Noble"
+      ]
     },
     {
       "baseDenom": "uusdc",
-      "chainRoutes": ["Kujira", "Noble"]
+      "chainRoutes": [
+        "Kujira",
+        "Noble"
+      ]
     },
     {
       "baseDenom": "swth",
-      "chainRoutes": ["Osmosis"]
+      "chainRoutes": [
+        "Osmosis"
+      ]
     },
     {
       "baseDenom": "uusdc",
-      "chainRoutes": ["Osmosis", "Noble"]
+      "chainRoutes": [
+        "Osmosis",
+        "Noble"
+      ]
     },
     {
       "baseDenom": "uusdc",
-      "chainRoutes": ["Stargaze", "Noble"]
+      "chainRoutes": [
+        "Stargaze",
+        "Noble"
+      ]
     },
     {
       "baseDenom": "uusdc",
-      "chainRoutes": ["Terra", "Noble"]
+      "chainRoutes": [
+        "Terra",
+        "Noble"
+      ]
     },
     {
       "baseDenom": "uatom",
-      "chainRoutes": ["Osmosis", "Cosmos Hub"],
+      "chainRoutes": [
+        "Osmosis",
+        "Cosmos Hub"
+      ],
       "denomOnCarbon": "ibc/6CDD4663F2F09CD62285E2D45891FC149A3568E316CE3EBBE201A71A78A69388"
     },
     {
       "baseDenom": "ustrd",
-      "chainRoutes": ["Osmosis", "Stride"],
+      "chainRoutes": [
+        "Osmosis",
+        "Stride"
+      ],
       "denomOnCarbon": "ibc/FCFF8B19C61677F3B78E2A5AE3B4A34A8D23858D16905F253B8438B3AFD07FF8"
     },
     {
       "baseDenom": "ustrd",
-      "chainRoutes": ["Cosmos Hub", "Stride"],
+      "chainRoutes": [
+        "Cosmos Hub",
+        "Stride"
+      ],
       "denomOnCarbon": "ibc/B8D03406E060650ECE2D521287AC9A94D036C4C78B4AB871AC740A5FF2030D79"
     }
   ],
   "demex_trading_league_config": {
-    "promoMarkets": ["cmkt/201"],
+    "promoMarkets": [
+      "cmkt/201"
+    ],
     "currentPrizeSymbol": "USDC",
     "currentCompPerpPoolId": 3
   },
@@ -365,26 +385,35 @@
   "perp_pools": {
     "incentives": {
       "proxy": "0x7b1C7216C117cC62D875e3086518B238392cf04d",
-      "distributors": ["0x5268d461317f2f39b5023fCC25cFF31210C4b947"]
+      "distributors": [
+        "0x5268d461317f2f39b5023fCC25cFF31210C4b947"
+      ]
     },
     "banners": [
       {
-        "perp_pool_id": "8",
-        "show_until": "2024-07-29T08:00+00:00",
-        "title": "New Markets added",
-        "added_markets": "ETC Perp Market will be added to this Perp Pool on 24 Jul, 08:00 AM UTC. This banner will disappear on 29 Jul."
-      },
-      {
         "perp_pool_id": "9",
-        "show_until": "2024-07-29T08:00+00:00",
+        "show_until": "2024-08-25T08:00+00:00",
         "title": "New Markets added",
-        "added_markets": "LDO Perp Market will be added to this Perp Pool on 24 Jul, 08:00 AM UTC. This banner will disappear on 29 Jul."
+        "added_markets": "CRV will be added to this Perp Pool on 22 Aug, 08:00 AM UTC. This banner will disappear on 25 Aug."
       },
       {
-        "perp_pool_id": "1",
-        "show_until": "2024-07-15T08:00+00:00",
+        "perp_pool_id": "7",
+        "show_until": "2024-08-25T08:00+00:00",
         "title": "New Markets added",
-        "removed_markets": "[Ticker] Perp Market will be added to this Perp Pool on [Date]. This banner will disappear on [Date] 08:00 AM UTC."
+        "added_markets": "SUN will be added to this Perp Pool on 22 Aug, 08:00 AM UTC. This banner will disappear on 25 Aug."
+      },
+      {
+        "perp_pool_id": "4",
+        "show_until": "2024-08-30T08:00+00:00",
+        "title": "New Markets added",
+        "added_markets": "On 20 Aug, 08:00 AM UTC, this perp pool was renamed to 'Modular'. MNT, MANTA, ARB, OP were added to this Perp Pool"
+      },
+      {
+        "perp_pool_id": "6",
+        "show_until": "2024-08-30T08:00+00:00",
+        "title": "Markets removed",
+        "removed_markets": "On 20 Aug 8AM UTC, all markets in this perp pool will be moved to the Celestia Perp Pool to consolidate liquidity.",
+        "past_tense_text": "On 20 Aug 8AM UTC, all markets in this perp pool have been moved to the Celestia Perp Pool to consolidate liquidity."
       }
     ]
   },
