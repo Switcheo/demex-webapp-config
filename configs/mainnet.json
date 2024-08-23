@@ -339,9 +339,7 @@
   "perp_pools": {
     "incentives": {
       "proxy": "0x7b1C7216C117cC62D875e3086518B238392cf04d",
-      "distributors": [
-        "0x5268d461317f2f39b5023fCC25cFF31210C4b947"
-      ]
+      "distributors": ["0x5268d461317f2f39b5023fCC25cFF31210C4b947"]
     },
     "banners": [
       {
