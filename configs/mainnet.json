@@ -68,6 +68,32 @@
     "eth.1.2.942d87": 21,
     "usdc.1.2.343151": 22
   },
+  "perp_pool_banners": [
+    {
+      "perp_pool_id": "9",
+      "show_until": "2024-08-25T08:00+00:00",
+      "title": "New Markets added",
+      "added_markets": "CRV will be added to this Perp Pool on 22 Aug, 08:00 AM UTC. This banner will disappear on 25 Aug."
+    },
+    {
+      "perp_pool_id": "7",
+      "show_until": "2024-08-25T08:00+00:00",
+      "title": "New Markets added",
+      "added_markets": "SUN will be added to this Perp Pool on 22 Aug, 08:00 AM UTC. This banner will disappear on 25 Aug."
+    },
+    {
+      "perp_pool_id": "4",
+      "show_until": "2024-08-30T08:00+00:00",
+      "title": "New Markets added",
+      "added_markets": "On 20 Aug, 08:00 AM UTC, this perp pool was renamed to 'Modular'. MNT, MANTA, ARB, OP were added to this Perp Pool"
+    },
+    {
+      "perp_pool_id": "6",
+      "show_until": "2024-08-30T08:00+00:00",
+      "title": "Markets removed",
+      "removed_markets": "On 20 Aug 8AM UTC, all markets in this perp pool have been moved to the Celestia Perp Pool to consolidate liquidity."
+    }
+  ],
   "spot_history_market_list": {
     "cmkt/117": "BINANCE:ETHUSD",
     "cmkt/118": "BINANCE:BTCUSD",
