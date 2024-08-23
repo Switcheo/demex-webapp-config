@@ -49,6 +49,8 @@ interface PerpPoolBanner {
   title: string;
   removed_markets?: string;
   added_markets?: string;
+  action_trigger_date?: string;
+  past_tense_text?: string;
   subtext?: string;
 }
 
