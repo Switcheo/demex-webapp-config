@@ -369,22 +369,30 @@
     },
     "banners": [
       {
-        "perp_pool_id": "8",
-        "show_until": "2024-07-29T08:00+00:00",
-        "title": "New Markets added",
-        "added_markets": "ETC Perp Market will be added to this Perp Pool on 24 Jul, 08:00 AM UTC. This banner will disappear on 29 Jul."
-      },
-      {
         "perp_pool_id": "9",
-        "show_until": "2024-07-29T08:00+00:00",
+        "show_until": "2024-08-25T08:00+00:00",
         "title": "New Markets added",
-        "added_markets": "LDO Perp Market will be added to this Perp Pool on 24 Jul, 08:00 AM UTC. This banner will disappear on 29 Jul."
+        "added_markets": "CRV will be added to this Perp Pool on 22 Aug, 08:00 AM UTC. This banner will disappear on 25 Aug."
       },
       {
-        "perp_pool_id": "1",
-        "show_until": "2024-07-15T08:00+00:00",
+        "perp_pool_id": "7",
+        "show_until": "2024-08-25T08:00+00:00",
         "title": "New Markets added",
-        "removed_markets": "[Ticker] Perp Market will be added to this Perp Pool on [Date]. This banner will disappear on [Date] 08:00 AM UTC."
+        "added_markets": "SUN will be added to this Perp Pool on 22 Aug, 08:00 AM UTC. This banner will disappear on 25 Aug."
+      },
+      {
+        "perp_pool_id": "4",
+        "show_until": "2024-08-30T08:00+00:00",
+        "title": "New Markets added",
+        "added_markets": "On 20 Aug, 08:00 AM UTC, this perp pool was renamed to 'Modular'. MNT, MANTA, ARB, OP were added to this Perp Pool"
+      },
+      {
+        "perp_pool_id": "6",
+        "show_until": "2024-08-30T08:00+00:00",
+        "title": "Markets removed",
+        "removed_markets": "On 20 Aug 8AM UTC, all markets in this perp pool will be moved to the Celestia Perp Pool to consolidate liquidity.",
+        "action_trigger_date": "2024-08-20T08:00+00:00",
+        "past_tense_text": "On 20 Aug 8AM UTC, all markets in this perp pool have been moved to the Celestia Perp Pool to consolidate liquidity."
       }
     ]
   },

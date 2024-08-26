@@ -301,6 +301,15 @@
       "type": "string",
       "description": "The message shown on the banner describing markets being removed"
     },
+    "action_trigger_date": {
+      "type": "string",
+      "description": "The date and time when the action in the banner message is triggered. The past_tense_text will not be shown if this value is omitted",
+      "pattern": "^\\d{4}(-\\d\\d(-\\d\\d(T\\d\\d:\\d\\d(:\\d\\d)?(\\.\\d+)?(([+-]\\d\\d:\\d\\d)|Z)?)?)?)?$"
+    },
+    "past_tense_text": {
+      "type": "string",
+      "description": "The alternative message shown after the date of markets being added or removed has passed"
+    },
     "added_markets": {
       "type": "string",
       "description": "The message shown on the banner describing markets being added"
@@ -404,6 +413,9 @@
           },
           "added_markets": {
             "$ref": "#/$defs/added_markets"
+          },
+          "past_tense_text": {
+            "$ref": "#/$defs/past_tense_text"
           },
           "subtext": {
             "$ref": "#/$defs/subtext"
