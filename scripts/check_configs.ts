@@ -18,7 +18,6 @@ interface ConfigJSON {
   network_fees: {
     [denom: string]: number;
   };
-  perp_pool_banners: PerpPoolBanner[];
   demex_points_config: DemexPointsConfig;
   perp_pool_promo: {
     [perpPoolId: string]: PerpPoolPromo;
@@ -455,22 +454,6 @@ async function main() {
       })
 
       const perpPoolIds = perpPoolsQuery.pools.map((pool) => pool.poolId.toString())
-      const perpPoolBannerIds = Object.values(jsonData.perp_pool_banners).map((banner) => banner.perp_pool_id)
-
-      const hasInvalidPerpPoolBannerIds = checkValidEntries(perpPoolBannerIds, perpPoolIds)
-      const hasDuplicatePerpPoolBannerIds = checkDuplicateEntries(perpPoolBannerIds)
-
-      if (hasInvalidPerpPoolBannerIds.status && hasInvalidPerpPoolBannerIds.entry) {
-        let listOfInvalidIds: string = hasInvalidPerpPoolBannerIds.entry.join(", ");
-        console.error(`ERROR: ${network}.json has the following invalid perp pool ids under the perp_pool_banners field: ${listOfInvalidIds}`)
-        outcomeMap[network] = false;
-      }
-
-      if (hasDuplicatePerpPoolBannerIds.status && hasDuplicatePerpPoolBannerIds.entry) {
-        let listOfDuplicates: string = hasDuplicatePerpPoolBannerIds.entry.join(", ");
-        console.error(`ERROR: ${network}.json has duplicated perp pool banners for the following perp pool ids: ${listOfDuplicates}. Please make sure to input each perp pool banner only once in ${network}`);
-        outcomeMap[network] = false;
-      }
 
       if (network === CarbonSDK.Network.MainNet && !jsonData.demex_points_config) {
         console.error(`ERROR: ${network}.json is missing demex_points_config`)
@@ -600,7 +583,6 @@ async function main() {
             console.error(`ERROR: ${network}.json has duplicated perp pool banners for the following perp pool ids: ${listOfDuplicates}. Please make sure to input each perp pool banner only once in ${network}`);
             outcomeMap[network] = false;
           }
-
         }
       }
 
