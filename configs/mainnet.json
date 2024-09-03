@@ -185,6 +185,8 @@
     "cmkt/230": "#c83424",
     "cmkt/231": "#4dfba9",
     "cmkt/232": "#f9a755",
+    "cmkt/233": "#00e7c9",
+    "cmkt/234": "#00c8fc",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -343,30 +345,26 @@
     },
     "banners": [
       {
-        "perp_pool_id": "9",
-        "show_until": "2024-08-25T08:00+00:00",
-        "title": "New Markets added",
-        "added_markets": "CRV will be added to this Perp Pool on 22 Aug, 08:00 AM UTC. This banner will disappear on 25 Aug."
+        "perp_pool_id": "8",
+        "show_until": "2024-09-05T08:00+00:00",
+        "title": "New Markets Added",
+        "added_markets": "INJ (Injective) perp will be added to this pool on 5 Sep 08:00 AM UTC.",
+        "action_trigger_date": "2024-09-20T08:00+00:00",
+        "past_tense_text": "INJ (Injective) perp was added to this pool on 5 Sep 08:00 AM UTC."
       },
       {
-        "perp_pool_id": "7",
-        "show_until": "2024-08-25T08:00+00:00",
-        "title": "New Markets added",
-        "added_markets": "SUN will be added to this Perp Pool on 22 Aug, 08:00 AM UTC. This banner will disappear on 25 Aug."
+        "perp_pool_id": "3",
+        "show_until": "2024-09-05T08:00+00:00",
+        "title": "New Markets Added",
+        "added_markets": "RUNE (Thorchain) perp will be added to this pool on 5 Sep 08:00 AM UTC.",
+        "action_trigger_date": "2024-09-20T08:00+00:00",
+        "past_tense_text": "RUNE (Thorchain) perp was added to this pool on 5 Sep 08:00 AM UTC."
       },
       {
         "perp_pool_id": "4",
         "show_until": "2024-08-30T08:00+00:00",
         "title": "New Markets added",
-        "added_markets": "On 20 Aug, 08:00 AM UTC, this perp pool was renamed to 'Modular'. MNT, MANTA, ARB, OP were added to this Perp Pool"
-      },
-      {
-        "perp_pool_id": "6",
-        "show_until": "2024-08-30T08:00+00:00",
-        "title": "Markets removed",
-        "removed_markets": "On 20 Aug 8AM UTC, all markets in this perp pool will be moved to the Celestia Perp Pool to consolidate liquidity.",
-        "action_trigger_date": "2024-08-20T08:00+00:00",
-        "past_tense_text": "On 20 Aug 8AM UTC, all markets in this perp pool have been moved to the Celestia Perp Pool to consolidate liquidity."
+        "removed_markets": "On 20 Aug, 08:00 AM UTC, this perp pool was renamed to 'Modular'. MNT, MANTA, ARB, OP were added to this Perp Pool"
       }
     ]
   },
