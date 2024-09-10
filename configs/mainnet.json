@@ -113,7 +113,8 @@
     "cmkt/207": "BINANCE:1000BONKUSDT.P",
     "cmkt/209": "BINANCE:1000FLOKIUSDT.P",
     "cmkt/212": "BYBIT:POPCATUSDT",
-    "cmkt/226": "BINANCE:SOLETH"
+    "cmkt/226": "BINANCE:SOLETH",
+    "cmkt/235": "BINANCE:NEIROETHUSDT.P"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -187,6 +188,7 @@
     "cmkt/232": "#f9a755",
     "cmkt/233": "#00e7c9",
     "cmkt/234": "#00c8fc",
+    "cmkt/235": "#baa032",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -345,19 +347,19 @@
     },
     "banners": [
       {
-        "perp_pool_id": "8",
-        "show_until": "2024-09-05T08:00+00:00",
+        "perp_pool_id": "7",
+        "show_until": "2024-09-20T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "INJ (Injective) perp will be added to this pool on 5 Sep 08:00 AM UTC.",
-        "action_trigger_date": "2024-09-20T08:00+00:00",
-        "past_tense_text": "INJ (Injective) perp was added to this pool on 5 Sep 08:00 AM UTC."
+        "added_markets": "NEIROETH (NEIRO on ETH) perp will be added to this pool on 10 Sep 08:00 AM UTC.",
+        "action_trigger_date": "2024-09-10T08:00+00:00",
+        "past_tense_text": "NEIROETH (NEIRO on ETH) perp was added to this pool on 10 Sep 08:00 AM UTC."
       },
       {
         "perp_pool_id": "3",
-        "show_until": "2024-09-05T08:00+00:00",
+        "show_until": "2024-09-20T08:00+00:00",
         "title": "New Markets Added",
         "added_markets": "RUNE (Thorchain) perp will be added to this pool on 5 Sep 08:00 AM UTC.",
-        "action_trigger_date": "2024-09-20T08:00+00:00",
+        "action_trigger_date": "2024-09-05T08:00+00:00",
         "past_tense_text": "RUNE (Thorchain) perp was added to this pool on 5 Sep 08:00 AM UTC."
       },
       {
