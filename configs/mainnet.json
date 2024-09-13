@@ -281,7 +281,8 @@
       "Osmosis": "channel-5"
     },
     "Terra": {
-      "Noble": "channel-253"
+      "Noble": "channel-253",
+      "Carbon": "channel-36"
     }
   },
   "additional_ibc_token_config": [
