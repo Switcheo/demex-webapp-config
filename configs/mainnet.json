@@ -306,6 +306,10 @@
       "chainRoutes": ["Osmosis"]
     },
     {
+      "baseDenom": "swth",
+      "chainRoutes": ["Terra"]
+    },
+    {
       "baseDenom": "uusdc",
       "chainRoutes": ["Osmosis", "Noble"]
     },
