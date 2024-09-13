@@ -303,7 +303,7 @@
     },
     {
       "baseDenom": "swth",
-      "chainRoutes": ["Osmosis", "Terra"]
+      "chainRoutes": ["Osmosis"]
     },
     {
       "baseDenom": "uusdc",
