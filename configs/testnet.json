@@ -30,5 +30,13 @@
     "promoMarkets": ["ATOM_PERP.CGUSD"],
     "currentPrizeSymbol": "USDC",
     "currentCompPerpPoolId": 1
-  }
+  },
+  "perp_pools": {
+    "incentives": {
+      "proxy": "0x6245ED6419B5cAcfc94364c4C23B93edFCC67bBE",
+      "distributors": ["0x6BEb4e464C4e1dE744704353aA4761D93c90c7fa"]
+    },
+    "banners": []
+  },
+  "wswth_contract": "0x325f60362040B40DC2f3C5652095Ed262cf581F7"
 }
