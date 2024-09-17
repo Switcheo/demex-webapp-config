@@ -371,7 +371,7 @@
         "past_tense_text": "POL (ex-matic) perp was added to this pool on 19 Sep 08:00 AM UTC."
       },
       {
-        "perp_pool_id": "4",
+        "perp_pool_id": "1",
         "show_until": "2024-08-30T08:00+00:00",
         "title": "New Markets added",
         "removed_markets": "On 20 Aug, 08:00 AM UTC, this perp pool was renamed to 'Modular'. MNT, MANTA, ARB, OP were added to this Perp Pool"
