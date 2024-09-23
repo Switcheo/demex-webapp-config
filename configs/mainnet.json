@@ -192,6 +192,8 @@
     "cmkt/235": "#baa032",
     "cmkt/236": "#8f33d4",
     "cmkt/237": "#70c9bb",
+    "cmkt/238": "#5047e5",
+    "cmkt/239": "#fe6700",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -355,20 +357,20 @@
     },
     "banners": [
       {
-        "perp_pool_id": "8",
+        "perp_pool_id": "7",
         "show_until": "2024-09-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "KAS (KASPA) perp will be added to this pool on 19 Sep 08:00 AM UTC.",
-        "action_trigger_date": "2024-09-19T08:00+00:00",
-        "past_tense_text": "KAS (KASPA) perp was added to this pool on 19 Sep 08:00 AM UTC."
+        "added_markets": "AR (Arweave) and FET (Fetch) perp market will be added to this pool on 22 Sep 08:00 AM UTC.",
+        "action_trigger_date": "2024-09-22T08:00+00:00",
+        "past_tense_text": "AR (Arweave) and FET (Fetch) perp market was added to this pool on 22 Sep 08:00 AM UTC."
       },
       {
-        "perp_pool_id": "4",
-        "show_until": "2024-09-30T08:00+00:00",
+        "perp_pool_id": "9",
+        "show_until": "2024-10-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "POL (ex-matic) perp will be added to this pool on 19 Sep 08:00 AM UTC.",
-        "action_trigger_date": "2024-09-19T08:00+00:00",
-        "past_tense_text": "POL (ex-matic) perp was added to this pool on 19 Sep 08:00 AM UTC."
+        "added_markets": "ETHFI (EtherFi) and REZ (Renzo) perp market will be added to this pool on 26 Sep 08:00 AM UTC.",
+        "action_trigger_date": "2024-09-26T08:00+00:00",
+        "past_tense_text": "ETHFI (EtherFi) and REZ (Renzo) perp market was added to this pool on 26 Sep 08:00 AM UTC."
       },
       {
         "perp_pool_id": "1",
