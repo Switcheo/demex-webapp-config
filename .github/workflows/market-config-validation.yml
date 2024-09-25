@@ -25,5 +25,5 @@ jobs:
           INPUT_SCHEMA: config.schema.json
           INPUT_JSONS: configs/mainnet.json,configs/testnet.json,configs/devnet.json
       
-      - name: Test market entries for invalid/duplicate markets
+      - name: Test configs for invalid/duplicate entries
         run: yarn check-configs mainnet testnet devnet # check using check_configs.ts script
