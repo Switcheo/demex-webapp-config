@@ -472,6 +472,16 @@
         }
       },
       "additionalProperties": false
+    },
+    "spot_pool_config": {
+      "type": "object",
+      "description": "Config for spot pool",
+      "properties": {
+        "show_apr_tooltip": {
+          "type": "boolean",
+          "description": "Show APR tooltip on spot pool table"
+        }
+      }
     }
   }
 }

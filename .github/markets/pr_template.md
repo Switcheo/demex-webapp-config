@@ -26,6 +26,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 | `native_token_contracts_map` | `object` | false    | Map of token denoms to their respective contract addresses on the native chain. |       |
 | `native_depositor_contracts_map`  | `object`                 | false    | Map of axelar connection ids to their respective native depositor contract addresses      
 |`market_promo`   |`MarketPromo`   |false   |Map of Objects that contains market promo parameters for each market   |If the `market_promo` property is omitted, no promo will be shown. The key of each entry is the ids of the market with existing promo.   |
+|`spot_pool_config`   |`SpotPoolConfig`   |false   |Object that contains the configs for Spot Pools   |
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |

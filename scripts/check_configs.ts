@@ -31,6 +31,7 @@ interface ConfigJSON {
   wswth_contract?: string;
   market_banners?: MarketBanner[];
   market_promo?: {[marketId: string]: MarketPromo};
+  spot_pool_config: SpotPoolConfig;
 }
 
 interface InvalidEntry {
@@ -114,6 +115,10 @@ interface MarketPromo {
   start: string;
   end: string;
   tooltip?: string;
+}
+
+interface SpotPoolConfig {
+  show_apr_tooltip: boolean;
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -673,6 +678,15 @@ async function main() {
 
       if(jsonData.market_promo && !isValidMarketPromo(jsonData.market_promo, network, marketIds)) {
         outcomeMap[network] = false;
+      }
+      
+      // check for spot pool config
+      if (jsonData.spot_pool_config) {
+        const spotPoolConfig = jsonData.spot_pool_config
+        if (spotPoolConfig.show_apr_tooltip === undefined) {
+          console.error(`ERROR: ${network}.json has missing showAPRTooltip in spot_pool_config`);
+          outcomeMap[network] = false;
+        }
       }
 
       // external chain channels check
