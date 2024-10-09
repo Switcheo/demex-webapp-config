@@ -28,5 +28,8 @@
   },
   "cross_selling_source_tokens": [],
   "external_chain_channels": {},
-  "additional_ibc_token_config": []
+  "additional_ibc_token_config": [],
+  "spot_pool_config": {
+    "show_apr_tooltip": true
+  }
 }
