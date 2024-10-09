@@ -38,5 +38,8 @@
     },
     "banners": []
   },
-  "wswth_contract": "0x325f60362040B40DC2f3C5652095Ed262cf581F7"
+  "wswth_contract": "0x325f60362040B40DC2f3C5652095Ed262cf581F7",
+  "spot_pool_config": {
+    "show_apr_tooltip": true
+  }
 }
