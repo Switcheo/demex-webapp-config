@@ -193,8 +193,11 @@
     "cmkt/233": "#00e7c9",
     "cmkt/234": "#00c8fc",
     "cmkt/235": "#baa032",
-    "cmkt/236": "#8f33d4",
-    "cmkt/237": "#70c9bb",
+    "cmkt/238": "#8f33d4",
+    "cmkt/239": "#70c9bb",
+    "cmkt/240": "#5046e4",
+    "cmkt/241": "#f06202",
+    "cmkt/242": "#1c1061",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -354,19 +357,19 @@
   "perp_pools": {
     "incentives": {
       "proxy": "0x7b1C7216C117cC62D875e3086518B238392cf04d",
-      "distributors": ["0x93903Ad6599271b2c23b5e5065da835dee2105b7", "0xD3997de7D72943d62a34f1089E52027C86b4764F"]
+      "distributors": ["0x93903Ad6599271b2c23b5e5065da835dee2105b7", "0xD3997de7D72943d62a34f1089E52027C86b4764F", "0x06F2d494531eDCA39aA51B1C3EfB51dE9F1fA17d", "0xF1bE2Db4A62e3AeDEd389224B15b370E27e1e9A1", "0x6a09bC65Ef703466187f59083239399e1948fEbB", "0x8c6A1123744a78bf48B7b58Ae0ce02F364c30F8e", "0x4Ea7639a37d229914F64e832bF5038Bc634E51Fd"]
     },
     "banners": [
       {
-        "perp_pool_id": "8",
-        "show_until": "2024-09-30T08:00+00:00",
+        "perp_pool_id": "4",
+        "show_until": "2024-10-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "KAS (KASPA) perp will be added to this pool on 19 Sep 08:00 AM UTC.",
-        "action_trigger_date": "2024-09-19T08:00+00:00",
-        "past_tense_text": "KAS (KASPA) perp was added to this pool on 19 Sep 08:00 AM UTC."
+        "added_markets": "EIGEN (EIGEN) perp will be added to this pool on 8 Oct 08:00 AM UTC.",
+        "action_trigger_date": "2024-10-30T08:00+00:00",
+        "past_tense_text": "EIGEN (EIGEN) perp was added to this pool on 8 Oct 08:00 AM UTC."
       },
       {
-        "perp_pool_id": "4",
+        "perp_pool_id": "8",
         "show_until": "2024-09-30T08:00+00:00",
         "title": "New Markets Added",
         "added_markets": "POL (ex-matic) perp will be added to this pool on 19 Sep 08:00 AM UTC.",
