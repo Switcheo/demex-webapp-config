@@ -851,12 +851,11 @@
     axios "^0.27.2"
     long "^4.0.0"
 
-"@keplr-wallet/types@^0.11.64":
-  version "0.11.64"
-  resolved "https://registry.yarnpkg.com/@keplr-wallet/types/-/types-0.11.64.tgz#5a308c8c019b4e18f894e0f35f0904b60134d605"
-  integrity sha512-GgzeLDHHfZFyne3O7UIfFHj/uYqVbxAZI31RbBwt460OBbvwQzjrlZwvJW3vieWRAgxKSITjzEDBl2WneFTQdQ==
+"@keplr-wallet/types@^0.12.107":
+  version "0.12.130"
+  resolved "https://registry.yarnpkg.com/@keplr-wallet/types/-/types-0.12.130.tgz#1179a5daf2fabaa5d2f3c068b3c816502f7b8cba"
+  integrity sha512-bUJ6JGpMYUAbPu6SdSG9HjAApgZirMnX4x+1Y9fwC5BCRP2zImYoleTSp+FNbG26iwfN+hUdM0uAcPWsKsfENg==
   dependencies:
-    axios "^0.27.2"
     long "^4.0.0"
 
 "@keplr-wallet/unit@0.11.16":
@@ -2252,14 +2251,10 @@ callsite@1.0.0:
   resolved "https://registry.yarnpkg.com/callsite/-/callsite-1.0.0.tgz#280398e5d664bd74038b6f0905153e6e8af1bc20"
   integrity sha512-0vdNRFXn5q+dtOqjfFtmtlI9N2eVZ7LMyEV2iKC5mEEFvSg/69Ml6b/WU2qF8W1nLRa0wiSrDT3Y5jOHZCwKPQ==
 
-camelcase@^6.0.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-6.3.0.tgz#5685b95eb209ac9c0c177467778c9c84df58ba9a"
-  integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
-carbon-js-sdk@^0.11.6:
-  version "0.11.6"
-  resolved "https://registry.yarnpkg.com/carbon-js-sdk/-/carbon-js-sdk-0.11.6.tgz#24ed05ba75107b7e60e763bcb03305a58773369d"
-  integrity sha512-DRk2yHMOEIUfeMIqxHEnML4qT6xXCqYCb0SHlk+NLZEwFPFT0e4LWKbfIez0fj4Y7kSaozfzz7zBHZVz5ab61w==
+carbon-js-sdk@^0.11.23:
+  version "0.11.23"
+  resolved "https://registry.yarnpkg.com/carbon-js-sdk/-/carbon-js-sdk-0.11.23.tgz#8c35301bbc958df5b08ac1065d170dd34fe0e9c1"
+  integrity sha512-ngAB7JLb3U+KLjFy+AYiL3tXKRGZrtWGpoFfejkvJoIBko1i25KVIH16G+9HvUqdYlUVU02BgTm80jPKxfX72w==
   dependencies:
     "@cityofzion/neon-api" "^4.9.0"
     "@cityofzion/neon-core" "^4.9.0"
@@ -2269,7 +2264,7 @@ carbon-js-sdk@^0.11.6:
     "@cosmos-kit/leap" "^0.15.12"
     "@improbable-eng/grpc-web" "^0.15.0"
     "@improbable-eng/grpc-web-node-http-transport" "^0.15.0"
-    "@keplr-wallet/types" "^0.11.64"
+    "@keplr-wallet/types" "^0.12.107"
     "@ledgerhq/hw-transport-webhid" "^6.20.0"
     "@ledgerhq/hw-transport-webusb" "^6.20.0"
     "@metamask/detect-provider" "^2.0.0"
