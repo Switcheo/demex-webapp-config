@@ -359,7 +359,7 @@
     },
     "banners": [
       {
-        "perp_pool_id": "4",
+        "perp_pool_id": "9",
         "show_until": "2024-10-30T08:00+00:00",
         "title": "New Markets Added",
         "added_markets": "UNI (Uniswap) perp will be added to this pool on 17 Oct 08:00 AM UTC.",
