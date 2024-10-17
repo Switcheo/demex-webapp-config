@@ -195,6 +195,7 @@
     "cmkt/240": "#5046e4",
     "cmkt/241": "#f06202",
     "cmkt/242": "#1c1061",
+    "cmkt/243": "#f80cb4",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -358,12 +359,12 @@
     },
     "banners": [
       {
-        "perp_pool_id": "4",
+        "perp_pool_id": "9",
         "show_until": "2024-10-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "EIGEN (EIGEN) perp will be added to this pool on 8 Oct 08:00 AM UTC.",
+        "added_markets": "UNI (Uniswap) perp will be added to this pool on 17 Oct 08:00 AM UTC.",
         "action_trigger_date": "2024-10-30T08:00+00:00",
-        "past_tense_text": "EIGEN (EIGEN) perp was added to this pool on 8 Oct 08:00 AM UTC."
+        "past_tense_text": "UNI (Uniswap) perp was added to this pool on 17 Oct 08:00 AM UTC."
       },
       {
         "perp_pool_id": "8",
