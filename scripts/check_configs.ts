@@ -28,7 +28,8 @@ interface ConfigJSON {
   additional_ibc_token_config: AdditionalIbcTokenConfigItem[];
   demex_trading_league_config?: DemexTradingLeagueConfig;
   perp_pools: PerpPoolConfig;
-  wswth_contract?: string
+  wswth_contract?: string;
+  spot_pool_config: SpotPoolConfig;
 }
 
 interface InvalidEntry {
@@ -98,6 +99,10 @@ interface Incentives {
 interface PerpPoolConfig {
   incentives: Incentives
   banners: PerpPoolBanner[]
+}
+
+interface SpotPoolConfig {
+  show_apr_tooltip: boolean;
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -590,6 +595,15 @@ async function main() {
         const wSWTH = jsonData.wswth_contract
         if (!checkAddressIsEVM(wSWTH)) {
           console.error(`ERROR: ${network}.json has invalid EVM address in perp pools incentives wswth_contract configs: ${wSWTH}`);
+          outcomeMap[network] = false;
+        }
+      }
+
+      // check for spot pool config
+      if (jsonData.spot_pool_config) {
+        const spotPoolConfig = jsonData.spot_pool_config
+        if (spotPoolConfig.show_apr_tooltip === undefined) {
+          console.error(`ERROR: ${network}.json has missing showAPRTooltip in spot_pool_config`);
           outcomeMap[network] = false;
         }
       }
