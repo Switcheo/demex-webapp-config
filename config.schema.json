@@ -221,6 +221,34 @@
     "type": "string",
     "description": "ERC-20 contract for wrapped SWTH"
   },
+  "market_banners": {
+    "type": "array",
+    "description": "List of banner information to be displayed over the TradingView chart for the required market",
+    "items": {
+      "type": "object",
+      "required": [
+        "market_id",
+        "content"
+      ],
+      "properties": {
+        "market_id": {
+          "$ref": "#/$defs/market_id"
+        },
+        "show_from": {
+          "$ref": "#/$defs/show_from"
+        },
+        "show_until": {
+          "$ref": "#/$defs/show_until"
+        },
+        "content": {
+          "$ref": "#/$defs/content"
+        },
+        "hideable": {
+          "$ref": "#/$defs/hideable"
+        }
+      }
+    }
+  },
   "$defs": {
     "prelaunch_market": {
       "type": "string",
@@ -279,7 +307,7 @@
       "type": "string",
       "description": "The message shown on the banner describing markets being added"
     },
-    "subtext": {
+    "subtext": { 
       "type": "string",
       "description": "The subtext shown on the banner"
     },
@@ -309,6 +337,18 @@
       "type": "string",
       "description": "The end time of the tyepform survey",
       "pattern": "^\\d{4}(-\\d\\d(-\\d\\d(T\\d\\d:\\d\\d(:\\d\\d)?(\\.\\d+)?(([+-]\\d\\d:\\d\\d)|Z)?)?)?)?$"
+    },
+    "market_id": {
+      "type": "string",
+      "description": "Market id (type: string)"
+    },
+    "hideable": {
+      "type": "boolean",
+      "description": "Whether the banner can be hidden by the user"
+    },
+    "content": {
+      "type": "string",
+      "description": "The content shown on the banner"
     },
     "additional_ibc_token_info": {
       "type": "object",
