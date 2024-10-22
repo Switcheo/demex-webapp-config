@@ -310,6 +310,18 @@
       "description": "The end time of the tyepform survey",
       "pattern": "^\\d{4}(-\\d\\d(-\\d\\d(T\\d\\d:\\d\\d(:\\d\\d)?(\\.\\d+)?(([+-]\\d\\d:\\d\\d)|Z)?)?)?)?$"
     },
+    "market_id": {
+      "type": "string",
+      "description": "Market id (type: string)"
+    },
+    "hideable": {
+      "type": "boolean",
+      "description": "Whether the banner can be hidden by the user"
+    },
+    "content": {
+      "type": "string",
+      "description": "The content shown on the banner"
+    },
     "additional_ibc_token_info": {
       "type": "object",
       "description": "Information for token that (1) is not added on Carbon blockchain or (2) requires packet forwarding.",
@@ -384,6 +396,34 @@
           },
           "subtext": {
             "$ref": "#/$defs/subtext"
+          }
+        }
+      }
+    },
+    "market_banners": {
+      "type": "array",
+      "description": "List of market banners",
+      "items": {
+        "type": "object",
+        "required": [
+          "market_id",
+          "content"
+        ],
+        "properties": {
+          "market_id": {
+            "$ref": "#/$defs/market_id"
+          },
+          "show_from": {
+            "$ref": "#/$defs/show_from"
+          },
+          "show_until": {
+            "$ref": "#/$defs/show_until"
+          },
+          "content": {
+            "$ref": "#/$defs/content"
+          },
+          "hideable": {
+            "$ref": "#/$defs/hideable"
           }
         }
       }

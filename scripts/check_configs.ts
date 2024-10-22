@@ -28,7 +28,8 @@ interface ConfigJSON {
   additional_ibc_token_config: AdditionalIbcTokenConfigItem[];
   demex_trading_league_config?: DemexTradingLeagueConfig;
   perp_pools: PerpPoolConfig;
-  wswth_contract?: string
+  wswth_contract?: string;
+  market_banners?: MarketBanner[];
 }
 
 interface InvalidEntry {
@@ -98,6 +99,14 @@ interface Incentives {
 interface PerpPoolConfig {
   incentives: Incentives
   banners: PerpPoolBanner[]
+}
+
+interface MarketBanner {
+  market_id: string;
+  show_from: string;
+  show_until: string;
+  content: string;
+  hideable: boolean;
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -590,6 +599,26 @@ async function main() {
         const wSWTH = jsonData.wswth_contract
         if (!checkAddressIsEVM(wSWTH)) {
           console.error(`ERROR: ${network}.json has invalid EVM address in perp pools incentives wswth_contract configs: ${wSWTH}`);
+          outcomeMap[network] = false;
+        }
+      }
+
+      if(jsonData.market_banners) {
+        const marketBanners = jsonData.market_banners
+        const marketBannerIds = marketBanners.map((banner) => banner.market_id)
+
+        const hasInvalidMarketBannerIds = checkValidEntries(marketBannerIds, marketIds)
+        const hasDuplicateMarketBannerIds = checkDuplicateEntries(marketBannerIds)
+
+        if (hasInvalidMarketBannerIds.status && hasInvalidMarketBannerIds.entry) {
+          let listOfInvalidIds: string = hasInvalidMarketBannerIds.entry.join(", ");
+          console.error(`ERROR: ${network}.json has the following invalid market ids under the market_banners field: ${listOfInvalidIds}`)
+          outcomeMap[network] = false;
+        }
+
+        if (hasDuplicateMarketBannerIds.status && hasDuplicateMarketBannerIds.entry) {
+          let listOfDuplicates: string = hasDuplicateMarketBannerIds.entry.join(", ");
+          console.error(`ERROR: ${network}.json has duplicated market banners for the following market ids: ${listOfDuplicates}. Please make sure to input each market banner only once in ${network}`);
           outcomeMap[network] = false;
         }
       }
