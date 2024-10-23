@@ -106,6 +106,7 @@ interface MarketBanner {
   show_from: string;
   show_until: string;
   content: string;
+  hideable: boolean;
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure

@@ -44,7 +44,8 @@
       "market_id": "cmkt/2",
       "show_from": "2024-09-30T08:00+00:00",
       "show_until": "2024-10-30T08:00+00:00",
-      "content": "Hello World"
+      "content": "Hello World",
+      "hideable": true
     }
   ]
 }
