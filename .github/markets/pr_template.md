@@ -22,6 +22,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`demex_trading_league_config` |`DemexTradingLeagueConfig` |false |Object that contains the parameters for the current trading league. |
 |`perp_pools`   |`PerpPoolConfig`   |false   |Object that contains the configs for Perp Pools   |
 |`wswth_contract`   |`string`   |false   |wSWTH ERC-20 contract.   |
+|`market_banners`   |`object[]`   |true   |market banner configs.   |
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
