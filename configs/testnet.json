@@ -33,8 +33,8 @@
   },
   "perp_pools": {
     "incentives": {
-      "proxy": "0x8D1837431E2dd6C180aF5d0e65bFdeBe39eaf1d8",
-      "distributors": ["0x55Fc9a3cfA7BcE98BEeF143c7d7F4Df3A29a626D"]
+      "proxy": "0x74261efC64caE332E912F5bc645e4A9dcaC5EFaa",
+      "distributors": ["0x0c1f4B22A2B86971ee8581684bBC500b2E824559"]
     },
     "banners": []
   },
