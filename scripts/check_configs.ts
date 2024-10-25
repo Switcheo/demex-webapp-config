@@ -103,10 +103,10 @@ interface PerpPoolConfig {
 
 interface MarketBanner {
   market_id: string;
-  show_from: string;
-  show_until: string;
+  show_from?: string;
+  show_until?: string;
   content: string;
-  hideable: boolean;
+  hideable?: boolean;
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -286,6 +286,25 @@ function isValidDemexTradingLeagueConfig(
     return false;
   }
 
+  return true;
+}
+
+function isValidMarketBanners(marketBanners: MarketBanner[], network: CarbonSDK.Network, marketIds: string[]): boolean {
+  const marketBannerIds = marketBanners.map((banner) => banner.market_id);
+  const hasInvalidMarketBannerIds = checkValidEntries(marketBannerIds, marketIds);
+  const hasDuplicateMarketBannerIds = checkDuplicateEntries(marketBannerIds);
+
+  if (hasInvalidMarketBannerIds.status && hasInvalidMarketBannerIds.entry) {
+    let listOfInvalidIds: string = hasInvalidMarketBannerIds.entry.join(", ");
+    console.error(`ERROR: ${network}.json has the following invalid market ids under the market_banners field: ${listOfInvalidIds}`);
+    return false;
+  }
+
+  if (hasDuplicateMarketBannerIds.status && hasDuplicateMarketBannerIds.entry) {
+    let listOfDuplicates: string = hasDuplicateMarketBannerIds.entry.join(", ");
+    console.error(`ERROR: ${network}.json has duplicated market banners for the following market ids: ${listOfDuplicates}. Please make sure to add only 1 market banner for each market id in ${network}.json`);
+    return false;
+  }
   return true;
 }
 
@@ -604,21 +623,7 @@ async function main() {
       }
 
       if(jsonData.market_banners) {
-        const marketBanners = jsonData.market_banners
-        const marketBannerIds = marketBanners.map((banner) => banner.market_id)
-
-        const hasInvalidMarketBannerIds = checkValidEntries(marketBannerIds, marketIds)
-        const hasDuplicateMarketBannerIds = checkDuplicateEntries(marketBannerIds)
-
-        if (hasInvalidMarketBannerIds.status && hasInvalidMarketBannerIds.entry) {
-          let listOfInvalidIds: string = hasInvalidMarketBannerIds.entry.join(", ");
-          console.error(`ERROR: ${network}.json has the following invalid market ids under the market_banners field: ${listOfInvalidIds}`)
-          outcomeMap[network] = false;
-        }
-
-        if (hasDuplicateMarketBannerIds.status && hasDuplicateMarketBannerIds.entry) {
-          let listOfDuplicates: string = hasDuplicateMarketBannerIds.entry.join(", ");
-          console.error(`ERROR: ${network}.json has duplicated market banners for the following market ids: ${listOfDuplicates}. Please make sure to input each market banner only once in ${network}`);
+        if(!isValidMarketBanners(jsonData.market_banners, network, marketIds)) {
           outcomeMap[network] = false;
         }
       }
