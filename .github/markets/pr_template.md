@@ -22,7 +22,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`demex_trading_league_config` |`DemexTradingLeagueConfig` |false |Object that contains the parameters for the current trading league. |
 |`perp_pools`   |`PerpPoolConfig`   |false   |Object that contains the configs for Perp Pools   |
 |`wswth_contract`   |`string`   |false   |wSWTH ERC-20 contract.   |
-|`market_banners`   |`object[]`   |true   |market banner configs.   |
+|`market_banners`   |`MarketBanner[]`   |true   |market banner configs.   |
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
@@ -95,4 +95,4 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`show_from`   |`string`   |false   |The date and time when the market banner is scheduled to begin displaying. |If not provided, the banner will be shown immediately.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
 |`show_until`   |`string`   |false   |The date and time when the market banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) | 
 |`content`   |`string`   |true   |The content shown on the market banner. | 
-|`hideable`   |`boolean`   |false   |This flag to show or hide close button on banner | 
+|`hideable`   |`boolean`   |false   |Indicates if user can hide the banner by clicking on the close button |If set to `false`, the close button will not be rendered on the banner, and user will not be able to dismiss the banner. |

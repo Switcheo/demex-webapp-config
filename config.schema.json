@@ -348,7 +348,7 @@
     },
     "content": {
       "type": "string",
-      "description": "The content shown on the banner"
+      "description": "The content shown on the banner, we can render hyperlink in the content eg: You can visit [here](url)"
     },
     "additional_ibc_token_info": {
       "type": "object",

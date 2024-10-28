@@ -622,10 +622,8 @@ async function main() {
         }
       }
 
-      if(jsonData.market_banners) {
-        if(!isValidMarketBanners(jsonData.market_banners, network, marketIds)) {
-          outcomeMap[network] = false;
-        }
+      if(jsonData.market_banners && !isValidMarketBanners(jsonData.market_banners, network, marketIds)) {
+        outcomeMap[network] = false;
       }
 
       // external chain channels check
