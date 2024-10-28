@@ -36,6 +36,13 @@
       "show_until": "2024-10-30T08:00+00:00",
       "content": "Hello World",
       "hideable": true
+    },
+    {
+      "market_id": "swth_eth",
+      "show_from": "2024-09-30T08:00+00:00",
+      "show_until": "2024-10-30T08:00+00:00",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. https://github.com/Switcheo/switcheo-disco/pull/3609 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. https://www.notion.so/switcheo/Add-banners-to-markets-1233f49505a4804fa72de81e8a5c42df Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ",
+      "hideable": true
     }
   ]
 }
