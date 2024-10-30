@@ -419,7 +419,9 @@ async function main() {
       const transferOptionsArr = Object.keys(jsonData.transfer_options)
       const ibcBridgeNames = sdk.token.getIbcBlockchainNames();
       if (!ibcBridgeNames.includes("Carbon")) ibcBridgeNames.push("Carbon");
-      const validTransferOptionChains = sdk.token.getPolynetworkBlockchainNames().concat(ibcBridgeNames);
+      const validTransferOptionChains = sdk.token.getPolynetworkBlockchainNames()
+        .concat(sdk.token.getAxelarBlockchainNames())
+        .concat(ibcBridgeNames);
 
       const hasInvalidChains = checkValidEntries(transferOptionsArr, validTransferOptionChains);
       if (hasInvalidChains.status && hasInvalidChains.entry) {
