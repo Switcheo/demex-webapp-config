@@ -117,7 +117,9 @@
     "cmkt/212": "BYBIT:POPCATUSDT",
     "cmkt/226": "BINANCE:SOLETH",
     "cmkt/235": "BINANCE:NEIROETHUSDT.P",
-    "cmkt/237": "CRYPTO:KASUSD"
+    "cmkt/237": "CRYPTO:KASUSD",
+    "cmkt/244": "OKX:GRASSUSDT",
+    "cmkt/245": "BINANCE:GOATUSDT.P"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -197,6 +199,9 @@
     "cmkt/240": "#5046e4",
     "cmkt/241": "#f06202",
     "cmkt/242": "#1c1061",
+    "cmkt/243": "#f80cb4",
+    "cmkt/244": "#aaec0f",
+    "cmkt/245": "#59615e",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -360,20 +365,20 @@
     },
     "banners": [
       {
-        "perp_pool_id": "4",
-        "show_until": "2024-10-30T08:00+00:00",
+        "perp_pool_id": "5",
+        "show_until": "2024-11-14T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "EIGEN (EIGEN) perp will be added to this pool on 8 Oct 08:00 AM UTC.",
-        "action_trigger_date": "2024-10-30T08:00+00:00",
-        "past_tense_text": "EIGEN (EIGEN) perp was added to this pool on 8 Oct 08:00 AM UTC."
+        "added_markets": "GRASS (Grass) perp will be added to this pool on 28 Oct 02:00 PM UTC.",
+        "action_trigger_date": "2024-10-28T08:00+00:00",
+        "past_tense_text": "GRASS (Grass) perp was added to this pool on 28 Oct 02:00 PM UTC."
       },
       {
         "perp_pool_id": "8",
-        "show_until": "2024-09-30T08:00+00:00",
+        "show_until": "2024-11-14T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "POL (ex-matic) perp will be added to this pool on 19 Sep 08:00 AM UTC.",
-        "action_trigger_date": "2024-09-19T08:00+00:00",
-        "past_tense_text": "POL (ex-matic) perp was added to this pool on 19 Sep 08:00 AM UTC."
+        "added_markets": "GOAT (Goatseus Maximus) perp will be added to this pool on 29 Oct 08:00 AM UTC.",
+        "action_trigger_date": "2024-10-29T08:00+00:00",
+        "past_tense_text": "GOAT (Goatseus Maximus) perp was added to this pool on 29 Oct 08:00 AM UTC."
       },
       {
         "perp_pool_id": "1",

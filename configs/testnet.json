@@ -33,10 +33,10 @@
   },
   "perp_pools": {
     "incentives": {
-      "proxy": "0x6245ED6419B5cAcfc94364c4C23B93edFCC67bBE",
-      "distributors": ["0x6BEb4e464C4e1dE744704353aA4761D93c90c7fa"]
+      "proxy": "0x74261efC64caE332E912F5bc645e4A9dcaC5EFaa",
+      "distributors": ["0x0c1f4B22A2B86971ee8581684bBC500b2E824559"]
     },
     "banners": []
   },
-  "wswth_contract": "0x325f60362040B40DC2f3C5652095Ed262cf581F7"
+  "wswth_contract": "0xb4A23b09eBBA7dbA01A7bF95EFd41b3600fF22F9"
 }
