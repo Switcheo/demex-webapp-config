@@ -2251,10 +2251,10 @@ callsite@1.0.0:
   resolved "https://registry.yarnpkg.com/callsite/-/callsite-1.0.0.tgz#280398e5d664bd74038b6f0905153e6e8af1bc20"
   integrity sha512-0vdNRFXn5q+dtOqjfFtmtlI9N2eVZ7LMyEV2iKC5mEEFvSg/69Ml6b/WU2qF8W1nLRa0wiSrDT3Y5jOHZCwKPQ==
 
-carbon-js-sdk@^0.11.20:
-  version "0.11.20"
-  resolved "https://registry.yarnpkg.com/carbon-js-sdk/-/carbon-js-sdk-0.11.20.tgz#ba9cdaa6fee0b8590d481931de0efa96f699aef3"
-  integrity sha512-XQph2nhqFHLe5TLLhNKSXpH77NqIlN6oqC2JQOSHD0l4dcrSTC1CyfdBrrTTgGfCA7tns75KxL92d7B2eISKlA==
+carbon-js-sdk@^0.11.23:
+  version "0.11.23"
+  resolved "https://registry.yarnpkg.com/carbon-js-sdk/-/carbon-js-sdk-0.11.23.tgz#8c35301bbc958df5b08ac1065d170dd34fe0e9c1"
+  integrity sha512-ngAB7JLb3U+KLjFy+AYiL3tXKRGZrtWGpoFfejkvJoIBko1i25KVIH16G+9HvUqdYlUVU02BgTm80jPKxfX72w==
   dependencies:
     "@cityofzion/neon-api" "^4.9.0"
     "@cityofzion/neon-core" "^4.9.0"

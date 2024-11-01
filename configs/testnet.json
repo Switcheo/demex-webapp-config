@@ -20,7 +20,8 @@
     "cmkt/13": {
       "base": {
         "symbol": "1000PEPE"
-      }
+      },
+      "groupQuantity": 1000
     }
   },
   "cross_selling_source_tokens": ["swth"],
