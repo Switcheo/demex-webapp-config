@@ -118,7 +118,7 @@
     "cmkt/226": "BINANCE:SOLETH",
     "cmkt/235": "BINANCE:NEIROETHUSDT.P",
     "cmkt/237": "CRYPTO:KASUSD",
-    "cmkt/244": "OKX:GRASSUSDT",
+    "cmkt/244": "BYBIT:GRASSUSDT",
     "cmkt/245": "BINANCE:GOATUSDT.P"
   },
   "perp_pool_pie_chart_colors": {
@@ -202,6 +202,7 @@
     "cmkt/243": "#f80cb4",
     "cmkt/244": "#aaec0f",
     "cmkt/245": "#59615e",
+    "cmkt/246": "#96fde4",
     "Unused": "#7798E4"
   },
   "markets_override": {
