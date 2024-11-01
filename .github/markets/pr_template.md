@@ -22,6 +22,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`demex_trading_league_config` |`DemexTradingLeagueConfig` |false |Object that contains the parameters for the current trading league. |
 |`perp_pools`   |`PerpPoolConfig`   |false   |Object that contains the configs for Perp Pools   |
 |`wswth_contract`   |`string`   |false   |wSWTH ERC-20 contract.   |
+|`market_banners`   |`MarketBanner[]`   |true   |market banner configs.   |
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
@@ -86,3 +87,12 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`removed_markets`   |`string`   |false   |The message describing markets being removed, shown below the perp-pool banner title. | e.g. "BTCETH Perp will be removed on 6 Mar, 09:00AM UTC". If the field is omitted, no message describing markets being removed will be shown. |
 |`added_markets`   |`string`   |false   |The message describing markets being added, shown below the markets being removed (if any). | e.g. "ATOM Perp & SOL Perp will be added on 8 Mar, 12:00AM UTC". If the field is omitted, no message describing markets being added will be shown. | 
 |`subtext`   |`string`   |false   |The subtext shown on the perp pool banner (below the removed and added market descriptions). | 
+
+## MarketBanner
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`market_id`   |`string`   |true   |Market id where the banner will be shown.  |Market id **MUST** match one of the existing market ids from the Market MarketAll RPC call.<br /><br /> To view the values of MarketAll RPC call, simply run `yarn get-market-ids [network]` on the command line. Sample for mainnet: `yarn get-market-ids mainnet`    |
+|`show_from`   |`string`   |false   |The date and time when the market banner is scheduled to begin displaying. |If not provided, the banner will be shown immediately.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
+|`show_until`   |`string`   |false   |The date and time when the market banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) | 
+|`content`   |`string`   |true   |The content shown on the market banner. | 
+|`hideable`   |`boolean`   |false   |Indicates if user can hide the banner by clicking on the close button |If set to `false`, the close button will not be rendered on the banner, and user will not be able to dismiss the banner. |

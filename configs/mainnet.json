@@ -402,5 +402,6 @@
       }
     ]
   },
-  "wswth_contract": "0x0e59f6Cf81B5Fae9F7a5912062Fe53909e7221C2"
+  "wswth_contract": "0x0e59f6Cf81B5Fae9F7a5912062Fe53909e7221C2",
+  "market_banners": []
 }

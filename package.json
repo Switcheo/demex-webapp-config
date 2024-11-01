@@ -12,7 +12,8 @@
     "upgrade-sdk": "yarn upgrade carbon-js-sdk@latest",
     "get-bridges": "ts-node scripts/get_all_bridges",
     "get-min-gas-prices": "ts-node scripts/get_all_network_fees",
-    "get-perp-pool-ids": "ts-node scripts/get_perp_pool_ids"
+    "get-perp-pool-ids": "ts-node scripts/get_perp_pool_ids",
+    "get-market-ids": "ts-node scripts/get_market_ids"
   },
   "dependencies": {
     "@cosmjs/tendermint-rpc": "~0.31.3",
