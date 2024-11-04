@@ -397,27 +397,15 @@
   "wswth_contract": "0x0e59f6Cf81B5Fae9F7a5912062Fe53909e7221C2",
 
   "support_native_token_deposit": {
-    "brdg/6418666cedaf875fb344dbd90bea7c842300939872365b933f7ee8b6c1e825e8": [
-      {
-        "name": "ETH",
-        "type": "native",
-        "tokenAddress": "0x0000000000000000000000000000000000000000"
-      },
-      {
-        "name": "WETH",
-        "type": "wrapped"
-      }
-    ],
-    "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f": [
-      {
-        "name": "MNT",
-        "type": "native",
-        "tokenAddress": "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000"
-      },
-      {
-        "name": "WMNT",
-        "type": "wrapped"
-      }
-    ]
-  }
+    "brdg/6418666cedaf875fb344dbd90bea7c842300939872365b933f7ee8b6c1e825e8": {
+      "name": "ETH",
+      "tokenAddress": "0x0000000000000000000000000000000000000000"
+    },
+    "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f": {
+      "name": "MNT",
+      "tokenAddress": "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000"
+    }
+  },
+
+  "native_depositor_contract": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65"
 }
