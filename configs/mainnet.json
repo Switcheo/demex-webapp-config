@@ -388,6 +388,14 @@
         "past_tense_text": "GRASS (Grass) perp was added to this pool on 28 Oct 02:00 PM UTC."
       },
       {
+        "perp_pool_id": "10",
+        "show_until": "2025-12-30T08:00+00:00",
+        "title": "New Markets Added",
+        "added_markets": "HYPE (Hyperliquid) pre-launch perp will be added to this pool on 4 Nov 08:00 AM UTC. Learn about pre-launch perps here: https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals.",
+        "action_trigger_date": "2024-11-04T08:00+00:00",
+        "past_tense_text": "HYPE (Hyperliquid) pre-launch perp was added to this pool on 4 Nov 08:00 AM UTC. Learn about pre-launch perps here: https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals."
+      },
+      {
         "perp_pool_id": "7",
         "show_until": "2024-11-14T08:00+00:00",
         "title": "New Markets Added",
