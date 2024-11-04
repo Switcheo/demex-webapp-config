@@ -249,6 +249,19 @@
       }
     }
   },
+  "native_depositor_contract": {
+    "type": "string",
+    "description": "Contract address of the native depositor contract"
+  },
+  "native_token_contracts_map": {
+    "type": "object",
+    "description": "Map of token denoms to their respective contract addresses on the native chain",
+    "patternProperties": {
+      ".*": {
+        "type": "string"
+      }
+    }
+  },
   "$defs": {
     "prelaunch_market": {
       "type": "string",
