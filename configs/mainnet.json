@@ -391,9 +391,9 @@
         "perp_pool_id": "10",
         "show_until": "2025-12-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "HYPE (Hyperliquid) pre-launch perp will be added to this pool on 4 Nov 08:00 AM UTC. $HYPE token is assumed to have a total supply of 1 billion tokens. Learn about pre-launch perps [here](https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals).",
+        "added_markets": "HYPE (Hyperliquid) pre-launch perp will be added to this pool on 4 Nov 08:00 AM UTC. $HYPE token assumes a total supply of 1 billion tokens. Learn more here: guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals.",
         "action_trigger_date": "2024-11-04T08:00+00:00",
-        "past_tense_text": "HYPE (Hyperliquid) pre-launch perp was added to this pool on 4 Nov 08:00 AM UTC. $HYPE token is assumed to have a total supply of 1 billion tokens. Learn about pre-launch perps [here](https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals)."
+        "past_tense_text": "HYPE (Hyperliquid) pre-launch perp was added to this pool on 4 Nov 08:00 AM UTC. $HYPE token assumes a total supply of 1 billion tokens. Learn more here: guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals."
       },
       {
         "perp_pool_id": "7",
@@ -415,7 +415,7 @@
   "market_banners": [
     {
       "market_id": "cmkt/246",
-      "content": "This is a pre-launch market for Hyperliquid's $HYPE token and is assumed to have a total supply of 1 billion tokens. Learn about pre-launch markets [here](https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals).",
+      "content": "This is a pre-launch perp for Hyperliquid's HYPE and assumes a total supply of 1 billion. [Learn more.](https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals).",
       "show_from": "2024-11-04T09:00+00:00"
     }
   ]
