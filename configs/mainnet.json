@@ -375,7 +375,7 @@
         "0x6a09bC65Ef703466187f59083239399e1948fEbB",
         "0x8c6A1123744a78bf48B7b58Ae0ce02F364c30F8e",
         "0x4Ea7639a37d229914F64e832bF5038Bc634E51Fd",
-        "0x88c49cd7F44C611c4DF37a605843284eEf5583Eb",
+        "0x88c49cd7F44C611c4DF37a605843284eEf5583Eb"
       ]
     },
     "banners": [
@@ -412,5 +412,11 @@
     ]
   },
   "wswth_contract": "0x0e59f6Cf81B5Fae9F7a5912062Fe53909e7221C2",
-  "market_banners": []
+  "market_banners": [
+    {
+      "market_id": "cmkt/246",
+      "content": "This is a pre-launch market for Hyperliquid's $HYPE token and is volatile. Learn about pre-launch markets [here](https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals).",
+      "show_from": "2024-11-04T09:00+00:00"
+    }
+  ]
 }
