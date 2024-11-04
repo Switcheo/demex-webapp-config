@@ -28,7 +28,8 @@ interface ConfigJSON {
   additional_ibc_token_config: AdditionalIbcTokenConfigItem[];
   demex_trading_league_config?: DemexTradingLeagueConfig;
   perp_pools: PerpPoolConfig;
-  wswth_contract?: string
+  wswth_contract?: string;
+  market_banners?: MarketBanner[];
 }
 
 interface InvalidEntry {
@@ -98,6 +99,14 @@ interface Incentives {
 interface PerpPoolConfig {
   incentives: Incentives
   banners: PerpPoolBanner[]
+}
+
+interface MarketBanner {
+  market_id: string;
+  show_from?: string;
+  show_until?: string;
+  content: string;
+  hideable?: boolean;
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -280,6 +289,25 @@ function isValidDemexTradingLeagueConfig(
   return true;
 }
 
+function isValidMarketBanners(marketBanners: MarketBanner[], network: CarbonSDK.Network, marketIds: string[]): boolean {
+  const marketBannerIds = marketBanners.map((banner) => banner.market_id);
+  const hasInvalidMarketBannerIds = checkValidEntries(marketBannerIds, marketIds);
+  const hasDuplicateMarketBannerIds = checkDuplicateEntries(marketBannerIds);
+
+  if (hasInvalidMarketBannerIds.status && hasInvalidMarketBannerIds.entry) {
+    let listOfInvalidIds: string = hasInvalidMarketBannerIds.entry.join(", ");
+    console.error(`ERROR: ${network}.json has the following invalid market ids under the market_banners field: ${listOfInvalidIds}`);
+    return false;
+  }
+
+  if (hasDuplicateMarketBannerIds.status && hasDuplicateMarketBannerIds.entry) {
+    let listOfDuplicates: string = hasDuplicateMarketBannerIds.entry.join(", ");
+    console.error(`ERROR: ${network}.json has duplicated market banners for the following market ids: ${listOfDuplicates}. Please make sure to add only 1 market banner for each market id in ${network}.json`);
+    return false;
+  }
+  return true;
+}
+
 async function main() {
   for (const net of myArgs) {
     let network: CarbonSDK.Network;
@@ -419,7 +447,9 @@ async function main() {
       const transferOptionsArr = Object.keys(jsonData.transfer_options)
       const ibcBridgeNames = sdk.token.getIbcBlockchainNames();
       if (!ibcBridgeNames.includes("Carbon")) ibcBridgeNames.push("Carbon");
-      const validTransferOptionChains = sdk.token.getPolynetworkBlockchainNames().concat(ibcBridgeNames);
+      const validTransferOptionChains = sdk.token.getPolynetworkBlockchainNames()
+        .concat(sdk.token.getAxelarBlockchainNames())
+        .concat(ibcBridgeNames);
 
       const hasInvalidChains = checkValidEntries(transferOptionsArr, validTransferOptionChains);
       if (hasInvalidChains.status && hasInvalidChains.entry) {
@@ -592,6 +622,10 @@ async function main() {
           console.error(`ERROR: ${network}.json has invalid EVM address in perp pools incentives wswth_contract configs: ${wSWTH}`);
           outcomeMap[network] = false;
         }
+      }
+
+      if(jsonData.market_banners && !isValidMarketBanners(jsonData.market_banners, network, marketIds)) {
+        outcomeMap[network] = false;
       }
 
       // external chain channels check

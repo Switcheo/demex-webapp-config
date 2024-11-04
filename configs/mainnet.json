@@ -17,31 +17,33 @@
     "usdc.1.6.e70e14"
   ],
   "transfer_options": {
-    "Osmosis": 0,
-    "Noble": 1,
-    "Cosmos Hub": 2,
-    "Evmos": 3,
-    "Axelar": 4,
-    "Juno": 5,
-    "Stride": 6,
-    "Kujira": 7,
-    "Terra": 8,
-    "Comdex": 9,
-    "Stafihub": 10,
-    "Persistence Core": 11,
-    "Stargaze": 12,
-    "Canto": 13,
-    "Sommelier": 14,
-    "IRIS Hub": 15,
-    "Ethereum": 16,
-    "Arbitrum": 17,
-    "Polygon": 18,
-    "OKC": 19,
-    "Binance Smart Chain": 20,
-    "Carbon": 21,
-    "Neo": 22,
-    "Neo3": 23,
-    "Zilliqa": 24
+    "Mantle": 0,
+    "Base": 1,
+    "Osmosis": 2,
+    "Noble": 3,
+    "Cosmos Hub": 4,
+    "Evmos": 5,
+    "Axelar": 6,
+    "Juno": 7,
+    "Stride": 8,
+    "Kujira": 9,
+    "Terra": 10,
+    "Comdex": 11,
+    "Stafihub": 12,
+    "Persistence Core": 13,
+    "Stargaze": 14,
+    "Canto": 15,
+    "Sommelier": 16,
+    "IRIS Hub": 17,
+    "Ethereum": 18,
+    "Arbitrum": 19,
+    "Polygon": 20,
+    "OKC": 21,
+    "Binance Smart Chain": 22,
+    "Carbon": 23,
+    "Neo": 24,
+    "Neo3": 25,
+    "Zilliqa": 26
   },
   "network_fees": {
     "swth": 0,
@@ -116,7 +118,7 @@
     "cmkt/226": "BINANCE:SOLETH",
     "cmkt/235": "BINANCE:NEIROETHUSDT.P",
     "cmkt/237": "CRYPTO:KASUSD",
-    "cmkt/244": "OKX:GRASSUSDT",
+    "cmkt/244": "BYBIT:GRASSUSDT",
     "cmkt/245": "BINANCE:GOATUSDT.P"
   },
   "perp_pool_pie_chart_colors": {
@@ -200,33 +202,39 @@
     "cmkt/243": "#f80cb4",
     "cmkt/244": "#aaec0f",
     "cmkt/245": "#59615e",
+    "cmkt/246": "#96fde4",
     "Unused": "#7798E4"
   },
   "markets_override": {
     "cmkt/181": {
       "base": {
         "symbol": "1000PEPE"
-      }
+      },
+      "groupQuantity": 1000
     },
     "cmkt/202": {
       "base": {
         "symbol": "1000SHIB"
-      }
+      },
+      "groupQuantity": 1000
     },
     "cmkt/207": {
       "base": {
         "symbol": "1000BONK"
-      }
+      },
+      "groupQuantity": 1000
     },
     "cmkt/209": {
       "base": {
         "symbol": "1000FLOKI"
-      }
+      },
+      "groupQuantity": 1000
     },
     "cmkt/215": {
       "base": {
         "symbol": "1MMOG"
-      }
+      },
+      "groupQuantity": 1000000
     }
   },
   "demex_points_config": {
@@ -366,7 +374,8 @@
         "0xF1bE2Db4A62e3AeDEd389224B15b370E27e1e9A1",
         "0x6a09bC65Ef703466187f59083239399e1948fEbB",
         "0x8c6A1123744a78bf48B7b58Ae0ce02F364c30F8e",
-        "0x4Ea7639a37d229914F64e832bF5038Bc634E51Fd"
+        "0x4Ea7639a37d229914F64e832bF5038Bc634E51Fd",
+        "0x88c49cd7F44C611c4DF37a605843284eEf5583Eb"
       ]
     },
     "banners": [
@@ -379,7 +388,15 @@
         "past_tense_text": "GRASS (Grass) perp was added to this pool on 28 Oct 02:00 PM UTC."
       },
       {
-        "perp_pool_id": "8",
+        "perp_pool_id": "10",
+        "show_until": "2025-12-30T08:00+00:00",
+        "title": "New Markets Added",
+        "added_markets": "HYPE (Hyperliquid) pre-launch perp will be added to this pool on 4 Nov 08:00 AM UTC. Learn about pre-launch perps here: https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals.",
+        "action_trigger_date": "2024-11-04T08:00+00:00",
+        "past_tense_text": "HYPE (Hyperliquid) pre-launch perp was added to this pool on 4 Nov 08:00 AM UTC. Learn about pre-launch perps here: https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals."
+      },
+      {
+        "perp_pool_id": "7",
         "show_until": "2024-11-14T08:00+00:00",
         "title": "New Markets Added",
         "added_markets": "GOAT (Goatseus Maximus) perp will be added to this pool on 29 Oct 08:00 AM UTC.",
@@ -403,5 +420,6 @@
       "tokenAddress": "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000"
     }
   },
-  "native_depositor_contract": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65"
+  "native_depositor_contract": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
+  "market_banners": []
 }
