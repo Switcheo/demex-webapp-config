@@ -399,9 +399,9 @@
         "perp_pool_id": "7",
         "show_until": "2024-11-14T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "GOAT (Goatseus Maximus) perp will be added to this pool on 29 Oct 08:00 AM UTC.",
+        "added_markets": "GOAT (Goatseus Maximus) perp will be added to this pool on 29 Oct 08:00 AM UTC. Learn about pre-launch perps here: https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals.",
         "action_trigger_date": "2024-10-29T08:00+00:00",
-        "past_tense_text": "GOAT (Goatseus Maximus) perp was added to this pool on 29 Oct 08:00 AM UTC."
+        "past_tense_text": "GOAT (Goatseus Maximus) perp was added to this pool on 29 Oct 08:00 AM UTC. Learn about pre-launch perps here: https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals."
       },
       {
         "perp_pool_id": "1",
