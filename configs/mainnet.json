@@ -119,7 +119,9 @@
     "cmkt/235": "BINANCE:NEIROETHUSDT.P",
     "cmkt/237": "CRYPTO:KASUSD",
     "cmkt/244": "BYBIT:GRASSUSDT",
-    "cmkt/245": "BINANCE:GOATUSDT.P"
+    "cmkt/245": "BINANCE:GOATUSDT.P",
+    "cmkt/247": "BINANCE:MOODENGUSDT.P",
+    "cmkt/249": "CRYPTO:VIRTUALUSD"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -203,6 +205,9 @@
     "cmkt/244": "#aaec0f",
     "cmkt/245": "#59615e",
     "cmkt/246": "#96fde4",
+    "cmkt/247": "#7e4937",
+    "cmkt/248": "#fdfefe",
+    "cmkt/249": "#2f8b89",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -397,11 +402,11 @@
       },
       {
         "perp_pool_id": "7",
-        "show_until": "2024-11-14T08:00+00:00",
+        "show_until": "2024-11-20T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "GOAT (Goatseus Maximus) perp will be added to this pool on 29 Oct 08:00 AM UTC.",
-        "action_trigger_date": "2024-10-29T08:00+00:00",
-        "past_tense_text": "GOAT (Goatseus Maximus) perp was added to this pool on 29 Oct 08:00 AM UTC."
+        "added_markets": "MOODENG, PURR, and VIRTUAL perp will be added to this pool on 6 Nov 08:00 AM UTC.",
+        "action_trigger_date": "2024-11-06T08:00+00:00",
+        "past_tense_text": "MOODENG, PURR, and VIRTUAL perp was added to this pool on 6 Nov 08:00 AM UTC."
       },
       {
         "perp_pool_id": "1",
