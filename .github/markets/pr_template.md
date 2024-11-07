@@ -24,7 +24,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`wswth_contract`   |`string`   |false   |wSWTH ERC-20 contract.   |
 |`market_banners`   |`MarketBanner[]`   |true   |market banner configs.   |
 | `native_token_contracts_map` | `object` | false    | Map of token denoms to their respective contract addresses on the native chain. |       |
-| `native_depositor_contract`  | `string`                 | false    | Contract address supporting native token deposits       
+| `native_depositor_contracts_map`  | `object`                 | false    | Map of token denoms to their respective native depositor contract addresses       
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
