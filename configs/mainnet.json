@@ -417,8 +417,8 @@
     "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f": "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000"
   },
   "native_depositor_contracts_map": {
-    "brdg/6418666cedaf875fb344dbd90bea7c842300939872365b933f7ee8b6c1e825e8": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
-    "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65"
+    "3/base/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
+    "3/mantle/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65"
   },
   "market_banners": [
     {
