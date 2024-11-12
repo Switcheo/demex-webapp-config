@@ -449,7 +449,8 @@ async function main() {
       if (!ibcBridgeNames.includes("Carbon")) ibcBridgeNames.push("Carbon");
       const validTransferOptionChains = sdk.token.getPolynetworkBlockchainNames()
         .concat(sdk.token.getAxelarBlockchainNames())
-        .concat(ibcBridgeNames);
+        .concat(ibcBridgeNames)
+        .concat(["Carbon EVM"]);
 
       const hasInvalidChains = checkValidEntries(transferOptionsArr, validTransferOptionChains);
       if (hasInvalidChains.status && hasInvalidChains.entry) {
