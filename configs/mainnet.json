@@ -41,10 +41,10 @@
     "OKC": 21,
     "Binance Smart Chain": 22,
     "Carbon": 23,
-    "Carbon EVM": 24,
     "Neo": 25,
     "Neo3": 26,
-    "Zilliqa": 27
+    "Zilliqa": 27,
+    "Carbon EVM": 9999
   },
   "network_fees": {
     "swth": 0,
