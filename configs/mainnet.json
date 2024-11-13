@@ -44,7 +44,7 @@
     "Neo": 25,
     "Neo3": 26,
     "Zilliqa": 27,
-    "Carbon EVM": 9999,
+    "Carbon EVM": 9999
   },
   "network_fees": {
     "swth": 0,
