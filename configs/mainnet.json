@@ -386,17 +386,9 @@
         "perp_pool_id": "5",
         "show_until": "2024-11-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "JTO (Jito) perp will be added to this pool on 15 Nov 02:00 PM UTC.",
+        "added_markets": "JTO (Jito) perp and RAY (Raydium) perp will be added to this pool on 15 Nov 02:00 PM UTC.",
         "action_trigger_date": "2024-11-15T08:00+00:00",
-        "past_tense_text": "JTO (Jito) perp was added to this pool on 15 Nov 02:00 PM UTC."
-      },
-      {
-        "perp_pool_id": "5",
-        "show_until": "2024-11-30T08:00+00:00",
-        "title": "New Markets Added",
-        "added_markets": "RAY (Raydium) perp will be added to this pool on 15 Nov 02:00 PM UTC.",
-        "action_trigger_date": "2024-11-15T08:00+00:00",
-        "past_tense_text": "RAY (Radium) perp was added to this pool on 15 Nov 02:00 PM UTC."
+        "past_tense_text": "JTO (Jito) perp and RAY (Raydium) perp was added to this pool on 15 Nov 02:00 PM UTC."
       },
       {
         "perp_pool_id": "10",
@@ -410,17 +402,9 @@
         "perp_pool_id": "7",
         "show_until": "2024-11-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "ACT (Act I The AI Prophecy) perp will be added to this pool on 15 Nov 02:00 PM UTC.",
+        "added_markets": "PNUT (Peanut the Squirrel) perp and ACT (Act I The AI Prophecy) perp will be added to this pool on 15 Nov 02:00 PM UTC.",
         "action_trigger_date": "2024-11-15T08:00+00:00",
-        "past_tense_text": "ACT (Act I The AI Prophecy) perp was added to this pool on 15 Nov 02:00 PM UTC."
-      },
-      {
-        "perp_pool_id": "7",
-        "show_until": "2024-11-30T08:00+00:00",
-        "title": "New Markets Added",
-        "added_markets": "PNUT (Peanut the Squirrel) perp will be added to this pool on 15 Nov 02:00 PM UTC.",
-        "action_trigger_date": "2024-11-15T08:00+00:00",
-        "past_tense_text": "PNUT (Peanut the Squirrel) perp was added to this pool on 15 Nov 02:00 PM UTC."
+        "past_tense_text": "PNUT (Peanut the Squirrel) perp and ACT (Act I The AI Prophecy) perp was added to this pool on 15 Nov 02:00 PM UTC."
       },
       {
         "perp_pool_id": "1",
