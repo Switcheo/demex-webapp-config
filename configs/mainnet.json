@@ -204,6 +204,8 @@
     "cmkt/244": "#aaec0f",
     "cmkt/245": "#59615e",
     "cmkt/246": "#96fde4",
+    "cmkt/250": "#b15efa",
+    "cmkt/251": "#24d4f4",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -382,11 +384,11 @@
     "banners": [
       {
         "perp_pool_id": "5",
-        "show_until": "2024-11-14T08:00+00:00",
+        "show_until": "2024-11-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "GRASS (Grass) perp will be added to this pool on 28 Oct 02:00 PM UTC.",
-        "action_trigger_date": "2024-10-28T08:00+00:00",
-        "past_tense_text": "GRASS (Grass) perp was added to this pool on 28 Oct 02:00 PM UTC."
+        "added_markets": "JTO (Jito) perp and RAY (Raydium) perp will be added to this pool on 15 Nov 02:00 PM UTC.",
+        "action_trigger_date": "2024-11-15T08:00+00:00",
+        "past_tense_text": "JTO (Jito) perp and RAY (Raydium) perp was added to this pool on 15 Nov 02:00 PM UTC."
       },
       {
         "perp_pool_id": "10",
@@ -398,11 +400,11 @@
       },
       {
         "perp_pool_id": "7",
-        "show_until": "2024-11-14T08:00+00:00",
+        "show_until": "2024-11-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "GOAT (Goatseus Maximus) perp will be added to this pool on 29 Oct 08:00 AM UTC.",
-        "action_trigger_date": "2024-10-29T08:00+00:00",
-        "past_tense_text": "GOAT (Goatseus Maximus) perp was added to this pool on 29 Oct 08:00 AM UTC."
+        "added_markets": "PNUT (Peanut the Squirrel) perp and ACT (Act I The AI Prophecy) perp will be added to this pool on 15 Nov 02:00 PM UTC.",
+        "action_trigger_date": "2024-11-15T08:00+00:00",
+        "past_tense_text": "PNUT (Peanut the Squirrel) perp and ACT (Act I The AI Prophecy) perp was added to this pool on 15 Nov 02:00 PM UTC."
       },
       {
         "perp_pool_id": "1",
