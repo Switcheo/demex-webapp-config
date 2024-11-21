@@ -15,10 +15,14 @@
     "ibc/D70B0FBF97AEB04491E9ABF4467A7F66CD6250F4382CE5192D856114B83738D2",
     "ibc/4294C3DB67564CF4A0B2BFACC8415A59B38243F6FF9E288FBA34F9B4823BA16E",
     "usdc.1.6.e70e14",
+    "bit.1.2.9d68c4",
     "brdg/41589e35bdd37fa000a2a310fe076015e52dfd78fc9a09b504903c7b83fb9c4b",
     "brdg/54d7e3e21eeac0b0761a0294142b0c4f234e5e08a23f770e435755ebebdb951c",
     "brdg/80e8c20d295cf162023922ecfa61fd73184b6e0bd1f3f4b32265fc69ae7aed23",
-    "brdg/a07dd6e75ea4045aaa3949322b6243163293aebd8610333eff20b6db4beffa0e"
+    "brdg/a07dd6e75ea4045aaa3949322b6243163293aebd8610333eff20b6db4beffa0e",
+    "brdg/0a01ca811ca0cfdc3a6aba0950f0cbd533c9b642654333c5f134fc7828950c8f",
+    "brdg/0b02ac3efc9df2e80d00f141133c180cdaee0122f92d3e2e310f704e82425a18",
+    "brdg/a8bbd91ae3dda9de2e50926a0d93be4d0d5cea34f3080014e5c0c0db6eaf61a4"
   ],
   "transfer_options": {
     "Mantle": 0,
@@ -45,10 +49,10 @@
     "OKC": 21,
     "Binance Smart Chain": 22,
     "Carbon": 23,
-    "Carbon EVM": 24,
     "Neo": 25,
     "Neo3": 26,
-    "Zilliqa": 27
+    "Zilliqa": 27,
+    "Carbon EVM": 9999
   },
   "network_fees": {
     "swth": 0,
@@ -208,6 +212,8 @@
     "cmkt/244": "#aaec0f",
     "cmkt/245": "#59615e",
     "cmkt/246": "#96fde4",
+    "cmkt/250": "#b15efa",
+    "cmkt/251": "#24d4f4",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -386,11 +392,11 @@
     "banners": [
       {
         "perp_pool_id": "5",
-        "show_until": "2024-11-14T08:00+00:00",
+        "show_until": "2024-11-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "GRASS (Grass) perp will be added to this pool on 28 Oct 02:00 PM UTC.",
-        "action_trigger_date": "2024-10-28T08:00+00:00",
-        "past_tense_text": "GRASS (Grass) perp was added to this pool on 28 Oct 02:00 PM UTC."
+        "added_markets": "JTO (Jito) perp and RAY (Raydium) perp will be added to this pool on 15 Nov 02:00 PM UTC.",
+        "action_trigger_date": "2024-11-15T08:00+00:00",
+        "past_tense_text": "JTO (Jito) perp and RAY (Raydium) perp was added to this pool on 15 Nov 02:00 PM UTC."
       },
       {
         "perp_pool_id": "10",
@@ -402,11 +408,11 @@
       },
       {
         "perp_pool_id": "7",
-        "show_until": "2024-11-14T08:00+00:00",
+        "show_until": "2024-11-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "GOAT (Goatseus Maximus) perp will be added to this pool on 29 Oct 08:00 AM UTC.",
-        "action_trigger_date": "2024-10-29T08:00+00:00",
-        "past_tense_text": "GOAT (Goatseus Maximus) perp was added to this pool on 29 Oct 08:00 AM UTC."
+        "added_markets": "PNUT (Peanut the Squirrel) perp and ACT (Act I The AI Prophecy) perp will be added to this pool on 15 Nov 02:00 PM UTC.",
+        "action_trigger_date": "2024-11-15T08:00+00:00",
+        "past_tense_text": "PNUT (Peanut the Squirrel) perp and ACT (Act I The AI Prophecy) perp was added to this pool on 15 Nov 02:00 PM UTC."
       },
       {
         "perp_pool_id": "1",
