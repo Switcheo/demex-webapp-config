@@ -428,6 +428,22 @@
           }
         }
       }
+    },
+    "demex_referrer": {
+      "type": "object",
+      "description": "Default referrer for orders created through Demex",
+      "patternProperties": {
+        "address": {
+          "type": "string"
+        },
+        "commission": {
+          "type": "integer"
+        },
+        "kickback": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
     }
   }
 }
