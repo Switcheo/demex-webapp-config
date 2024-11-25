@@ -48,5 +48,8 @@
       "content": "Hello World",
       "hideable": true
     }
-  ]
+  ],
+  "direct_deposit": {
+    "domain": "https://dagger-37dc379603c3.herokuapp.com"
+  }
 }
