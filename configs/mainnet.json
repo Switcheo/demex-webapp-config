@@ -450,5 +450,10 @@
       "content": "This is a pre-launch perp for Hyperliquid's HYPE and assumes a total supply of 1 billion. [Learn more.](https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals)",
       "show_from": "2024-11-04T09:00+00:00"
     }
-  ]
+  ],
+  "mantle_trading_league_short_promo_config": {
+    "pointMultiplier": 2,
+    "startDate": "2024-11-27T01:00:00Z",
+    "endDate": "2024-11-28T01:00:00Z"
+  }
 }
