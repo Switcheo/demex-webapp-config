@@ -211,9 +211,9 @@
     "cmkt/243": "#f80cb4",
     "cmkt/244": "#aaec0f",
     "cmkt/245": "#59615e",
-    "cmkt/246": "#96fde4",
-    "cmkt/250": "#b15efa",
-    "cmkt/251": "#24d4f4",
+    "cmkt/250": "#96fde4",
+    "cmkt/251": "#b15efa",
+    "cmkt/252": "#24d4f4",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -392,19 +392,19 @@
     "banners": [
       {
         "perp_pool_id": "5",
-        "show_until": "2024-11-30T08:00+00:00",
+        "show_until": "2024-12-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "JTO (Jito) perp and RAY (Raydium) perp will be added to this pool on 15 Nov 02:00 PM UTC.",
-        "action_trigger_date": "2024-11-15T08:00+00:00",
-        "past_tense_text": "JTO (Jito) perp and RAY (Raydium) perp was added to this pool on 15 Nov 02:00 PM UTC."
+        "added_markets": "JTO (Jito) perp and RAY (Raydium) perp will be added to this pool on 3 Dec 02:00 PM UTC.",
+        "action_trigger_date": "2024-12-03T08:00+00:00",
+        "past_tense_text": "JTO (Jito) perp and RAY (Raydium) perp was added to this pool on 3 Dec 02:00 PM UTC."
       },
       {
-        "perp_pool_id": "10",
-        "show_until": "2025-12-30T08:00+00:00",
+        "perp_pool_id": "9",
+        "show_until": "2024-12-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "HYPE (Hyperliquid) pre-launch perp will be added to this pool on 4 Nov 08:00 AM UTC. $HYPE token assumes a total supply of 1 billion tokens. [Learn more.](https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals)",
-        "action_trigger_date": "2024-11-04T08:00+00:00",
-        "past_tense_text": "HYPE (Hyperliquid) pre-launch perp was added to this pool on 4 Nov 08:00 AM UTC. $HYPE token assumes a total supply of 1 billion tokens. [Learn more.](https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals)"
+        "added_markets": "HYPE (Hyperliquid) perp market will be added to this pool on 3 Dec 08:00 AM UTC.",
+        "action_trigger_date": "2024-12-03T08:00+00:00",
+        "past_tense_text": "HYPE (Hyperliquid) perp market was added to this pool on 3 Dec 08:00 AM UTC."
       },
       {
         "perp_pool_id": "7",
