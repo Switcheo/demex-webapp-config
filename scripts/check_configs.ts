@@ -30,6 +30,7 @@ interface ConfigJSON {
   perp_pools: PerpPoolConfig;
   wswth_contract?: string;
   market_banners?: MarketBanner[];
+  market_promo?: {[marketId: string]: MarketPromo};
 }
 
 interface InvalidEntry {
@@ -107,6 +108,12 @@ interface MarketBanner {
   show_until?: string;
   content: string;
   hideable?: boolean;
+}
+
+interface MarketPromo {
+  start: string;
+  end: string;
+  tooltip: string;
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -305,6 +312,45 @@ function isValidMarketBanners(marketBanners: MarketBanner[], network: CarbonSDK.
     console.error(`ERROR: ${network}.json has duplicated market banners for the following market ids: ${listOfDuplicates}. Please make sure to add only 1 market banner for each market id in ${network}.json`);
     return false;
   }
+  return true;
+}
+
+function isValidMarketPromo(marketPromo: {[marketId: string]: MarketPromo}, network: CarbonSDK.Network, marketIds: string[]): boolean {
+    const marketPromoIds = Object.keys(marketPromo)
+    const hasInvalidMarketPromoIds = checkValidEntries(marketPromoIds, marketIds)
+    const hasDuplicateMarketPromoIds = checkDuplicateEntries(marketPromoIds)
+
+    // check for valid market id
+    if (hasInvalidMarketPromoIds.status && hasInvalidMarketPromoIds.entry) {
+      let listOfInvalidIds: string = hasInvalidMarketPromoIds.entry.join(", ");
+      console.error(`ERROR: ${network}.json has the following invalid market ids under the market_promo field: ${listOfInvalidIds}`)
+      outcomeMap[network] = false;
+    }
+
+    // check for duplicated market id
+    if (hasDuplicateMarketPromoIds.status && hasDuplicateMarketPromoIds.entry) {
+      let listOfDuplicates: string = hasDuplicateMarketPromoIds.entry.join(", ");
+      console.error(`ERROR: ${network}.json has duplicated market promos for the following market ids: ${listOfDuplicates}. Please make sure to input each market promo only once in ${network}`);
+      outcomeMap[network] = false;
+    }
+
+    for (const promoId in marketPromoIds) {
+      const promoInfo = marketPromo[promoId];
+      const startTimeStr = promoInfo.start;
+      const endTimeStr = promoInfo.end;
+
+      // Parse start and end times into Date objects
+      const startTime = new Date(startTimeStr);
+      const endTime = new Date(endTimeStr);
+
+      // Check if end time is before start time
+      if (endTime < startTime) {
+        console.error(`ERROR: ${network}.json has invalid end time (${endTimeStr}) is before start time (${startTimeStr}) for market promo id ${promoId}.`);
+        outcomeMap[network] = false;
+        break; // Exit the loop early upon encountering an error
+      }
+    }
+
   return true;
 }
 
@@ -626,6 +672,10 @@ async function main() {
       }
 
       if(jsonData.market_banners && !isValidMarketBanners(jsonData.market_banners, network, marketIds)) {
+        outcomeMap[network] = false;
+      }
+
+      if(jsonData.market_promo && !isValidMarketPromo(jsonData.market_promo, network, marketIds)) {
         outcomeMap[network] = false;
       }
 

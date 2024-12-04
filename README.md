@@ -20,6 +20,7 @@ Additionally, the JSON file for mainnet contains the following data to support o
 - perp pool promotion parameters
 - typeform survey parameters
 - market banner parameters for information banners to be displayed on the TradingView charts on Trade UI
+- market promo parameters for showing boosted tag on market select on Trade UI
 
 More metadata will be added in the future if required by the Demex frontend. Please see below the structure of the JSON file:
 
