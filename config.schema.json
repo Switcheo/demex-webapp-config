@@ -264,8 +264,7 @@
         "type": "object",
         "required": [
           "start",
-          "end",
-          "tooltip"
+          "end"
         ],
         "properties": {
           "start": {

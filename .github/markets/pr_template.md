@@ -105,4 +105,4 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |---|---|---|---|---|
 |`start`   |`string`  |true   |Start time of the promo.   |
 |`end`   |`string`  |true   |End time of the promo.   |
-|`tooltip`   |`string`  |true   |Tooltip message for perp trading boost tag.   |
+|`tooltip`   |`string`  |false   |Tooltip message for perp trading boost tag.   |

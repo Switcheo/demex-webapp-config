@@ -113,7 +113,7 @@ interface MarketBanner {
 interface MarketPromo {
   start: string;
   end: string;
-  tooltip: string;
+  tooltip?: string;
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -320,14 +320,12 @@ function isValidMarketPromo(marketPromo: {[marketId: string]: MarketPromo}, netw
     const hasInvalidMarketPromoIds = checkValidEntries(marketPromoIds, marketIds)
     const hasDuplicateMarketPromoIds = checkDuplicateEntries(marketPromoIds)
 
-    // check for valid market id
     if (hasInvalidMarketPromoIds.status && hasInvalidMarketPromoIds.entry) {
       let listOfInvalidIds: string = hasInvalidMarketPromoIds.entry.join(", ");
       console.error(`ERROR: ${network}.json has the following invalid market ids under the market_promo field: ${listOfInvalidIds}`)
       outcomeMap[network] = false;
     }
 
-    // check for duplicated market id
     if (hasDuplicateMarketPromoIds.status && hasDuplicateMarketPromoIds.entry) {
       let listOfDuplicates: string = hasDuplicateMarketPromoIds.entry.join(", ");
       console.error(`ERROR: ${network}.json has duplicated market promos for the following market ids: ${listOfDuplicates}. Please make sure to input each market promo only once in ${network}`);
@@ -339,15 +337,13 @@ function isValidMarketPromo(marketPromo: {[marketId: string]: MarketPromo}, netw
       const startTimeStr = promoInfo.start;
       const endTimeStr = promoInfo.end;
 
-      // Parse start and end times into Date objects
       const startTime = new Date(startTimeStr);
       const endTime = new Date(endTimeStr);
 
-      // Check if end time is before start time
       if (endTime < startTime) {
         console.error(`ERROR: ${network}.json has invalid end time (${endTimeStr}) is before start time (${startTimeStr}) for market promo id ${promoId}.`);
         outcomeMap[network] = false;
-        break; // Exit the loop early upon encountering an error
+        break;
       }
     }
 
