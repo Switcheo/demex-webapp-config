@@ -256,6 +256,30 @@
       }
     }
   },
+  "market_promo": {
+    "type": "object",
+    "description": "Market Promo config",
+    "patternProperties": {
+      "^\\d+$": {
+        "type": "object",
+        "required": [
+          "start",
+          "end"
+        ],
+        "properties": {
+          "start": {
+            "$ref": "#/$defs/start"
+          },
+          "end": {
+            "$ref": "#/$defs/end"
+          },
+          "tooltip": {
+            "$ref": "#/$defs/tooltip"
+          }
+        }
+      }
+    }
+  },
   "$defs": {
     "prelaunch_market": {
       "type": "string",
@@ -356,6 +380,10 @@
     "content": {
       "type": "string",
       "description": "The content shown on the banner, we can render hyperlink in the content eg: You can visit [here](url)"
+    },
+    "tooltip": {
+      "type": "string",
+      "description": "The tooltip shown on the market select dropdown tag"
     },
     "additional_ibc_token_info": {
       "type": "object",
