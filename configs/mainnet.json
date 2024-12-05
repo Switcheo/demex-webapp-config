@@ -450,5 +450,13 @@
       "content": "This is a pre-launch perp for Hyperliquid's HYPE and assumes a total supply of 1 billion. [Learn more.](https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals)",
       "show_from": "2024-11-04T09:00+00:00"
     }
-  ]
+  ],
+  "market_promo": {
+    "cmkt/142": {
+      "start": "2024-11-20T08:00:00Z",
+      "end": "2024-12-20T08:00:00Z",
+      "tooltip": "Trade MNT-PERP to earn 3x points in the Mantle Trading League!"
+    }
+  },
+  "maintenance": {}
 }
