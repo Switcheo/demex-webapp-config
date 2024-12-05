@@ -12,6 +12,7 @@
     "deposit": [],
     "withdraw": []
   },
+  "token_name_override_map": {},
   "transfer_options": {},
   "network_fees": {
     "swth": 0,

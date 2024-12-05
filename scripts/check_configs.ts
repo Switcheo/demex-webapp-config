@@ -13,6 +13,7 @@ interface ConfigJSON {
   blacklisted_pools: string[];
   blacklisted_tokens: string[];
   transfer_disabled_tokens: TransferDisabledTokensObj;
+  token_name_override_map: TokenNameOverrideMap;
   transfer_options: {
     [chainKey: string]: number;
   };
@@ -59,6 +60,10 @@ interface PerpPoolBanner {
 interface TransferDisabledTokensObj {
   deposit: string[];
   withdraw: string[];
+}
+
+type TokenNameOverrideMap = {
+  [denom: string]: string;
 }
 
 interface DemexPointsConfig {
@@ -174,6 +179,16 @@ function checkAddressIsEVM(address: string): Boolean {
   return regex.test(address)
 }
 
+function isErrorOutcome(outcome: DuplicateEntry): boolean {
+  return Boolean(outcome.status && outcome.entry?.length && outcome.entry.length > 0);
+}
+
+function joinEntriesIntoStr(entriesArr: string[]): string {
+  return entriesArr.length > 1
+    ? `${entriesArr.slice(0, -1).join(", ")} and ${entriesArr[entriesArr.length - 1]}`
+    : entriesArr[0];
+}
+
 // check list of markets to ensure that it does not have blacklisted markets 
 function checkBlacklistedMarkets(marketData: string[], blacklistedMarkets: string[]): InvalidEntry {
   let overlappingMarkets: string[] = [];
@@ -195,46 +210,42 @@ function isValidTransferDisabledTokens(transferDisabledTokens: TransferDisabledT
   const dupWithdrawTknsOutcome = checkDuplicateEntries(transferDisabledTokens.withdraw);
 
   if (dupDepositTknsOutcome.status || dupWithdrawTknsOutcome.status) {
-    if (dupDepositTknsOutcome.status && dupDepositTknsOutcome.entry?.length && dupDepositTknsOutcome.entry.length > 0) {
-      const duplicateTokensArr = dupDepositTknsOutcome.entry
-      const duplicateDepositTokensStr = duplicateTokensArr.length > 1
-        ? `${duplicateTokensArr.slice(0, -1).join(", ")} and ${duplicateTokensArr[duplicateTokensArr.length - 1]}`
-        : duplicateTokensArr[0];
+    if (isErrorOutcome(dupDepositTknsOutcome)) {
+      const duplicateDepositTokensStr = joinEntriesIntoStr(dupDepositTknsOutcome.entry!);
       console.error(`[ERROR] transfer_disabled_tokens.deposit of ${network}.json has the following duplicate token denoms: ${duplicateDepositTokensStr}. Please make sure to input each denom only once.`);
     }
-
-    if (dupWithdrawTknsOutcome.status && dupWithdrawTknsOutcome.entry?.length && dupWithdrawTknsOutcome.entry.length > 0) {
-      const duplicateTokensArr = dupWithdrawTknsOutcome.entry
-      const duplicateWithdrawTokensStr = duplicateTokensArr.length > 1
-        ? `${duplicateTokensArr.slice(0, -1).join(", ")} and ${duplicateTokensArr[duplicateTokensArr.length - 1]}`
-        : duplicateTokensArr[0];
+    if (isErrorOutcome(dupWithdrawTknsOutcome)) {
+      const duplicateWithdrawTokensStr = joinEntriesIntoStr(dupWithdrawTknsOutcome.entry!);
       console.error(`[ERROR] transfer_disabled_tokens.withdraw of ${network}.json has the following duplicate token denoms: ${duplicateWithdrawTokensStr}. Please make sure to input each denom only once.`);
     }
-
     return false;
   }
 
   const validDepositTknsOutcome = checkValidEntries(transferDisabledTokens.deposit, denoms);
   const validWithdrawTknsOutcome = checkValidEntries(transferDisabledTokens.withdraw, denoms);
   if (validDepositTknsOutcome.status || dupWithdrawTknsOutcome.status) {
-    if (validDepositTknsOutcome.status && validDepositTknsOutcome.entry?.length && validDepositTknsOutcome.entry.length > 0) {
-      const invalidTokensArr = validDepositTknsOutcome.entry
-      const invalidDepositTokensStr = invalidTokensArr.length > 1
-        ? `${invalidTokensArr.slice(0, -1).join(", ")} and ${invalidTokensArr[invalidTokensArr.length - 1]}`
-        : invalidTokensArr[0];
+    if (isErrorOutcome(validDepositTknsOutcome)) {
+      const invalidDepositTokensStr = joinEntriesIntoStr(validDepositTknsOutcome.entry!);
       console.error(`[ERROR] transfer_disabled_tokens.deposit of ${network}.json has the following invalid token denoms: ${invalidDepositTokensStr}. Please make sure to input only valid token denoms.`);
     }
-
-    if (validWithdrawTknsOutcome.status && validWithdrawTknsOutcome.entry?.length && validWithdrawTknsOutcome.entry.length > 0) {
-      const invalidTokensArr = validWithdrawTknsOutcome.entry
-      const invalidWithdrawTokensStr = invalidTokensArr.length > 1
-        ? `${invalidTokensArr.slice(0, -1).join(", ")} and ${invalidTokensArr[invalidTokensArr.length - 1]}`
-        : invalidTokensArr[0];
+    if (isErrorOutcome(validWithdrawTknsOutcome)) {
+      const invalidWithdrawTokensStr = joinEntriesIntoStr(validWithdrawTknsOutcome.entry!);
       console.error(`[ERROR] transfer_disabled_tokens.withdraw of ${network}.json has the following invalid token denoms: ${invalidWithdrawTokensStr}. Please make sure to input only valid token denoms.`);
     }
     return false;
   }
 
+  return true;
+}
+
+function isValidTokenNameOverrideMap(tokenNameOverrideMap: TokenNameOverrideMap, denoms: string[], network: CarbonSDK.Network): boolean {
+  const denomKeysArr = Object.keys(tokenNameOverrideMap);
+  const invalidDenomsOutcome = checkValidEntries(denomKeysArr, denoms);
+  if (isErrorOutcome(invalidDenomsOutcome)) {
+    const invalidTokensStr = joinEntriesIntoStr(invalidDenomsOutcome.entry!);
+    console.error(`[ERROR] token_name_override_map of ${network}.json has the following invalid token denom keys: ${invalidTokensStr}. Please make sure to input only valid token denoms.`);
+    return false;
+  }
   return true;
 }
 
@@ -486,6 +497,10 @@ async function main() {
       // transfer disabled tokens object check
       const isTransferDisabledTokensValid = isValidTransferDisabledTokens(jsonData.transfer_disabled_tokens, tokens, network);
       if (!isTransferDisabledTokensValid) outcomeMap[network] = false;
+
+      // token_name_override_map check
+      const isTokenNameOverrideMapValid = isValidTokenNameOverrideMap(jsonData.token_name_override_map, tokens, network);
+      if (!isTokenNameOverrideMapValid) outcomeMap[network] = false;
 
       const hasInvalidCrossSellingTokens = checkValidEntries(jsonData.cross_selling_source_tokens, tokens);
       if (hasInvalidCrossSellingTokens.status && hasInvalidCrossSellingTokens.entry) {
