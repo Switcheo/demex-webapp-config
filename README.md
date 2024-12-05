@@ -8,6 +8,7 @@ Currently, each JSON file contain the following data on its corresponding networ
 - blacklisted markets
 - blacklisted pools
 - blacklisted tokens
+- tokens for which deposits/withdrawals are disabled
 - default blockchain transfer option order in deposit/withdrawal forms dropdown
 - default network token fee order
 - cross selling source tokens
@@ -44,6 +45,11 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "blacklisted_token_1",
     "blacklisted_token_2",
     "blacklisted_token_3"
+  ],
+  "transfer_disabled_tokens": [
+    "transfer_disabled_token_1",
+    "transfer_disabled_token_2",
+    "transfer_disabled_token_3"
   ],
   "transfer_options": {
     "chain_1": 0,

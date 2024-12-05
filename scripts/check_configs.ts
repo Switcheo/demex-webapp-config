@@ -12,6 +12,7 @@ interface ConfigJSON {
   blacklisted_markets: string[];
   blacklisted_pools: string[];
   blacklisted_tokens: string[];
+  transfer_disabled_tokens: TransferDisabledTokensObj;
   transfer_options: {
     [chainKey: string]: number;
   };
@@ -53,6 +54,11 @@ interface PerpPoolBanner {
   action_trigger_date?: string;
   past_tense_text?: string;
   subtext?: string;
+}
+
+interface TransferDisabledTokensObj {
+  deposit: string[];
+  withdraw: string[];
 }
 
 interface DemexPointsConfig {
@@ -182,6 +188,54 @@ function checkBlacklistedMarkets(marketData: string[], blacklistedMarkets: strin
   } : {
     status: false
   };
+}
+
+function isValidTransferDisabledTokens(transferDisabledTokens: TransferDisabledTokensObj, denoms: string[], network: CarbonSDK.Network): boolean {
+  const dupDepositTknsOutcome = checkDuplicateEntries(transferDisabledTokens.deposit);
+  const dupWithdrawTknsOutcome = checkDuplicateEntries(transferDisabledTokens.withdraw);
+
+  if (dupDepositTknsOutcome.status || dupWithdrawTknsOutcome.status) {
+    if (dupDepositTknsOutcome.status && dupDepositTknsOutcome.entry?.length && dupDepositTknsOutcome.entry.length > 0) {
+      const duplicateTokensArr = dupDepositTknsOutcome.entry
+      const duplicateDepositTokensStr = duplicateTokensArr.length > 1
+        ? `${duplicateTokensArr.slice(0, -1).join(", ")} and ${duplicateTokensArr[duplicateTokensArr.length - 1]}`
+        : duplicateTokensArr[0];
+      console.error(`[ERROR] transfer_disabled_tokens.deposit of ${network}.json has the following duplicate token denoms: ${duplicateDepositTokensStr}. Please make sure to input each denom only once.`);
+    }
+
+    if (dupWithdrawTknsOutcome.status && dupWithdrawTknsOutcome.entry?.length && dupWithdrawTknsOutcome.entry.length > 0) {
+      const duplicateTokensArr = dupWithdrawTknsOutcome.entry
+      const duplicateWithdrawTokensStr = duplicateTokensArr.length > 1
+        ? `${duplicateTokensArr.slice(0, -1).join(", ")} and ${duplicateTokensArr[duplicateTokensArr.length - 1]}`
+        : duplicateTokensArr[0];
+      console.error(`[ERROR] transfer_disabled_tokens.withdraw of ${network}.json has the following duplicate token denoms: ${duplicateWithdrawTokensStr}. Please make sure to input each denom only once.`);
+    }
+
+    return false;
+  }
+
+  const validDepositTknsOutcome = checkValidEntries(transferDisabledTokens.deposit, denoms);
+  const validWithdrawTknsOutcome = checkValidEntries(transferDisabledTokens.withdraw, denoms);
+  if (validDepositTknsOutcome.status || dupWithdrawTknsOutcome.status) {
+    if (validDepositTknsOutcome.status && validDepositTknsOutcome.entry?.length && validDepositTknsOutcome.entry.length > 0) {
+      const invalidTokensArr = validDepositTknsOutcome.entry
+      const invalidDepositTokensStr = invalidTokensArr.length > 1
+        ? `${invalidTokensArr.slice(0, -1).join(", ")} and ${invalidTokensArr[invalidTokensArr.length - 1]}`
+        : invalidTokensArr[0];
+      console.error(`[ERROR] transfer_disabled_tokens.deposit of ${network}.json has the following invalid token denoms: ${invalidDepositTokensStr}. Please make sure to input only valid token denoms.`);
+    }
+
+    if (validWithdrawTknsOutcome.status && validWithdrawTknsOutcome.entry?.length && validWithdrawTknsOutcome.entry.length > 0) {
+      const invalidTokensArr = validWithdrawTknsOutcome.entry
+      const invalidWithdrawTokensStr = invalidTokensArr.length > 1
+        ? `${invalidTokensArr.slice(0, -1).join(", ")} and ${invalidTokensArr[invalidTokensArr.length - 1]}`
+        : invalidTokensArr[0];
+      console.error(`[ERROR] transfer_disabled_tokens.withdraw of ${network}.json has the following invalid token denoms: ${invalidWithdrawTokensStr}. Please make sure to input only valid token denoms.`);
+    }
+    return false;
+  }
+
+  return true;
 }
 
 function isValidExternalChainChannels(chainChannels: ExternalChannelsObj, bridges: string[], network: CarbonSDK.Network): boolean {
@@ -428,6 +482,10 @@ async function main() {
         console.error(`ERROR: ${network}.json has the following duplicated blacklisted token denom entries: ${listOfDuplicates}. Please make sure to input each token denom only once in ${network}`);
         outcomeMap[network] = false;
       }
+
+      // transfer disabled tokens object check
+      const isTransferDisabledTokensValid = isValidTransferDisabledTokens(jsonData.transfer_disabled_tokens, tokens, network);
+      if (!isTransferDisabledTokensValid) outcomeMap[network] = false;
 
       const hasInvalidCrossSellingTokens = checkValidEntries(jsonData.cross_selling_source_tokens, tokens);
       if (hasInvalidCrossSellingTokens.status && hasInvalidCrossSellingTokens.entry) {

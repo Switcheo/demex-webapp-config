@@ -10,6 +10,10 @@
   ],
   "blacklisted_pools": [],
   "blacklisted_tokens": [],
+  "transfer_disabled_tokens": {
+    "deposit": [],
+    "withdraw": []
+  },
   "transfer_options": {},
   "network_fees": {
     "swth": 0,

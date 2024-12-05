@@ -8,6 +8,7 @@
     "blacklisted_markets",
     "blacklisted_pools",
     "blacklisted_tokens",
+    "transfer_disabled_tokens",
     "transfer_options",
     "network_fees",
     "cross_selling_source_tokens",
@@ -45,6 +46,27 @@
       "description": "List of blacklisted token denoms",
       "items": {
         "$ref": "#/$defs/blacklisted_token"
+      }
+    },
+    "transfer_disabled_tokens": {
+      "type": "object",
+      "description": "Object containing tokens for which deposits and withdrawals have been temporarily disabled",
+      "required": ["deposit", "withdraw"],
+      "properties": {
+        "deposit": {
+          "type": "array",
+          "description": "List of tokens for which deposits have been temporarily disabled",
+          "items": {
+            "type": "string"
+          }
+        },
+        "withdraw": {
+          "type": "array",
+          "description": "List of tokens for which withdrawals have been temporarily disabled",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "transfer_options": {
