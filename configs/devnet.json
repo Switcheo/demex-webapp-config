@@ -30,6 +30,6 @@
   "external_chain_channels": {},
   "additional_ibc_token_config": [],
   "spot_pool_config": {
-    "show_apr_tooltip": true
+    "show_apr_tooltip": false
   }
 }
