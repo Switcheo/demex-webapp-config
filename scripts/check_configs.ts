@@ -684,7 +684,7 @@ async function main() {
       if (jsonData.spot_pool_config) {
         const spotPoolConfig = jsonData.spot_pool_config
         if (spotPoolConfig.show_apr_tooltip === undefined) {
-          console.error(`ERROR: ${network}.json has missing showAPRTooltip in spot_pool_config`);
+          console.error(`ERROR: the show_apr_tooltip field is missing in spot_pool_config of ${network}.json. Please enter a boolean value for show_apr_tooltip.`);
           outcomeMap[network] = false;
         }
       }

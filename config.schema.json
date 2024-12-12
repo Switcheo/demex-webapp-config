@@ -475,11 +475,11 @@
     },
     "spot_pool_config": {
       "type": "object",
-      "description": "Config for spot pool",
+      "description": "Config parameters for Spot Pools page",
       "properties": {
         "show_apr_tooltip": {
           "type": "boolean",
-          "description": "Show APR tooltip on spot pool table"
+          "description": "Indicates whether or not to show APR tooltip on Spot Pools page"
         }
       }
     }
