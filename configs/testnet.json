@@ -53,6 +53,6 @@
     "domain": "https://test-dagger.dem.exchange"
   },
   "spot_pool_config": {
-    "show_apr_tooltip": true
+    "show_apr_tooltip": false
   }
 }

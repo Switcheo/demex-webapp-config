@@ -31,7 +31,7 @@ interface ConfigJSON {
   wswth_contract?: string;
   market_banners?: MarketBanner[];
   market_promo?: {[marketId: string]: MarketPromo};
-  spot_pool_config: SpotPoolConfig;
+  spot_pool_config?: SpotPoolConfig;
 }
 
 interface InvalidEntry {
@@ -337,7 +337,7 @@ function isValidMarketPromo(marketPromo: {[marketId: string]: MarketPromo}, netw
       outcomeMap[network] = false;
     }
 
-    for (const promoId in marketPromoIds) {
+    for (const promoId of marketPromoIds) {
       const promoInfo = marketPromo[promoId];
       const startTimeStr = promoInfo.start;
       const endTimeStr = promoInfo.end;
