@@ -32,6 +32,8 @@ interface ConfigJSON {
   perp_pools: PerpPoolConfig;
   wswth_contract?: string;
   market_banners?: MarketBanner[];
+  market_promo?: {[marketId: string]: MarketPromo};
+  spot_pool_config?: SpotPoolConfig;
 }
 
 interface InvalidEntry {
@@ -118,6 +120,16 @@ interface MarketBanner {
   show_until?: string;
   content: string;
   hideable?: boolean;
+}
+
+interface MarketPromo {
+  start: string;
+  end: string;
+  tooltip?: string;
+}
+
+interface SpotPoolConfig {
+  show_apr_tooltip: boolean;
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -370,6 +382,41 @@ function isValidMarketBanners(marketBanners: MarketBanner[], network: CarbonSDK.
     console.error(`ERROR: ${network}.json has duplicated market banners for the following market ids: ${listOfDuplicates}. Please make sure to add only 1 market banner for each market id in ${network}.json`);
     return false;
   }
+  return true;
+}
+
+function isValidMarketPromo(marketPromo: {[marketId: string]: MarketPromo}, network: CarbonSDK.Network, marketIds: string[]): boolean {
+    const marketPromoIds = Object.keys(marketPromo)
+    const hasInvalidMarketPromoIds = checkValidEntries(marketPromoIds, marketIds)
+    const hasDuplicateMarketPromoIds = checkDuplicateEntries(marketPromoIds)
+
+    if (hasInvalidMarketPromoIds.status && hasInvalidMarketPromoIds.entry) {
+      let listOfInvalidIds: string = hasInvalidMarketPromoIds.entry.join(", ");
+      console.error(`ERROR: ${network}.json has the following invalid market ids under the market_promo field: ${listOfInvalidIds}`)
+      outcomeMap[network] = false;
+    }
+
+    if (hasDuplicateMarketPromoIds.status && hasDuplicateMarketPromoIds.entry) {
+      let listOfDuplicates: string = hasDuplicateMarketPromoIds.entry.join(", ");
+      console.error(`ERROR: ${network}.json has duplicated market promos for the following market ids: ${listOfDuplicates}. Please make sure to input each market promo only once in ${network}`);
+      outcomeMap[network] = false;
+    }
+
+    for (const promoId of marketPromoIds) {
+      const promoInfo = marketPromo[promoId];
+      const startTimeStr = promoInfo.start;
+      const endTimeStr = promoInfo.end;
+
+      const startTime = new Date(startTimeStr);
+      const endTime = new Date(endTimeStr);
+
+      if (endTime < startTime) {
+        console.error(`ERROR: ${network}.json has invalid end time (${endTimeStr}) is before start time (${startTimeStr}) for market promo id ${promoId}.`);
+        outcomeMap[network] = false;
+        break;
+      }
+    }
+
   return true;
 }
 
@@ -700,6 +747,19 @@ async function main() {
 
       if(jsonData.market_banners && !isValidMarketBanners(jsonData.market_banners, network, marketIds)) {
         outcomeMap[network] = false;
+      }
+
+      if(jsonData.market_promo && !isValidMarketPromo(jsonData.market_promo, network, marketIds)) {
+        outcomeMap[network] = false;
+      }
+      
+      // check for spot pool config
+      if (jsonData.spot_pool_config) {
+        const spotPoolConfig = jsonData.spot_pool_config
+        if (spotPoolConfig.show_apr_tooltip === undefined) {
+          console.error(`ERROR: the show_apr_tooltip field is missing in spot_pool_config of ${network}.json. Please enter a boolean value for show_apr_tooltip.`);
+          outcomeMap[network] = false;
+        }
       }
 
       // external chain channels check

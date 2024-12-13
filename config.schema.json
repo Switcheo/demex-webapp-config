@@ -289,6 +289,30 @@
       }
     }
   },
+  "market_promo": {
+    "type": "object",
+    "description": "Market Promo config",
+    "patternProperties": {
+      "^\\d+$": {
+        "type": "object",
+        "required": [
+          "start",
+          "end"
+        ],
+        "properties": {
+          "start": {
+            "$ref": "#/$defs/start"
+          },
+          "end": {
+            "$ref": "#/$defs/end"
+          },
+          "tooltip": {
+            "$ref": "#/$defs/tooltip"
+          }
+        }
+      }
+    }
+  },
   "$defs": {
     "prelaunch_market": {
       "type": "string",
@@ -390,6 +414,10 @@
       "type": "string",
       "description": "The content shown on the banner, we can render hyperlink in the content eg: You can visit [here](url)"
     },
+    "tooltip": {
+      "type": "string",
+      "description": "The tooltip shown on the market select dropdown tag"
+    },
     "additional_ibc_token_info": {
       "type": "object",
       "description": "Information for token that (1) is not added on Carbon blockchain or (2) requires packet forwarding.",
@@ -477,6 +505,16 @@
         }
       },
       "additionalProperties": false
+    },
+    "spot_pool_config": {
+      "type": "object",
+      "description": "Config parameters for Spot Pools page",
+      "properties": {
+        "show_apr_tooltip": {
+          "type": "boolean",
+          "description": "Indicates whether or not to show APR tooltip on Spot Pools page"
+        }
+      }
     }
   }
 }

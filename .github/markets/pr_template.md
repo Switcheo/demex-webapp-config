@@ -27,6 +27,8 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`market_banners`   |`MarketBanner[]`   |true   |market banner configs.   |
 | `native_token_contracts_map` | `object` | false    | Map of token denoms to their respective contract addresses on the native chain. |       |
 | `native_depositor_contracts_map`  | `object`                 | false    | Map of axelar connection ids to their respective native depositor contract addresses      
+|`market_promo`   |`MarketPromo`   |false   |Map of Objects that contains market promo parameters for each market   |If the `market_promo` property is omitted, no promo will be shown. The key of each entry is the ids of the market with existing promo.   |
+|`spot_pool_config`   |`SpotPoolConfig`   |false   |Object that contains the config parameters for the [Spot Pools](https://app.dem.exchange/pools/spot) page on Demex   |
 
 ## TransferDisabledTokens Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
@@ -106,3 +108,15 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`show_until`   |`string`   |false   |The date and time when the market banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) | 
 |`content`   |`string`   |true   |The content shown on the market banner. | 
 |`hideable`   |`boolean`   |false   |Indicates if user can hide the banner by clicking on the close button |If set to `false`, the close button will not be rendered on the banner, and user will not be able to dismiss the banner. |
+
+## MarketPromo Data Structure
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`start`   |`string`  |true   |Start time of the promo.   |
+|`end`   |`string`  |true   |End time of the promo.   |
+|`tooltip`   |`string`  |false   |Tooltip message for perp trading boost tag.   |
+
+## SpotPoolConfig Data Structure
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`show_apr_tooltip`   |`boolean`  |true   |Indicates whether or not to show the Annual Percentage Returns (APR) tooltip on [Spot Pools](https://app.dem.exchange/pools/spot) page  |

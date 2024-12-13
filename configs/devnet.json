@@ -42,5 +42,8 @@
       "content": "Hello World",
       "hideable": true
     }
-  ]
+  ],
+  "spot_pool_config": {
+    "show_apr_tooltip": false
+  }
 }

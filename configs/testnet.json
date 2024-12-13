@@ -56,5 +56,8 @@
   ],
   "direct_deposit": {
     "domain": "https://test-dagger.dem.exchange"
+  },
+  "spot_pool_config": {
+    "show_apr_tooltip": false
   }
 }
