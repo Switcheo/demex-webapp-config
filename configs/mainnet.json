@@ -27,7 +27,8 @@
       "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667",
       "brdg/a8bbd91ae3dda9de2e50926a0d93be4d0d5cea34f3080014e5c0c0db6eaf61a4",
       "bnb.1.6.773edb",
-      "zbnb.1.18.c406be"
+      "zbnb.1.18.c406be",
+      "usdc.1.17.851a3a"
     ],
     "withdraw": [
       "nex.1.17.59c1ba",
@@ -38,7 +39,8 @@
       "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667",
       "brdg/a8bbd91ae3dda9de2e50926a0d93be4d0d5cea34f3080014e5c0c0db6eaf61a4",
       "bnb.1.6.773edb",
-      "zbnb.1.18.c406be"
+      "zbnb.1.18.c406be",
+      "usdc.1.17.851a3a"
     ]
   },
   "token_name_override_map": {
