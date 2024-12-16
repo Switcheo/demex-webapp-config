@@ -25,7 +25,9 @@
       "blur.1.2.0c0069",
       "brdg/0b02ac3efc9df2e80d00f141133c180cdaee0122f92d3e2e310f704e82425a18",
       "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667",
-      "brdg/a8bbd91ae3dda9de2e50926a0d93be4d0d5cea34f3080014e5c0c0db6eaf61a4"
+      "brdg/a8bbd91ae3dda9de2e50926a0d93be4d0d5cea34f3080014e5c0c0db6eaf61a4",
+      "bnb.1.6.773edb",
+      "zbnb.1.18.c406be"
     ],
     "withdraw": [
       "nex.1.17.59c1ba",
@@ -34,7 +36,9 @@
       "blur.1.2.0c0069",
       "brdg/0b02ac3efc9df2e80d00f141133c180cdaee0122f92d3e2e310f704e82425a18",
       "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667",
-      "brdg/a8bbd91ae3dda9de2e50926a0d93be4d0d5cea34f3080014e5c0c0db6eaf61a4"
+      "brdg/a8bbd91ae3dda9de2e50926a0d93be4d0d5cea34f3080014e5c0c0db6eaf61a4",
+      "bnb.1.6.773edb",
+      "zbnb.1.18.c406be"
     ]
   },
   "token_name_override_map": {
