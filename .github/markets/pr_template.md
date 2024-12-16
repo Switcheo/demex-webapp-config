@@ -10,6 +10,8 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`blacklisted_markets`   |`string[]`   |true   |The array of market names that are blacklisted. A market can be blacklisted for a number of reasons, such as it being invalid/duplicate/wrongly-added/etc.  |The market names listed here **MUST** match the market names listed under the Carbon [Markets API](https://api.carbon.network/carbon/market/v1/markets?pagination.limit=10000). The market names listed here **CANNOT** be under the `prelaunch_markets` field at the same time. |
 |`blacklisted_pools`   |`string[]`   |true   |The array of pool ids that are blacklisted. A pool can be blacklisted for a number of reasons, such as it being invalid/duplicate/wrongly-added/etc. |The pool ids listed here **MUST** match the pool ids listed under the Carbon [Liquidity Pool API](https://api.carbon.network/carbon/liquiditypool/v1/pools?pagination.limit=10000). |
 |`blacklisted_tokens`   |`string[]`   |true   |The array of token denoms that are blacklisted. A token can be blacklisted for a number of reasons, such as it being invalid/deprecated/etc. |The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000). |
+| `transfer_disabled_tokens`   |`TransferDisabledTokens`   |true   |Object that contains tokens for which deposits and withdrawals are temporarily disabled |       |
+| `token_name_override_map`   |`object`   |true   |Object that contains token denoms and their respective token name overrides. This is used if we need to override the full token name of the tokens listed here.  |The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000).       |
 |`transfer_options`   |`object`   |true   |A collection of blockchain networks along with their associated priority numbers, used to establish their order in the transfer options list for deposit and withdrawal forms.   |Blockchain network listed here **MUST** match the valid chainName of the bridges listed under BridgeAll RPC call.<br /><br /> To view the values of BridgeAll RPC call, simply run `yarn get-bridges [network]` on the command line. Sample for mainnet: `yarn get-bridges mainnet`|
 |`network_fees`   |`object`   |true   |List of token denoms along with their associated priority numbers, used to establish their default order in the network fees preference list.   |Token denoms listed here **MUST** match the valid denoms listed under MinGasPriceAll RPC call.<br /><br /> To view the values of MinGasPriceAll RPC call, simply run `yarn get-min-gas-prices [network]` on the command line. Sample for mainnet: `yarn get-min-gas-prices mainnet`|
 |`maintenance`   |`Maintenance`   |false   |Object that dictates whether or not the maintenance page is displayed on each particular network. The maintenance page is displayed when the Carbon chain is down (i.e. blocks are not moving).   | If the `maintenance` property is omitted, the maintenance page will not be shown.
@@ -26,6 +28,13 @@ Each json file under the [configs](../../configs) folder correspond to their res
 | `native_token_contracts_map` | `object` | false    | Map of token denoms to their respective contract addresses on the native chain. |       |
 | `native_depositor_contracts_map`  | `object`                 | false    | Map of axelar connection ids to their respective native depositor contract addresses      
 |`market_promo`   |`MarketPromo`   |false   |Map of Objects that contains market promo parameters for each market   |If the `market_promo` property is omitted, no promo will be shown. The key of each entry is the ids of the market with existing promo.   |
+|`spot_pool_config`   |`SpotPoolConfig`   |false   |Object that contains the config parameters for the [Spot Pools](https://app.dem.exchange/pools/spot) page on Demex   |
+
+## TransferDisabledTokens Data Structure
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`deposit`   |`string[]`   |true   |List of tokens for which deposits are temporarily disabled   |The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000).  |
+|`withdraw`   |`string[]`   |true   |List of tokens for which withdrawals are temporarily disabled   |The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000).   |
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
@@ -106,3 +115,8 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`start`   |`string`  |true   |Start time of the promo.   |
 |`end`   |`string`  |true   |End time of the promo.   |
 |`tooltip`   |`string`  |false   |Tooltip message for perp trading boost tag.   |
+
+## SpotPoolConfig Data Structure
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`show_apr_tooltip`   |`boolean`  |true   |Indicates whether or not to show the Annual Percentage Returns (APR) tooltip on [Spot Pools](https://app.dem.exchange/pools/spot) page  |
