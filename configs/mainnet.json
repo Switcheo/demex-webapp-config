@@ -481,5 +481,6 @@
   },
   "spot_pool_config": {
     "show_apr_tooltip": true
-  }
+  },
+  "maintenance": {}
 }
