@@ -537,7 +537,8 @@
       "type": "object",
       "description": "Custom announcement banner through all or only on specificed paths",
       "required": [
-        "content"
+        "content",
+        "show_only_on"
       ],
       "patternProperties": {
         "show_from": {

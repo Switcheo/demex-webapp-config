@@ -59,5 +59,12 @@
   },
   "spot_pool_config": {
     "show_apr_tooltip": false
+  },
+  "announcement_banner": {
+    "show_from": "",
+    "show_until": "",
+    "content": "",
+    "hideable": true,
+    "show_only_on": []
   }
 }
