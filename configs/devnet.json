@@ -50,7 +50,7 @@
     "show_from": "2024-12-17T08:00+00:00",
     "show_until": "2024-12-20T08:15+00:00",
     "content": "Demex will be temporarily down for maintenance from 13:00 - 18:00 UTC, 20 Dec. We recommend closing any open orders during this time to minimize potential risks.",
-    "hideable": false,
+    "hideable": true,
     "show_only_on": []
   }
 }
