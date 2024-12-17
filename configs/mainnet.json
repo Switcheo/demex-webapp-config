@@ -469,9 +469,9 @@
   },
   "market_banners": [
     {
-      "market_id": "cmkt/246",
-      "content": "This is a pre-launch perp for Hyperliquid's HYPE and assumes a total supply of 1 billion. [Learn more.](https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals)",
-      "show_from": "2024-11-04T09:00+00:00"
+      "market_id": "cmkt/253",
+      "content": "Trade Pudgy Penguins floor price movements without owning the NFT. This market is based on the floor price of the Pudgy Penguins NFT collection, aggregated from top NFT marketplaces, denominated in USD.",
+      "show_from": "2024-12-06T09:00+00:00"
     }
   ],
   "market_promo": {
