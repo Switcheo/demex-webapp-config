@@ -535,19 +535,19 @@
   "quick_select_deposit_options": [
     {
       "label_denom": "brdg/d8c3db91ad4ba11fe52971b4c387b0110c8951ec0f5b8f0fb445ef0306a349e1",
-      "targe_denom": "cgt/1"
+      "target_denom": "cgt/1"
     },
     {
       "label_denom": "swth",
-      "targe_denom": "swth"
+      "target_denom": "swth"
     },
     {
       "label_denom": "eth.1.2.942d87",
-      "targe_denom": "eth.1.2.942d87"
+      "target_denom": "eth.1.2.942d87"
     },
     {
       "label_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f",
-      "targe_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f"
+      "target_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f"
     }
   ]
 }
