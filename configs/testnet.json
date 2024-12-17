@@ -59,12 +59,5 @@
   },
   "spot_pool_config": {
     "show_apr_tooltip": false
-  },
-  "announcement_banner": {
-    "show_from": "2024-11-30T08:00+00:00",
-    "show_until": "2024-12-20T08:00+00:00",
-    "content": "Hello World",
-    "hideable": true,
-    "show_only_on": []
   }
 }
