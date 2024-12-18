@@ -129,4 +129,4 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`show_until`   |`string`   |false   |The date and time when the market banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) | 
 |`content`   |`string`   |true   |The content shown on the market banner. | 
 |`hideable`   |`boolean`   |false   |Indicates if user can hide the banner by clicking on the close button |If set to `false`, the close button will not be rendered on the banner, and user will not be able to dismiss the banner. |
-|`show_only_on`   |`string[]`   |true   |Default is empty list, then banner will be shown on all pages  |If list has specified path(s), the banner will be shown on these/that path(s) only. |
+|`show_only_on`   |`string[]`   |true   |Default is empty list, then banner will be shown on all pages  |If list has specified path(s), the banner will be shown on these/that path(s) only, sample: `['/rewards', '/nitron']` |
