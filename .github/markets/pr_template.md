@@ -131,6 +131,6 @@ Each json file under the [configs](../../configs) folder correspond to their res
 ## TransferBanner Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
 |---|---|---|---|---|
-|`no_longer_supported_tokens`   |`array`  |false   |List of tokens are no longer supported |
-|`temporary_disabled_transfer_tokens`   |`TransferBanner`  |false   |List of tokens for which deposits and withdrawals have been temporarily disabled |
-|`temporary_disabled_bridges`   |`TransferBanner`  |false   |List of bridges for which deposits and withdrawals have been temporarily disabled |
+|`no_longer_supported_tokens`   |`string[]`  |false   |List of tokens are no longer supported |
+|`temporary_disabled_transfer_tokens`   |`object`  |false   |List of tokens for which deposits and withdrawals have been temporarily disabled |
+|`temporary_disabled_bridges`   |`object`  |false   |List of bridges for which deposits and withdrawals have been temporarily disabled |
