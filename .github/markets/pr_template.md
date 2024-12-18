@@ -26,7 +26,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`wswth_contract`   |`string`   |false   |wSWTH ERC-20 contract.   |
 |`market_banners`   |`MarketBanner[]`   |true   |market banner configs.   |
 | `native_token_contracts_map` | `object` | false    | Map of token denoms to their respective contract addresses on the native chain. |       |
-| `native_depositor_contracts_map`  | `object`                 | false    | Map of axelar connection ids to their respective native depositor contract addresses      
+| `native_depositor_contracts_map`  | `object`                 | false    | Map of axelar connection ids to their respective native depositor contract addresses
 |`market_promo`   |`MarketPromo`   |false   |Map of Objects that contains market promo parameters for each market   |If the `market_promo` property is omitted, no promo will be shown. The key of each entry is the ids of the market with existing promo.   |
 |`spot_pool_config`   |`SpotPoolConfig`   |false   |Object that contains the config parameters for the [Spot Pools](https://app.dem.exchange/pools/spot) page on Demex   |
 
@@ -94,19 +94,19 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |---|---|---|---|---|
 |`perp_pool_id`   |`string`   |true   |Perp pool id where the banner will be shown.  |Perp pool id **MUST** match one of the existing perp pool ids from the PerpPool PoolInfoAll RPC call.<br /><br /> To view the values of PoolInfoAll RPC call, simply run `yarn get-perp-pool-ids [network]` on the command line. Sample for mainnet: `yarn get-perp-pool-ids mainnet`    |
 |`show_from`   |`string`   |false   |The date and time when the perp pool banner is scheduled to begin displaying. |If not provided, the banner will be shown immediately.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
-|`show_until`   |`string`   |false   |The date and time when the perp pool banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) | 
-|`title`   |`string`   |true   |The title shown on the perp pool banner. | 
+|`show_until`   |`string`   |false   |The date and time when the perp pool banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
+|`title`   |`string`   |true   |The title shown on the perp pool banner. |
 |`removed_markets`   |`string`   |false   |The message describing markets being removed, shown below the perp-pool banner title. | e.g. "BTCETH Perp will be removed on 6 Mar, 09:00AM UTC". If the field is omitted, no message describing markets being removed will be shown. |
-|`added_markets`   |`string`   |false   |The message describing markets being added, shown below the markets being removed (if any). | e.g. "ATOM Perp & SOL Perp will be added on 8 Mar, 12:00AM UTC". If the field is omitted, no message describing markets being added will be shown. | 
-|`subtext`   |`string`   |false   |The subtext shown on the perp pool banner (below the removed and added market descriptions). | 
+|`added_markets`   |`string`   |false   |The message describing markets being added, shown below the markets being removed (if any). | e.g. "ATOM Perp & SOL Perp will be added on 8 Mar, 12:00AM UTC". If the field is omitted, no message describing markets being added will be shown. |
+|`subtext`   |`string`   |false   |The subtext shown on the perp pool banner (below the removed and added market descriptions). |
 
 ## MarketBanner
 |Field   |Type   |Required   |Description   |Notes   |
 |---|---|---|---|---|
 |`market_id`   |`string`   |true   |Market id where the banner will be shown.  |Market id **MUST** match one of the existing market ids from the Market MarketAll RPC call.<br /><br /> To view the values of MarketAll RPC call, simply run `yarn get-market-ids [network]` on the command line. Sample for mainnet: `yarn get-market-ids mainnet`    |
 |`show_from`   |`string`   |false   |The date and time when the market banner is scheduled to begin displaying. |If not provided, the banner will be shown immediately.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
-|`show_until`   |`string`   |false   |The date and time when the market banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) | 
-|`content`   |`string`   |true   |The content shown on the market banner. | 
+|`show_until`   |`string`   |false   |The date and time when the market banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
+|`content`   |`string`   |true   |The content shown on the market banner. |
 |`hideable`   |`boolean`   |false   |Indicates if user can hide the banner by clicking on the close button |If set to `false`, the close button will not be rendered on the banner, and user will not be able to dismiss the banner. |
 
 ## MarketPromo Data Structure
@@ -120,3 +120,10 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |Field   |Type   |Required   |Description   |Notes   |
 |---|---|---|---|---|
 |`show_apr_tooltip`   |`boolean`  |true   |Indicates whether or not to show the Annual Percentage Returns (APR) tooltip on [Spot Pools](https://app.dem.exchange/pools/spot) page  |
+
+## TransferBanner Data Structure
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`no_longer_supported_tokens`   |`array`  |false   |List of tokens are no longer supported |
+|`temporary_disabled_transfer_tokens`   |`TransferBanner`  |false   |List of tokens for which deposits and withdrawals have been temporarily disabled |
+|`temporary_disabled_bridges`   |`TransferBanner`  |false   |List of bridges for which deposits and withdrawals have been temporarily disabled |

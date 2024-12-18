@@ -45,5 +45,10 @@
   ],
   "spot_pool_config": {
     "show_apr_tooltip": false
+  },
+  "transfer_banner": {
+    "no_longer_supported_tokens": [],
+    "temporary_disabled_transfer_tokens": {},
+    "temporary_disabled_bridges": {}
   }
 }
