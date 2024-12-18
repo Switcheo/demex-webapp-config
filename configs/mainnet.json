@@ -500,5 +500,10 @@
       "label_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f",
       "target_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f"
     }
-  ]
+  ],
+  "transfer_banner": {
+    "no_longer_supported_tokens": [],
+    "temporary_disabled_transfer_tokens": {},
+    "temporary_disabled_bridges": {}
+  }
 }

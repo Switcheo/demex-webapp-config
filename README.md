@@ -90,7 +90,7 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "baseDenom": "denom_3",
     "chainRoutes": ["blockchain_5", "blockchain_6"],
     "denomOnCarbon": "carbon_denom_1"
-  }], 
+  }],
   "demex_trading_league_config": {
     "promoMarkets": [
       "promo_market_1",
@@ -99,6 +99,21 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     ],
     "currentPrizeSymbol": "market_symbol",
     "currentCompPerpPoolId": 1
+  },
+  "transfer_banner": {
+    "no_longer_supported_tokens": ["denom_1", "denom_2"],
+    "temporary_disabled_transfer_tokens": {
+      "denom_1": {
+        "start": "",
+        "end": ""
+      }
+    },
+    "temporary_disabled_bridges": {
+      "bridge_address_1": {
+        "start": "",
+        "end": ""
+      }
+    }
   }
 }
 ```

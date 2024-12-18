@@ -34,6 +34,7 @@ interface ConfigJSON {
   market_banners?: MarketBanner[];
   market_promo?: {[marketId: string]: MarketPromo};
   spot_pool_config?: SpotPoolConfig;
+  transfer_banner?: TransferBanner;
   quick_select_deposit_options?: QuickSelectToken[];
 }
 
@@ -133,6 +134,22 @@ interface SpotPoolConfig {
   show_apr_tooltip: boolean;
 }
 
+interface TransferBanner {
+  no_longer_supported_tokens: [],
+  temporary_disabled_transfer_tokens: {
+    [denom: string]: {
+      start: string,
+      end: string
+    }
+  },
+  temporary_disabled_bridges: {
+    [bridgeAddress: string]: {
+      start: string,
+      end: string
+    }
+  }
+}
+
 interface QuickSelectToken {
   label_denom: string;
   target_denom: string;
@@ -207,7 +224,7 @@ function joinEntriesIntoStr(entriesArr: string[]): string {
     : entriesArr[0];
 }
 
-// check list of markets to ensure that it does not have blacklisted markets 
+// check list of markets to ensure that it does not have blacklisted markets
 function checkBlacklistedMarkets(marketData: string[], blacklistedMarkets: string[]): InvalidEntry {
   let overlappingMarkets: string[] = [];
   marketData.forEach(market => {
@@ -424,6 +441,35 @@ function isValidMarketPromo(marketPromo: {[marketId: string]: MarketPromo}, netw
     }
 
   return true;
+}
+
+function isValidTransferBanner(transferBanner: TransferBanner, network: CarbonSDK.Network): boolean {
+  const { temporary_disabled_transfer_tokens, temporary_disabled_bridges } = transferBanner;
+  if (Object.keys(temporary_disabled_transfer_tokens).length > 0) {
+    Object.keys(temporary_disabled_transfer_tokens).map((key) => {
+      const { start, end } = temporary_disabled_transfer_tokens[key];
+      const startTime = new Date(start);
+      const endTime = new Date(end);
+      if (endTime < startTime) {
+        console.error(`ERROR: ${network}.json has invalid end time (${end}) is before start time (${start}) for token denom ${key}.`);
+        return false;
+      }
+    });
+  }
+
+  if (Object.keys(temporary_disabled_bridges).length > 0) {
+    Object.keys(temporary_disabled_bridges).map((key) => {
+      const { start, end } = temporary_disabled_bridges[key];
+      const startTime = new Date(start);
+      const endTime = new Date(end);
+      if (endTime < startTime) {
+        console.error(`ERROR: ${network}.json has invalid end time (${end}) is before start time (${start}) for bridge address ${key}.`);
+        return false;
+      }
+    });
+  }
+
+  return true
 }
 
 function isValidQuickSelectTokens(quickSelectTokens: QuickSelectToken[], network: CarbonSDK.Network, denoms: string[]): boolean {
@@ -784,7 +830,7 @@ async function main() {
       if(jsonData.market_promo && !isValidMarketPromo(jsonData.market_promo, network, marketIds)) {
         outcomeMap[network] = false;
       }
-      
+
       // check for spot pool config
       if (jsonData.spot_pool_config) {
         const spotPoolConfig = jsonData.spot_pool_config
@@ -806,6 +852,11 @@ async function main() {
       if (jsonData.demex_trading_league_config) {
         const isDemexTradingLeagueConfigValid = isValidDemexTradingLeagueConfig(jsonData.demex_trading_league_config, network, marketIds, jsonData.blacklisted_markets, perpPoolIds, tokenSymbols)
         if (!isDemexTradingLeagueConfigValid) outcomeMap[network] = false;
+      }
+
+      // transfer banner check
+      if (jsonData.transfer_banner && !isValidTransferBanner(jsonData.transfer_banner, network)) {
+        outcomeMap[network] = false;
       }
 
       // check for validate quick select tokens
