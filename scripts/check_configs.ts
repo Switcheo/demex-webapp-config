@@ -35,6 +35,7 @@ interface ConfigJSON {
   market_promo?: {[marketId: string]: MarketPromo};
   spot_pool_config?: SpotPoolConfig;
   transfer_banner?: TransferBanner;
+  quick_select_deposit_options?: QuickSelectToken[];
 }
 
 interface InvalidEntry {
@@ -147,6 +148,11 @@ interface TransferBanner {
       end: string
     }
   }
+}
+
+interface QuickSelectToken {
+  label_denom: string;
+  target_denom: string;
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -464,6 +470,32 @@ function isValidTransferBanner(transferBanner: TransferBanner, network: CarbonSD
   }
 
   return true
+}
+
+function isValidQuickSelectTokens(quickSelectTokens: QuickSelectToken[], network: CarbonSDK.Network, denoms: string[]): boolean {
+  const duplicateQuickSelectTokens = checkDuplicateEntries(quickSelectTokens.map(token => token.label_denom));
+  const invalidQuickSelectTokens = checkValidEntries(quickSelectTokens.map(token => token.label_denom), denoms);
+
+  const invalidTargetTokens = checkValidEntries(quickSelectTokens.map(token => token.target_denom), denoms);
+
+  if (duplicateQuickSelectTokens.status && duplicateQuickSelectTokens.entry) {
+    let listOfDuplicates: string = duplicateQuickSelectTokens.entry.join(", ");
+    console.error(`ERROR: ${network}.json has the following duplicated label token denoms: ${listOfDuplicates}. Please make sure to input each token only once in ${network}`);
+    return false;
+  }
+
+  if (invalidQuickSelectTokens.status && invalidQuickSelectTokens.entry) {
+    let listOfInvalidTokens: string = invalidQuickSelectTokens.entry.join(", ");
+    console.error(`ERROR: ${network}.json has the following invalid label token denoms: ${listOfInvalidTokens}. Please make sure to only input valid token denoms in ${network}`);
+    return false;
+  }
+
+  if (invalidTargetTokens.status && invalidTargetTokens.entry) {
+    let listOfInvalidTokens: string = invalidTargetTokens.entry.join(", ");
+    console.error(`ERROR: ${network}.json has the following invalid target token denoms: ${listOfInvalidTokens}. Please make sure to only input valid token denoms in ${network}`);
+    return false;
+  }
+  return true;
 }
 
 async function main() {
@@ -824,6 +856,11 @@ async function main() {
 
       // transfer banner check
       if (jsonData.transfer_banner && !isValidTransferBanner(jsonData.transfer_banner, network)) {
+        outcomeMap[network] = false;
+      }
+
+      // check for validate quick select tokens
+      if (jsonData.quick_select_deposit_options && !isValidQuickSelectTokens(jsonData.quick_select_deposit_options, network, tokens)) {
         outcomeMap[network] = false;
       }
     }

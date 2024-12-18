@@ -570,6 +570,28 @@
           }
         }
       }
+    },
+    "quick_select_token": {
+      "type": "object",
+      "description": "Token denom for quick select in transfer form",
+      "required": ["label_denom", "target_denom"],
+      "properties": {
+        "label_denom": {
+          "type": "string",
+          "description": "Token denom to show on UI"
+        },
+        "target_denom": {
+          "type": "string",
+          "description": "Token denom to use in transfer"
+        }
+      }
+    },
+    "quick_select_tokens": {
+      "type": "array",
+      "description": "List of tokens for quick select in transfer form",
+      "items": {
+        "$ref": "#/$defs/quick_select_token"
+      }
     }
   }
 }
