@@ -29,6 +29,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 | `native_depositor_contracts_map`  | `object`                 | false    | Map of axelar connection ids to their respective native depositor contract addresses      
 |`market_promo`   |`MarketPromo`   |false   |Map of Objects that contains market promo parameters for each market   |If the `market_promo` property is omitted, no promo will be shown. The key of each entry is the ids of the market with existing promo.   |
 |`spot_pool_config`   |`SpotPoolConfig`   |false   |Object that contains the config parameters for the [Spot Pools](https://app.dem.exchange/pools/spot) page on Demex   |
+|`quick_select_tokens`   |`QuickSelectToken[]`   |true   |List of quick select tokens for deposit and withdrawal forms.   |
 
 ## TransferDisabledTokens Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
@@ -130,3 +131,9 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`content`   |`string`   |true   |The content shown on the market banner. | 
 |`hideable`   |`boolean`   |false   |Indicates if user can hide the banner by clicking on the close button |If set to `false`, the close button will not be rendered on the banner, and user will not be able to dismiss the banner. |
 |`show_only_on`   |`string[]`   |true   |Default is empty list, then banner will be shown on all pages  |If list has specified path(s), the banner will be shown on these/that path(s) only, sample: `['/rewards', '/nitron']` |
+
+## QuickSelectToken Data Structure
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`label_denom`   |`string`   |true   |The default token will be show on UI deposit/withdrawal forms    |
+|`target_denom`   |`string`   |true   |The default token will be use to transfer in deposit/withdrawal    |

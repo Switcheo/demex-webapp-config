@@ -66,5 +66,23 @@
     "content": "",
     "hideable": true,
     "show_only_on": []
-  }
+  },
+  "quick_select_deposit_options": [
+    {
+      "label_denom": "swth",
+      "target_denom" : "swth"
+    },
+    {
+      "label_denom": "usdc",
+      "target_denom" : "usdc"
+    },
+    {
+      "label_denom": "eth",
+      "target_denom" : "eth"
+    },
+    {
+      "label_denom": "dai",
+      "target_denom" : "dai"
+    }
+  ]
 }

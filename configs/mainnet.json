@@ -92,14 +92,14 @@
     "ibc/75249A18DEFBEFE55F83B1C70CAD234DF164F174C6BC51682EE92C2C81C18C93": 11,
     "ibc/B7864B03E1B9FD4F049243E92ABD691586F682137037A9F3FCA5222815620B3C": 12,
     "ibc/4E06CF24FEBFB3F5AF645377DCC0B70AA6183BAF6B918B8B6243FCDEB7D38118": 13,
-    "usdc.1.6.53ff75": 15,
-    "busd.1.6.754a80": 16,
-    "eth.1.19.c3b805": 17,
-    "cglp.1.19.1698d3": 18,
-    "zil.1.18.1a4a06": 19,
-    "bneo.1.14.e2e5f6": 20,
-    "eth.1.2.942d87": 21,
-    "usdc.1.2.343151": 22
+    "usdc.1.6.53ff75": 14,
+    "busd.1.6.754a80": 15,
+    "eth.1.19.c3b805": 16,
+    "cglp.1.19.1698d3": 17,
+    "zil.1.18.1a4a06": 18,
+    "bneo.1.14.e2e5f6": 19,
+    "eth.1.2.942d87": 20,
+    "usdc.1.2.343151": 21
   },
   "spot_history_market_list": {
     "cmkt/117": "BINANCE:ETHUSD",
@@ -468,9 +468,9 @@
   },
   "market_banners": [
     {
-      "market_id": "cmkt/246",
-      "content": "This is a pre-launch perp for Hyperliquid's HYPE and assumes a total supply of 1 billion. [Learn more.](https://guide.dem.exchange/trade/futures/market-specifications/pre-launch-perpetuals)",
-      "show_from": "2024-11-04T09:00+00:00"
+      "market_id": "cmkt/253",
+      "content": "Trade Pudgy Penguins floor price movements without owning the NFT. This market is based on the floor price of the Pudgy Penguins NFT collection, aggregated from top NFT marketplaces, denominated in USD.",
+      "show_from": "2024-12-06T09:00+00:00"
     }
   ],
   "market_promo": {
@@ -489,5 +489,23 @@
     "content": "",
     "hideable": true,
     "show_only_on": []
-  }
+  },
+  "quick_select_deposit_options": [
+    {
+      "label_denom": "brdg/d8c3db91ad4ba11fe52971b4c387b0110c8951ec0f5b8f0fb445ef0306a349e1",
+      "target_denom": "cgt/1"
+    },
+    {
+      "label_denom": "swth",
+      "target_denom": "swth"
+    },
+    {
+      "label_denom": "eth.1.2.942d87",
+      "target_denom": "eth.1.2.942d87"
+    },
+    {
+      "label_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f",
+      "target_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f"
+    }
+  ]
 }
