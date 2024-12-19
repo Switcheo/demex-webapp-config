@@ -47,16 +47,11 @@
     "show_apr_tooltip": false
   },
   "announcement_banner": {
-    "show_from": "2024-12-19T03:10+00:00",
-    "show_until": "2024-12-19T03:25+00:00",
+    "show_from": "2024-12-19T03:35+00:00",
+    "show_until": "2024-12-19T04:00+00:00",
     "content": "Demex will be down for maintenance from 13:00 - 18:00 UTC, 20 Dec. We recommend closing any open orders during this time to minimize potential risks.",
     "hideable": true,
-    "show_only_on": [
-      "/rewards",
-      "/nitron",
-      "/trade/",
-      "/swap/"
-    ]
+    "show_only_on": []
   },
   "quick_select_deposit_options": [
     {
