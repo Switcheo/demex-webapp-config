@@ -54,7 +54,8 @@
     "show_only_on": [
       "/rewards",
       "/nitron",
-      "/trade/"
+      "/trade/",
+      "/swap/"
     ]
   },
   "quick_select_deposit_options": [
