@@ -483,6 +483,13 @@
   "spot_pool_config": {
     "show_apr_tooltip": true
   },
+  "announcement_banner": {
+    "show_from": "",
+    "show_until": "",
+    "content": "",
+    "hideable": true,
+    "show_only_on": []
+  },
   "quick_select_deposit_options": [
     {
       "label_denom": "brdg/d8c3db91ad4ba11fe52971b4c387b0110c8951ec0f5b8f0fb445ef0306a349e1",
