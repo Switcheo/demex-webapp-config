@@ -18,32 +18,8 @@
     "bit.1.2.9d68c4"
   ],
   "transfer_disabled_tokens": {
-    "deposit": [
-      "nex.1.17.59c1ba",
-      "gmx.1.19.70275d",
-      "wbnb.1.6.ad598c",
-      "blur.1.2.0c0069",
-      "brdg/0b02ac3efc9df2e80d00f141133c180cdaee0122f92d3e2e310f704e82425a18",
-      "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667",
-      "brdg/a8bbd91ae3dda9de2e50926a0d93be4d0d5cea34f3080014e5c0c0db6eaf61a4",
-      "bnb.1.6.773edb",
-      "zbnb.1.18.c406be",
-      "usdc.1.17.851a3a",
-      "ibc/A4DB47A9D3CF9A068D454513891B526702455D3EF08FB9EB558C561F9DC2B701"
-    ],
-    "withdraw": [
-      "nex.1.17.59c1ba",
-      "gmx.1.19.70275d",
-      "wbnb.1.6.ad598c",
-      "blur.1.2.0c0069",
-      "brdg/0b02ac3efc9df2e80d00f141133c180cdaee0122f92d3e2e310f704e82425a18",
-      "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667",
-      "brdg/a8bbd91ae3dda9de2e50926a0d93be4d0d5cea34f3080014e5c0c0db6eaf61a4",
-      "bnb.1.6.773edb",
-      "zbnb.1.18.c406be",
-      "usdc.1.17.851a3a",
-      "ibc/A4DB47A9D3CF9A068D454513891B526702455D3EF08FB9EB558C561F9DC2B701"
-    ]
+    "deposit": [],
+    "withdraw": []
   },
   "token_name_override_map": {
     "brdg/1299d2e94c483e72f64100088886b8a5b7c13595047e53e032c9938d07a98c20": "Ether (Arbitrum)",
