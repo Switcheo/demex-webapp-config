@@ -101,14 +101,14 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "currentCompPerpPoolId": 1
   },
   "transfer_banner": {
-    "no_longer_supported_tokens": ["denom_1", "denom_2"],
-    "temporary_disabled_transfer_tokens": {
+    "unsupported_tokens": ["denom_1", "denom_2"],
+    "temp_disabled_transfer_tokens": {
       "denom_1": {
         "start": "",
         "end": ""
       }
     },
-    "temporary_disabled_bridges": {
+    "temp_disabled_bridges": {
       "bridge_address_1": {
         "start": "",
         "end": ""

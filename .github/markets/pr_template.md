@@ -30,7 +30,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`market_promo`   |`MarketPromo`   |false   |Map of Objects that contains market promo parameters for each market   |If the `market_promo` property is omitted, no promo will be shown. The key of each entry is the ids of the market with existing promo.   |
 |`spot_pool_config`   |`SpotPoolConfig`   |false   |Object that contains the config parameters for the [Spot Pools](https://app.dem.exchange/pools/spot) page on Demex   |
 |`quick_select_tokens`   |`QuickSelectToken[]`   |true   |List of quick select tokens for deposit and withdrawal forms.   |
-
+|`disabled_transfer_banner_config` |`DisabledTransferBannerConfig` |false |Config parameters for displaying banner to inform users that transfers for the relevant tokens are disabled |
 ## TransferDisabledTokens Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
 |---|---|---|---|---|
@@ -131,6 +131,6 @@ Each json file under the [configs](../../configs) folder correspond to their res
 ## TransferBanner Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
 |---|---|---|---|---|
-|`no_longer_supported_tokens`   |`string[]`  |false   |List of tokens are no longer supported |
-|`temporary_disabled_transfer_tokens`   |`object`  |false   |List of tokens for which deposits and withdrawals have been temporarily disabled |
-|`temporary_disabled_bridges`   |`object`  |false   |List of bridges for which deposits and withdrawals have been temporarily disabled |
+|`unsupported_tokens`   |`string[]`  |false   |List of tokens that are no longer supported | The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000) |
+|`temp_disabled_transfer_tokens`   |`object`  |false   |List of tokens for which deposits and withdrawals have been temporarily disabled | The token denoms listed in this object **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000) |
+|`temp_disabled_bridges`   |`object`  |false   |List of bridges for which deposits and withdrawals have been temporarily disabled | Blockchain network listed here **MUST** match the valid chainName of the bridges listed under BridgeAll RPC call.<br /><br /> To view the values of BridgeAll RPC call, simply run yarn get-bridges [network]on the command line. Sample for mainnet:yarn get-bridges mainnet`` |

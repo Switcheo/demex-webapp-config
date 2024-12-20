@@ -64,9 +64,9 @@
       "target_denom" : "dai"
     }
   ],
-  "transfer_banner": {
-    "no_longer_supported_tokens": [],
-    "temporary_disabled_transfer_tokens": {},
-    "temporary_disabled_bridges": {}
+  "disabled_transfer_banner_config": {
+    "unsupported_tokens": [],
+    "temp_disabled_transfer_tokens": {},
+    "temp_disabled_bridges": {}
   }
 }

@@ -34,7 +34,7 @@ interface ConfigJSON {
   market_banners?: MarketBanner[];
   market_promo?: {[marketId: string]: MarketPromo};
   spot_pool_config?: SpotPoolConfig;
-  transfer_banner?: TransferBanner;
+  disabled_transfer_banner_config?: DisabledTransferBannerConfig;
   quick_select_deposit_options?: QuickSelectToken[];
 }
 
@@ -134,18 +134,18 @@ interface SpotPoolConfig {
   show_apr_tooltip: boolean;
 }
 
-interface TransferBanner {
-  no_longer_supported_tokens: [],
-  temporary_disabled_transfer_tokens: {
+interface DisabledTransferBannerConfig {
+  unsupported_tokens?: [],
+  temp_disabled_transfer_tokens?: {
     [denom: string]: {
-      start: string,
-      end: string
+      start?: string,
+      end?: string
     }
   },
-  temporary_disabled_bridges: {
+  temp_disabled_bridges?: {
     [bridgeAddress: string]: {
-      start: string,
-      end: string
+      start?: string,
+      end?: string
     }
   }
 }
@@ -443,28 +443,35 @@ function isValidMarketPromo(marketPromo: {[marketId: string]: MarketPromo}, netw
   return true;
 }
 
-function isValidTransferBanner(transferBanner: TransferBanner, network: CarbonSDK.Network): boolean {
-  const { temporary_disabled_transfer_tokens, temporary_disabled_bridges } = transferBanner;
-  if (Object.keys(temporary_disabled_transfer_tokens).length > 0) {
-    Object.keys(temporary_disabled_transfer_tokens).map((key) => {
-      const { start, end } = temporary_disabled_transfer_tokens[key];
-      const startTime = new Date(start);
-      const endTime = new Date(end);
-      if (endTime < startTime) {
-        console.error(`ERROR: ${network}.json has invalid end time (${end}) is before start time (${start}) for token denom ${key}.`);
-        return false;
+function isValidTransferBanner(transferBanner: DisabledTransferBannerConfig, network: CarbonSDK.Network): boolean {
+  const { temp_disabled_transfer_tokens = {}, temp_disabled_bridges = {} } = transferBanner;
+  const disabledTokenKeys = Object.keys(temp_disabled_transfer_tokens)
+
+  if (disabledTokenKeys.length > 0) {
+    disabledTokenKeys.map((key) => {
+      const { start, end } = temp_disabled_transfer_tokens[key];
+      if (end && start) {
+        const startTime = new Date(start);
+        const endTime = new Date(end);
+        if (endTime < startTime) {
+          console.error(`ERROR: ${network}.json has an invalid end time (${end}) as it is before start time (${start}) for token denom ${key}.`);
+          return false;
+        }
       }
     });
   }
 
-  if (Object.keys(temporary_disabled_bridges).length > 0) {
-    Object.keys(temporary_disabled_bridges).map((key) => {
-      const { start, end } = temporary_disabled_bridges[key];
-      const startTime = new Date(start);
-      const endTime = new Date(end);
-      if (endTime < startTime) {
-        console.error(`ERROR: ${network}.json has invalid end time (${end}) is before start time (${start}) for bridge address ${key}.`);
-        return false;
+  const disabledBridgeKeys = Object.keys(temp_disabled_bridges)
+  if (disabledBridgeKeys.length > 0) {
+    disabledBridgeKeys.map((key) => {
+      const { start, end } = temp_disabled_bridges[key];
+      if (start && end) {
+        const startTime = new Date(start);
+        const endTime = new Date(end);
+        if (endTime < startTime) {
+          console.error(`ERROR: ${network}.json has an invalid end time (${end}) as it is before start time (${start}) for bridge ${key}.`);
+          return false;
+        }
       }
     });
   }
@@ -855,7 +862,7 @@ async function main() {
       }
 
       // transfer banner check
-      if (jsonData.transfer_banner && !isValidTransferBanner(jsonData.transfer_banner, network)) {
+      if (jsonData.disabled_transfer_banner_config && !isValidTransferBanner(jsonData.disabled_transfer_banner_config, network)) {
         outcomeMap[network] = false;
       }
 

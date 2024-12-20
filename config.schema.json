@@ -377,12 +377,12 @@
     },
     "start": {
       "type": "string",
-      "description": "The start time of perp pool promo",
+      "description": "The start time of the relevant program (in timestamp format)",
       "pattern": "^\\d{4}(-\\d\\d(-\\d\\d(T\\d\\d:\\d\\d(:\\d\\d)?(\\.\\d+)?(([+-]\\d\\d:\\d\\d)|Z)?)?)?)?$"
     },
     "end": {
       "type": "string",
-      "description": "The end time of perp pool promo",
+      "description": "The end time of the relevant program (in timestamp format)",
       "pattern": "^\\d{4}(-\\d\\d(-\\d\\d(T\\d\\d:\\d\\d(:\\d\\d)?(\\.\\d+)?(([+-]\\d\\d:\\d\\d)|Z)?)?)?)?$"
     },
     "perpPoolDepositBoost": {
@@ -516,61 +516,6 @@
         }
       }
     },
-    "transfer_banner": {
-      "type": "object",
-      "description": "Config parameters to show banner for deposit and withdraw screens",
-      "properties": {
-        "no_longer_supported_tokens": {
-          "type": "array",
-          "description": "List of tokens are no longer supported",
-          "items": {
-            "type": "string"
-          }
-        },
-        "temporary_disabled_transfer_tokens": {
-          "type": "object",
-          "description": "List of tokens for which deposits and withdrawals have been temporarily disabled",
-          "patternProperties": {
-            ".*": {
-              "type": "object",
-              "required": [
-                "start",
-                "end"
-              ],
-              "properties": {
-                "start": {
-                  "$ref": "#/$defs/start"
-                },
-                "end": {
-                  "$ref": "#/$defs/end"
-                }
-              }
-            }
-          }
-        },
-        "temporary_disabled_bridges": {
-          "type": "object",
-          "description": "List of bridges for which deposits and withdrawals have been temporarily disabled",
-          "patternProperties": {
-            ".*": {
-              "type": "object",
-              "required": [
-                "start",
-                "end"
-              ],
-              "properties": {
-                "start": {
-                  "$ref": "#/$defs/start"
-                },
-                "end": {
-                  "$ref": "#/$defs/end"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "quick_select_token": {
       "type": "object",
       "description": "Token denom for quick select in transfer form",
@@ -591,6 +536,53 @@
       "description": "List of tokens for quick select in transfer form",
       "items": {
         "$ref": "#/$defs/quick_select_token"
+      }
+    },
+    "disabled_transfer_banner_config": {
+      "type": "object",
+      "description": "Config parameters for displaying banner to inform users that transfers for the relevant tokens are disabled",
+      "properties": {
+        "unsupported_tokens": {
+          "type": "array",
+          "description": "List of tokens are no longer supported",
+          "items": {
+            "type": "string"
+          }
+        },
+        "temp_disabled_transfer_tokens": {
+          "type": "object",
+          "description": "List of tokens for which deposits and withdrawals have been temporarily disabled",
+          "patternProperties": {
+            ".*": {
+              "type": "object",
+              "properties": {
+                "start": {
+                  "$ref": "#/$defs/start"
+                },
+                "end": {
+                  "$ref": "#/$defs/end"
+                }
+              }
+            }
+          }
+        },
+        "temp_disabled_bridges": {
+          "type": "object",
+          "description": "List of bridges for which deposits and withdrawals have been temporarily disabled",
+          "patternProperties": {
+            ".*": {
+              "type": "object",
+              "properties": {
+                "start": {
+                  "$ref": "#/$defs/start"
+                },
+                "end": {
+                  "$ref": "#/$defs/end"
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
