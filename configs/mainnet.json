@@ -484,9 +484,9 @@
     "show_apr_tooltip": true
   },
   "announcement_banner": {
-    "show_from": "2024-12-19T00:00+00:00",
-    "show_until": "2024-12-23T08:00+00:00",
-    "content": "Demex will be down for maintenance from 03:00 - 08:00 UTC, 23 Dec. We recommend closing any open orders during this time to minimize potential risks.",
+    "show_from": "",
+    "show_until": "",
+    "content": "",
     "hideable": true,
     "show_only_on": []
   },
