@@ -35,6 +35,7 @@ interface ConfigJSON {
   market_promo?: {[marketId: string]: MarketPromo};
   spot_pool_config?: SpotPoolConfig;
   disabled_transfer_banner_config?: DisabledTransferBannerConfig;
+  announcement_banner: AnnouncementBanner;
   quick_select_deposit_options?: QuickSelectToken[];
 }
 
@@ -148,6 +149,14 @@ interface DisabledTransferBannerConfig {
       end?: string
     }
   }
+}
+
+interface AnnouncementBanner {
+  show_from?: string;
+  show_until?: string;
+  content: string;
+  hideable?: boolean;
+  show_only_on: string[];
 }
 
 interface QuickSelectToken {
@@ -406,6 +415,20 @@ function isValidMarketBanners(marketBanners: MarketBanner[], network: CarbonSDK.
     return false;
   }
   return true;
+}
+
+function isValidAnnouncementBanner(announcementBanner: AnnouncementBanner, network: CarbonSDK.Network): boolean {
+  const startTime = announcementBanner.show_from ? new Date(announcementBanner.show_from) : null
+  const endTime = announcementBanner.show_until ? new Date(announcementBanner.show_until) : null
+
+  if (startTime && endTime) {
+    const isValidStartEndTime = endTime.getTime() > startTime.getTime()
+    if (!isValidStartEndTime) {
+      console.error(`ERROR: ${network}.json has the following invalid show_from ${announcementBanner.show_from} and invalid show_until ${announcementBanner.show_until} `);
+      return false
+    }
+  }
+  return true
 }
 
 function isValidMarketPromo(marketPromo: {[marketId: string]: MarketPromo}, network: CarbonSDK.Network, marketIds: string[]): boolean {
@@ -835,6 +858,10 @@ async function main() {
       }
 
       if(jsonData.market_promo && !isValidMarketPromo(jsonData.market_promo, network, marketIds)) {
+        outcomeMap[network] = false;
+      }
+
+      if(jsonData.announcement_banner && !isValidAnnouncementBanner(jsonData.announcement_banner, network)) {
         outcomeMap[network] = false;
       }
 
