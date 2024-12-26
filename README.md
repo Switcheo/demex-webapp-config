@@ -100,7 +100,7 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "currentPrizeSymbol": "market_symbol",
     "currentCompPerpPoolId": 1
   },
-  "transfer_banner": {
+  "disabled_transfer_banner_config": {
     "unsupported_tokens": ["denom_1", "denom_2"],
     "temp_disabled_transfer_tokens": {
       "denom_1": {
