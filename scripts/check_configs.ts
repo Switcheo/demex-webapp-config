@@ -1,5 +1,6 @@
-import { BlockchainUtils, CarbonSDK } from "carbon-js-sdk";
+import { CarbonSDK } from "carbon-js-sdk";
 import { PageRequest } from "carbon-js-sdk/lib/codec/cosmos/base/query/v1beta1/pagination";
+import { BridgeMap } from "carbon-js-sdk/lib/util/blockchain";
 import * as fs from "fs";
 import Long from "long";
 
@@ -466,11 +467,29 @@ function isValidMarketPromo(marketPromo: {[marketId: string]: MarketPromo}, netw
   return true;
 }
 
-function isValidTransferBanner(transferBanner: DisabledTransferBannerConfig, network: CarbonSDK.Network): boolean {
-  const { temp_disabled_transfer_tokens = {}, temp_disabled_bridges = {} } = transferBanner;
-  const disabledTokenKeys = Object.keys(temp_disabled_transfer_tokens)
+function isValidDisabledTransferBannerConfig(transferBanner: DisabledTransferBannerConfig, denoms: string[], bridges: string[], network: CarbonSDK.Network): boolean {
+  const { unsupported_tokens = [], temp_disabled_transfer_tokens = {}, temp_disabled_bridges = {} } = transferBanner;
 
+  if (unsupported_tokens.length > 0) {
+    const validUnsupportedTokensOutcome = checkValidEntries(unsupported_tokens, denoms);
+
+    if (validUnsupportedTokensOutcome.status && isErrorOutcome(validUnsupportedTokensOutcome)) {
+      const invalidUnsupportedTokensStr = joinEntriesIntoStr(validUnsupportedTokensOutcome.entry!);
+      console.error(`[ERROR] disabled_transfer_banner_config.unsupported_tokens of ${network}.json has the following invalid token denoms: ${invalidUnsupportedTokensStr}. Please make sure to input only valid token denoms.`);
+      return false
+    }
+  }
+
+  const disabledTokenKeys = Object.keys(temp_disabled_transfer_tokens)
   if (disabledTokenKeys.length > 0) {
+    const validDisabledTknsOutcome = checkValidEntries(disabledTokenKeys, denoms);
+
+    if (validDisabledTknsOutcome.status && isErrorOutcome(validDisabledTknsOutcome)) {
+      const invalidDissabedTokensStr = joinEntriesIntoStr(validDisabledTknsOutcome.entry!);
+      console.error(`[ERROR] disabled_transfer_banner_config.temp_disabled_transfer_tokens of ${network}.json has the following invalid token denoms: ${invalidDissabedTokensStr}. Please make sure to input only valid token denoms.`);
+      return false
+    }
+
     disabledTokenKeys.map((key) => {
       const { start, end } = temp_disabled_transfer_tokens[key];
       if (end && start) {
@@ -486,6 +505,13 @@ function isValidTransferBanner(transferBanner: DisabledTransferBannerConfig, net
 
   const disabledBridgeKeys = Object.keys(temp_disabled_bridges)
   if (disabledBridgeKeys.length > 0) {
+    const validDisableBridgesOutcome = checkValidEntries(disabledBridgeKeys, bridges);
+    if (validDisableBridgesOutcome.status && isErrorOutcome(validDisableBridgesOutcome)) {
+      const invalidDissabedBridgesStr = joinEntriesIntoStr(validDisableBridgesOutcome.entry!);
+      console.error(`[ERROR] disabled_transfer_banner_config.temp_disabled_bridges of ${network}.json has the following invalid bridge addreses: ${invalidDissabedBridgesStr}. Please make sure to input only valid bridge addresses.`);
+      return false
+    }
+
     disabledBridgeKeys.map((key) => {
       const { start, end } = temp_disabled_bridges[key];
       if (start && end) {
@@ -647,6 +673,16 @@ async function main() {
         let listOfDuplicates: string = hasDuplicateBlacklistedTokens.entry.join(", ");
         console.error(`ERROR: ${network}.json has the following duplicated blacklisted token denom entries: ${listOfDuplicates}. Please make sure to input each token denom only once in ${network}`);
         outcomeMap[network] = false;
+      }
+
+      // query all bridges
+      const bridgesMap: BridgeMap | undefined = sdk?.token?.bridges
+      let bridgesArr: string[] = []
+
+      if (bridgesMap && bridgesMap.ibc.length && bridgesMap.polynetwork.length) {
+        const polynetworkBridges = bridgesMap.polynetwork.map((bridge) => bridge.bridgeAddresses).flat()
+        const ibcBridges = bridgesMap.ibc.map((bridge) => bridge.bridgeAddresses).flat()
+        bridgesArr = polynetworkBridges.concat(ibcBridges)
       }
 
       // transfer disabled tokens object check
@@ -889,7 +925,7 @@ async function main() {
       }
 
       // transfer banner check
-      if (jsonData.disabled_transfer_banner_config && !isValidTransferBanner(jsonData.disabled_transfer_banner_config, network)) {
+      if (jsonData.disabled_transfer_banner_config && !isValidDisabledTransferBannerConfig(jsonData.disabled_transfer_banner_config, tokens, bridgesArr, network)) {
         outcomeMap[network] = false;
       }
 
