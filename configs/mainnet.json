@@ -500,8 +500,8 @@
       "target_denom": "swth"
     },
     {
-      "label_denom": "eth.1.2.942d87",
-      "target_denom": "eth.1.2.942d87"
+      "label_denom": "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377",
+      "target_denom": "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377"
     },
     {
       "label_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f",
