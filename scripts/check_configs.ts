@@ -680,8 +680,15 @@ async function main() {
       let bridgesArr: string[] = []
 
       if (bridgesMap && bridgesMap.ibc.length && bridgesMap.polynetwork.length) {
-        const polynetworkBridges = bridgesMap.polynetwork.map((bridge) => bridge.bridgeAddresses).flat()
-        const ibcBridges = bridgesMap.ibc.map((bridge) => bridge.channels.src_channel)
+        const { polynetwork, ibc } = bridgesMap;
+        const polynetworkBridges = polynetwork.reduce((acc: string[], bridge) => {
+          if (bridge.enabled) acc.push(...bridge.bridgeAddresses)
+          return acc
+        }, [])
+        const ibcBridges = ibc.reduce((acc: string[], bridge) => {
+          if (bridge.enabled) acc.push(bridge.channels.src_channel)
+          return acc
+        }, []);
         bridgesArr = polynetworkBridges.concat(ibcBridges)
       }
 
@@ -691,7 +698,10 @@ async function main() {
           limit: new Long(100000),
         }),
       })
-      const axelarBridges: string[] = res.connections.map(bridge => bridge.connectionId)
+      const axelarBridges: string[] = res.connections.reduce((acc: string[], bridge) => {
+        if (bridge.isEnabled) acc.push(bridge.connectionId);
+        return acc;
+      }, []);
 
       if (axelarBridges.length > 0) {
         bridgesArr = bridgesArr.concat(axelarBridges)
