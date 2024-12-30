@@ -475,8 +475,8 @@
   ],
   "market_promo": {
     "cmkt/142": {
-      "start": "2024-11-20T08:00:00Z",
-      "end": "2024-12-20T08:00:00Z",
+      "start": "2024-12-24T08:00:00Z",
+      "end": "2025-01-17T08:00:00Z",
       "tooltip": "Trade MNT-PERP to earn 3x points in the Mantle Trading League!"
     }
   },
@@ -484,9 +484,9 @@
     "show_apr_tooltip": true
   },
   "announcement_banner": {
-    "show_from": "2024-12-19T00:00+00:00",
-    "show_until": "2024-12-23T08:00+00:00",
-    "content": "Demex will be down for maintenance from 03:00 - 08:00 UTC, 23 Dec. We recommend closing any open orders during this time to minimize potential risks.",
+    "show_from": "",
+    "show_until": "",
+    "content": "",
     "hideable": true,
     "show_only_on": []
   },
@@ -500,8 +500,8 @@
       "target_denom": "swth"
     },
     {
-      "label_denom": "eth.1.2.942d87",
-      "target_denom": "eth.1.2.942d87"
+      "label_denom": "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377",
+      "target_denom": "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377"
     },
     {
       "label_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f",
