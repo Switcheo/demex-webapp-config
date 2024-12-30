@@ -485,18 +485,18 @@ function isValidDisabledTransferBannerConfig(transferBanner: DisabledTransferBan
     const validDisabledTknsOutcome = checkValidEntries(disabledTokenKeys, denoms);
 
     if (validDisabledTknsOutcome.status && isErrorOutcome(validDisabledTknsOutcome)) {
-      const invalidDissabedTokensStr = joinEntriesIntoStr(validDisabledTknsOutcome.entry!);
-      console.error(`[ERROR] disabled_transfer_banner_config.temp_disabled_transfer_tokens of ${network}.json has the following invalid token denoms: ${invalidDissabedTokensStr}. Please make sure to input only valid token denoms.`);
+      const invalidDisabledTokensStr = joinEntriesIntoStr(validDisabledTknsOutcome.entry!);
+      console.error(`[ERROR] disabled_transfer_banner_config.temp_disabled_transfer_tokens of ${network}.json has the following invalid token denoms: ${invalidDisabledTokensStr}. Please make sure to input only valid token denoms.`);
       return false
     }
 
-    disabledTokenKeys.map((key) => {
+    disabledTokenKeys.forEach((key) => {
       const { start, end } = temp_disabled_transfer_tokens[key];
       if (end && start) {
         const startTime = new Date(start);
         const endTime = new Date(end);
         if (endTime < startTime) {
-          console.error(`ERROR: ${network}.json has an invalid end time (${end}) as it is before start time (${start}) for token denom ${key}.`);
+          console.error(`ERROR: disabled_transfer_banner_config.temp_disabled_transfer_tokens on ${network}.json has an invalid end time (${end}) for denom ${key} as it is before start time (${start}).`);
           return false;
         }
       }
@@ -505,20 +505,20 @@ function isValidDisabledTransferBannerConfig(transferBanner: DisabledTransferBan
 
   const disabledBridgeKeys = Object.keys(temp_disabled_bridges)
   if (disabledBridgeKeys.length > 0) {
-    const validDisableBridgesOutcome = checkValidEntries(disabledBridgeKeys, bridges);
-    if (validDisableBridgesOutcome.status && isErrorOutcome(validDisableBridgesOutcome)) {
-      const invalidDissabedBridgesStr = joinEntriesIntoStr(validDisableBridgesOutcome.entry!);
-      console.error(`[ERROR] disabled_transfer_banner_config.temp_disabled_bridges of ${network}.json has the following invalid bridge addreses: ${invalidDissabedBridgesStr}. Please make sure to input only valid bridge addresses.`);
+    const validDisabledBridgesOutcome = checkValidEntries(disabledBridgeKeys, bridges);
+    if (validDisabledBridgesOutcome.status && isErrorOutcome(validDisabledBridgesOutcome)) {
+      const invalidDisabledBridgesStr = joinEntriesIntoStr(validDisabledBridgesOutcome.entry!);
+      console.error(`[ERROR] disabled_transfer_banner_config.temp_disabled_bridges of ${network}.json has the following invalid bridge addresses: ${invalidDisabledBridgesStr}. Please make sure to input only valid bridge addresses.`);
       return false
     }
 
-    disabledBridgeKeys.map((key) => {
+    disabledBridgeKeys.forEach((key) => {
       const { start, end } = temp_disabled_bridges[key];
       if (start && end) {
         const startTime = new Date(start);
         const endTime = new Date(end);
         if (endTime < startTime) {
-          console.error(`ERROR: ${network}.json has an invalid end time (${end}) as it is before start time (${start}) for bridge ${key}.`);
+          console.error(`ERROR: disabled_transfer_banner_config.temp_disabled_bridges on ${network}.json has an invalid end time (${end}) for bridge ${key} as it is before start time (${start}).`);
           return false;
         }
       }
@@ -681,8 +681,20 @@ async function main() {
 
       if (bridgesMap && bridgesMap.ibc.length && bridgesMap.polynetwork.length) {
         const polynetworkBridges = bridgesMap.polynetwork.map((bridge) => bridge.bridgeAddresses).flat()
-        const ibcBridges = bridgesMap.ibc.map((bridge) => bridge.bridgeAddresses).flat()
+        const ibcBridges = bridgesMap.ibc.map((bridge) => bridge.channels.src_channel)
         bridgesArr = polynetworkBridges.concat(ibcBridges)
+      }
+
+      const res = await sdk.query.bridge.ConnectionAll({
+        bridgeId: new Long(0),
+        pagination: PageRequest.fromPartial({
+          limit: new Long(100000),
+        }),
+      })
+      const axelarBridges: string[] = res.connections.map(bridge => bridge.connectionId)
+
+      if (axelarBridges.length > 0) {
+        bridgesArr = bridgesArr.concat(axelarBridges)
       }
 
       // transfer disabled tokens object check

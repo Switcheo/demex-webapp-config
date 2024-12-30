@@ -112,7 +112,9 @@ More metadata will be added in the future if required by the Demex frontend. Ple
       "bridge_address_1": {
         "start": "",
         "end": ""
-      }
+      },
+      "src_channel": {}, // for ibcBridges
+      "connectionId": {} // for axelarBridges
     }
   }
 }
