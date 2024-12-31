@@ -487,7 +487,8 @@
     "temp_disabled_transfer_tokens": {
       "ibc/DB3EB419D050EC969A41AA0FDBC5B58498D45A0794CB2B6E64F9093AB88B4421": {
         "end": "2024-12-31T08:00:00.000Z"
-      }
+      },
+      "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667": {}
     },
     "temp_disabled_bridges": {
       "1f8966cd760cc8cd877b27ba1f4443059f664d16": {
