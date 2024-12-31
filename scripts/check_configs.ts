@@ -62,11 +62,6 @@ interface PerpPoolBanner {
   subtext?: string;
 }
 
-interface TransferDisabledTokensObj {
-  deposit: string[];
-  withdraw: string[];
-}
-
 type TokenNameOverrideMap = {
   [denom: string]: string;
 }
@@ -645,33 +640,23 @@ async function main() {
       const bridgesMap: BridgeMap | undefined = sdk?.token?.bridges
       let bridgesArr: string[] = []
 
-      if (bridgesMap && bridgesMap.ibc.length && bridgesMap.polynetwork.length) {
-        const { polynetwork, ibc } = bridgesMap;
-        const polynetworkBridges = polynetwork.reduce((acc: string[], bridge) => {
-          if (bridge.enabled) acc.push(...bridge.bridgeAddresses)
-          return acc
-        }, [])
-        const ibcBridges = ibc.reduce((acc: string[], bridge) => {
-          if (bridge.enabled) acc.push(bridge.channels.src_channel)
-          return acc
-        }, []);
-        bridgesArr = polynetworkBridges.concat(ibcBridges)
-      }
+      const { polynetwork = [], ibc = [], axelar = [] } = bridgesMap ?? {}
+      const polynetworkBridges = polynetwork.reduce((acc: string[], bridge) => {
+        if (bridge.enabled) acc.push(...bridge.bridgeAddresses)
+        return acc
+      }, [])
 
-      const res = await sdk.query.bridge.ConnectionAll({
-        bridgeId: new Long(0),
-        pagination: PageRequest.fromPartial({
-          limit: new Long(100000),
-        }),
-      })
-      const axelarBridges: string[] = res.connections.reduce((acc: string[], bridge) => {
-        if (bridge.isEnabled) acc.push(bridge.connectionId);
-        return acc;
+      const axelarBridges = axelar.reduce((acc: string[], bridge) => {
+        if (bridge.enabled) acc.push(...bridge.bridgeAddresses)
+        return acc
       }, []);
 
-      if (axelarBridges.length > 0) {
-        bridgesArr = bridgesArr.concat(axelarBridges)
-      }
+      const ibcBridges = ibc.reduce((acc: string[], bridge) => {
+        if (bridge.enabled) acc.push(bridge.channels.src_channel)
+        return acc
+      }, []);
+
+      bridgesArr = polynetworkBridges.concat(ibcBridges).concat(axelarBridges)
 
       // token_name_override_map check
       const isTokenNameOverrideMapValid = isValidTokenNameOverrideMap(jsonData.token_name_override_map, tokens, network);
