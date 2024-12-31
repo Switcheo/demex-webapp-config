@@ -13,7 +13,6 @@ interface ConfigJSON {
   blacklisted_markets: string[];
   blacklisted_pools: string[];
   blacklisted_tokens: string[];
-  transfer_disabled_tokens: TransferDisabledTokensObj;
   token_name_override_map: TokenNameOverrideMap;
   transfer_options: {
     [chainKey: string]: number;
@@ -248,39 +247,6 @@ function checkBlacklistedMarkets(marketData: string[], blacklistedMarkets: strin
   } : {
     status: false
   };
-}
-
-function isValidTransferDisabledTokens(transferDisabledTokens: TransferDisabledTokensObj, denoms: string[], network: CarbonSDK.Network): boolean {
-  const dupDepositTknsOutcome = checkDuplicateEntries(transferDisabledTokens.deposit);
-  const dupWithdrawTknsOutcome = checkDuplicateEntries(transferDisabledTokens.withdraw);
-
-  if (dupDepositTknsOutcome.status || dupWithdrawTknsOutcome.status) {
-    if (isErrorOutcome(dupDepositTknsOutcome)) {
-      const duplicateDepositTokensStr = joinEntriesIntoStr(dupDepositTknsOutcome.entry!);
-      console.error(`[ERROR] transfer_disabled_tokens.deposit of ${network}.json has the following duplicate token denoms: ${duplicateDepositTokensStr}. Please make sure to input each denom only once.`);
-    }
-    if (isErrorOutcome(dupWithdrawTknsOutcome)) {
-      const duplicateWithdrawTokensStr = joinEntriesIntoStr(dupWithdrawTknsOutcome.entry!);
-      console.error(`[ERROR] transfer_disabled_tokens.withdraw of ${network}.json has the following duplicate token denoms: ${duplicateWithdrawTokensStr}. Please make sure to input each denom only once.`);
-    }
-    return false;
-  }
-
-  const validDepositTknsOutcome = checkValidEntries(transferDisabledTokens.deposit, denoms);
-  const validWithdrawTknsOutcome = checkValidEntries(transferDisabledTokens.withdraw, denoms);
-  if (validDepositTknsOutcome.status || dupWithdrawTknsOutcome.status) {
-    if (isErrorOutcome(validDepositTknsOutcome)) {
-      const invalidDepositTokensStr = joinEntriesIntoStr(validDepositTknsOutcome.entry!);
-      console.error(`[ERROR] transfer_disabled_tokens.deposit of ${network}.json has the following invalid token denoms: ${invalidDepositTokensStr}. Please make sure to input only valid token denoms.`);
-    }
-    if (isErrorOutcome(validWithdrawTknsOutcome)) {
-      const invalidWithdrawTokensStr = joinEntriesIntoStr(validWithdrawTknsOutcome.entry!);
-      console.error(`[ERROR] transfer_disabled_tokens.withdraw of ${network}.json has the following invalid token denoms: ${invalidWithdrawTokensStr}. Please make sure to input only valid token denoms.`);
-    }
-    return false;
-  }
-
-  return true;
 }
 
 function isValidTokenNameOverrideMap(tokenNameOverrideMap: TokenNameOverrideMap, denoms: string[], network: CarbonSDK.Network): boolean {
@@ -706,10 +672,6 @@ async function main() {
       if (axelarBridges.length > 0) {
         bridgesArr = bridgesArr.concat(axelarBridges)
       }
-
-      // transfer disabled tokens object check
-      const isTransferDisabledTokensValid = isValidTransferDisabledTokens(jsonData.transfer_disabled_tokens, tokens, network);
-      if (!isTransferDisabledTokensValid) outcomeMap[network] = false;
 
       // token_name_override_map check
       const isTokenNameOverrideMapValid = isValidTokenNameOverrideMap(jsonData.token_name_override_map, tokens, network);
