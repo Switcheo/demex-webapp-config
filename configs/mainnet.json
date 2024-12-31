@@ -486,15 +486,19 @@
     "unsupported_tokens": ["ibc/A4DB47A9D3CF9A068D454513891B526702455D3EF08FB9EB558C561F9DC2B701"],
     "temp_disabled_transfer_tokens": {
       "ibc/DB3EB419D050EC969A41AA0FDBC5B58498D45A0794CB2B6E64F9093AB88B4421": {
-        "end": "2024-12-31T08:00:00.000Z"
+        "end": "2025-01-02T02:30:00.000Z"
       },
-      "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667": {}
+      "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667": {},
+      "bneo.1.14.e2e5f6": {}
     },
     "temp_disabled_bridges": {
       "1f8966cd760cc8cd877b27ba1f4443059f664d16": {
-        "end": "2024-12-31T11:45:00.000Z"
+        "end": "2025-01-02T02:30:00.000Z"
       },
-      "channel-7": {}
+      "channel-7": {},
+      "3/arbitrum/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": {
+        "start": "2025-01-02T08:00:00Z"
+      }
     }
   }
 }
