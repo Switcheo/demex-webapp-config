@@ -49,11 +49,6 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "blacklisted_token_2",
     "blacklisted_token_3"
   ],
-  "transfer_disabled_tokens": [
-    "transfer_disabled_token_1",
-    "transfer_disabled_token_2",
-    "transfer_disabled_token_3"
-  ],
   "token_name_override_map": {
     "token_1": "token_name_override_1",
     "token_2": "token_name_override_2"

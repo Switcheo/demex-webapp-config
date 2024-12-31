@@ -13,7 +13,6 @@ interface ConfigJSON {
   blacklisted_markets: string[];
   blacklisted_pools: string[];
   blacklisted_tokens: string[];
-  transfer_disabled_tokens: TransferDisabledTokensObj;
   token_name_override_map: TokenNameOverrideMap;
   transfer_options: {
     [chainKey: string]: number;
@@ -61,11 +60,6 @@ interface PerpPoolBanner {
   action_trigger_date?: string;
   past_tense_text?: string;
   subtext?: string;
-}
-
-interface TransferDisabledTokensObj {
-  deposit: string[];
-  withdraw: string[];
 }
 
 type TokenNameOverrideMap = {
@@ -248,39 +242,6 @@ function checkBlacklistedMarkets(marketData: string[], blacklistedMarkets: strin
   } : {
     status: false
   };
-}
-
-function isValidTransferDisabledTokens(transferDisabledTokens: TransferDisabledTokensObj, denoms: string[], network: CarbonSDK.Network): boolean {
-  const dupDepositTknsOutcome = checkDuplicateEntries(transferDisabledTokens.deposit);
-  const dupWithdrawTknsOutcome = checkDuplicateEntries(transferDisabledTokens.withdraw);
-
-  if (dupDepositTknsOutcome.status || dupWithdrawTknsOutcome.status) {
-    if (isErrorOutcome(dupDepositTknsOutcome)) {
-      const duplicateDepositTokensStr = joinEntriesIntoStr(dupDepositTknsOutcome.entry!);
-      console.error(`[ERROR] transfer_disabled_tokens.deposit of ${network}.json has the following duplicate token denoms: ${duplicateDepositTokensStr}. Please make sure to input each denom only once.`);
-    }
-    if (isErrorOutcome(dupWithdrawTknsOutcome)) {
-      const duplicateWithdrawTokensStr = joinEntriesIntoStr(dupWithdrawTknsOutcome.entry!);
-      console.error(`[ERROR] transfer_disabled_tokens.withdraw of ${network}.json has the following duplicate token denoms: ${duplicateWithdrawTokensStr}. Please make sure to input each denom only once.`);
-    }
-    return false;
-  }
-
-  const validDepositTknsOutcome = checkValidEntries(transferDisabledTokens.deposit, denoms);
-  const validWithdrawTknsOutcome = checkValidEntries(transferDisabledTokens.withdraw, denoms);
-  if (validDepositTknsOutcome.status || dupWithdrawTknsOutcome.status) {
-    if (isErrorOutcome(validDepositTknsOutcome)) {
-      const invalidDepositTokensStr = joinEntriesIntoStr(validDepositTknsOutcome.entry!);
-      console.error(`[ERROR] transfer_disabled_tokens.deposit of ${network}.json has the following invalid token denoms: ${invalidDepositTokensStr}. Please make sure to input only valid token denoms.`);
-    }
-    if (isErrorOutcome(validWithdrawTknsOutcome)) {
-      const invalidWithdrawTokensStr = joinEntriesIntoStr(validWithdrawTknsOutcome.entry!);
-      console.error(`[ERROR] transfer_disabled_tokens.withdraw of ${network}.json has the following invalid token denoms: ${invalidWithdrawTokensStr}. Please make sure to input only valid token denoms.`);
-    }
-    return false;
-  }
-
-  return true;
 }
 
 function isValidTokenNameOverrideMap(tokenNameOverrideMap: TokenNameOverrideMap, denoms: string[], network: CarbonSDK.Network): boolean {
@@ -679,37 +640,23 @@ async function main() {
       const bridgesMap: BridgeMap | undefined = sdk?.token?.bridges
       let bridgesArr: string[] = []
 
-      if (bridgesMap && bridgesMap.ibc.length && bridgesMap.polynetwork.length) {
-        const { polynetwork, ibc } = bridgesMap;
-        const polynetworkBridges = polynetwork.reduce((acc: string[], bridge) => {
-          if (bridge.enabled) acc.push(...bridge.bridgeAddresses)
-          return acc
-        }, [])
-        const ibcBridges = ibc.reduce((acc: string[], bridge) => {
-          if (bridge.enabled) acc.push(bridge.channels.src_channel)
-          return acc
-        }, []);
-        bridgesArr = polynetworkBridges.concat(ibcBridges)
-      }
+      const { polynetwork = [], ibc = [], axelar = [] } = bridgesMap ?? {}
+      const polynetworkBridges = polynetwork.reduce((acc: string[], bridge) => {
+        if (bridge.enabled) acc.push(...bridge.bridgeAddresses)
+        return acc
+      }, [])
 
-      const res = await sdk.query.bridge.ConnectionAll({
-        bridgeId: new Long(0),
-        pagination: PageRequest.fromPartial({
-          limit: new Long(100000),
-        }),
-      })
-      const axelarBridges: string[] = res.connections.reduce((acc: string[], bridge) => {
-        if (bridge.isEnabled) acc.push(bridge.connectionId);
-        return acc;
+      const axelarBridges = axelar.reduce((acc: string[], bridge) => {
+        if (bridge.enabled) acc.push(...bridge.bridgeAddresses)
+        return acc
       }, []);
 
-      if (axelarBridges.length > 0) {
-        bridgesArr = bridgesArr.concat(axelarBridges)
-      }
+      const ibcBridges = ibc.reduce((acc: string[], bridge) => {
+        if (bridge.enabled) acc.push(bridge.channels.src_channel)
+        return acc
+      }, []);
 
-      // transfer disabled tokens object check
-      const isTransferDisabledTokensValid = isValidTransferDisabledTokens(jsonData.transfer_disabled_tokens, tokens, network);
-      if (!isTransferDisabledTokensValid) outcomeMap[network] = false;
+      bridgesArr = polynetworkBridges.concat(ibcBridges).concat(axelarBridges)
 
       // token_name_override_map check
       const isTokenNameOverrideMapValid = isValidTokenNameOverrideMap(jsonData.token_name_override_map, tokens, network);
