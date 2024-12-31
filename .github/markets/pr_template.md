@@ -30,12 +30,6 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`spot_pool_config`   |`SpotPoolConfig`   |false   |Object that contains the config parameters for the [Spot Pools](https://app.dem.exchange/pools/spot) page on Demex   |
 |`quick_select_tokens`   |`QuickSelectToken[]`   |true   |List of quick select tokens for deposit and withdrawal forms.   |
 |`disabled_transfer_banner_config` |`DisabledTransferBannerConfig` |false |Config parameters for displaying banner to inform users that transfers for the relevant tokens are disabled |
-## TransferDisabledTokens Data Structure
-|Field   |Type   |Required   |Description   |Notes   |
-|---|---|---|---|---|
-|`deposit`   |`string[]`   |true   |List of tokens for which deposits are temporarily disabled   |The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000).  |
-|`withdraw`   |`string[]`   |true   |List of tokens for which withdrawals are temporarily disabled   |The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000).   |
-|`announcement_banner`   |`AnnouncementBanner`   |false   |Custom announcement banner through all or only on specificed paths   |
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |

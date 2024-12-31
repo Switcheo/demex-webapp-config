@@ -647,7 +647,7 @@ async function main() {
       }, [])
 
       const axelarBridges = axelar.reduce((acc: string[], bridge) => {
-        if (bridge.enabled) acc.push(...bridge.bridgeAddresses)
+        if (bridge.enabled) acc.push(bridge.bridgeAddress)
         return acc
       }, []);
 
