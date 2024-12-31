@@ -507,5 +507,19 @@
       "label_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f",
       "target_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f"
     }
-  ]
+  ],
+  "disabled_transfer_banner_config": {
+    "unsupported_tokens": ["ibc/A4DB47A9D3CF9A068D454513891B526702455D3EF08FB9EB558C561F9DC2B701"],
+    "temp_disabled_transfer_tokens": {
+      "ibc/DB3EB419D050EC969A41AA0FDBC5B58498D45A0794CB2B6E64F9093AB88B4421": {
+        "end": "2024-12-31T11:35:00.000Z"
+      }
+    },
+    "temp_disabled_bridges": {
+      "1f8966cd760cc8cd877b27ba1f4443059f664d16": {
+        "end": "2024-12-31T11:45:00.000Z"
+      },
+      "channel-7": {}
+    }
+  }
 }
