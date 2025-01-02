@@ -1,5 +1,6 @@
-import { CarbonSDK } from "carbon-js-sdk";
+import { Carbon, CarbonSDK } from "carbon-js-sdk";
 import { PageRequest } from "carbon-js-sdk/lib/codec/cosmos/base/query/v1beta1/pagination";
+import { BRIDGE_IDS } from "carbon-js-sdk/lib/util/blockchain";
 import Long from "long";
 const myArgs = process.argv.slice(2);
 
@@ -22,10 +23,33 @@ const myArgs = process.argv.slice(2);
   }
 
   const sdk = await CarbonSDK.instance({ network });
-  const bridges = await sdk.query.coin.BridgeAll({
+  const legacyBridges = await sdk.query.coin.BridgeAll({
     pagination: PageRequest.fromPartial({
       limit: new Long(10000),
     }),
-  })
-  console.log(bridges)
+  });
+  const axelarBridges = await sdk.query.bridge.ConnectionAll(
+    Carbon.Bridge.QueryAllConnectionsRequest.fromPartial({
+      pagination: PageRequest.fromPartial({
+        limit: new Long(10000),
+      }),
+    })
+  );
+
+  console.log("Chain Name | Bridge Name | Bridge Address(es)")
+
+  legacyBridges.bridges.forEach((bridge: Carbon.Coin.Bridge) => {
+    if (!bridge.enabled) return;
+
+    let bridgeAddressStr = JSON.stringify(bridge.bridgeAddresses);
+    if (bridge.bridgeId.eq(BRIDGE_IDS.ibc)) {
+      bridgeAddressStr = `channel-${bridge.chainId.subtract(1).toString(10)}`;
+    }
+    console.log(`${bridge.chainName} | ${bridge.bridgeName} | ${bridgeAddressStr}`);
+  });
+
+  axelarBridges.connections.forEach((bridge: Carbon.Bridge.Connection) => {
+    if (!bridge.isEnabled) return;
+    console.log(`${bridge.chainDisplayName} | Axelar | ${bridge.connectionId}`);
+  });
 })().catch(console.error).finally(() => process.exit(0));
