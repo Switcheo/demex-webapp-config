@@ -17,26 +17,6 @@
     "usdc.1.6.e70e14",
     "bit.1.2.9d68c4"
   ],
-  "transfer_disabled_tokens": {
-    "deposit": [
-      "nex.1.17.59c1ba",
-      "gmx.1.19.70275d",
-      "wbnb.1.6.ad598c",
-      "blur.1.2.0c0069",
-      "bnb.1.6.773edb",
-      "zbnb.1.18.c406be",
-      "usdc.1.17.851a3a"
-    ],
-    "withdraw": [
-      "nex.1.17.59c1ba",
-      "gmx.1.19.70275d",
-      "wbnb.1.6.ad598c",
-      "blur.1.2.0c0069",
-      "bnb.1.6.773edb",
-      "zbnb.1.18.c406be",
-      "usdc.1.17.851a3a"
-    ]
-  },
   "token_name_override_map": {
     "brdg/1299d2e94c483e72f64100088886b8a5b7c13595047e53e032c9938d07a98c20": "Ether (Arbitrum)",
     "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377": "Ether (Ethereum)"

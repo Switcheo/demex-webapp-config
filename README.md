@@ -49,11 +49,6 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "blacklisted_token_2",
     "blacklisted_token_3"
   ],
-  "transfer_disabled_tokens": [
-    "transfer_disabled_token_1",
-    "transfer_disabled_token_2",
-    "transfer_disabled_token_3"
-  ],
   "token_name_override_map": {
     "token_1": "token_name_override_1",
     "token_2": "token_name_override_2"
@@ -90,7 +85,7 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "baseDenom": "denom_3",
     "chainRoutes": ["blockchain_5", "blockchain_6"],
     "denomOnCarbon": "carbon_denom_1"
-  }], 
+  }],
   "demex_trading_league_config": {
     "promoMarkets": [
       "promo_market_1",
@@ -99,6 +94,23 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     ],
     "currentPrizeSymbol": "market_symbol",
     "currentCompPerpPoolId": 1
+  },
+  "disabled_transfer_banner_config": {
+    "unsupported_tokens": ["denom_1", "denom_2"],
+    "temp_disabled_transfer_tokens": {
+      "denom_1": {
+        "start": "",
+        "end": ""
+      }
+    },
+    "temp_disabled_bridges": {
+      "bridge_address_1": {
+        "start": "",
+        "end": ""
+      },
+      "src_channel": {}, // for ibcBridges
+      "connectionId": {} // for axelarBridges
+    }
   }
 }
 ```

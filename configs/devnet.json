@@ -8,10 +8,6 @@
   ],
   "blacklisted_pools": [],
   "blacklisted_tokens": [],
-  "transfer_disabled_tokens": {
-    "deposit": [],
-    "withdraw": []
-  },
   "token_name_override_map": {},
   "transfer_options": {},
   "network_fees": {
@@ -68,7 +64,7 @@
     },
     {
       "label_denom": "dai",
-      "target_denom" : "dai" 
+      "target_denom" : "dai"
     }
   ]
 }

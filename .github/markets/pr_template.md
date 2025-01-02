@@ -10,7 +10,6 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`blacklisted_markets`   |`string[]`   |true   |The array of market names that are blacklisted. A market can be blacklisted for a number of reasons, such as it being invalid/duplicate/wrongly-added/etc.  |The market names listed here **MUST** match the market names listed under the Carbon [Markets API](https://api.carbon.network/carbon/market/v1/markets?pagination.limit=10000). The market names listed here **CANNOT** be under the `prelaunch_markets` field at the same time. |
 |`blacklisted_pools`   |`string[]`   |true   |The array of pool ids that are blacklisted. A pool can be blacklisted for a number of reasons, such as it being invalid/duplicate/wrongly-added/etc. |The pool ids listed here **MUST** match the pool ids listed under the Carbon [Liquidity Pool API](https://api.carbon.network/carbon/liquiditypool/v1/pools?pagination.limit=10000). |
 |`blacklisted_tokens`   |`string[]`   |true   |The array of token denoms that are blacklisted. A token can be blacklisted for a number of reasons, such as it being invalid/deprecated/etc. |The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000). |
-| `transfer_disabled_tokens`   |`TransferDisabledTokens`   |true   |Object that contains tokens for which deposits and withdrawals are temporarily disabled |       |
 | `token_name_override_map`   |`object`   |true   |Object that contains token denoms and their respective token name overrides. This is used if we need to override the full token name of the tokens listed here.  |The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000).       |
 |`transfer_options`   |`object`   |true   |A collection of blockchain networks along with their associated priority numbers, used to establish their order in the transfer options list for deposit and withdrawal forms.   |Blockchain network listed here **MUST** match the valid chainName of the bridges listed under BridgeAll RPC call.<br /><br /> To view the values of BridgeAll RPC call, simply run `yarn get-bridges [network]` on the command line. Sample for mainnet: `yarn get-bridges mainnet`|
 |`network_fees`   |`object`   |true   |List of token denoms along with their associated priority numbers, used to establish their default order in the network fees preference list.   |Token denoms listed here **MUST** match the valid denoms listed under MinGasPriceAll RPC call.<br /><br /> To view the values of MinGasPriceAll RPC call, simply run `yarn get-min-gas-prices [network]` on the command line. Sample for mainnet: `yarn get-min-gas-prices mainnet`|
@@ -26,17 +25,11 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`wswth_contract`   |`string`   |false   |wSWTH ERC-20 contract.   |
 |`market_banners`   |`MarketBanner[]`   |true   |market banner configs.   |
 | `native_token_contracts_map` | `object` | false    | Map of token denoms to their respective contract addresses on the native chain. |       |
-| `native_depositor_contracts_map`  | `object`                 | false    | Map of axelar connection ids to their respective native depositor contract addresses      
+| `native_depositor_contracts_map`  | `object`                 | false    | Map of axelar connection ids to their respective native depositor contract addresses
 |`market_promo`   |`MarketPromo`   |false   |Map of Objects that contains market promo parameters for each market   |If the `market_promo` property is omitted, no promo will be shown. The key of each entry is the ids of the market with existing promo.   |
 |`spot_pool_config`   |`SpotPoolConfig`   |false   |Object that contains the config parameters for the [Spot Pools](https://app.dem.exchange/pools/spot) page on Demex   |
 |`quick_select_tokens`   |`QuickSelectToken[]`   |true   |List of quick select tokens for deposit and withdrawal forms.   |
-
-## TransferDisabledTokens Data Structure
-|Field   |Type   |Required   |Description   |Notes   |
-|---|---|---|---|---|
-|`deposit`   |`string[]`   |true   |List of tokens for which deposits are temporarily disabled   |The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000).  |
-|`withdraw`   |`string[]`   |true   |List of tokens for which withdrawals are temporarily disabled   |The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000).   |
-|`announcement_banner`   |`AnnouncementBanner`   |false   |Custom announcement banner through all or only on specificed paths   |
+|`disabled_transfer_banner_config` |`DisabledTransferBannerConfig` |false |Config parameters for displaying banner to inform users that transfers for the relevant tokens are disabled |
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
@@ -96,19 +89,19 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |---|---|---|---|---|
 |`perp_pool_id`   |`string`   |true   |Perp pool id where the banner will be shown.  |Perp pool id **MUST** match one of the existing perp pool ids from the PerpPool PoolInfoAll RPC call.<br /><br /> To view the values of PoolInfoAll RPC call, simply run `yarn get-perp-pool-ids [network]` on the command line. Sample for mainnet: `yarn get-perp-pool-ids mainnet`    |
 |`show_from`   |`string`   |false   |The date and time when the perp pool banner is scheduled to begin displaying. |If not provided, the banner will be shown immediately.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
-|`show_until`   |`string`   |false   |The date and time when the perp pool banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) | 
-|`title`   |`string`   |true   |The title shown on the perp pool banner. | 
+|`show_until`   |`string`   |false   |The date and time when the perp pool banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
+|`title`   |`string`   |true   |The title shown on the perp pool banner. |
 |`removed_markets`   |`string`   |false   |The message describing markets being removed, shown below the perp-pool banner title. | e.g. "BTCETH Perp will be removed on 6 Mar, 09:00AM UTC". If the field is omitted, no message describing markets being removed will be shown. |
-|`added_markets`   |`string`   |false   |The message describing markets being added, shown below the markets being removed (if any). | e.g. "ATOM Perp & SOL Perp will be added on 8 Mar, 12:00AM UTC". If the field is omitted, no message describing markets being added will be shown. | 
-|`subtext`   |`string`   |false   |The subtext shown on the perp pool banner (below the removed and added market descriptions). | 
+|`added_markets`   |`string`   |false   |The message describing markets being added, shown below the markets being removed (if any). | e.g. "ATOM Perp & SOL Perp will be added on 8 Mar, 12:00AM UTC". If the field is omitted, no message describing markets being added will be shown. |
+|`subtext`   |`string`   |false   |The subtext shown on the perp pool banner (below the removed and added market descriptions). |
 
 ## MarketBanner
 |Field   |Type   |Required   |Description   |Notes   |
 |---|---|---|---|---|
 |`market_id`   |`string`   |true   |Market id where the banner will be shown.  |Market id **MUST** match one of the existing market ids from the Market MarketAll RPC call.<br /><br /> To view the values of MarketAll RPC call, simply run `yarn get-market-ids [network]` on the command line. Sample for mainnet: `yarn get-market-ids mainnet`    |
 |`show_from`   |`string`   |false   |The date and time when the market banner is scheduled to begin displaying. |If not provided, the banner will be shown immediately.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
-|`show_until`   |`string`   |false   |The date and time when the market banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) | 
-|`content`   |`string`   |true   |The content shown on the market banner. | 
+|`show_until`   |`string`   |false   |The date and time when the market banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
+|`content`   |`string`   |true   |The content shown on the market banner. |
 |`hideable`   |`boolean`   |false   |Indicates if user can hide the banner by clicking on the close button |If set to `false`, the close button will not be rendered on the banner, and user will not be able to dismiss the banner. |
 
 ## MarketPromo Data Structure
@@ -127,8 +120,8 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |Field   |Type   |Required   |Description   |Notes   |
 |---|---|---|---|---|
 |`show_from`   |`string`   |false   |The date and time when the market banner is scheduled to begin displaying. |If not provided, the banner will be shown immediately.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
-|`show_until`   |`string`   |false   |The date and time when the market banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) | 
-|`content`   |`string`   |true   |The content shown on the market banner. | 
+|`show_until`   |`string`   |false   |The date and time when the market banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
+|`content`   |`string`   |true   |The content shown on the market banner. |
 |`hideable`   |`boolean`   |false   |Indicates if user can hide the banner by clicking on the close button |If set to `false`, the close button will not be rendered on the banner, and user will not be able to dismiss the banner. |
 |`show_only_on`   |`string[]`   |true   |Default is empty list, then banner will be shown on all pages  |If list has specified path(s), the banner will be shown on these/that path(s) only, sample: `['/rewards', '/nitron']` |
 
@@ -137,3 +130,10 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |---|---|---|---|---|
 |`label_denom`   |`string`   |true   |The default token will be show on UI deposit/withdrawal forms    |
 |`target_denom`   |`string`   |true   |The default token will be use to transfer in deposit/withdrawal    |
+
+## DisabledTransferBannerConfig Data Structure
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`unsupported_tokens`   |`string[]`  |false   |List of tokens that are no longer supported | The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000) |
+|`temp_disabled_transfer_tokens`   |`object`  |false   |List of tokens for which deposits and withdrawals have been temporarily disabled | The token denoms listed in this object **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000) |
+|`temp_disabled_bridges`   |`object`  |false   |List of bridges for which deposits and withdrawals have been temporarily disabled | Blockchain network listed here **MUST** match the valid chainName of the bridges listed under BridgeAll RPC call.<br /><br /> To view the values of BridgeAll RPC call, simply run yarn get-bridges [network]on the command line. Sample for mainnet:yarn get-bridges mainnet`` |
