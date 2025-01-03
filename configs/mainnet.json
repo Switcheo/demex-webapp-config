@@ -429,10 +429,10 @@
   },
   "native_depositor_contracts_map": {
     "3/arbitrum/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
-    "3/base/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
+    "3/base/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xE9a99ba49BA992265227354d1Aa79b91eB0DB2da",
     "3/binance/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
     "3/ethereum/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
-    "3/mantle/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
+    "3/mantle/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xE9a99ba49BA992265227354d1Aa79b91eB0DB2da",
     "3/polygon/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65"
   },
   "demex_referrer": {
