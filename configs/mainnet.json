@@ -124,7 +124,12 @@
     "cmkt/235": "BINANCE:NEIROETHUSDT.P",
     "cmkt/237": "CRYPTO:KASUSD",
     "cmkt/244": "BYBIT:GRASSUSDT",
-    "cmkt/245": "BINANCE:GOATUSDT.P"
+    "cmkt/245": "BINANCE:GOATUSDT.P",
+    "cmkt/248": "KUCOIN:PURRUSDT",
+    "cmkt/250": "PYTH:HYPEUSD",
+    "cmkt/254": "BINANCE:AIXBTUSDT.P",
+    "cmkt/255": "OKX:AI16ZUSDT.P",
+    "cmkt/256": "BINANCE:FARTCOINUSDT.P"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -207,9 +212,16 @@
     "cmkt/243": "#f80cb4",
     "cmkt/244": "#aaec0f",
     "cmkt/245": "#59615e",
+    "cmkt/247": "#d0f5ed",
+    "cmkt/248": "#815440",
+    "cmkt/249": "#465f5d",
     "cmkt/250": "#96fde4",
     "cmkt/251": "#b15efa",
     "cmkt/252": "#24d4f4",
+    "cmkt/253": "#e8f6fa",
+    "cmkt/254": "#ad78f1",
+    "cmkt/255": "#ea892c",
+    "cmkt/256": "#343c39",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -404,11 +416,11 @@
       },
       {
         "perp_pool_id": "7",
-        "show_until": "2024-11-30T08:00+00:00",
+        "show_until": "2025-01-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "PNUT (Peanut the Squirrel) perp and ACT (Act I The AI Prophecy) perp will be added to this pool on 15 Nov 02:00 PM UTC.",
-        "action_trigger_date": "2024-11-15T08:00+00:00",
-        "past_tense_text": "PNUT (Peanut the Squirrel) perp and ACT (Act I The AI Prophecy) perp was added to this pool on 15 Nov 02:00 PM UTC."
+        "added_markets": "AIXBT, AI16Z, and FARTCOIN perp will be added to this pool on 3 Jan 2025 08:00 AM UTC.",
+        "action_trigger_date": "2025-01-03T08:00+00:00",
+        "past_tense_text": "AIXBT, AI16Z, and FARTCOIN perp will be added to this pool on 3 Jan 2025 08:00 AM UTC."
       },
       {
         "perp_pool_id": "1",
