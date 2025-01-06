@@ -495,7 +495,7 @@
     }
   ],
   "disabled_transfer_banner_config": {
-    "unsupported_tokens": ["ibc/A4DB47A9D3CF9A068D454513891B526702455D3EF08FB9EB558C561F9DC2B701"],
+    "unsupported_tokens": ["ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518"],
     "temp_disabled_transfer_tokens": {
       "ibc/DB3EB419D050EC969A41AA0FDBC5B58498D45A0794CB2B6E64F9093AB88B4421": {
         "end": "2025-01-06T08:30:00.000Z"
