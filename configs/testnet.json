@@ -86,7 +86,7 @@
     "temp_disabled_transfer_tokens": {
       "ibc/6558A1C0F4CF9A09078ECBD681868C99C2E8086F41715A2332CC44A3AECCEA09": {
         "end": "2025-01-06T08:30:00.000Z"
-      },
+      }
     },
     "temp_disabled_bridges": {
       "channel-48": {},
