@@ -256,6 +256,22 @@
       "groupQuantity": 1000000
     }
   },
+  "user_created_markets_whitelist": [
+    "swth1rfu9elzahmpwz5vwrvwndy256r8909jq5jyp6e",
+    "swth1wq9ts6l7atfn45ryxrtg4a2gwegsh3xh7w83xl",
+    "swth1mrmw9ruxarczl2pzux0555guuvclykyp8h23sr",
+    "swth1mw90en8tcqnvdjhp64qmyhuq4qasvhy25dpmvw",
+    "swth1t8lz3zjv9cyd8x4h060w3hhdnzagm5cu68vuls",
+    "swth1azgv7znw27cxfs66hj0ak0yv5a4xvtejktgrnw",
+    "swth1t6tveyjtmcf54p56yrd9x48vecu94fyfdtadrj",
+    "swth1ks0qeq9vyt9l7vgasaajd49ff0k8klurxyn5x2",
+    "swth1vsvhxwkszj5s5xmkwuer4vmxp8ezefrw9fs92n",
+    "swth1e2k2wr9vhsm9fjcut9k22at8qyz39ak5xfrq7r",
+    "swth1cqu53xzn6k0t5v48g5wydy2r9ppxv7jhrv3x7n",
+    "swth1zlefkpe3g0vvm9a4h0jf9000lmqutlh9yfkprz", 
+    "swth1wq9ts6l7atfn45ryxrtg4a2gwegsh3xh7w83xl", 
+    "swth1afk9zr2hn2jsac63h4hm60vl9z3e5u69gndzf7c99cqge3vzwjzsun7t4c"
+  ],
   "demex_points_config": {
     "depositsPerSpin": 1000,
     "tradingVolumePerSpin": 10000
