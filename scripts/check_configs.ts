@@ -13,7 +13,6 @@ interface ConfigJSON {
   blacklisted_markets: string[];
   blacklisted_pools: string[];
   blacklisted_tokens: string[];
-  token_name_override_map: TokenNameOverrideMap;
   transfer_options: {
     [chainKey: string]: number;
   };
@@ -242,17 +241,6 @@ function checkBlacklistedMarkets(marketData: string[], blacklistedMarkets: strin
   } : {
     status: false
   };
-}
-
-function isValidTokenNameOverrideMap(tokenNameOverrideMap: TokenNameOverrideMap, denoms: string[], network: CarbonSDK.Network): boolean {
-  const denomKeysArr = Object.keys(tokenNameOverrideMap);
-  const invalidDenomsOutcome = checkValidEntries(denomKeysArr, denoms);
-  if (isErrorOutcome(invalidDenomsOutcome)) {
-    const invalidTokensStr = joinEntriesIntoStr(invalidDenomsOutcome.entry!);
-    console.error(`[ERROR] token_name_override_map of ${network}.json has the following invalid token denom keys: ${invalidTokensStr}. Please make sure to input only valid token denoms.`);
-    return false;
-  }
-  return true;
 }
 
 function isValidExternalChainChannels(chainChannels: ExternalChannelsObj, bridges: string[], network: CarbonSDK.Network): boolean {
@@ -657,10 +645,6 @@ async function main() {
       }, []);
 
       bridgesArr = polynetworkBridges.concat(ibcBridges).concat(axelarBridges)
-
-      // token_name_override_map check
-      const isTokenNameOverrideMapValid = isValidTokenNameOverrideMap(jsonData.token_name_override_map, tokens, network);
-      if (!isTokenNameOverrideMapValid) outcomeMap[network] = false;
 
       const hasInvalidCrossSellingTokens = checkValidEntries(jsonData.cross_selling_source_tokens, tokens);
       if (hasInvalidCrossSellingTokens.status && hasInvalidCrossSellingTokens.entry) {
