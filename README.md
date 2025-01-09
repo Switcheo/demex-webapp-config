@@ -9,7 +9,6 @@ Currently, each JSON file contain the following data on its corresponding networ
 - blacklisted pools
 - blacklisted tokens
 - tokens for which deposits/withdrawals are disabled
-- list of tokens and their token name overrides (which are used if we need to override the token's full name on the Demex webapp)
 - default blockchain transfer option order in deposit/withdrawal forms dropdown
 - default network token fee order
 - cross selling source tokens
@@ -49,10 +48,6 @@ More metadata will be added in the future if required by the Demex frontend. Ple
     "blacklisted_token_2",
     "blacklisted_token_3"
   ],
-  "token_name_override_map": {
-    "token_1": "token_name_override_1",
-    "token_2": "token_name_override_2"
-  },
   "transfer_options": {
     "chain_1": 0,
     "chain_2": 1,

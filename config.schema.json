@@ -52,16 +52,6 @@
         "$ref": "#/$defs/blacklisted_token"
       }
     },
-    "token_name_override_map": {
-      "type": "object",
-      "description": "Object that contains token denoms and their respective token name overrides.",
-      "patternProperties": {
-        ".*": {
-          "type": "string",
-          "minLength": 2
-        }
-      }
-    },
     "transfer_options": {
       "type": "object",
       "description": "List of blockchain networks and their priority numbers, used to set their order in deposit and withdrawal forms transfer option dropdown",
