@@ -17,10 +17,6 @@
     "usdc.1.6.e70e14",
     "bit.1.2.9d68c4"
   ],
-  "token_name_override_map": {
-    "brdg/1299d2e94c483e72f64100088886b8a5b7c13595047e53e032c9938d07a98c20": "Ether (Arbitrum)",
-    "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377": "Ether (Ethereum)"
-  },
   "transfer_options": {
     "Mantle": 0,
     "Base": 1,
