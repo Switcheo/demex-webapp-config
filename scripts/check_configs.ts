@@ -61,10 +61,6 @@ interface PerpPoolBanner {
   subtext?: string;
 }
 
-type TokenNameOverrideMap = {
-  [denom: string]: string;
-}
-
 interface DemexPointsConfig {
   depositsPerSpin: number;
   tradingVolumePerSpin: number;
