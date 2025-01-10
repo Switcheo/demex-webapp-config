@@ -31,7 +31,7 @@ interface ConfigJSON {
   perp_pools: PerpPoolConfig;
   wswth_contract?: string;
   market_banners?: MarketBanner[];
-  market_promo?: {[marketId: string]: MarketPromo};
+  market_promo?: { [marketId: string]: MarketPromo };
   spot_pool_config?: SpotPoolConfig;
   disabled_transfer_banner_config?: DisabledTransferBannerConfig;
   announcement_banner: AnnouncementBanner;
@@ -258,17 +258,17 @@ function isValidExternalChainChannels(chainChannels: ExternalChannelsObj, bridge
 
   if (duplicateChainKeys.length > 0) {
     const duplicateChainsStr = duplicateChainKeys.length > 1 ? `${duplicateChainKeys.slice(0, -1).join(", ")} and ${duplicateChainKeys[duplicateChainKeys.length - 1]}` : duplicateChainKeys[0];
-    console.error(`[ERROR] external_chain_channels of ${network}.json has duplicate chains in the ${duplicateChainsStr} object(s). Please make sure to input each chain only once in each object.`);
+    console.error(`ERROR: external_chain_channels of ${network}.json has duplicate chains in the ${duplicateChainsStr} object(s). Please make sure to input each chain only once in each object.`);
     return false;
   }
   if (invalidChainKeys.length > 0) {
     const invalidChainsStr = invalidChainKeys.length > 1 ? `${invalidChainKeys.slice(0, -1).join(", ")} and ${invalidChainKeys[invalidChainKeys.length - 1]}` : invalidChainKeys[0];
-    console.error(`[ERROR] external_chain_channels of ${network}.json has invalid chains in the ${invalidChainsStr} object(s). Please make sure to input only IBC chains in each object.`);
+    console.error(`ERROR: external_chain_channels of ${network}.json has invalid chains in the ${invalidChainsStr} object(s). Please make sure to input only IBC chains in each object.`);
     return false;
   }
   if (invalidChannelRegexValues.length > 0) {
     const invalidChannelIdStr = invalidChannelRegexValues.length > 1 ? `${invalidChannelRegexValues.slice(0, -1).join(", ")} and ${invalidChannelRegexValues[invalidChannelRegexValues.length - 1]}` : invalidChannelRegexValues[0];
-    console.error(`[ERROR] external_chain_channels of ${network}.json has invalid channel ids in the ${invalidChannelIdStr} object(s). Please make sure to input valid IBC channel ids in each object.`);
+    console.error(`ERROR: external_chain_channels of ${network}.json has invalid channel ids in the ${invalidChannelIdStr} object(s). Please make sure to input valid IBC channel ids in each object.`);
     return false;
   }
   return true;
@@ -289,12 +289,12 @@ function isValidAdditionalIbcTokenConfig(addTokenConfigArr: AdditionalIbcTokenCo
 
   if (invalidChainIndexes.length > 0) {
     const invalidChainsStr = invalidChainIndexes.length > 1 ? `${invalidChainIndexes.slice(0, -1).join(", ")} and ${invalidChainIndexes[invalidChainIndexes.length - 1]}` : invalidChainIndexes[0].toString(10);
-    console.error(`[ERROR] additional_ibc_token_config of ${network}.json has invalid chains in the objects at index position(s) ${invalidChainsStr}. Please make sure to input only IBC chains in each object.`);
+    console.error(`ERROR: additional_ibc_token_config of ${network}.json has invalid chains in the objects at index position(s) ${invalidChainsStr}. Please make sure to input only IBC chains in each object.`);
     return false;
   }
   if (invalidDenomIndexes.length > 0) {
     const invalidDenomsStr = invalidDenomIndexes.length > 1 ? `${invalidDenomIndexes.slice(0, -1).join(", ")} and ${invalidDenomIndexes[invalidDenomIndexes.length - 1]}` : invalidDenomIndexes[0].toString(10);
-    console.error(`[ERROR] additional_ibc_token_config of ${network}.json has invalid denomInCarbon values in the objects at index position(s) ${invalidDenomsStr}. Please make sure to input valid token denoms in each object.`);
+    console.error(`ERROR: additional_ibc_token_config of ${network}.json has invalid denomInCarbon values in the objects at index position(s) ${invalidDenomsStr}. Please make sure to input valid token denoms in each object.`);
     return false;
   }
   return true;
@@ -377,37 +377,37 @@ function isValidAnnouncementBanner(announcementBanner: AnnouncementBanner, netwo
   return true
 }
 
-function isValidMarketPromo(marketPromo: {[marketId: string]: MarketPromo}, network: CarbonSDK.Network, marketIds: string[]): boolean {
-    const marketPromoIds = Object.keys(marketPromo)
-    const hasInvalidMarketPromoIds = checkValidEntries(marketPromoIds, marketIds)
-    const hasDuplicateMarketPromoIds = checkDuplicateEntries(marketPromoIds)
+function isValidMarketPromo(marketPromo: { [marketId: string]: MarketPromo }, network: CarbonSDK.Network, marketIds: string[]): boolean {
+  const marketPromoIds = Object.keys(marketPromo)
+  const hasInvalidMarketPromoIds = checkValidEntries(marketPromoIds, marketIds)
+  const hasDuplicateMarketPromoIds = checkDuplicateEntries(marketPromoIds)
 
-    if (hasInvalidMarketPromoIds.status && hasInvalidMarketPromoIds.entry) {
-      let listOfInvalidIds: string = hasInvalidMarketPromoIds.entry.join(", ");
-      console.error(`ERROR: ${network}.json has the following invalid market ids under the market_promo field: ${listOfInvalidIds}`)
+  if (hasInvalidMarketPromoIds.status && hasInvalidMarketPromoIds.entry) {
+    let listOfInvalidIds: string = hasInvalidMarketPromoIds.entry.join(", ");
+    console.error(`ERROR: ${network}.json has the following invalid market ids under the market_promo field: ${listOfInvalidIds}`)
+    outcomeMap[network] = false;
+  }
+
+  if (hasDuplicateMarketPromoIds.status && hasDuplicateMarketPromoIds.entry) {
+    let listOfDuplicates: string = hasDuplicateMarketPromoIds.entry.join(", ");
+    console.error(`ERROR: ${network}.json has duplicated market promos for the following market ids: ${listOfDuplicates}. Please make sure to input each market promo only once in ${network}`);
+    outcomeMap[network] = false;
+  }
+
+  for (const promoId of marketPromoIds) {
+    const promoInfo = marketPromo[promoId];
+    const startTimeStr = promoInfo.start;
+    const endTimeStr = promoInfo.end;
+
+    const startTime = new Date(startTimeStr);
+    const endTime = new Date(endTimeStr);
+
+    if (endTime < startTime) {
+      console.error(`ERROR: ${network}.json has invalid end time (${endTimeStr}) is before start time (${startTimeStr}) for market promo id ${promoId}.`);
       outcomeMap[network] = false;
+      break;
     }
-
-    if (hasDuplicateMarketPromoIds.status && hasDuplicateMarketPromoIds.entry) {
-      let listOfDuplicates: string = hasDuplicateMarketPromoIds.entry.join(", ");
-      console.error(`ERROR: ${network}.json has duplicated market promos for the following market ids: ${listOfDuplicates}. Please make sure to input each market promo only once in ${network}`);
-      outcomeMap[network] = false;
-    }
-
-    for (const promoId of marketPromoIds) {
-      const promoInfo = marketPromo[promoId];
-      const startTimeStr = promoInfo.start;
-      const endTimeStr = promoInfo.end;
-
-      const startTime = new Date(startTimeStr);
-      const endTime = new Date(endTimeStr);
-
-      if (endTime < startTime) {
-        console.error(`ERROR: ${network}.json has invalid end time (${endTimeStr}) is before start time (${startTimeStr}) for market promo id ${promoId}.`);
-        outcomeMap[network] = false;
-        break;
-      }
-    }
+  }
 
   return true;
 }
@@ -420,7 +420,7 @@ function isValidDisabledTransferBannerConfig(transferBanner: DisabledTransferBan
 
     if (validUnsupportedTokensOutcome.status && isErrorOutcome(validUnsupportedTokensOutcome)) {
       const invalidUnsupportedTokensStr = joinEntriesIntoStr(validUnsupportedTokensOutcome.entry!);
-      console.error(`[ERROR] disabled_transfer_banner_config.unsupported_tokens of ${network}.json has the following invalid token denoms: ${invalidUnsupportedTokensStr}. Please make sure to input only valid token denoms.`);
+      console.error(`ERROR: disabled_transfer_banner_config.unsupported_tokens of ${network}.json has the following invalid token denoms: ${invalidUnsupportedTokensStr}. Please make sure to input only valid token denoms.`);
       return false
     }
   }
@@ -431,7 +431,7 @@ function isValidDisabledTransferBannerConfig(transferBanner: DisabledTransferBan
 
     if (validDisabledTknsOutcome.status && isErrorOutcome(validDisabledTknsOutcome)) {
       const invalidDisabledTokensStr = joinEntriesIntoStr(validDisabledTknsOutcome.entry!);
-      console.error(`[ERROR] disabled_transfer_banner_config.temp_disabled_transfer_tokens of ${network}.json has the following invalid token denoms: ${invalidDisabledTokensStr}. Please make sure to input only valid token denoms.`);
+      console.error(`ERROR: disabled_transfer_banner_config.temp_disabled_transfer_tokens of ${network}.json has the following invalid token denoms: ${invalidDisabledTokensStr}. Please make sure to input only valid token denoms.`);
       return false
     }
 
@@ -453,7 +453,7 @@ function isValidDisabledTransferBannerConfig(transferBanner: DisabledTransferBan
     const validDisabledBridgesOutcome = checkValidEntries(disabledBridgeKeys, bridges);
     if (validDisabledBridgesOutcome.status && isErrorOutcome(validDisabledBridgesOutcome)) {
       const invalidDisabledBridgesStr = joinEntriesIntoStr(validDisabledBridgesOutcome.entry!);
-      console.error(`[ERROR] disabled_transfer_banner_config.temp_disabled_bridges of ${network}.json has the following invalid bridge addresses: ${invalidDisabledBridgesStr}. Please make sure to input only valid bridge addresses.`);
+      console.error(`ERROR: disabled_transfer_banner_config.temp_disabled_bridges of ${network}.json has the following invalid bridge addresses: ${invalidDisabledBridgesStr}. Please make sure to input only valid bridge addresses.`);
       return false
     }
 
@@ -527,6 +527,14 @@ async function main() {
     }
 
     const sdk = await CarbonSDK.instance({ network });
+
+    try {
+      await sdk.tmClient.health();
+    } catch (err) {
+      console.error(`ERROR: unable to initialize sdk for ${network}. Skipping validation for ${network}`);
+      continue;
+    }
+
 
     if (jsonData) {
       // query all markets
@@ -838,15 +846,15 @@ async function main() {
         }
       }
 
-      if(jsonData.market_banners && !isValidMarketBanners(jsonData.market_banners, network, marketIds)) {
+      if (jsonData.market_banners && !isValidMarketBanners(jsonData.market_banners, network, marketIds)) {
         outcomeMap[network] = false;
       }
 
-      if(jsonData.market_promo && !isValidMarketPromo(jsonData.market_promo, network, marketIds)) {
+      if (jsonData.market_promo && !isValidMarketPromo(jsonData.market_promo, network, marketIds)) {
         outcomeMap[network] = false;
       }
 
-      if(jsonData.announcement_banner && !isValidAnnouncementBanner(jsonData.announcement_banner, network)) {
+      if (jsonData.announcement_banner && !isValidAnnouncementBanner(jsonData.announcement_banner, network)) {
         outcomeMap[network] = false;
       }
 
@@ -877,7 +885,6 @@ async function main() {
       if (jsonData.disabled_transfer_banner_config && !isValidDisabledTransferBannerConfig(jsonData.disabled_transfer_banner_config, tokens, bridgesArr, network)) {
         outcomeMap[network] = false;
       }
-
       // check for validate quick select tokens
       if (jsonData.quick_select_deposit_options && !isValidQuickSelectTokens(jsonData.quick_select_deposit_options, network, tokens)) {
         outcomeMap[network] = false;
@@ -886,7 +893,6 @@ async function main() {
   }
   const outcomeArr = Object.values(outcomeMap);
   if (outcomeArr.includes(false)) {
-    console.error("Error!");
     console.log("Please check the error message(s) above to correct the errors.");
     process.exit(1);
   } else {
@@ -896,5 +902,8 @@ async function main() {
 }
 
 main()
-  .catch(console.error)
+  .catch(error => {
+    console.error(error);
+    process.exit(1);
+  })
   .finally(() => process.exit(0));
