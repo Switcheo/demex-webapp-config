@@ -10,7 +10,6 @@
   ],
   "blacklisted_pools": [],
   "blacklisted_tokens": [],
-  "token_name_override_map": {},
   "transfer_options": {},
   "network_fees": {
     "swth": 0,
@@ -89,7 +88,6 @@
       }
     },
     "temp_disabled_bridges": {
-      "channel-48": {},
       "3/bsc-testnet/0x71fdf04d5280ca1fbb25d2114858995695b04991": {
         "start": "2025-01-06T08:00:00Z"
       }

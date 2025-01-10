@@ -8,7 +8,6 @@
     "blacklisted_markets",
     "blacklisted_pools",
     "blacklisted_tokens",
-    "token_name_override_map",
     "transfer_options",
     "network_fees",
     "cross_selling_source_tokens",
@@ -50,16 +49,6 @@
       "description": "List of blacklisted token denoms",
       "items": {
         "$ref": "#/$defs/blacklisted_token"
-      }
-    },
-    "token_name_override_map": {
-      "type": "object",
-      "description": "Object that contains token denoms and their respective token name overrides.",
-      "patternProperties": {
-        ".*": {
-          "type": "string",
-          "minLength": 2
-        }
       }
     },
     "transfer_options": {
