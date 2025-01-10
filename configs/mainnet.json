@@ -254,6 +254,17 @@
         "symbol": "1MMOG"
       },
       "groupQuantity": 1000000
+    },
+    "cmkt/215": {
+      "base": {
+        "symbol": "1MMOG"
+      },
+      "groupQuantity": 1000000
+    },
+    "cmkt/118": {
+      "base": {
+        "symbol": "WBTC"
+      }
     }
   },
   "demex_points_config": {
