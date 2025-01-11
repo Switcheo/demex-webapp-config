@@ -119,7 +119,9 @@
     "cmkt/250": "PYTH:HYPEUSD",
     "cmkt/264": "BINANCE:AIXBTUSDT.P",
     "cmkt/265": "OKX:AI16ZUSDT.P",
-    "cmkt/266": "BINANCE:FARTCOINUSDT.P"
+    "cmkt/266": "BINANCE:FARTCOINUSDT.P",
+    "cmkt/267": "BINANCE:PENGUUSDT",
+    "cmkt/268": "OKX:MORPHOUSDT"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -212,6 +214,8 @@
     "cmkt/264": "#ad78f1",
     "cmkt/265": "#ea892c",
     "cmkt/266": "#343c39",
+    "cmkt/267": "#e8f6fa",
+    "cmkt/268": "#2470ff",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -400,9 +404,9 @@
         "perp_pool_id": "9",
         "show_until": "2025-01-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "MOPRHO perp market will be added to this pool on 13 Jan 08:00 AM UTC.",
+        "added_markets": "MORPHO perp market will be added to this pool on 13 Jan 08:00 AM UTC.",
         "action_trigger_date": "2025-01-13T08:00+00:00",
-        "past_tense_text": "MOPRHO perp market was added to this pool on 13 Jan 08:00 AM UTC."
+        "past_tense_text": "MORPHO perp market was added to this pool on 13 Jan 08:00 AM UTC."
       },
       {
         "perp_pool_id": "7",
