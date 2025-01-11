@@ -117,9 +117,11 @@
     "cmkt/245": "BINANCE:GOATUSDT.P",
     "cmkt/248": "KUCOIN:PURRUSDT",
     "cmkt/250": "PYTH:HYPEUSD",
-    "cmkt/254": "BINANCE:AIXBTUSDT.P",
-    "cmkt/255": "OKX:AI16ZUSDT.P",
-    "cmkt/256": "BINANCE:FARTCOINUSDT.P"
+    "cmkt/264": "BINANCE:AIXBTUSDT.P",
+    "cmkt/265": "OKX:AI16ZUSDT.P",
+    "cmkt/266": "BINANCE:FARTCOINUSDT.P",
+    "cmkt/267": "BINANCE:PENGUUSDT",
+    "cmkt/268": "OKX:MORPHOUSDT"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -209,9 +211,11 @@
     "cmkt/251": "#b15efa",
     "cmkt/252": "#24d4f4",
     "cmkt/253": "#e8f6fa",
-    "cmkt/254": "#ad78f1",
-    "cmkt/255": "#ea892c",
-    "cmkt/256": "#343c39",
+    "cmkt/264": "#ad78f1",
+    "cmkt/265": "#ea892c",
+    "cmkt/266": "#343c39",
+    "cmkt/267": "#e8f6fa",
+    "cmkt/268": "#2470ff",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -390,31 +394,31 @@
     "banners": [
       {
         "perp_pool_id": "5",
-        "show_until": "2024-12-30T08:00+00:00",
+        "show_until": "2025-12-30T08:00+00:00",
         "title": "New Markets Added",
         "added_markets": "JTO (Jito) perp and RAY (Raydium) perp will be added to this pool on 3 Dec 02:00 PM UTC.",
-        "action_trigger_date": "2024-12-03T08:00+00:00",
+        "action_trigger_date": "2025-12-03T08:00+00:00",
         "past_tense_text": "JTO (Jito) perp and RAY (Raydium) perp was added to this pool on 3 Dec 02:00 PM UTC."
       },
       {
         "perp_pool_id": "9",
-        "show_until": "2024-12-30T08:00+00:00",
+        "show_until": "2025-01-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "HYPE (Hyperliquid) perp market will be added to this pool on 3 Dec 08:00 AM UTC.",
-        "action_trigger_date": "2024-12-03T08:00+00:00",
-        "past_tense_text": "HYPE (Hyperliquid) perp market was added to this pool on 3 Dec 08:00 AM UTC."
+        "added_markets": "MORPHO perp market will be added to this pool on 13 Jan 08:00 AM UTC.",
+        "action_trigger_date": "2025-01-13T08:00+00:00",
+        "past_tense_text": "MORPHO perp market was added to this pool on 13 Jan 08:00 AM UTC."
       },
       {
         "perp_pool_id": "7",
         "show_until": "2025-01-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "AIXBT, AI16Z, and FARTCOIN perp will be added to this pool on 3 Jan 2025 08:00 AM UTC.",
-        "action_trigger_date": "2025-01-03T08:00+00:00",
-        "past_tense_text": "AIXBT, AI16Z, and FARTCOIN perp will be added to this pool on 3 Jan 2025 08:00 AM UTC."
+        "added_markets": "PENGU perp will be added to this pool on 13 Jan 08:00 AM UTC.",
+        "action_trigger_date": "2025-01-13T08:00+00:00",
+        "past_tense_text": "PENGU perp will be added to this pool on 13 Jan 08:00 AM UTC."
       },
       {
         "perp_pool_id": "1",
-        "show_until": "2024-08-30T08:00+00:00",
+        "show_until": "2025-08-30T08:00+00:00",
         "title": "New Markets added",
         "removed_markets": "On 20 Aug, 08:00 AM UTC, this perp pool was renamed to 'Modular'. MNT, MANTA, ARB, OP were added to this Perp Pool"
       }
