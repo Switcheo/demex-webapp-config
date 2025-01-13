@@ -2251,10 +2251,10 @@ callsite@1.0.0:
   resolved "https://registry.yarnpkg.com/callsite/-/callsite-1.0.0.tgz#280398e5d664bd74038b6f0905153e6e8af1bc20"
   integrity sha512-0vdNRFXn5q+dtOqjfFtmtlI9N2eVZ7LMyEV2iKC5mEEFvSg/69Ml6b/WU2qF8W1nLRa0wiSrDT3Y5jOHZCwKPQ==
 
-carbon-js-sdk@^0.11.23:
-  version "0.11.23"
-  resolved "https://registry.yarnpkg.com/carbon-js-sdk/-/carbon-js-sdk-0.11.23.tgz#8c35301bbc958df5b08ac1065d170dd34fe0e9c1"
-  integrity sha512-ngAB7JLb3U+KLjFy+AYiL3tXKRGZrtWGpoFfejkvJoIBko1i25KVIH16G+9HvUqdYlUVU02BgTm80jPKxfX72w==
+carbon-js-sdk@^0.11.39:
+  version "0.11.39"
+  resolved "https://registry.yarnpkg.com/carbon-js-sdk/-/carbon-js-sdk-0.11.39.tgz#d0496ac6a06350dc933efbd122b9eafdea6fbc9c"
+  integrity sha512-rlzPyzXkuy3mhn3C9ZLI5deC+/bcBt7nYtWp3iB0w8anc/6dQ0vYT1mXP1wMTleFlKCuUXhiW99JRXqLeCVl+Q==
   dependencies:
     "@cityofzion/neon-api" "^4.9.0"
     "@cityofzion/neon-core" "^4.9.0"
@@ -2278,6 +2278,7 @@ carbon-js-sdk@^0.11.23:
     eth-sig-util "^3.0.1"
     ethers "^5.6.0"
     eventemitter3 "^5.0.0"
+    jwt-decode "^4.0.0"
     ledger-cosmos-js "^2.1.8"
     lodash "^4.17.21"
     neo-dapi "^2.0.4"
@@ -3747,6 +3748,11 @@ json5@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
   integrity sha512-4xrs1aW+6N5DalkqSVA8fxh458CXvR99WU8WLKmq4v8eWAL86Xo3BVqyd3SkA9wEVjCMqyvvRRkshAdOnBp5rw==
+
+jwt-decode@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-4.0.0.tgz#2270352425fd413785b2faf11f6e755c5151bd4b"
+  integrity sha512-+KJGIyHgkGuIq3IEBNftfhW/LfWhXUIY6OmyVWjliu5KH1y0fw7VQ8YndE2O4qZdMSd9SqbnC8GOcZEy0Om7sA==
 
 keccak@^3.0.0:
   version "3.0.2"

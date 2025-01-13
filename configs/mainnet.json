@@ -27,36 +27,6 @@
     "usdc.1.6.e70e14",
     "bit.1.2.9d68c4"
   ],
-  "transfer_disabled_tokens": {
-    "deposit": [
-      "nex.1.17.59c1ba",
-      "gmx.1.19.70275d",
-      "wbnb.1.6.ad598c",
-      "blur.1.2.0c0069",
-      "brdg/0b02ac3efc9df2e80d00f141133c180cdaee0122f92d3e2e310f704e82425a18",
-      "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667",
-      "brdg/a8bbd91ae3dda9de2e50926a0d93be4d0d5cea34f3080014e5c0c0db6eaf61a4",
-      "bnb.1.6.773edb",
-      "zbnb.1.18.c406be",
-      "usdc.1.17.851a3a"
-    ],
-    "withdraw": [
-      "nex.1.17.59c1ba",
-      "gmx.1.19.70275d",
-      "wbnb.1.6.ad598c",
-      "blur.1.2.0c0069",
-      "brdg/0b02ac3efc9df2e80d00f141133c180cdaee0122f92d3e2e310f704e82425a18",
-      "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667",
-      "brdg/a8bbd91ae3dda9de2e50926a0d93be4d0d5cea34f3080014e5c0c0db6eaf61a4",
-      "bnb.1.6.773edb",
-      "zbnb.1.18.c406be",
-      "usdc.1.17.851a3a"
-    ]
-  },
-  "token_name_override_map": {
-    "brdg/1299d2e94c483e72f64100088886b8a5b7c13595047e53e032c9938d07a98c20": "Ether (Arbitrum)",
-    "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377": "Ether (Ethereum)"
-  },
   "transfer_options": {
     "Mantle": 0,
     "Base": 1,
@@ -102,14 +72,8 @@
     "ibc/75249A18DEFBEFE55F83B1C70CAD234DF164F174C6BC51682EE92C2C81C18C93": 11,
     "ibc/B7864B03E1B9FD4F049243E92ABD691586F682137037A9F3FCA5222815620B3C": 12,
     "ibc/4E06CF24FEBFB3F5AF645377DCC0B70AA6183BAF6B918B8B6243FCDEB7D38118": 13,
-    "usdc.1.6.53ff75": 14,
-    "busd.1.6.754a80": 15,
-    "eth.1.19.c3b805": 16,
-    "cglp.1.19.1698d3": 17,
     "zil.1.18.1a4a06": 18,
-    "bneo.1.14.e2e5f6": 19,
-    "eth.1.2.942d87": 20,
-    "usdc.1.2.343151": 21
+    "bneo.1.14.e2e5f6": 19
   },
   "spot_history_market_list": {
     "cmkt/117": "BINANCE:ETHUSD",
@@ -160,7 +124,12 @@
     "cmkt/235": "BINANCE:NEIROETHUSDT.P",
     "cmkt/237": "CRYPTO:KASUSD",
     "cmkt/244": "BYBIT:GRASSUSDT",
-    "cmkt/245": "BINANCE:GOATUSDT.P"
+    "cmkt/245": "BINANCE:GOATUSDT.P",
+    "cmkt/248": "KUCOIN:PURRUSDT",
+    "cmkt/250": "PYTH:HYPEUSD",
+    "cmkt/254": "BINANCE:AIXBTUSDT.P",
+    "cmkt/255": "OKX:AI16ZUSDT.P",
+    "cmkt/256": "BINANCE:FARTCOINUSDT.P"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -243,9 +212,16 @@
     "cmkt/243": "#f80cb4",
     "cmkt/244": "#aaec0f",
     "cmkt/245": "#59615e",
+    "cmkt/247": "#d0f5ed",
+    "cmkt/248": "#815440",
+    "cmkt/249": "#465f5d",
     "cmkt/250": "#96fde4",
     "cmkt/251": "#b15efa",
     "cmkt/252": "#24d4f4",
+    "cmkt/253": "#e8f6fa",
+    "cmkt/254": "#ad78f1",
+    "cmkt/255": "#ea892c",
+    "cmkt/256": "#343c39",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -478,11 +454,11 @@
       },
       {
         "perp_pool_id": "7",
-        "show_until": "2024-11-30T08:00+00:00",
+        "show_until": "2025-01-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "PNUT (Peanut the Squirrel) perp and ACT (Act I The AI Prophecy) perp will be added to this pool on 15 Nov 02:00 PM UTC.",
-        "action_trigger_date": "2024-11-15T08:00+00:00",
-        "past_tense_text": "PNUT (Peanut the Squirrel) perp and ACT (Act I The AI Prophecy) perp was added to this pool on 15 Nov 02:00 PM UTC."
+        "added_markets": "AIXBT, AI16Z, and FARTCOIN perp will be added to this pool on 3 Jan 2025 08:00 AM UTC.",
+        "action_trigger_date": "2025-01-03T08:00+00:00",
+        "past_tense_text": "AIXBT, AI16Z, and FARTCOIN perp will be added to this pool on 3 Jan 2025 08:00 AM UTC."
       },
       {
         "perp_pool_id": "1",
@@ -503,10 +479,10 @@
   },
   "native_depositor_contracts_map": {
     "3/arbitrum/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
-    "3/base/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
+    "3/base/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xE9a99ba49BA992265227354d1Aa79b91eB0DB2da",
     "3/binance/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
     "3/ethereum/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
-    "3/mantle/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
+    "3/mantle/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xE9a99ba49BA992265227354d1Aa79b91eB0DB2da",
     "3/polygon/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65"
   },
   "demex_referrer": {
@@ -548,15 +524,14 @@
       "target_denom": "swth"
     },
     {
-      "label_denom": "eth.1.2.942d87",
-      "target_denom": "eth.1.2.942d87"
+      "label_denom": "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377",
+      "target_denom": "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377"
     },
     {
       "label_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f",
       "target_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f"
     }
   ],
-  "maintenance": {},
   "blockchain_gas_infos": {
     "Archway": {
       "fee_denom": "ibc/652218B355FBD814037EEF28505F3D91F0489325A64FA5D865EF425DD59317BC",
@@ -628,7 +603,7 @@
     },
     "Canto": {
       "fee_denom": "ibc/92E974290AF9E2BC3AEEEC35305C8FD76AC5A22A74CF8D91270FDF5A1C41E861",
-      "decimals": 18 
+      "decimals": 18
     },
     "Sommelier": {
       "fee_denom": "ibc/96BB9743B631E66525F13E5E944AF1A222AF928A4C870E457CDE932092F9528B",

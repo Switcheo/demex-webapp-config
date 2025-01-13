@@ -10,11 +10,6 @@
   ],
   "blacklisted_pools": [],
   "blacklisted_tokens": [],
-  "transfer_disabled_tokens": {
-    "deposit": [],
-    "withdraw": []
-  },
-  "token_name_override_map": {},
   "transfer_options": {},
   "network_fees": {
     "swth": 0,
@@ -29,18 +24,24 @@
       "groupQuantity": 1000
     }
   },
-  "cross_selling_source_tokens": ["swth"],
+  "cross_selling_source_tokens": [
+    "swth"
+  ],
   "external_chain_channels": {},
   "additional_ibc_token_config": [],
   "demex_trading_league_config": {
-    "promoMarkets": ["ATOM_PERP.CGUSD"],
+    "promoMarkets": [
+      "ATOM_PERP.CGUSD"
+    ],
     "currentPrizeSymbol": "USDC",
     "currentCompPerpPoolId": 1
   },
   "perp_pools": {
     "incentives": {
       "proxy": "0x74261efC64caE332E912F5bc645e4A9dcaC5EFaa",
-      "distributors": ["0x0c1f4B22A2B86971ee8581684bBC500b2E824559"]
+      "distributors": [
+        "0x0c1f4B22A2B86971ee8581684bBC500b2E824559"
+      ]
     },
     "banners": []
   },
@@ -70,19 +71,19 @@
   "quick_select_deposit_options": [
     {
       "label_denom": "swth",
-      "target_denom" : "swth"
+      "target_denom": "swth"
     },
     {
       "label_denom": "usdc",
-      "target_denom" : "usdc"
+      "target_denom": "usdc"
     },
     {
       "label_denom": "eth",
-      "target_denom" : "eth"
+      "target_denom": "eth"
     },
     {
       "label_denom": "dai",
-      "target_denom" : "dai"
+      "target_denom": "dai"
     }
   ],
   "blockchain_gas_infos": {
@@ -156,7 +157,7 @@
     },
     "Canto": {
       "fee_denom": "ibc/92E974290AF9E2BC3AEEEC35305C8FD76AC5A22A74CF8D91270FDF5A1C41E861",
-      "decimals": 18 
+      "decimals": 18
     },
     "Sommelier": {
       "fee_denom": "ibc/96BB9743B631E66525F13E5E944AF1A222AF928A4C870E457CDE932092F9528B",
@@ -205,6 +206,21 @@
     "Carbon EVM": {
       "fee_denom": "swth",
       "decimals": 18
+    }
+  },
+  "disabled_transfer_banner_config": {
+    "unsupported_tokens": [
+      "atom"
+    ],
+    "temp_disabled_transfer_tokens": {
+      "ibc/6558A1C0F4CF9A09078ECBD681868C99C2E8086F41715A2332CC44A3AECCEA09": {
+        "end": "2025-01-06T08:30:00.000Z"
+      }
+    },
+    "temp_disabled_bridges": {
+      "3/bsc-testnet/0x71fdf04d5280ca1fbb25d2114858995695b04991": {
+        "start": "2025-01-06T08:00:00Z"
+      }
     }
   }
 }

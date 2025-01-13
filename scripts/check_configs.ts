@@ -1,5 +1,6 @@
-import { BlockchainUtils, CarbonSDK } from "carbon-js-sdk";
+import { CarbonSDK } from "carbon-js-sdk";
 import { PageRequest } from "carbon-js-sdk/lib/codec/cosmos/base/query/v1beta1/pagination";
+import { BridgeMap } from "carbon-js-sdk/lib/util/blockchain";
 import * as fs from "fs";
 import Long from "long";
 
@@ -12,8 +13,6 @@ interface ConfigJSON {
   blacklisted_markets: string[];
   blacklisted_pools: string[];
   blacklisted_tokens: string[];
-  transfer_disabled_tokens: TransferDisabledTokensObj;
-  token_name_override_map: TokenNameOverrideMap;
   transfer_options: {
     [chainKey: string]: number;
   };
@@ -32,8 +31,9 @@ interface ConfigJSON {
   perp_pools: PerpPoolConfig;
   wswth_contract?: string;
   market_banners?: MarketBanner[];
-  market_promo?: {[marketId: string]: MarketPromo};
+  market_promo?: { [marketId: string]: MarketPromo };
   spot_pool_config?: SpotPoolConfig;
+  disabled_transfer_banner_config?: DisabledTransferBannerConfig;
   announcement_banner: AnnouncementBanner;
   quick_select_deposit_options?: QuickSelectToken[];
 }
@@ -59,15 +59,6 @@ interface PerpPoolBanner {
   action_trigger_date?: string;
   past_tense_text?: string;
   subtext?: string;
-}
-
-interface TransferDisabledTokensObj {
-  deposit: string[];
-  withdraw: string[];
-}
-
-type TokenNameOverrideMap = {
-  [denom: string]: string;
 }
 
 interface DemexPointsConfig {
@@ -132,6 +123,22 @@ interface MarketPromo {
 
 interface SpotPoolConfig {
   show_apr_tooltip: boolean;
+}
+
+interface DisabledTransferBannerConfig {
+  unsupported_tokens?: [],
+  temp_disabled_transfer_tokens?: {
+    [denom: string]: {
+      start?: string,
+      end?: string
+    }
+  },
+  temp_disabled_bridges?: {
+    [bridgeAddress: string]: {
+      start?: string,
+      end?: string
+    }
+  }
 }
 
 interface AnnouncementBanner {
@@ -216,7 +223,7 @@ function joinEntriesIntoStr(entriesArr: string[]): string {
     : entriesArr[0];
 }
 
-// check list of markets to ensure that it does not have blacklisted markets 
+// check list of markets to ensure that it does not have blacklisted markets
 function checkBlacklistedMarkets(marketData: string[], blacklistedMarkets: string[]): InvalidEntry {
   let overlappingMarkets: string[] = [];
   marketData.forEach(market => {
@@ -230,50 +237,6 @@ function checkBlacklistedMarkets(marketData: string[], blacklistedMarkets: strin
   } : {
     status: false
   };
-}
-
-function isValidTransferDisabledTokens(transferDisabledTokens: TransferDisabledTokensObj, denoms: string[], network: CarbonSDK.Network): boolean {
-  const dupDepositTknsOutcome = checkDuplicateEntries(transferDisabledTokens.deposit);
-  const dupWithdrawTknsOutcome = checkDuplicateEntries(transferDisabledTokens.withdraw);
-
-  if (dupDepositTknsOutcome.status || dupWithdrawTknsOutcome.status) {
-    if (isErrorOutcome(dupDepositTknsOutcome)) {
-      const duplicateDepositTokensStr = joinEntriesIntoStr(dupDepositTknsOutcome.entry!);
-      console.error(`[ERROR] transfer_disabled_tokens.deposit of ${network}.json has the following duplicate token denoms: ${duplicateDepositTokensStr}. Please make sure to input each denom only once.`);
-    }
-    if (isErrorOutcome(dupWithdrawTknsOutcome)) {
-      const duplicateWithdrawTokensStr = joinEntriesIntoStr(dupWithdrawTknsOutcome.entry!);
-      console.error(`[ERROR] transfer_disabled_tokens.withdraw of ${network}.json has the following duplicate token denoms: ${duplicateWithdrawTokensStr}. Please make sure to input each denom only once.`);
-    }
-    return false;
-  }
-
-  const validDepositTknsOutcome = checkValidEntries(transferDisabledTokens.deposit, denoms);
-  const validWithdrawTknsOutcome = checkValidEntries(transferDisabledTokens.withdraw, denoms);
-  if (validDepositTknsOutcome.status || dupWithdrawTknsOutcome.status) {
-    if (isErrorOutcome(validDepositTknsOutcome)) {
-      const invalidDepositTokensStr = joinEntriesIntoStr(validDepositTknsOutcome.entry!);
-      console.error(`[ERROR] transfer_disabled_tokens.deposit of ${network}.json has the following invalid token denoms: ${invalidDepositTokensStr}. Please make sure to input only valid token denoms.`);
-    }
-    if (isErrorOutcome(validWithdrawTknsOutcome)) {
-      const invalidWithdrawTokensStr = joinEntriesIntoStr(validWithdrawTknsOutcome.entry!);
-      console.error(`[ERROR] transfer_disabled_tokens.withdraw of ${network}.json has the following invalid token denoms: ${invalidWithdrawTokensStr}. Please make sure to input only valid token denoms.`);
-    }
-    return false;
-  }
-
-  return true;
-}
-
-function isValidTokenNameOverrideMap(tokenNameOverrideMap: TokenNameOverrideMap, denoms: string[], network: CarbonSDK.Network): boolean {
-  const denomKeysArr = Object.keys(tokenNameOverrideMap);
-  const invalidDenomsOutcome = checkValidEntries(denomKeysArr, denoms);
-  if (isErrorOutcome(invalidDenomsOutcome)) {
-    const invalidTokensStr = joinEntriesIntoStr(invalidDenomsOutcome.entry!);
-    console.error(`[ERROR] token_name_override_map of ${network}.json has the following invalid token denom keys: ${invalidTokensStr}. Please make sure to input only valid token denoms.`);
-    return false;
-  }
-  return true;
 }
 
 function isValidExternalChainChannels(chainChannels: ExternalChannelsObj, bridges: string[], network: CarbonSDK.Network): boolean {
@@ -295,17 +258,17 @@ function isValidExternalChainChannels(chainChannels: ExternalChannelsObj, bridge
 
   if (duplicateChainKeys.length > 0) {
     const duplicateChainsStr = duplicateChainKeys.length > 1 ? `${duplicateChainKeys.slice(0, -1).join(", ")} and ${duplicateChainKeys[duplicateChainKeys.length - 1]}` : duplicateChainKeys[0];
-    console.error(`[ERROR] external_chain_channels of ${network}.json has duplicate chains in the ${duplicateChainsStr} object(s). Please make sure to input each chain only once in each object.`);
+    console.error(`ERROR: external_chain_channels of ${network}.json has duplicate chains in the ${duplicateChainsStr} object(s). Please make sure to input each chain only once in each object.`);
     return false;
   }
   if (invalidChainKeys.length > 0) {
     const invalidChainsStr = invalidChainKeys.length > 1 ? `${invalidChainKeys.slice(0, -1).join(", ")} and ${invalidChainKeys[invalidChainKeys.length - 1]}` : invalidChainKeys[0];
-    console.error(`[ERROR] external_chain_channels of ${network}.json has invalid chains in the ${invalidChainsStr} object(s). Please make sure to input only IBC chains in each object.`);
+    console.error(`ERROR: external_chain_channels of ${network}.json has invalid chains in the ${invalidChainsStr} object(s). Please make sure to input only IBC chains in each object.`);
     return false;
   }
   if (invalidChannelRegexValues.length > 0) {
     const invalidChannelIdStr = invalidChannelRegexValues.length > 1 ? `${invalidChannelRegexValues.slice(0, -1).join(", ")} and ${invalidChannelRegexValues[invalidChannelRegexValues.length - 1]}` : invalidChannelRegexValues[0];
-    console.error(`[ERROR] external_chain_channels of ${network}.json has invalid channel ids in the ${invalidChannelIdStr} object(s). Please make sure to input valid IBC channel ids in each object.`);
+    console.error(`ERROR: external_chain_channels of ${network}.json has invalid channel ids in the ${invalidChannelIdStr} object(s). Please make sure to input valid IBC channel ids in each object.`);
     return false;
   }
   return true;
@@ -326,12 +289,12 @@ function isValidAdditionalIbcTokenConfig(addTokenConfigArr: AdditionalIbcTokenCo
 
   if (invalidChainIndexes.length > 0) {
     const invalidChainsStr = invalidChainIndexes.length > 1 ? `${invalidChainIndexes.slice(0, -1).join(", ")} and ${invalidChainIndexes[invalidChainIndexes.length - 1]}` : invalidChainIndexes[0].toString(10);
-    console.error(`[ERROR] additional_ibc_token_config of ${network}.json has invalid chains in the objects at index position(s) ${invalidChainsStr}. Please make sure to input only IBC chains in each object.`);
+    console.error(`ERROR: additional_ibc_token_config of ${network}.json has invalid chains in the objects at index position(s) ${invalidChainsStr}. Please make sure to input only IBC chains in each object.`);
     return false;
   }
   if (invalidDenomIndexes.length > 0) {
     const invalidDenomsStr = invalidDenomIndexes.length > 1 ? `${invalidDenomIndexes.slice(0, -1).join(", ")} and ${invalidDenomIndexes[invalidDenomIndexes.length - 1]}` : invalidDenomIndexes[0].toString(10);
-    console.error(`[ERROR] additional_ibc_token_config of ${network}.json has invalid denomInCarbon values in the objects at index position(s) ${invalidDenomsStr}. Please make sure to input valid token denoms in each object.`);
+    console.error(`ERROR: additional_ibc_token_config of ${network}.json has invalid denomInCarbon values in the objects at index position(s) ${invalidDenomsStr}. Please make sure to input valid token denoms in each object.`);
     return false;
   }
   return true;
@@ -414,39 +377,100 @@ function isValidAnnouncementBanner(announcementBanner: AnnouncementBanner, netwo
   return true
 }
 
-function isValidMarketPromo(marketPromo: {[marketId: string]: MarketPromo}, network: CarbonSDK.Network, marketIds: string[]): boolean {
-    const marketPromoIds = Object.keys(marketPromo)
-    const hasInvalidMarketPromoIds = checkValidEntries(marketPromoIds, marketIds)
-    const hasDuplicateMarketPromoIds = checkDuplicateEntries(marketPromoIds)
+function isValidMarketPromo(marketPromo: { [marketId: string]: MarketPromo }, network: CarbonSDK.Network, marketIds: string[]): boolean {
+  const marketPromoIds = Object.keys(marketPromo)
+  const hasInvalidMarketPromoIds = checkValidEntries(marketPromoIds, marketIds)
+  const hasDuplicateMarketPromoIds = checkDuplicateEntries(marketPromoIds)
 
-    if (hasInvalidMarketPromoIds.status && hasInvalidMarketPromoIds.entry) {
-      let listOfInvalidIds: string = hasInvalidMarketPromoIds.entry.join(", ");
-      console.error(`ERROR: ${network}.json has the following invalid market ids under the market_promo field: ${listOfInvalidIds}`)
+  if (hasInvalidMarketPromoIds.status && hasInvalidMarketPromoIds.entry) {
+    let listOfInvalidIds: string = hasInvalidMarketPromoIds.entry.join(", ");
+    console.error(`ERROR: ${network}.json has the following invalid market ids under the market_promo field: ${listOfInvalidIds}`)
+    outcomeMap[network] = false;
+  }
+
+  if (hasDuplicateMarketPromoIds.status && hasDuplicateMarketPromoIds.entry) {
+    let listOfDuplicates: string = hasDuplicateMarketPromoIds.entry.join(", ");
+    console.error(`ERROR: ${network}.json has duplicated market promos for the following market ids: ${listOfDuplicates}. Please make sure to input each market promo only once in ${network}`);
+    outcomeMap[network] = false;
+  }
+
+  for (const promoId of marketPromoIds) {
+    const promoInfo = marketPromo[promoId];
+    const startTimeStr = promoInfo.start;
+    const endTimeStr = promoInfo.end;
+
+    const startTime = new Date(startTimeStr);
+    const endTime = new Date(endTimeStr);
+
+    if (endTime < startTime) {
+      console.error(`ERROR: ${network}.json has invalid end time (${endTimeStr}) is before start time (${startTimeStr}) for market promo id ${promoId}.`);
       outcomeMap[network] = false;
+      break;
     }
-
-    if (hasDuplicateMarketPromoIds.status && hasDuplicateMarketPromoIds.entry) {
-      let listOfDuplicates: string = hasDuplicateMarketPromoIds.entry.join(", ");
-      console.error(`ERROR: ${network}.json has duplicated market promos for the following market ids: ${listOfDuplicates}. Please make sure to input each market promo only once in ${network}`);
-      outcomeMap[network] = false;
-    }
-
-    for (const promoId of marketPromoIds) {
-      const promoInfo = marketPromo[promoId];
-      const startTimeStr = promoInfo.start;
-      const endTimeStr = promoInfo.end;
-
-      const startTime = new Date(startTimeStr);
-      const endTime = new Date(endTimeStr);
-
-      if (endTime < startTime) {
-        console.error(`ERROR: ${network}.json has invalid end time (${endTimeStr}) is before start time (${startTimeStr}) for market promo id ${promoId}.`);
-        outcomeMap[network] = false;
-        break;
-      }
-    }
+  }
 
   return true;
+}
+
+function isValidDisabledTransferBannerConfig(transferBanner: DisabledTransferBannerConfig, denoms: string[], bridges: string[], network: CarbonSDK.Network): boolean {
+  const { unsupported_tokens = [], temp_disabled_transfer_tokens = {}, temp_disabled_bridges = {} } = transferBanner;
+
+  if (unsupported_tokens.length > 0) {
+    const validUnsupportedTokensOutcome = checkValidEntries(unsupported_tokens, denoms);
+
+    if (validUnsupportedTokensOutcome.status && isErrorOutcome(validUnsupportedTokensOutcome)) {
+      const invalidUnsupportedTokensStr = joinEntriesIntoStr(validUnsupportedTokensOutcome.entry!);
+      console.error(`ERROR: disabled_transfer_banner_config.unsupported_tokens of ${network}.json has the following invalid token denoms: ${invalidUnsupportedTokensStr}. Please make sure to input only valid token denoms.`);
+      return false
+    }
+  }
+
+  const disabledTokenKeys = Object.keys(temp_disabled_transfer_tokens)
+  if (disabledTokenKeys.length > 0) {
+    const validDisabledTknsOutcome = checkValidEntries(disabledTokenKeys, denoms);
+
+    if (validDisabledTknsOutcome.status && isErrorOutcome(validDisabledTknsOutcome)) {
+      const invalidDisabledTokensStr = joinEntriesIntoStr(validDisabledTknsOutcome.entry!);
+      console.error(`ERROR: disabled_transfer_banner_config.temp_disabled_transfer_tokens of ${network}.json has the following invalid token denoms: ${invalidDisabledTokensStr}. Please make sure to input only valid token denoms.`);
+      return false
+    }
+
+    disabledTokenKeys.forEach((key) => {
+      const { start, end } = temp_disabled_transfer_tokens[key];
+      if (end && start) {
+        const startTime = new Date(start);
+        const endTime = new Date(end);
+        if (endTime < startTime) {
+          console.error(`ERROR: disabled_transfer_banner_config.temp_disabled_transfer_tokens on ${network}.json has an invalid end time (${end}) for denom ${key} as it is before start time (${start}).`);
+          return false;
+        }
+      }
+    });
+  }
+
+  const disabledBridgeKeys = Object.keys(temp_disabled_bridges)
+  if (disabledBridgeKeys.length > 0) {
+    const validDisabledBridgesOutcome = checkValidEntries(disabledBridgeKeys, bridges);
+    if (validDisabledBridgesOutcome.status && isErrorOutcome(validDisabledBridgesOutcome)) {
+      const invalidDisabledBridgesStr = joinEntriesIntoStr(validDisabledBridgesOutcome.entry!);
+      console.error(`ERROR: disabled_transfer_banner_config.temp_disabled_bridges of ${network}.json has the following invalid bridge addresses: ${invalidDisabledBridgesStr}. Please make sure to input only valid bridge addresses.`);
+      return false
+    }
+
+    disabledBridgeKeys.forEach((key) => {
+      const { start, end } = temp_disabled_bridges[key];
+      if (start && end) {
+        const startTime = new Date(start);
+        const endTime = new Date(end);
+        if (endTime < startTime) {
+          console.error(`ERROR: disabled_transfer_banner_config.temp_disabled_bridges on ${network}.json has an invalid end time (${end}) for bridge ${key} as it is before start time (${start}).`);
+          return false;
+        }
+      }
+    });
+  }
+
+  return true
 }
 
 function isValidQuickSelectTokens(quickSelectTokens: QuickSelectToken[], network: CarbonSDK.Network, denoms: string[]): boolean {
@@ -503,6 +527,14 @@ async function main() {
     }
 
     const sdk = await CarbonSDK.instance({ network });
+
+    try {
+      await sdk.tmClient.health();
+    } catch (err) {
+      console.error(`ERROR: unable to initialize sdk for ${network}. Skipping validation for ${network}`);
+      continue;
+    }
+
 
     if (jsonData) {
       // query all markets
@@ -596,13 +628,27 @@ async function main() {
         outcomeMap[network] = false;
       }
 
-      // transfer disabled tokens object check
-      const isTransferDisabledTokensValid = isValidTransferDisabledTokens(jsonData.transfer_disabled_tokens, tokens, network);
-      if (!isTransferDisabledTokensValid) outcomeMap[network] = false;
+      // query all bridges
+      const bridgesMap: BridgeMap | undefined = sdk?.token?.bridges
+      let bridgesArr: string[] = []
 
-      // token_name_override_map check
-      const isTokenNameOverrideMapValid = isValidTokenNameOverrideMap(jsonData.token_name_override_map, tokens, network);
-      if (!isTokenNameOverrideMapValid) outcomeMap[network] = false;
+      const { polynetwork = [], ibc = [], axelar = [] } = bridgesMap ?? {}
+      const polynetworkBridges = polynetwork.reduce((acc: string[], bridge) => {
+        if (bridge.enabled) acc.push(...bridge.bridgeAddresses)
+        return acc
+      }, [])
+
+      const axelarBridges = axelar.reduce((acc: string[], bridge) => {
+        if (bridge.enabled) acc.push(bridge.bridgeAddress)
+        return acc
+      }, []);
+
+      const ibcBridges = ibc.reduce((acc: string[], bridge) => {
+        if (bridge.enabled) acc.push(bridge.channels.src_channel)
+        return acc
+      }, []);
+
+      bridgesArr = polynetworkBridges.concat(ibcBridges).concat(axelarBridges)
 
       const hasInvalidCrossSellingTokens = checkValidEntries(jsonData.cross_selling_source_tokens, tokens);
       if (hasInvalidCrossSellingTokens.status && hasInvalidCrossSellingTokens.entry) {
@@ -800,18 +846,18 @@ async function main() {
         }
       }
 
-      if(jsonData.market_banners && !isValidMarketBanners(jsonData.market_banners, network, marketIds)) {
+      if (jsonData.market_banners && !isValidMarketBanners(jsonData.market_banners, network, marketIds)) {
         outcomeMap[network] = false;
       }
 
-      if(jsonData.market_promo && !isValidMarketPromo(jsonData.market_promo, network, marketIds)) {
+      if (jsonData.market_promo && !isValidMarketPromo(jsonData.market_promo, network, marketIds)) {
         outcomeMap[network] = false;
       }
-      
-      if(jsonData.announcement_banner && !isValidAnnouncementBanner(jsonData.announcement_banner, network)) {
+
+      if (jsonData.announcement_banner && !isValidAnnouncementBanner(jsonData.announcement_banner, network)) {
         outcomeMap[network] = false;
       }
-      
+
       // check for spot pool config
       if (jsonData.spot_pool_config) {
         const spotPoolConfig = jsonData.spot_pool_config
@@ -835,6 +881,10 @@ async function main() {
         if (!isDemexTradingLeagueConfigValid) outcomeMap[network] = false;
       }
 
+      // transfer banner check
+      if (jsonData.disabled_transfer_banner_config && !isValidDisabledTransferBannerConfig(jsonData.disabled_transfer_banner_config, tokens, bridgesArr, network)) {
+        outcomeMap[network] = false;
+      }
       // check for validate quick select tokens
       if (jsonData.quick_select_deposit_options && !isValidQuickSelectTokens(jsonData.quick_select_deposit_options, network, tokens)) {
         outcomeMap[network] = false;
@@ -843,7 +893,6 @@ async function main() {
   }
   const outcomeArr = Object.values(outcomeMap);
   if (outcomeArr.includes(false)) {
-    console.error("Error!");
     console.log("Please check the error message(s) above to correct the errors.");
     process.exit(1);
   } else {
@@ -853,5 +902,8 @@ async function main() {
 }
 
 main()
-  .catch(console.error)
+  .catch(error => {
+    console.error(error);
+    process.exit(1);
+  })
   .finally(() => process.exit(0));
