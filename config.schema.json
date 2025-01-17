@@ -251,16 +251,7 @@
   },
   "native_depositor_contracts_map": {
     "type": "object",
-    "description": "Map of axelar connection ids to their respective native depositor contract addresses",
-    "patternProperties": {
-      ".*": {
-        "type": "string"
-      }
-    }
-  },
-  "native_token_contracts_map": {
-    "type": "object",
-    "description": "Map of token denoms to their respective contract addresses on the native chain",
+    "description": "Map of token denoms to their respective native depositor contract addresses",
     "patternProperties": {
       ".*": {
         "type": "string"
