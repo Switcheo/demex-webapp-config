@@ -117,9 +117,9 @@
     "cmkt/245": "BINANCE:GOATUSDT.P",
     "cmkt/248": "KUCOIN:PURRUSDT",
     "cmkt/250": "PYTH:HYPEUSD",
-    "cmkt/254": "BINANCE:AIXBTUSDT.P",
-    "cmkt/255": "OKX:AI16ZUSDT.P",
-    "cmkt/256": "BINANCE:FARTCOINUSDT.P"
+    "cmkt/264": "BINANCE:AIXBTUSDT.P",
+    "cmkt/265": "OKX:AI16ZUSDT.P",
+    "cmkt/266": "BINANCE:FARTCOINUSDT.P"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -209,9 +209,10 @@
     "cmkt/251": "#b15efa",
     "cmkt/252": "#24d4f4",
     "cmkt/253": "#e8f6fa",
-    "cmkt/254": "#ad78f1",
-    "cmkt/255": "#ea892c",
-    "cmkt/256": "#343c39",
+    "cmkt/264": "#ad78f1",
+    "cmkt/265": "#ea892c",
+    "cmkt/266": "#343c39",
+    "cmkt/271": "#e6c979",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -408,9 +409,9 @@
         "perp_pool_id": "7",
         "show_until": "2025-01-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "AIXBT, AI16Z, and FARTCOIN perp will be added to this pool on 3 Jan 2025 08:00 AM UTC.",
-        "action_trigger_date": "2025-01-03T08:00+00:00",
-        "past_tense_text": "AIXBT, AI16Z, and FARTCOIN perp will be added to this pool on 3 Jan 2025 08:00 AM UTC."
+        "added_markets": "TRUMP perp will be added to this pool on 19 Jan 2025 08:00 AM UTC.",
+        "action_trigger_date": "2025-01-19T08:00+00:00",
+        "past_tense_text": "TRUMP perp was added to this pool on 19 Jan 2025 08:00 AM UTC."
       },
       {
         "perp_pool_id": "1",
