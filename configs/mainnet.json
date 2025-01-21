@@ -505,18 +505,18 @@
       "trading_league_title": "Base Trading League"
     }
   },
-  "nitron_native_aprs": [
+  "lst_native_aprs": [
     { 
       "protocol": "Drop",
       "api_url": "https://app.drop.money/api/apy",
-      "reward_denom": {
+      "lst_denoms": {
         "dATOM": "ibc/EF37C83E78BD1F9B2401B3B3E5C00E0DBA71A648E2A8C3018861786F7A5F0105"
       }
     },
     {
       "protocol": "Stride",
       "api_url": "https://edge.stride.zone/api/stake-stats",
-      "reward_denom": {
+      "lst_denoms": {
         "ATOM": "ibc/A4DB47A9D3CF9A068D454513891B526702455D3EF08FB9EB558C561F9DC2B701",
         "OSMO": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
         "STARS": "ibc/C688EBE80ECC20865331A18D8D19654754F6B189977715FED00FBA2BE41F144F",
@@ -532,14 +532,14 @@
     {
       "protocol": "Lido",
       "api_url": "https://eth-api.lido.fi/v1/protocol/steth/apr/sma",
-      "reward_denom": {
+      "lst_denoms": {
         "wstETH": "brdg/6901fa9eb45ef8351c0ab9e29fa45da3bb0538bfbc5a84ad1009e3544346d2c8"
       }
     },
     {
       "protocol": "MilkyWay",
       "api_url": "https://apis.milkyway.zone/v2/protocols/osmosis.milkTIA",
-      "reward_denom": {
+      "lst_denoms": {
         "milkTIA": "ibc/16065EE5282C5217685C8F084FC44864C25C706AC37356B0D62811D50B96920F"
       }
     }
