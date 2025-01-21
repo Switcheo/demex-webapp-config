@@ -29,6 +29,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`spot_pool_config`   |`SpotPoolConfig`   |false   |Object that contains the config parameters for the [Spot Pools](https://app.dem.exchange/pools/spot) page on Demex   |
 |`quick_select_tokens`   |`QuickSelectToken[]`   |true   |List of quick select tokens for deposit and withdrawal forms.   |
 |`disabled_transfer_banner_config` |`DisabledTransferBannerConfig` |false |Config parameters for displaying banner to inform users that transfers for the relevant tokens are disabled |
+|`trading_leagues`   |`TradingLeague[]`   |false   |Map of trading league config with their path.   |
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
@@ -136,3 +137,13 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`unsupported_tokens`   |`string[]`  |false   |List of tokens that are no longer supported | The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000) |
 |`temp_disabled_transfer_tokens`   |`object`  |false   |List of tokens for which deposits and withdrawals have been temporarily disabled | The token denoms listed in this object **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000) |
 |`temp_disabled_bridges`   |`object`  |false   |List of bridges for which deposits and withdrawals have been temporarily disabled | Blockchain network listed here **MUST** match the valid chainName of the bridges listed under BridgeAll RPC call.<br /><br /> To view the values of BridgeAll RPC call, simply run yarn get-bridges [network]on the command line. Sample for mainnet:yarn get-bridges mainnet`` |
+
+## TradingLeague Data Structure
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`start_date`   |`string`   |true   |The start date of the trading league    |
+|`end_date`   |`string`   |true   |The end date of the trading league    |
+|`competition_id`   |`string`   |true   |The competition id of the trading league    |
+|`trading_league`   |`string`   |true   |The trading league name    |
+|`trading_league_title`   |`string`   |true   |The trading league title    |
+
