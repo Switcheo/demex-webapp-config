@@ -213,6 +213,7 @@
     "cmkt/265": "#ea892c",
     "cmkt/266": "#343c39",
     "cmkt/271": "#e6c979",
+    "cmkt/272": "#b07825",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -409,9 +410,9 @@
         "perp_pool_id": "7",
         "show_until": "2025-01-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "TRUMP perp will be added to this pool on 19 Jan 2025 08:00 AM UTC.",
-        "action_trigger_date": "2025-01-19T08:00+00:00",
-        "past_tense_text": "TRUMP perp was added to this pool on 19 Jan 2025 08:00 AM UTC."
+        "added_markets": "ANIME perp will be added to this pool on 23 Jan 2025 08:00 AM UTC.",
+        "action_trigger_date": "2025-01-23T08:00+00:00",
+        "past_tense_text": "ANIME perp was added to this pool on 23 Jan 2025 08:00 AM UTC."
       },
       {
         "perp_pool_id": "1",
