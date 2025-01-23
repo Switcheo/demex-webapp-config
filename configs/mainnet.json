@@ -504,5 +504,44 @@
       "trading_league": "Base",
       "trading_league_title": "Base Trading League"
     }
-  }
+  },
+  "lst_native_aprs": [
+    { 
+      "protocol": "Drop",
+      "api_url": "https://app.drop.money/api/apy",
+      "lst_denoms": {
+        "dATOM": "ibc/EF37C83E78BD1F9B2401B3B3E5C00E0DBA71A648E2A8C3018861786F7A5F0105"
+      }
+    },
+    {
+      "protocol": "Stride",
+      "api_url": "https://edge.stride.zone/api/stake-stats",
+      "lst_denoms": {
+        "ATOM": "ibc/B7864B03E1B9FD4F049243E92ABD691586F682137037A9F3FCA5222815620B3C",
+        "OSMO": "ibc/75249A18DEFBEFE55F83B1C70CAD234DF164F174C6BC51682EE92C2C81C18C93",
+        "STARS": "ibc/8D749C5FB0213DF002E8FDCCB5B01E35DA241397EF825048C530C7EAE43BCE80",
+        "LUNA": "ibc/FBEE20115530F474F8BBE1460DA85437C3FBBFAF4A5DEBD71CA6B9C40559A161",
+        "EVMOS": "ibc/0BA1FA7A554B4347A87BD37AFF331683298730F9F8FCECB4896D58BED4B31F00",
+        "INJ": "ibc/2B9D089E73AC096934CD6BBBC71A1CD5DD2A4F8E94CC37CE7F861AC674044002",
+        "DYDX": "ibc/BAA1D21893B1D36865C6CA44D18F4ACF08BAD70CB6863C4722E0A61703808F77",
+        "TIA": "ibc/6569E05DEE32B339D9286A52BE33DFCEFC97267F23EF9CFDE0C055140967A9A5",
+        "DYM": "ibc/63BCB7805C5875C43F9CA101B2766E0AF1BA49DF928E9BC2A000D211614D3338",
+        "SAGA": "ibc/4EAAAE537853E9C0DDF458F0710C37BB3DE7C6A675AB75DB5731ACE93D6CC57B"
+      }
+    },
+    {
+      "protocol": "Lido",
+      "api_url": "https://eth-api.lido.fi/v1/protocol/steth/apr/sma",
+      "lst_denoms": {
+        "wstETH": "brdg/6901fa9eb45ef8351c0ab9e29fa45da3bb0538bfbc5a84ad1009e3544346d2c8"
+      }
+    },
+    {
+      "protocol": "MilkyWay",
+      "api_url": "https://apis.milkyway.zone/v2/protocols/osmosis.milkTIA",
+      "lst_denoms": {
+        "milkTIA": "ibc/16065EE5282C5217685C8F084FC44864C25C706AC37356B0D62811D50B96920F"
+      }
+    }
+  ]
 }

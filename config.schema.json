@@ -632,6 +632,32 @@
       "items": {
         "$ref": "#/$defs/trading_league"
       }
+    },
+    "lst_native_apr": {
+      "type": "object",
+      "description": "API for query LST native APR show on Nitron",
+      "required": ["protocol", "api_url", "lst_denoms"],
+      "properties": {
+        "protocol": {
+          "type": "string",
+          "description": "Protocol name"
+        },
+        "api_url": {
+          "type": "string",
+          "description": "API URL"
+        },
+        "lst_denoms": {
+          "type": "string",
+          "description": "Reward denom map"
+        }
+      }
+    },
+    "lst_native_aprs": {
+      "type": "array",
+      "description": "List of APIs for fetch LST Native APR show on Nitron",
+      "items": {
+        "$ref": "#/$defs/lst_native_apr"
+      }
     }
   }
 }

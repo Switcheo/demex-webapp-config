@@ -15,6 +15,7 @@ Currently, each JSON file contain the following data on its corresponding networ
 - map of IBC channels for external IBC chains (such as Osmosis, Noble, etc.)
 - information about IBC tokens that are not added on chain or require packet forwarding
 - default quick select tokens in deposit/withdrawal forms
+- LSTs native apr config to show on Nitron markets
 
 Additionally, the JSON file for mainnet contains the following data to support ongoing campaigns/promotions:
 - demex points config
