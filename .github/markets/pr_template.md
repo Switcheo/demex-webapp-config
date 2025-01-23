@@ -30,7 +30,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`quick_select_tokens`   |`QuickSelectToken[]`   |true   |List of quick select tokens for deposit and withdrawal forms.   |
 |`disabled_transfer_banner_config` |`DisabledTransferBannerConfig` |false |Config parameters for displaying banner to inform users that transfers for the relevant tokens are disabled |
 |`trading_leagues`   |`TradingLeague[]`   |false   |Map of trading league config with their path.   |
-|`lst_native_aprs`   |`LSTNativeAPR[]`   |true   |List of LST native APR APIs.   |
+|`lst_native_aprs`   |`LSTNativeAPR[]`   |false   |List of LST native APR APIs.   |
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
