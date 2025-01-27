@@ -462,7 +462,7 @@
       "tooltip": "Trade MNT-PERP to earn 3x points in the Mantle Trading League!"
     }
   },
-    "direct_deposit": {
+  "direct_deposit": {
     "domain": "https://dagger.dem.exchange"
   },
   "spot_pool_config": {
@@ -510,7 +510,7 @@
     }
   },
   "lst_native_aprs": [
-    { 
+    {
       "protocol": "Drop",
       "api_url": "https://app.drop.money/api/apy",
       "lst_denoms": {
