@@ -630,7 +630,7 @@
       "decimals": 18
     },
     "Binance Smart Chain": {
-      "fee_denom": "bnb.1.6.773edb",
+      "fee_denom": "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667",
       "decimals": 18
     },
     "Carbon": {
