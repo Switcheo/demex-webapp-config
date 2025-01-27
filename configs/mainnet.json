@@ -532,7 +532,7 @@
       "target_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f"
     }
   ],
-  "blockchain_gas_infos": {
+  "chain_fee_token_map": {
     "Archway": {
       "fee_denom": "ibc/652218B355FBD814037EEF28505F3D91F0489325A64FA5D865EF425DD59317BC",
       "decimals": 18
@@ -578,7 +578,7 @@
       "decimals": 18
     },
     "Base": {
-      "fee_denom": "eth.1.2.942d87",
+      "fee_denom": "brdg/1299d2e94c483e72f64100088886b8a5b7c13595047e53e032c9938d07a98c20",
       "decimals": 18
     },
     "Evmos": {
@@ -614,11 +614,11 @@
       "decimals": 6
     },
     "Ethereum": {
-      "fee_denom": "eth.1.2.942d87",
+      "fee_denom": "brdg/1299d2e94c483e72f64100088886b8a5b7c13595047e53e032c9938d07a98c20",
       "decimals": 18
     },
     "Arbitrum": {
-      "fee_denom": "eth.1.2.942d87",
+      "fee_denom": "brdg/1299d2e94c483e72f64100088886b8a5b7c13595047e53e032c9938d07a98c20",
       "decimals": 18
     },
     "Polygon": {
@@ -651,6 +651,14 @@
     },
     "Carbon EVM": {
       "fee_denom": "swth",
+      "decimals": 18
+    },
+    "Optimism": {
+      "fee_denom": "brdg/1299d2e94c483e72f64100088886b8a5b7c13595047e53e032c9938d07a98c20",
+      "decimals": 18
+    },
+    "Avalanche": {
+      "fee_denom": "brdg/cc0027d68ecd0fcf2151a09070efa6d67efaf6541bd1625307d7057562ce2345",
       "decimals": 18
     }
   }
