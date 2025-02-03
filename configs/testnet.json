@@ -1,13 +1,7 @@
 {
   "network": "testnet",
   "prelaunch_markets": [],
-  "blacklisted_markets": [
-    "swth_btc",
-    "swth_btc2",
-    "swth_nex",
-    "swth_nexo",
-    "swth_dai"
-  ],
+  "blacklisted_markets": [],
   "blacklisted_pools": [],
   "blacklisted_tokens": [],
   "transfer_options": {},
@@ -28,7 +22,7 @@
   "external_chain_channels": {},
   "additional_ibc_token_config": [],
   "demex_trading_league_config": {
-    "promoMarkets": ["ATOM_PERP.CGUSD"],
+    "promoMarkets": [],
     "currentPrizeSymbol": "USDC",
     "currentCompPerpPoolId": 1
   },
@@ -66,18 +60,6 @@
     {
       "label_denom": "swth",
       "target_denom" : "swth"
-    },
-    {
-      "label_denom": "usdc",
-      "target_denom" : "usdc"
-    },
-    {
-      "label_denom": "eth",
-      "target_denom" : "eth"
-    },
-    {
-      "label_denom": "dai",
-      "target_denom" : "dai"
     }
   ],
   "nps_config": {
