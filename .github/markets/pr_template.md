@@ -31,6 +31,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`disabled_transfer_banner_config` |`DisabledTransferBannerConfig` |false |Config parameters for displaying banner to inform users that transfers for the relevant tokens are disabled |
 |`trading_leagues`   |`TradingLeague[]`   |false   |Map of trading league config with their path.   |
 |`lst_native_aprs`   |`LSTNativeAPR[]`   |false   |List of LST native APR APIs.   |
+|`nps_config` | `NPSConfig` | false | Config parameters for managing NPS survey |
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
@@ -155,3 +156,8 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`api_url`   |`string`   |true   |The API to fetch LST Native APR    |
 |`lst_denoms`   |`object`   |true   |The key value object for mapping denom of protocol api and carbon lst denom    |
 
+## NPSConfig Data Structure
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`start`   |`string`  |false   |Start time of the NPS survey | This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
+|`end`   |`string`  |true   |End time of the NPS survey | This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |

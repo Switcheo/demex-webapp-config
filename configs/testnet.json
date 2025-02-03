@@ -79,5 +79,8 @@
       "label_denom": "dai",
       "target_denom" : "dai"
     }
-  ]
+  ],
+  "nps_config": {
+    "end": "2025-02-16T12:00:00Z"
+  }
 }

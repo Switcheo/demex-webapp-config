@@ -38,6 +38,7 @@ interface ConfigJSON {
   announcement_banner: AnnouncementBanner;
   quick_select_deposit_options?: QuickSelectToken[];
   lst_native_aprs?: LstNativeAPR[];
+  nps_config?: NPSConfig;
 }
 
 interface InvalidEntry {
@@ -160,6 +161,11 @@ interface LstNativeAPR {
   protocol: string;
   api_url: string;
   lst_denoms: SimpleMap<string>;
+}
+
+interface NPSConfig {
+  start?: string;
+  end: string;
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -527,6 +533,19 @@ function isValidLSTNativeDenom(lstNativeAPRs: LstNativeAPR[], network: CarbonSDK
   }
 
 
+  return true;
+}
+
+function isValidNPSConfig(npsConfig: NPSConfig, network: CarbonSDK.Network): boolean {
+  const { start, end } = npsConfig;
+  if (start && end) {
+    const startTime = new Date(start);
+    const endTime = new Date(end);
+    if (endTime < startTime) {
+      console.error(`ERROR: nps_config.end is before nps_config.start in ${network}.json`);
+      return false;
+    }
+  }
   return true;
 }
 
@@ -923,6 +942,10 @@ async function main() {
 
       // check for LST native denom duplicate, existed
       if (jsonData.lst_native_aprs && !isValidLSTNativeDenom(jsonData.lst_native_aprs, network, tokens)) {
+        outcomeMap[network] = false;
+      }
+      // check for NPS config
+      if (jsonData.nps_config && !isValidNPSConfig(jsonData.nps_config, network)) {
         outcomeMap[network] = false;
       }
     }
