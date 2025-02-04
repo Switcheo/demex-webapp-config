@@ -629,10 +629,6 @@
       "denom": "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667",
       "decimals": 18
     },
-    "Carbon": {
-      "denom": "swth",
-      "decimals": 8
-    },
     "Neo": {
       "denom": "bneo.1.14.e2e5f6",
       "decimals": 8
