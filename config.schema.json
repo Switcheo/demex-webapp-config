@@ -658,6 +658,19 @@
       "items": {
         "$ref": "#/$defs/lst_native_apr"
       }
+    },
+    "nps_config": {
+      "type": "object",
+      "description": "Config parameters for managing NPS survey",
+      "required": ["start", "end"],
+      "properties": {
+        "start": {
+          "$ref": "#/$defs/start"
+        },
+        "end": {
+          "$ref": "#/$defs/end"
+        }
+      }
     }
   }
 }
