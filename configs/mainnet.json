@@ -641,14 +641,6 @@
       "denom": "bneo.1.14.e2e5f6",
       "decimals": 8
     },
-    "Zilliqa": {
-      "denom": "zil.1.18.1a4a06",
-      "decimals": 12
-    },
-    "Carbon EVM": {
-      "denom": "swth",
-      "decimals": 18
-    },
     "Optimism": {
       "denom": "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377",
       "decimals": 18
