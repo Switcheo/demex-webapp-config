@@ -164,7 +164,7 @@ interface LstNativeAPR {
 }
 
 interface NPSConfig {
-  start?: string;
+  start: string;
   end: string;
 }
 
@@ -538,14 +538,14 @@ function isValidLSTNativeDenom(lstNativeAPRs: LstNativeAPR[], network: CarbonSDK
 
 function isValidNPSConfig(npsConfig: NPSConfig, network: CarbonSDK.Network): boolean {
   const { start, end } = npsConfig;
-  if (start && end) {
-    const startTime = new Date(start);
-    const endTime = new Date(end);
-    if (endTime < startTime) {
-      console.error(`ERROR: nps_config.end is before nps_config.start in ${network}.json`);
-      return false;
-    }
+  const startTime = new Date(start);
+  const endTime = new Date(end);
+
+  if (endTime < startTime) {
+    console.error(`ERROR: nps_config.end is before nps_config.start in ${network}.json`);
+    return false;
   }
+
   return true;
 }
 

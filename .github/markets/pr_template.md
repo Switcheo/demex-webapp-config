@@ -159,5 +159,5 @@ Each json file under the [configs](../../configs) folder correspond to their res
 ## NPSConfig Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
 |---|---|---|---|---|
-|`start`   |`string`  |false   |Start time of the NPS survey | This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
+|`start`   |`string`  |true   |Start time of the NPS survey | This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
 |`end`   |`string`  |true   |End time of the NPS survey | This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |

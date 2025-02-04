@@ -662,7 +662,7 @@
     "nps_config": {
       "type": "object",
       "description": "Config parameters for managing NPS survey",
-      "required": ["end"],
+      "required": ["start", "end"],
       "properties": {
         "start": {
           "$ref": "#/$defs/start"
