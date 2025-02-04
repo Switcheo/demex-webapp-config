@@ -66,5 +66,5 @@
       "target_denom" : "dai"
     }
   ],
-  "blockchain_gas_infos": {}
+  "chain_fee_token_map": {}
 }
