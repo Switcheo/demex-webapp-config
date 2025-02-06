@@ -214,6 +214,9 @@
     "cmkt/266": "#343c39",
     "cmkt/271": "#e6c979",
     "cmkt/272": "#b07825",
+    "cmkt/273": "#222222",
+    "cmkt/274": "#236cd2",
+    "cmkt/275": "#f38d25",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -407,12 +410,12 @@
         "past_tense_text": "HYPE (Hyperliquid) perp market was added to this pool on 3 Dec 08:00 AM UTC."
       },
       {
-        "perp_pool_id": "7",
-        "show_until": "2025-01-30T08:00+00:00",
+        "perp_pool_id": "8",
+        "show_until": "2025-02-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "ANIME perp will be added to this pool on 23 Jan 2025 08:00 AM UTC.",
-        "action_trigger_date": "2025-01-23T08:00+00:00",
-        "past_tense_text": "ANIME perp was added to this pool on 23 Jan 2025 08:00 AM UTC."
+        "added_markets": "HBAR, ADA, and BERA perp will be added to this pool on 6 Feb 2025 01:00 PM UTC.",
+        "action_trigger_date": "2025-02-06T13:00+00:00",
+        "past_tense_text": "HBAR, ADA, and BERA perp was added to this pool on 6 Feb 2025 01:00 PM UTC."
       },
       {
         "perp_pool_id": "1",
