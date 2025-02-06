@@ -539,7 +539,10 @@
     "quick_select_token": {
       "type": "object",
       "description": "Token denom for quick select in transfer form",
-      "required": ["label_denom", "target_denom"],
+      "required": [
+        "label_denom",
+        "target_denom"
+      ],
       "properties": {
         "label_denom": {
           "type": "string",
@@ -608,7 +611,13 @@
     "trading_league": {
       "type": "object",
       "description": "Trading League config",
-      "required": ["startDate", "endDate", "competitionId", "tradingLeague", "tradingLeagueTitle"],
+      "required": [
+        "startDate",
+        "endDate",
+        "competitionId",
+        "tradingLeague",
+        "tradingLeagueTitle"
+      ],
       "properties": {
         "start_date": {
           "type": "string",
@@ -642,7 +651,11 @@
     "lst_native_apr": {
       "type": "object",
       "description": "API for query LST native APR show on Nitron",
-      "required": ["protocol", "api_url", "lst_denoms"],
+      "required": [
+        "protocol",
+        "api_url",
+        "lst_denoms"
+      ],
       "properties": {
         "protocol": {
           "type": "string",
@@ -668,7 +681,10 @@
     "nps_config": {
       "type": "object",
       "description": "Config parameters for managing NPS survey",
-      "required": ["start", "end"],
+      "required": [
+        "start",
+        "end"
+      ],
       "properties": {
         "start": {
           "$ref": "#/$defs/start"
@@ -677,25 +693,25 @@
           "$ref": "#/$defs/end"
         }
       }
-    }
-  },
-  "chain_fee_token_map": {
-    "type": "object",
-    "patternProperties": {
-      ".*": {
-        "type": "object",
-        "required": [
-          "denom",
-          "decimals"
-        ],
-        "properties": {
-          "denom": {
-            "type": "string",
-            "description": "The carbon denom of the token used to pay fees on the chain"
-          },
-          "decimals": {
-            "type": "integer",
-            "description": "The number of decimal places for the denom token"
+    },
+    "chain_fee_token_map": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "object",
+          "required": [
+            "denom",
+            "decimals"
+          ],
+          "properties": {
+            "denom": {
+              "type": "string",
+              "description": "The carbon denom of the token used to pay fees on the chain"
+            },
+            "decimals": {
+              "type": "integer",
+              "description": "The number of decimal places for the denom token"
+            }
           }
         }
       }
