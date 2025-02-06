@@ -678,5 +678,27 @@
         }
       }
     }
+  },
+  "chain_fee_token_map": {
+    "type": "object",
+    "patternProperties": {
+      ".*": {
+        "type": "object",
+        "required": [
+          "denom",
+          "decimals"
+        ],
+        "properties": {
+          "denom": {
+            "type": "string",
+            "description": "The carbon denom of the token used to pay fees on the chain"
+          },
+          "decimals": {
+            "type": "integer",
+            "description": "The number of decimal places for the denom token"
+          }
+        }
+      }
+    }
   }
 }
