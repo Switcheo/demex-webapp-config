@@ -30,6 +30,9 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`quick_select_tokens`   |`QuickSelectToken[]`   |true   |List of quick select tokens for deposit and withdrawal forms.   |
 |`disabled_transfer_banner_config` |`DisabledTransferBannerConfig` |false |Config parameters for displaying banner to inform users that transfers for the relevant tokens are disabled |
 |`chain_fee_token_map`   |`{"ChainFeeTokenMap`   |true   |Map of blockchain to onchain fee token(carbon denom equivalent) and actual decimals |
+|`trading_leagues`   |`TradingLeague[]`   |false   |Map of trading league config with their path.   |
+|`lst_native_aprs`   |`LSTNativeAPR[]`   |false   |List of LST native APR APIs.   |
+|`nps_config` | `NPSConfig` | false | Config parameters for managing NPS survey |
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
@@ -137,3 +140,25 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`unsupported_tokens`   |`string[]`  |false   |List of tokens that are no longer supported | The token denoms listed here **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000) |
 |`temp_disabled_transfer_tokens`   |`object`  |false   |List of tokens for which deposits and withdrawals have been temporarily disabled | The token denoms listed in this object **MUST** match the token denoms listed under the Carbon [Tokens API](https://api.carbon.network/carbon/coin/v1/tokens?pagination.limit=10000) |
 |`temp_disabled_bridges`   |`object`  |false   |List of bridges for which deposits and withdrawals have been temporarily disabled | Blockchain network listed here **MUST** match the valid chainName of the bridges listed under BridgeAll RPC call.<br /><br /> To view the values of BridgeAll RPC call, simply run yarn get-bridges [network]on the command line. Sample for mainnet:yarn get-bridges mainnet`` |
+
+## TradingLeague Data Structure
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`start_date`   |`string`   |true   |The start date of the trading league    |
+|`end_date`   |`string`   |true   |The end date of the trading league    |
+|`competition_id`   |`string`   |true   |The competition id of the trading league    |
+|`trading_league`   |`string`   |true   |The trading league name    |
+|`trading_league_title`   |`string`   |true   |The trading league title    |
+
+## LSTNativeAPR Data Structure
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`protocol`   |`string`   |true   |The protocol name    |
+|`api_url`   |`string`   |true   |The API to fetch LST Native APR    |
+|`lst_denoms`   |`object`   |true   |The key value object for mapping denom of protocol api and carbon lst denom    |
+
+## NPSConfig Data Structure
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`start`   |`string`  |true   |Start time of the NPS survey | This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
+|`end`   |`string`  |true   |End time of the NPS survey | This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |

@@ -66,5 +66,9 @@
       "target_denom" : "dai"
     }
   ],
-  "chain_fee_token_map": {}
+  "chain_fee_token_map": {},
+  "nps_config": {
+    "start": "2025-02-02T12:00:00Z",
+    "end": "2025-02-16T12:00:00Z"
+  }
 }

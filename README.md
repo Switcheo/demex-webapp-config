@@ -16,6 +16,7 @@ Currently, each JSON file contain the following data on its corresponding networ
 - information about IBC tokens that are not added on chain or require packet forwarding
 - default quick select tokens in deposit/withdrawal forms
 - map of blockchain to onchain fee token(carbon denom equivalent) and actual decimals
+- LSTs native apr config to show on Nitron markets
 
 Additionally, the JSON file for mainnet contains the following data to support ongoing campaigns/promotions:
 - demex points config
@@ -24,6 +25,7 @@ Additionally, the JSON file for mainnet contains the following data to support o
 - typeform survey parameters
 - market banner parameters for information banners to be displayed on the TradingView charts on Trade UI
 - market promo parameters for showing boosted tag on market select on Trade UI
+- trading league parameters for showing trading league 
 
 More metadata will be added in the future if required by the Demex frontend. Please see below the structure of the JSON file:
 

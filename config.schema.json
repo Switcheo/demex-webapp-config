@@ -604,6 +604,79 @@
           }
         }
       }
+    },
+    "trading_league": {
+      "type": "object",
+      "description": "Trading League config",
+      "required": ["startDate", "endDate", "competitionId", "tradingLeague", "tradingLeagueTitle"],
+      "properties": {
+        "start_date": {
+          "type": "string",
+          "description": "The start date of the trading league"
+        },
+        "end_date": {
+          "type": "string",
+          "description": "The end date of the trading league"
+        },
+        "competition_id": {
+          "type": "string",
+          "description": "The competition id of the trading league"
+        },
+        "trading_teague": {
+          "type": "string",
+          "description": "The trading league name"
+        },
+        "trading_league_title": {
+          "type": "string",
+          "description": "The trading league title"
+        }
+      }
+    },
+    "trading_leagues": {
+      "type": "object",
+      "description": "Map of trading league with their paths",
+      "items": {
+        "$ref": "#/$defs/trading_league"
+      }
+    },
+    "lst_native_apr": {
+      "type": "object",
+      "description": "API for query LST native APR show on Nitron",
+      "required": ["protocol", "api_url", "lst_denoms"],
+      "properties": {
+        "protocol": {
+          "type": "string",
+          "description": "Protocol name"
+        },
+        "api_url": {
+          "type": "string",
+          "description": "API URL"
+        },
+        "lst_denoms": {
+          "type": "string",
+          "description": "Reward denom map"
+        }
+      }
+    },
+    "lst_native_aprs": {
+      "type": "array",
+      "description": "List of APIs for fetch LST Native APR show on Nitron",
+      "items": {
+        "$ref": "#/$defs/lst_native_apr"
+      }
+    },
+    "nps_config": {
+      "type": "object",
+      "description": "Config parameters for managing NPS survey",
+      "required": ["start", "end"],
+      "properties": {
+        "start": {
+          "$ref": "#/$defs/start"
+        },
+        "end": {
+          "$ref": "#/$defs/end"
+        }
+      }
     }
   }
 }
