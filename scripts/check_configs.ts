@@ -36,6 +36,7 @@ interface ConfigJSON {
   disabled_transfer_banner_config?: DisabledTransferBannerConfig;
   announcement_banner: AnnouncementBanner;
   quick_select_deposit_options?: QuickSelectToken[];
+  chain_fee_token_map?: ChainFeeTokenMap;
 }
 
 interface InvalidEntry {
@@ -152,6 +153,13 @@ interface AnnouncementBanner {
 interface QuickSelectToken {
   label_denom: string;
   target_denom: string;
+}
+
+interface ChainFeeTokenMap {
+  [chain: string]: {
+    denom: string;
+    decimals: number;
+  }
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure

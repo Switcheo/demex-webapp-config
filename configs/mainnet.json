@@ -558,7 +558,7 @@
       "decimals": 6
     },
     "Noble": {
-      "denom": "usdc.1.6.53ff75",
+      "denom": "ibc/43897B9739BD63E3A08A88191999C632E052724AB96BD4C74AE31375C991F48D",
       "decimals": 6
     },
     "Stargaze": {
@@ -618,7 +618,7 @@
       "decimals": 18
     },
     "Arbitrum": {
-      "denom": "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377",
+      "denom": "brdg/1299d2e94c483e72f64100088886b8a5b7c13595047e53e032c9938d07a98c20",
       "decimals": 18
     },
     "Polygon": {
@@ -638,7 +638,7 @@
       "decimals": 8
     },
     "Optimism": {
-      "denom": "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377",
+      "denom": "brdg/34a330df380acf4845e3c3341722a73cc62b57819a2e9960fbb0e040a5210423",
       "decimals": 18
     },
     "Avalanche": {

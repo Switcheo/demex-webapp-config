@@ -87,8 +87,8 @@
     }
   ],
   "chain_fee_token_map": {
-    "Binance Smart Chain": {
-      "fee_denom": "brdg/a493620f7d356bb7fee3a5ea8511d70d5ac728232cc5fe4a25dbd8028993a0e7",
+    "BSC testnet": {
+      "fee_denom": "brdg/058df3a0734c28f905ea8a9ce7f8183a6f76fb10ed1b8cf70acb5f697f5d7009",
       "decimals": 18
     }
   },

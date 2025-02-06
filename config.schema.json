@@ -12,7 +12,8 @@
     "network_fees",
     "cross_selling_source_tokens",
     "external_chain_channels",
-    "additional_ibc_token_config"
+    "additional_ibc_token_config",
+    "chain_fee_token_map"
   ],
   "properties": {
     "network": {
@@ -132,6 +133,11 @@
       "items": {
         "$ref": "#/$defs/cross_selling_source_token"
       }
+    },
+    "chain_fee_token_map": {
+      "type": "object",
+      "description": "Map of token denoms to their respective chain fee tokens",
+      "$ref": "#/$defs/chain_fee_token_map"
     }
   },
   "typeform_widget_config": {

@@ -107,6 +107,16 @@ More metadata will be added in the future if required by the Demex frontend. Ple
       "src_channel": {}, // for ibcBridges
       "connectionId": {} // for axelarBridges
     }
+  },
+  "chain_fee_token_map" :{
+    "Blockchain_1": {
+      "denom": "denom_1",
+      "decimals": 1
+    },
+    "Blockchain_2": {
+      "denom": "Blockchain_2",
+      "decimals": 2
+    },
   }
 }
 ```

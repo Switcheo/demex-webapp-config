@@ -29,6 +29,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`spot_pool_config`   |`SpotPoolConfig`   |false   |Object that contains the config parameters for the [Spot Pools](https://app.dem.exchange/pools/spot) page on Demex   |
 |`quick_select_tokens`   |`QuickSelectToken[]`   |true   |List of quick select tokens for deposit and withdrawal forms.   |
 |`disabled_transfer_banner_config` |`DisabledTransferBannerConfig` |false |Config parameters for displaying banner to inform users that transfers for the relevant tokens are disabled |
+|`chain_fee_token_map`   |`{"ChainFeeTokenMap`   |true   |Map of blockchain to onchain fee token(carbon denom equivalent) and actual decimals |
 
 ## Maintenance Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
