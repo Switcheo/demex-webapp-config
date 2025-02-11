@@ -116,7 +116,7 @@ More metadata will be added in the future if required by the Demex frontend. Ple
       "decimals": 1
     },
     "Blockchain_2": {
-      "denom": "Blockchain_2",
+      "denom": "denom_2",
       "decimals": 2
     },
   }

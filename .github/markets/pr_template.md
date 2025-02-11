@@ -23,13 +23,13 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`perp_pools`   |`PerpPoolConfig`   |false   |Object that contains the configs for Perp Pools   |
 |`wswth_contract`   |`string`   |false   |wSWTH ERC-20 contract.   |
 |`market_banners`   |`MarketBanner[]`   |true   |market banner configs.   |
-| `native_token_contracts_map` | `object` | false    | Map of token denoms to their respective contract addresses on the native chain. |       |
+| `native_token_contracts_map` | `object` | false    | Map of blockchain to onchain fee token(carbon denom equivalent) and actual decimals. |
 | `native_depositor_contracts_map`  | `object`                 | false    | Map of axelar connection ids to their respective native depositor contract addresses
 |`market_promo`   |`MarketPromo`   |false   |Map of Objects that contains market promo parameters for each market   |If the `market_promo` property is omitted, no promo will be shown. The key of each entry is the ids of the market with existing promo.   |
 |`spot_pool_config`   |`SpotPoolConfig`   |false   |Object that contains the config parameters for the [Spot Pools](https://app.dem.exchange/pools/spot) page on Demex   |
 |`quick_select_tokens`   |`QuickSelectToken[]`   |true   |List of quick select tokens for deposit and withdrawal forms.   |
 |`disabled_transfer_banner_config` |`DisabledTransferBannerConfig` |false |Config parameters for displaying banner to inform users that transfers for the relevant tokens are disabled |
-|`chain_fee_token_map`   |`{"ChainFeeTokenMap`   |true   |Map of blockchain to onchain fee token(carbon denom equivalent) and actual decimals |
+|`chain_fee_token_map`   |`ChainFeeTokenMap`   |true   |Map of blockchain to onchain fee token(carbon denom equivalent) and actual decimals |
 |`trading_leagues`   |`TradingLeague[]`   |false   |Map of trading league config with their path.   |
 |`lst_native_aprs`   |`LSTNativeAPR[]`   |false   |List of LST native APR APIs.   |
 |`nps_config` | `NPSConfig` | false | Config parameters for managing NPS survey |
@@ -162,3 +162,10 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |---|---|---|---|---|
 |`start`   |`string`  |true   |Start time of the NPS survey | This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
 |`end`   |`string`  |true   |End time of the NPS survey | This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
+
+## ChainFeeTokenMap Data Structure
+|Field   |Type   |Required   |Description   |Notes   |
+|---|---|---|---|---|
+|`chain`   |`string`   |true   |Name of chain. e.g. Ethereum    |
+|`show_from`   |`string`   |false   |The date and time when the perp pool banner is scheduled to begin displaying. |If not provided, the banner will be shown immediately.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
+|`show_until`   |`string`   |false   |The date and time when the perp pool banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |

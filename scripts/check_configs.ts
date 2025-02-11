@@ -37,7 +37,7 @@ interface ConfigJSON {
   disabled_transfer_banner_config?: DisabledTransferBannerConfig;
   announcement_banner: AnnouncementBanner;
   quick_select_deposit_options?: QuickSelectToken[];
-  chain_fee_token_map?: ChainFeeTokenMap;
+  chain_fee_token_map: ChainFeeTokenMap;
   lst_native_aprs?: LstNativeAPR[];
   nps_config?: NPSConfig;
 }

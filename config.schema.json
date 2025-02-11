@@ -136,7 +136,7 @@
     },
     "chain_fee_token_map": {
       "type": "object",
-      "description": "Map of token denoms to their respective chain fee tokens",
+      "description": "Map of blockchain to onchain fee token(carbon denom equivalent) and actual decimals",
       "$ref": "#/$defs/chain_fee_token_map"
     }
   },
