@@ -1,6 +1,7 @@
 import { CarbonSDK } from "carbon-js-sdk";
 import { PageRequest } from "carbon-js-sdk/lib/codec/cosmos/base/query/v1beta1/pagination";
 import { BridgeMap } from "carbon-js-sdk/lib/util/blockchain";
+import { SimpleMap } from "carbon-js-sdk/lib/util/type";
 import * as fs from "fs";
 import Long from "long";
 
@@ -36,6 +37,8 @@ interface ConfigJSON {
   disabled_transfer_banner_config?: DisabledTransferBannerConfig;
   announcement_banner: AnnouncementBanner;
   quick_select_deposit_options?: QuickSelectToken[];
+  lst_native_aprs?: LstNativeAPR[];
+  nps_config?: NPSConfig;
 }
 
 interface InvalidEntry {
@@ -152,6 +155,17 @@ interface AnnouncementBanner {
 interface QuickSelectToken {
   label_denom: string;
   target_denom: string;
+}
+
+interface LstNativeAPR {
+  protocol: string;
+  api_url: string;
+  lst_denoms: SimpleMap<string>;
+}
+
+interface NPSConfig {
+  start: string;
+  end: string;
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -496,6 +510,42 @@ function isValidQuickSelectTokens(quickSelectTokens: QuickSelectToken[], network
     console.error(`ERROR: ${network}.json has the following invalid target token denoms: ${listOfInvalidTokens}. Please make sure to only input valid token denoms in ${network}`);
     return false;
   }
+  return true;
+}
+
+function isValidLSTNativeDenom(lstNativeAPRs: LstNativeAPR[], network: CarbonSDK.Network, denoms: string[]): boolean {
+  const lstDenoms = lstNativeAPRs.reduce((acc: string[], lst) => {
+    return acc.concat(Object.values(lst.lst_denoms))
+  }, [])
+
+  const duplicateLstDenoms = checkDuplicateEntries(lstDenoms);
+  if (duplicateLstDenoms.status && duplicateLstDenoms.entry) {
+    let listOfDuplicates: string = duplicateLstDenoms.entry.join(", ");
+    console.error(`ERROR: ${network}.json has the following duplicated lst native prs denoms: ${listOfDuplicates}. Please make sure to input each token denom only once in ${network}`);
+    return false;
+  }
+
+  const invalidLstDenoms = checkValidEntries(lstDenoms, denoms);
+  if (invalidLstDenoms.status && invalidLstDenoms.entry) {
+    let listOfInvalidDenoms: string = invalidLstDenoms.entry.join(", ");
+    console.error(`ERROR: ${network}.json has the following invalid lst native prs denoms: ${listOfInvalidDenoms}. Please make sure to only input valid token denoms in ${network}`);
+    return false;
+  }
+
+
+  return true;
+}
+
+function isValidNPSConfig(npsConfig: NPSConfig, network: CarbonSDK.Network): boolean {
+  const { start, end } = npsConfig;
+  const startTime = new Date(start);
+  const endTime = new Date(end);
+
+  if (endTime < startTime) {
+    console.error(`ERROR: nps_config.end is before nps_config.start in ${network}.json`);
+    return false;
+  }
+
   return true;
 }
 
@@ -887,6 +937,15 @@ async function main() {
       }
       // check for validate quick select tokens
       if (jsonData.quick_select_deposit_options && !isValidQuickSelectTokens(jsonData.quick_select_deposit_options, network, tokens)) {
+        outcomeMap[network] = false;
+      }
+
+      // check for LST native denom duplicate, existed
+      if (jsonData.lst_native_aprs && !isValidLSTNativeDenom(jsonData.lst_native_aprs, network, tokens)) {
+        outcomeMap[network] = false;
+      }
+      // check for NPS config
+      if (jsonData.nps_config && !isValidNPSConfig(jsonData.nps_config, network)) {
         outcomeMap[network] = false;
       }
     }

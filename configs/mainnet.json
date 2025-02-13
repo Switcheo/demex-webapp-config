@@ -117,9 +117,9 @@
     "cmkt/245": "BINANCE:GOATUSDT.P",
     "cmkt/248": "KUCOIN:PURRUSDT",
     "cmkt/250": "PYTH:HYPEUSD",
-    "cmkt/254": "BINANCE:AIXBTUSDT.P",
-    "cmkt/255": "OKX:AI16ZUSDT.P",
-    "cmkt/256": "BINANCE:FARTCOINUSDT.P"
+    "cmkt/264": "BINANCE:AIXBTUSDT.P",
+    "cmkt/265": "OKX:AI16ZUSDT.P",
+    "cmkt/266": "BINANCE:FARTCOINUSDT.P"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -209,9 +209,14 @@
     "cmkt/251": "#b15efa",
     "cmkt/252": "#24d4f4",
     "cmkt/253": "#e8f6fa",
-    "cmkt/254": "#ad78f1",
-    "cmkt/255": "#ea892c",
-    "cmkt/256": "#343c39",
+    "cmkt/264": "#ad78f1",
+    "cmkt/265": "#ea892c",
+    "cmkt/266": "#343c39",
+    "cmkt/271": "#e6c979",
+    "cmkt/272": "#b07825",
+    "cmkt/273": "#222222",
+    "cmkt/274": "#236cd2",
+    "cmkt/275": "#f38d25",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -248,7 +253,7 @@
   },
   "demex_points_config": {
     "depositsPerSpin": 1000,
-    "tradingVolumePerSpin": 10000
+    "tradingVolumePerSpin": 12500
   },
   "perp_pool_promo": {
     "8": {
@@ -405,12 +410,12 @@
         "past_tense_text": "HYPE (Hyperliquid) perp market was added to this pool on 3 Dec 08:00 AM UTC."
       },
       {
-        "perp_pool_id": "7",
-        "show_until": "2025-01-30T08:00+00:00",
+        "perp_pool_id": "8",
+        "show_until": "2025-02-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "AIXBT, AI16Z, and FARTCOIN perp will be added to this pool on 3 Jan 2025 08:00 AM UTC.",
-        "action_trigger_date": "2025-01-03T08:00+00:00",
-        "past_tense_text": "AIXBT, AI16Z, and FARTCOIN perp will be added to this pool on 3 Jan 2025 08:00 AM UTC."
+        "added_markets": "HBAR, ADA, and BERA perp will be added to this pool on 6 Feb 2025 01:00 PM UTC.",
+        "action_trigger_date": "2025-02-06T13:00+00:00",
+        "past_tense_text": "HBAR, ADA, and BERA perp was added to this pool on 6 Feb 2025 01:00 PM UTC."
       },
       {
         "perp_pool_id": "1",
@@ -450,6 +455,9 @@
       "tooltip": "Trade MNT-PERP to earn 3x points in the Mantle Trading League!"
     }
   },
+  "direct_deposit": {
+    "domain": "https://dagger.dem.exchange"
+  },
   "spot_pool_config": {
     "show_apr_tooltip": true
   },
@@ -477,5 +485,64 @@
       "label_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f",
       "target_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f"
     }
-  ]
+  ],
+  "trading_leagues": {
+    "/rewards/mantle-trading-league": {
+      "start_date": "2024-12-23T08:00:00Z",
+      "end_date": "2025-01-17T08:00:00Z",
+      "competition_id": "tradingcomp27",
+      "trading_league": "Mantle",
+      "trading_league_title": "Mantle Trading League"
+    },
+    "/rewards/base-trading-league": {
+      "start_date": "2025-01-20T08:00:00Z",
+      "end_date": "2025-02-20T08:00:00Z",
+      "competition_id": "tradingcomp28",
+      "trading_league": "Base",
+      "trading_league_title": "Base Trading League"
+    }
+  },
+  "lst_native_aprs": [
+    {
+      "protocol": "Drop",
+      "api_url": "https://app.drop.money/api/apy",
+      "lst_denoms": {
+        "dATOM": "ibc/EF37C83E78BD1F9B2401B3B3E5C00E0DBA71A648E2A8C3018861786F7A5F0105"
+      }
+    },
+    {
+      "protocol": "Stride",
+      "api_url": "https://edge.stride.zone/api/stake-stats",
+      "lst_denoms": {
+        "ATOM": "ibc/B7864B03E1B9FD4F049243E92ABD691586F682137037A9F3FCA5222815620B3C",
+        "OSMO": "ibc/75249A18DEFBEFE55F83B1C70CAD234DF164F174C6BC51682EE92C2C81C18C93",
+        "STARS": "ibc/8D749C5FB0213DF002E8FDCCB5B01E35DA241397EF825048C530C7EAE43BCE80",
+        "LUNA": "ibc/FBEE20115530F474F8BBE1460DA85437C3FBBFAF4A5DEBD71CA6B9C40559A161",
+        "EVMOS": "ibc/0BA1FA7A554B4347A87BD37AFF331683298730F9F8FCECB4896D58BED4B31F00",
+        "INJ": "ibc/2B9D089E73AC096934CD6BBBC71A1CD5DD2A4F8E94CC37CE7F861AC674044002",
+        "DYDX": "ibc/BAA1D21893B1D36865C6CA44D18F4ACF08BAD70CB6863C4722E0A61703808F77",
+        "TIA": "ibc/6569E05DEE32B339D9286A52BE33DFCEFC97267F23EF9CFDE0C055140967A9A5",
+        "DYM": "ibc/63BCB7805C5875C43F9CA101B2766E0AF1BA49DF928E9BC2A000D211614D3338",
+        "SAGA": "ibc/4EAAAE537853E9C0DDF458F0710C37BB3DE7C6A675AB75DB5731ACE93D6CC57B"
+      }
+    },
+    {
+      "protocol": "Lido",
+      "api_url": "https://eth-api.lido.fi/v1/protocol/steth/apr/sma",
+      "lst_denoms": {
+        "wstETH": "brdg/6901fa9eb45ef8351c0ab9e29fa45da3bb0538bfbc5a84ad1009e3544346d2c8"
+      }
+    },
+    {
+      "protocol": "MilkyWay",
+      "api_url": "https://apis.milkyway.zone/v2/protocols/osmosis.milkTIA",
+      "lst_denoms": {
+        "milkTIA": "ibc/16065EE5282C5217685C8F084FC44864C25C706AC37356B0D62811D50B96920F"
+      }
+    }
+  ],
+  "nps_config": {
+    "start": "2025-02-02T12:00:00Z",
+    "end": "2025-02-16T12:00:00Z"
+  }
 }
