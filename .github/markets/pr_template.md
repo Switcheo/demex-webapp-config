@@ -23,8 +23,8 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`perp_pools`   |`PerpPoolConfig`   |false   |Object that contains the configs for Perp Pools   |
 |`wswth_contract`   |`string`   |false   |wSWTH ERC-20 contract.   |
 |`market_banners`   |`MarketBanner[]`   |true   |market banner configs.   |
-| `native_token_contracts_map` | `object` | false    | Map of token denoms to their respective contract addresses on the native chain. |
-| `native_depositor_contracts_map`  | `object`                 | false    | Map of axelar connection ids to their respective native depositor contract addresses
+|`native_token_contracts_map` | `object` | false    | Map of token denoms to their respective contract addresses on the native chain. |
+|`native_depositor_contracts_map`  | `object`                 | false    | Map of axelar connection ids to their respective native depositor contract addresses
 |`market_promo`   |`MarketPromo`   |false   |Map of Objects that contains market promo parameters for each market   |If the `market_promo` property is omitted, no promo will be shown. The key of each entry is the ids of the market with existing promo.   |
 |`spot_pool_config`   |`SpotPoolConfig`   |false   |Object that contains the config parameters for the [Spot Pools](https://app.dem.exchange/pools/spot) page on Demex   |
 |`quick_select_tokens`   |`QuickSelectToken[]`   |true   |List of quick select tokens for deposit and withdrawal forms.   |
@@ -167,4 +167,4 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |Field   |Type   |Required   |Description   |Notes   |
 |---|---|---|---|---|
 |`denom`   |`string`   |true   |Carbon denom of fee token |
-|`decimals`   |`number`   |true   |Decimal precision of the blockchain |
+|`decimals`   |`number`   |true   |Decimal precision of the fee token |
