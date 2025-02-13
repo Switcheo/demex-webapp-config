@@ -23,7 +23,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 |`perp_pools`   |`PerpPoolConfig`   |false   |Object that contains the configs for Perp Pools   |
 |`wswth_contract`   |`string`   |false   |wSWTH ERC-20 contract.   |
 |`market_banners`   |`MarketBanner[]`   |true   |market banner configs.   |
-| `native_token_contracts_map` | `object` | false    | Map of blockchain to onchain fee token(carbon denom equivalent) and actual decimals. |
+| `native_token_contracts_map` | `object` | false    | Map of token denoms to their respective contract addresses on the native chain. |
 | `native_depositor_contracts_map`  | `object`                 | false    | Map of axelar connection ids to their respective native depositor contract addresses
 |`market_promo`   |`MarketPromo`   |false   |Map of Objects that contains market promo parameters for each market   |If the `market_promo` property is omitted, no promo will be shown. The key of each entry is the ids of the market with existing promo.   |
 |`spot_pool_config`   |`SpotPoolConfig`   |false   |Object that contains the config parameters for the [Spot Pools](https://app.dem.exchange/pools/spot) page on Demex   |
@@ -166,6 +166,5 @@ Each json file under the [configs](../../configs) folder correspond to their res
 ## ChainFeeTokenMap Data Structure
 |Field   |Type   |Required   |Description   |Notes   |
 |---|---|---|---|---|
-|`chain`   |`string`   |true   |Name of chain. e.g. Ethereum    |
-|`show_from`   |`string`   |false   |The date and time when the perp pool banner is scheduled to begin displaying. |If not provided, the banner will be shown immediately.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
-|`show_until`   |`string`   |false   |The date and time when the perp pool banner is scheduled to stop displaying. |If not provided, the banner will continue to display indefinitely.<br /><br /> This field **MUST** follow the valid ISO 8601 format <br /> e.g. *2024-01-23T09:00+00:00* (23 Jan 2024, 9am UTC) |
+|`denom`   |`string`   |true   |Carbon denom of fee token |
+|`decimals`   |`number`   |true   |Decimal precision of the blockchain |
