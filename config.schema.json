@@ -17,11 +17,7 @@
   "properties": {
     "network": {
       "type": "string",
-      "enum": [
-        "mainnet",
-        "testnet",
-        "devnet"
-      ]
+      "enum": ["mainnet", "testnet", "devnet"]
     },
     "prelaunch_markets": {
       "type": "array",
@@ -139,11 +135,7 @@
     "description": "Ongoing survey configs for typeform survey widget",
     "items": {
       "type": "object",
-      "required": [
-        "surveyLink",
-        "endTime",
-        "pages"
-      ],
+      "required": ["surveyLink", "endTime", "pages"],
       "properties": {
         "message": {
           "type": "string"
@@ -226,10 +218,7 @@
     "description": "List of banner information to be displayed over the TradingView chart for the required market",
     "items": {
       "type": "object",
-      "required": [
-        "market_id",
-        "content"
-      ],
+      "required": ["market_id", "content"],
       "properties": {
         "market_id": {
           "$ref": "#/$defs/market_id"
@@ -264,10 +253,7 @@
     "patternProperties": {
       "^\\d+$": {
         "type": "object",
-        "required": [
-          "start",
-          "end"
-        ],
+        "required": ["start", "end"],
         "properties": {
           "start": {
             "$ref": "#/$defs/start"
@@ -390,10 +376,7 @@
     "additional_ibc_token_info": {
       "type": "object",
       "description": "Information for token that (1) is not added on Carbon blockchain or (2) requires packet forwarding.",
-      "required": [
-        "baseDenom",
-        "chainRoutes"
-      ],
+      "required": ["baseDenom", "chainRoutes"],
       "properties": {
         "baseDenom": {
           "type": "string",
@@ -433,10 +416,7 @@
       "description": "List of perp pool banners",
       "items": {
         "type": "object",
-        "required": [
-          "perp_pool_id",
-          "title"
-        ],
+        "required": ["perp_pool_id", "title"],
         "properties": {
           "perp_pool_id": {
             "$ref": "#/$defs/perp_pool_id"
@@ -494,10 +474,7 @@
     "announcement_banner": {
       "type": "object",
       "description": "Custom announcement banner through all or only on specificed paths",
-      "required": [
-        "content",
-        "show_only_on"
-      ],
+      "required": ["content", "show_only_on"],
       "patternProperties": {
         "show_from": {
           "$ref": "#/$defs/show_from"
@@ -593,7 +570,13 @@
     "trading_league": {
       "type": "object",
       "description": "Trading League config",
-      "required": ["startDate", "endDate", "competitionId", "tradingLeague", "tradingLeagueTitle"],
+      "required": [
+        "startDate",
+        "endDate",
+        "competitionId",
+        "tradingLeague",
+        "tradingLeagueTitle"
+      ],
       "properties": {
         "start_date": {
           "type": "string",
@@ -661,6 +644,17 @@
         "end": {
           "$ref": "#/$defs/end"
         }
+      }
+    }
+  },
+  "direct_deposit": {
+    "type": "object",
+    "description": "Direct deposit config",
+    "required": ["domain"],
+    "properties": {
+      "domain": {
+        "type": "string",
+        "description": "Domain of the direct deposit"
       }
     }
   }
