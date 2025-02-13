@@ -1,5 +1,6 @@
 import { CarbonSDK } from "carbon-js-sdk";
 import { PageRequest } from "carbon-js-sdk/lib/codec/cosmos/base/query/v1beta1/pagination";
+import { Network } from "carbon-js-sdk/lib/constant";
 import { BridgeMap } from "carbon-js-sdk/lib/util/blockchain";
 import { SimpleMap } from "carbon-js-sdk/lib/util/type";
 import * as fs from "fs";
@@ -33,12 +34,17 @@ interface ConfigJSON {
   wswth_contract?: string;
   market_banners?: MarketBanner[];
   market_promo?: { [marketId: string]: MarketPromo };
+  direct_deposit: DirectDeposit;
   spot_pool_config?: SpotPoolConfig;
   disabled_transfer_banner_config?: DisabledTransferBannerConfig;
   announcement_banner: AnnouncementBanner;
   quick_select_deposit_options?: QuickSelectToken[];
   lst_native_aprs?: LstNativeAPR[];
   nps_config?: NPSConfig;
+}
+
+interface DirectDeposit {
+  domain: string;
 }
 
 interface InvalidEntry {
@@ -536,6 +542,15 @@ function isValidLSTNativeDenom(lstNativeAPRs: LstNativeAPR[], network: CarbonSDK
   return true;
 }
 
+function isValidDirectDeposit(directDeposit: DirectDeposit, network: Network): boolean {
+  const { domain } = directDeposit;
+  if (!domain) {
+    console.error(`ERROR: direct_deposit.domain is required in ${network}.json`);
+    return false;
+  }
+  return true;
+}
+
 function isValidNPSConfig(npsConfig: NPSConfig, network: CarbonSDK.Network): boolean {
   const { start, end } = npsConfig;
   const startTime = new Date(start);
@@ -948,17 +963,22 @@ async function main() {
       if (jsonData.nps_config && !isValidNPSConfig(jsonData.nps_config, network)) {
         outcomeMap[network] = false;
       }
+
+      if (jsonData.direct_deposit && !isValidDirectDeposit(jsonData.direct_deposit, network)) {
+        outcomeMap[network] = false;
+      }
     }
   }
-  const outcomeArr = Object.values(outcomeMap);
-  if (outcomeArr.includes(false)) {
-    console.log("Please check the error message(s) above to correct the errors.");
-    process.exit(1);
-  } else {
-    console.log("Success!");
-    console.log(`Configs has passed all checks!`);
-  }
 }
+const outcomeArr = Object.values(outcomeMap);
+if (outcomeArr.includes(false)) {
+  console.log("Please check the error message(s) above to correct the errors.");
+  process.exit(1);
+} else {
+  console.log("Success!");
+  console.log(`Configs has passed all checks!`);
+}
+
 
 main()
   .catch(error => {
