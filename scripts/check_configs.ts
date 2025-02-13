@@ -969,15 +969,16 @@ async function main() {
       }
     }
   }
+  const outcomeArr = Object.values(outcomeMap);
+  if (outcomeArr.includes(false)) {
+    console.log("Please check the error message(s) above to correct the errors.");
+    process.exit(1);
+  } else {
+    console.log("Success!");
+    console.log(`Configs has passed all checks!`);
+  }
 }
-const outcomeArr = Object.values(outcomeMap);
-if (outcomeArr.includes(false)) {
-  console.log("Please check the error message(s) above to correct the errors.");
-  process.exit(1);
-} else {
-  console.log("Success!");
-  console.log(`Configs has passed all checks!`);
-}
+
 
 
 main()
