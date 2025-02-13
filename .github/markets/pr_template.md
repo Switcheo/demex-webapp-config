@@ -30,6 +30,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 | `direct_deposit`                  | `DirectDeposit`                | false    | Object that contains the config parameters for Direct Deposits on Demex                                                                                                                         |
 | `quick_select_tokens`             | `QuickSelectToken[]`           | true     | List of quick select tokens for deposit and withdrawal forms.                                                                                                                                   |
 | `disabled_transfer_banner_config` | `DisabledTransferBannerConfig` | false    | Config parameters for displaying banner to inform users that transfers for the relevant tokens are disabled                                                                                     |
+| `chain_fee_token_map`             | `ChainFeeTokenMap`             | true     | Map of blockchain to onchain fee token(carbon denom equivalent) and actual decimals     |
 | `trading_leagues`                 | `TradingLeague[]`              | false    | Map of trading league config with their path.                                                                                                                                                   |
 | `lst_native_aprs`                 | `LSTNativeAPR[]`               | false    | List of LST native APR APIs.                                                                                                                                                                    |
 | `nps_config`                      | `NPSConfig`                    | false    | Config parameters for managing NPS survey                                                                                                                                                       |
@@ -181,3 +182,10 @@ Each json file under the [configs](../../configs) folder correspond to their res
 | ------- | -------- | -------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `start` | `string` | true     | Start time of the NPS survey | This field **MUST** follow the valid ISO 8601 format <br /> e.g. _2024-01-23T09:00+00:00_ (23 Jan 2024, 9am UTC) |
 | `end`   | `string` | true     | End time of the NPS survey   | This field **MUST** follow the valid ISO 8601 format <br /> e.g. _2024-01-23T09:00+00:00_ (23 Jan 2024, 9am UTC) |
+
+## ChainFeeTokenMap Data Structure
+
+| Field        | Type     | Required | Description                                                                 | Notes |
+| ------------ | -------- | -------- | --------------------------------------------------------------------------- | ----- |
+| `denom`      | `string` | true     | Carbon denom of fee token                                                   |
+| `decimals`   | `number` | true     | Decimal precision of the fee token                                          |

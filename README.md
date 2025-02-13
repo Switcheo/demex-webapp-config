@@ -15,6 +15,7 @@ Currently, each JSON file contain the following data on its corresponding networ
 - map of IBC channels for external IBC chains (such as Osmosis, Noble, etc.)
 - information about IBC tokens that are not added on chain or require packet forwarding
 - default quick select tokens in deposit/withdrawal forms
+- map of blockchain to onchain fee token(carbon denom equivalent) and actual decimals
 - LSTs native apr config to show on Nitron markets
 - direct deposits url
 

@@ -39,6 +39,7 @@ interface ConfigJSON {
   disabled_transfer_banner_config?: DisabledTransferBannerConfig;
   announcement_banner: AnnouncementBanner;
   quick_select_deposit_options?: QuickSelectToken[];
+  chain_fee_token_map: ChainFeeTokenMap;
   lst_native_aprs?: LstNativeAPR[];
   nps_config?: NPSConfig;
 }
@@ -163,6 +164,12 @@ interface QuickSelectToken {
   target_denom: string;
 }
 
+interface ChainFeeTokenMap {
+  [chain: string]: {
+    denom: string;
+    decimals: number;
+  }
+}
 interface LstNativeAPR {
   protocol: string;
   api_url: string;

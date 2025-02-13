@@ -18,7 +18,9 @@
       "groupQuantity": 1000
     }
   },
-  "cross_selling_source_tokens": ["swth"],
+  "cross_selling_source_tokens": [
+    "swth"
+  ],
   "external_chain_channels": {},
   "additional_ibc_token_config": [],
   "demex_trading_league_config": {
@@ -29,7 +31,9 @@
   "perp_pools": {
     "incentives": {
       "proxy": "0x74261efC64caE332E912F5bc645e4A9dcaC5EFaa",
-      "distributors": ["0x0c1f4B22A2B86971ee8581684bBC500b2E824559"]
+      "distributors": [
+        "0x0c1f4B22A2B86971ee8581684bBC500b2E824559"
+      ]
     },
     "banners": []
   },
@@ -62,6 +66,12 @@
       "target_denom" : "swth"
     }
   ],
+  "chain_fee_token_map": {
+    "BSC testnet": {
+      "denom": "brdg/058df3a0734c28f905ea8a9ce7f8183a6f76fb10ed1b8cf70acb5f697f5d7009",
+      "decimals": 18
+    }
+  },
   "nps_config": {
     "start": "2025-02-02T12:00:00Z",
     "end": "2025-02-16T12:00:00Z"
