@@ -227,6 +227,8 @@
     "cmkt/273": "#222222",
     "cmkt/274": "#236cd2",
     "cmkt/275": "#f38d25",
+    "cmkt/276": "#084d3e",
+    "cmkt/277": "#ebce75",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -443,11 +445,11 @@
     "banners": [
       {
         "perp_pool_id": "5",
-        "show_until": "2024-12-30T08:00+00:00",
+        "show_until": "2025-02-30T14:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "JTO (Jito) perp and RAY (Raydium) perp will be added to this pool on 3 Dec 02:00 PM UTC.",
-        "action_trigger_date": "2024-12-03T08:00+00:00",
-        "past_tense_text": "JTO (Jito) perp and RAY (Raydium) perp was added to this pool on 3 Dec 02:00 PM UTC."
+        "added_markets": "LAYER (Solayer) perp will be added to this pool on 13 Feb 02:00 PM UTC.",
+        "action_trigger_date": "2025-02-13T14:00+00:00",
+        "past_tense_text": "LAYER (Solayer) perp was added to this pool on 13 Feb 02:00 PM UTC."
       },
       {
         "perp_pool_id": "9",
@@ -461,9 +463,9 @@
         "perp_pool_id": "8",
         "show_until": "2025-02-30T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "HBAR, ADA, and BERA perp will be added to this pool on 6 Feb 2025 01:00 PM UTC.",
-        "action_trigger_date": "2025-02-06T13:00+00:00",
-        "past_tense_text": "HBAR, ADA, and BERA perp was added to this pool on 6 Feb 2025 01:00 PM UTC."
+        "added_markets": "IP (Story Protocol) perp will be added to this pool on 13 Feb 2025 02:00 PM UTC.",
+        "action_trigger_date": "2025-02-13T14:00+00:00",
+        "past_tense_text": "IP (Story Protocol) perp was added to this pool on 13 Feb 2025 02:00 PM UTC"
       },
       {
         "perp_pool_id": "1",
