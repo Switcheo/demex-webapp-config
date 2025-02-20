@@ -192,9 +192,9 @@ Each json file under the [configs](../../configs) folder correspond to their res
 
 ## LossProtection Data Structure
 
-| Field                | Type     | Required | Description                              | Notes |
-| -------------------- | -------- | -------- | ---------------------------------------- | ----- |
-| `competition_id`     | `string` | true     | The loss protection competition id       |
-| `reward_pool`        | `string` | true     | The reweard pool amount                  |
-| `start`              | `string` | true     | The start date of the loss protection    |
-| `end`                | `string` | true     | The end date of the loss protection      |
+| Field                | Type      | Required | Description                              | Notes |
+| -------------------- | --------- | -------- | ---------------------------------------- | ----- |
+| `competition_id`     | `string`  | true     | The loss protection competition id       |
+| `reward_pool`        | `integer` | true     | The reweard pool amount                  |
+| `start`              | `integer` | true     | The start date of the loss protection    |
+| `end`                | `integer` | true     | The end date of the loss protection      |

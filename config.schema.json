@@ -711,15 +711,15 @@
         "description": "The competition id of the loss protection"
       },
       "reward_pool": {
-        "type": "string",
+        "type": "integer",
         "description": "The reward pool of the loss protection"
       },
       "start": {
-        "type": "string",
+        "type": "integer",
         "description": "The start date of the loss protection"
       },
       "end": {
-        "type": "string",
+        "type": "integer",
         "description": "The end date of the loss protection"
       }
     }

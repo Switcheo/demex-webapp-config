@@ -73,8 +73,8 @@
   },
   "loss_protection": {
     "competition_id": "lossprotection10feb2025",
-    "reward_pool": "1000",
-    "start": "1739174400",
-    "end": "1740009600"
+    "reward_pool": 1000,
+    "start": 1739174400,
+    "end": 1740009600
   }
 }
