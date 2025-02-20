@@ -110,7 +110,7 @@
     "cmkt/181": "BINANCE:1000PEPEUSDT.P",
     "cmkt/183": "CRYPTO:LUNAUSD",
     "cmkt/190": "BITGET:SLERFUSDT",
-    "cmkt/191": "BINANCE:FTMUSD",
+    "cmkt/191": "BINANCE:SUSD",
     "cmkt/192": "BYBIT:DEGENUSDT",
     "cmkt/200": "BINANCE:ETHBTC",
     "cmkt/201": "GATEIO:ARCHUSDT",
@@ -229,6 +229,7 @@
     "cmkt/275": "#f38d25",
     "cmkt/276": "#084d3e",
     "cmkt/277": "#ebce75",
+    "cmkt/278": "#3cffea",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -452,12 +453,12 @@
         "past_tense_text": "LAYER (Solayer) perp was added to this pool on 13 Feb 02:00 PM UTC."
       },
       {
-        "perp_pool_id": "9",
-        "show_until": "2024-12-30T08:00+00:00",
+        "perp_pool_id": "7",
+        "show_until": "2025-02-28T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "HYPE (Hyperliquid) perp market will be added to this pool on 3 Dec 08:00 AM UTC.",
-        "action_trigger_date": "2024-12-03T08:00+00:00",
-        "past_tense_text": "HYPE (Hyperliquid) perp market was added to this pool on 3 Dec 08:00 AM UTC."
+        "added_markets": "KAITO (Kaito) perp market will be added to this pool on 20 Feb 02:00 PM UTC.",
+        "action_trigger_date": "2025-02-20T14:00+00:00",
+        "past_tense_text": "KAITO (Kaito) perp market was added to this pool on 20 Feb 02:00 PM UTC."
       },
       {
         "perp_pool_id": "8",
