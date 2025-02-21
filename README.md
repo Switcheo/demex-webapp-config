@@ -27,3 +27,4 @@ Additionally, the JSON file for mainnet contains the following data to support o
 - market banner parameters for information banners to be displayed on the TradingView charts on Trade UI
 - market promo parameters for showing boosted tag on market select on Trade UI
 - trading league parameters for showing trading league 
+- loss protection parameters for showing loss protection campaign

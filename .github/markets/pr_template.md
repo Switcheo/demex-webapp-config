@@ -189,3 +189,12 @@ Each json file under the [configs](../../configs) folder correspond to their res
 | ------------ | -------- | -------- | --------------------------------------------------------------------------- | ----- |
 | `denom`      | `string` | true     | Carbon denom of fee token                                                   |
 | `decimals`   | `number` | true     | Decimal precision of the fee token                                          |
+
+## LossProtection Data Structure
+
+| Field                | Type      | Required | Description                              | Notes |
+| -------------------- | --------- | -------- | ---------------------------------------- | ----- |
+| `competition_id`     | `string`  | true     | The loss protection competition id       |
+| `reward_pool`        | `integer` | true     | The reweard pool amount                  |
+| `start`              | `integer` | true     | The start date of the loss protection    |
+| `end`                | `integer` | true     | The end date of the loss protection      |

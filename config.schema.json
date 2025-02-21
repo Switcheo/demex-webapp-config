@@ -695,5 +695,33 @@
         "description": "Domain of the direct deposit"
       }
     }
+  },
+  "loss_protection": {
+    "type": "object",
+    "description": "Loss Protection config",
+    "required": [
+      "competition_id",
+      "reward_pool",
+      "start",
+      "end"
+    ],
+    "properties": {
+      "competition_id": {
+        "type": "string",
+        "description": "The competition id of the loss protection"
+      },
+      "reward_pool": {
+        "type": "integer",
+        "description": "The reward pool of the loss protection"
+      },
+      "start": {
+        "type": "integer",
+        "description": "The start date of the loss protection"
+      },
+      "end": {
+        "type": "integer",
+        "description": "The end date of the loss protection"
+      }
+    }
   }
 }
