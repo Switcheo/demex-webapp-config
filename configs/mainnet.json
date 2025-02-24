@@ -1,18 +1,8 @@
 {
   "network": "mainnet",
   "prelaunch_markets": [],
-  "blacklisted_markets": [
-    "gm1_busd1",
-    "SWTH_UST",
-    "LUNA_SWTH"
-  ],
-  "blacklisted_pools": [
-    "34",
-    "43",
-    "44",
-    "74",
-    "83"
-  ],
+  "blacklisted_markets": ["gm1_busd1", "SWTH_UST", "LUNA_SWTH"],
+  "blacklisted_pools": ["34", "43", "44", "74", "83"],
   "blacklisted_tokens": [
     "swthb.1.6.d04123",
     "swth.1.18.94d5fe",
@@ -282,9 +272,7 @@
       "perpTradingBoost": 6
     }
   },
-  "cross_selling_source_tokens": [
-    "swth"
-  ],
+  "cross_selling_source_tokens": ["swth"],
   "external_chain_channels": {
     "Archway": {
       "Noble": "channel-29"
@@ -336,94 +324,58 @@
   "additional_ibc_token_config": [
     {
       "baseDenom": "uusdc",
-      "chainRoutes": [
-        "Archway",
-        "Noble"
-      ]
+      "chainRoutes": ["Archway", "Noble"]
     },
     {
       "baseDenom": "uusdc",
-      "chainRoutes": [
-        "Cosmos Hub",
-        "Noble"
-      ]
+      "chainRoutes": ["Cosmos Hub", "Noble"]
     },
     {
       "baseDenom": "uusdc",
-      "chainRoutes": [
-        "DYDX",
-        "Noble"
-      ]
+      "chainRoutes": ["DYDX", "Noble"]
     },
     {
       "baseDenom": "uusdc",
-      "chainRoutes": [
-        "Kujira",
-        "Noble"
-      ]
+      "chainRoutes": ["Kujira", "Noble"]
     },
     {
       "baseDenom": "swth",
-      "chainRoutes": [
-        "Osmosis"
-      ]
+      "chainRoutes": ["Osmosis"]
     },
     {
       "baseDenom": "swth",
-      "chainRoutes": [
-        "Terra"
-      ]
+      "chainRoutes": ["Terra"]
     },
     {
       "baseDenom": "uusdc",
-      "chainRoutes": [
-        "Osmosis",
-        "Noble"
-      ]
+      "chainRoutes": ["Osmosis", "Noble"]
     },
     {
       "baseDenom": "uusdc",
-      "chainRoutes": [
-        "Stargaze",
-        "Noble"
-      ]
+      "chainRoutes": ["Stargaze", "Noble"]
     },
     {
       "baseDenom": "uusdc",
-      "chainRoutes": [
-        "Terra",
-        "Noble"
-      ]
+      "chainRoutes": ["Terra", "Noble"]
     },
     {
       "baseDenom": "uatom",
-      "chainRoutes": [
-        "Osmosis",
-        "Cosmos Hub"
-      ],
+      "chainRoutes": ["Osmosis", "Cosmos Hub"],
       "denomOnCarbon": "ibc/6CDD4663F2F09CD62285E2D45891FC149A3568E316CE3EBBE201A71A78A69388"
     },
     {
       "baseDenom": "ustrd",
-      "chainRoutes": [
-        "Osmosis",
-        "Stride"
-      ],
+      "chainRoutes": ["Osmosis", "Stride"],
       "denomOnCarbon": "ibc/FCFF8B19C61677F3B78E2A5AE3B4A34A8D23858D16905F253B8438B3AFD07FF8"
     },
     {
       "baseDenom": "ustrd",
-      "chainRoutes": [
-        "Cosmos Hub",
-        "Stride"
-      ],
+      "chainRoutes": ["Cosmos Hub", "Stride"],
       "denomOnCarbon": "ibc/B8D03406E060650ECE2D521287AC9A94D036C4C78B4AB871AC740A5FF2030D79"
     }
   ],
   "demex_trading_league_config": {
-    "promoMarkets": [
-      "cmkt/201"
-    ],
+    "promoMarkets": ["cmkt/201"],
     "currentPrizeSymbol": "USDC",
     "currentCompPerpPoolId": 3
   },
@@ -665,6 +617,13 @@
       "competition_id": "tradingcomp28",
       "trading_league": "Base",
       "trading_league_title": "Base Trading League"
+    },
+    "/rewards/mantle-rush": {
+      "start_date": "2025-02-24T10:00:00.000Z",
+      "end_date": "2025-03-26T10:00:00.000Z",
+      "competition_id": "tradingcomp32",
+      "trading_league": "Mantle Rush",
+      "trading_league_title": "Mantle Rush"
     }
   },
   "lst_native_aprs": [
