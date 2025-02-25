@@ -274,6 +274,13 @@
       }
     }
   },
+  "nitron_airdrop_tokens": {
+    "type": "array",
+    "description": "Array of token denomination distributed as part of an airdrop on the Nitron",
+    "items": {
+      "$ref": "#/$defs/nitron_airdrop_token"
+    }
+  },
   "$defs": {
     "prelaunch_market": {
       "type": "string",
@@ -683,6 +690,10 @@
           }
         }
       }
+    },
+    "nitron_airdrop_token": {
+      "type": "string",
+      "description": "Token denomination distributed as part of an airdrop on the Nitron"
     }
   },
   "direct_deposit": {
@@ -723,5 +734,9 @@
         "description": "The end date of the loss protection"
       }
     }
+  },
+  "nitron_airdrop_tooltip_content": {
+    "type": "string",
+    "description": "Tooltip content for airdrop token"
   }
 }

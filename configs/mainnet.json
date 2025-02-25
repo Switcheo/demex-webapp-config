@@ -674,5 +674,19 @@
     "reward_pool": 1000,
     "start": 1739174400,
     "end": 1740009600
-  }
+  },
+  "nitron_airdrop_tokens": [
+    "brdg/2cb9280a4309f644bf5c7e5e9fc8802d0343f421c2b487d91ecb151463b3145e",
+    "brdg/cb2cdde14b5ab81cb400650d00e47ab5085dd5fa3fa904ec7904e2488ecdfd6c",
+    "brdg/33937827d984b8b8daaef7e122113455ae06ea1ec0b1435544b5b552e91ec23a",
+    "brdg/92191f195a9e7d4c63861db3421a9c8fc78ff8a5e25107adea77e78c646c3e20",
+    "brdg/2de36bd795c822e987d6fb3a6fc62b4bf79c94f9dbcb6b8e47250b46a4d87b4a",
+    "brdg/5c60cfe79717c68b665f67ed621fa73c0fc438504bec2daaae9e4880de346e04",
+    "brdg/8dc53f063a7f57f2241c034be88ddc8bb32206d186c51487a801c7647006861f",
+    "brdg/33b1f6bcd05cc3a607a5dfb94b1d2ccf80aad6517f079bf98ba634e3a8665885",
+    "brdg/ce69da90a2b67d19a1984cd03d53defa853cad123fef506feb33579856f58735"
+
+
+  ],
+  "nitron_airdrop_tooltip_content": "Lending this asset still earns you Powder on mETH Protocol for $COOK airdrop."
 }
