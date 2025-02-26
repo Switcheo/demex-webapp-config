@@ -36,6 +36,10 @@
     "banners": []
   },
   "wswth_contract": "0xb4A23b09eBBA7dbA01A7bF95EFd41b3600fF22F9",
+  "native_depositor_contracts_map": {
+    "brdg/f643cae9853deeeb93b9cc497528b452f9c96558160125701f9e1b3f1cb1345c": "0x5Ee011dCe71970BB7DA6d4a0F20a5438a8F89515",
+    "brdg/058df3a0734c28f905ea8a9ce7f8183a6f76fb10ed1b8cf70acb5f697f5d7009": "0x5Ee011dCe71970BB7DA6d4a0F20a5438a8F89515",
+  },
   "market_banners": [
     {
       "market_id": "cmkt/2",
