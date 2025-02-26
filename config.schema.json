@@ -274,6 +274,13 @@
       }
     }
   },
+  "nitron_airdrops": {
+    "type": "array",
+    "description": "Array of airdrop groups at nitron including tokens and corresponding tooltip",
+    "items": {
+      "$ref": "#/$defs/nitron_airdrop"
+    }
+  },
   "$defs": {
     "prelaunch_market": {
       "type": "string",
@@ -681,6 +688,23 @@
               "description": "The number of decimal places for the denom token"
             }
           }
+        }
+      }
+    },
+    "nitron_airdrop": {
+      "type": "object",
+      "properties": {
+        "tokens": {
+          "type": "array",
+          "description": "List of token denoms for the airdrop group",
+          "items": {
+            "type": "string",
+            "description": "Token denomination distributed as part of an airdrop on the Nitron"
+          }
+        },
+        "tooltip": {
+          "type": "string",
+          "description": "Tooltip content for airdrop group"
         }
       }
     }

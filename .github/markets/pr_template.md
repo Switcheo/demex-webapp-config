@@ -34,6 +34,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 | `trading_leagues`                 | `TradingLeague[]`              | false    | Map of trading league config with their path.                                                                                                                                                   |
 | `lst_native_aprs`                 | `LSTNativeAPR[]`               | false    | List of LST native APR APIs.                                                                                                                                                                    |
 | `nps_config`                      | `NPSConfig`                    | false    | Config parameters for managing NPS survey                                                                                                                                                       |
+| `nitron_airdrops`           | `NitronAirdrop[]`                     | false    | Array of airdrop groups at nitron including tokens and corresponding tooltip                                                                                                                     |                                                                                                                                                           |
 
 ## Maintenance Data Structure
 

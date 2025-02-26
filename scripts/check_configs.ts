@@ -42,6 +42,7 @@ interface ConfigJSON {
   chain_fee_token_map: ChainFeeTokenMap;
   lst_native_aprs?: LstNativeAPR[];
   nps_config?: NPSConfig;
+  nitron_airdrop: NitronAirdrop[];
 }
 
 interface DirectDeposit {
@@ -179,6 +180,10 @@ interface LstNativeAPR {
 interface NPSConfig {
   start: string;
   end: string;
+}
+export interface NitronAirdrop {
+  tokens: string[],
+  tooltip: string
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
