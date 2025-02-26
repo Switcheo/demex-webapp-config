@@ -274,11 +274,11 @@
       }
     }
   },
-  "nitron_airdrop_tokens": {
+  "nitron_airdrops": {
     "type": "array",
-    "description": "Array of token denomination distributed as part of an airdrop on the Nitron",
+    "description": "Array of airdrop groups at nitron including tokens and corresponding tooltip",
     "items": {
-      "$ref": "#/$defs/nitron_airdrop_token"
+      "$ref": "#/$defs/nitron_airdrop"
     }
   },
   "$defs": {
@@ -691,9 +691,22 @@
         }
       }
     },
-    "nitron_airdrop_token": {
-      "type": "string",
-      "description": "Token denomination distributed as part of an airdrop on the Nitron"
+    "nitron_airdrop": {
+      "type": "object",
+      "properties": {
+        "tokens": {
+          "type": "array",
+          "description": "List of token denoms for the airdrop group",
+          "items": {
+            "type": "string",
+            "description": "Token denomination distributed as part of an airdrop on the Nitron"
+          }
+        },
+        "tooltip": {
+          "type": "string",
+          "description": "Tooltip content for airdrop group"
+        }
+      }
     }
   },
   "direct_deposit": {
@@ -734,9 +747,5 @@
         "description": "The end date of the loss protection"
       }
     }
-  },
-  "nitron_airdrop_tooltip_content": {
-    "type": "string",
-    "description": "Tooltip content for airdrop token"
   }
 }
