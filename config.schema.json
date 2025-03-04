@@ -353,10 +353,6 @@
       "type": "integer",
       "description": "The spin boost multiplier for boosted perp markets trading volume"
     },
-    "cross_selling_source_token": {
-      "type": "string",
-      "description": "Cross selling source token denom"
-    },
     "survey_end": {
       "type": "string",
       "description": "The end time of the tyepform survey",
