@@ -272,7 +272,6 @@
       "perpTradingBoost": 6
     }
   },
-  "cross_selling_source_tokens": ["swth"],
   "external_chain_channels": {
     "Archway": {
       "Noble": "channel-29"
