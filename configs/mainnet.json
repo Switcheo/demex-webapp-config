@@ -488,6 +488,9 @@
       "target_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f"
     }
   ],
+  "disabled_transfer_banner_config": {
+    "unsupported_tokens": ["zil.1.18.1a4a06"]
+  },
   "chain_fee_token_map": {
     "Archway": {
       "denom": "ibc/652218B355FBD814037EEF28505F3D91F0489325A64FA5D865EF425DD59317BC",
