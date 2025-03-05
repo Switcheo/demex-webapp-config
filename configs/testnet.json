@@ -16,9 +16,6 @@
       "groupQuantity": 1000
     }
   },
-  "cross_selling_source_tokens": [
-    "swth"
-  ],
   "external_chain_channels": {},
   "additional_ibc_token_config": [],
   "demex_trading_league_config": {
