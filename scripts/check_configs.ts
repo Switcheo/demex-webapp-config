@@ -652,7 +652,7 @@ async function main() {
         outcomeMap[network] = false;
       }
 
-      const hasDuplicateUserCreatedMarketsWhitelist = checkDuplicateEntries(jsonData.user_created_markets_whitelist);
+      const hasDuplicateUserCreatedMarketsWhitelist = checkDuplicateEntries(jsonData.user_created_markets_whitelist ?? []);
       if (hasDuplicateUserCreatedMarketsWhitelist.status && hasDuplicateUserCreatedMarketsWhitelist.entry) {
         let listOfDuplicates: string = hasDuplicateUserCreatedMarketsWhitelist.entry.join(", ");
         console.error(`ERROR: ${network}.json has the following duplicated user created markets whitelist entries: ${listOfDuplicates}. Please make sure to only input each address once in ${network}`);
