@@ -255,7 +255,8 @@
     }
   },
   "user_created_markets_whitelist": [
-    "swth1afk9zr2hn2jsac63h4hm60vl9z3e5u69gndzf7c99cqge3vzwjzsun7t4c"
+    "swth1afk9zr2hn2jsac63h4hm60vl9z3e5u69gndzf7c99cqge3vzwjzsun7t4c",
+    "swth1vsk3995wqgwfykmumqwcl36sg7mjl0ugmdpky3"
   ],
   "demex_points_config": {
     "depositsPerSpin": 1000,
