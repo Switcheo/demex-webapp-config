@@ -18,6 +18,9 @@
   },
   "external_chain_channels": {},
   "additional_ibc_token_config": [],
+  "user_created_markets_whitelist": [
+    "tswth1phsut994s4e9apdc25vdln02g9rz7exzw7j4nk"
+  ],
   "demex_trading_league_config": {
     "promoMarkets": [],
     "currentPrizeSymbol": "USDC",
