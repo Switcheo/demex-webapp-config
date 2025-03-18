@@ -2,13 +2,11 @@
   "network": "devnet",
   "prelaunch_markets": [],
   "blacklisted_markets": [
-    "swth_btc2",
     "ETH_PERP.USDC",
     "BTC_PERP.USDC"
   ],
   "blacklisted_pools": [],
   "blacklisted_tokens": [],
-  "token_name_override_map": {},
   "transfer_options": {},
   "network_fees": {
     "swth": 0,
@@ -27,7 +25,6 @@
       }
     }
   },
-  "cross_selling_source_tokens": [],
   "external_chain_channels": {},
   "additional_ibc_token_config": [],
   "market_banners": [
@@ -66,5 +63,10 @@
       "label_denom": "dai",
       "target_denom" : "dai"
     }
-  ]
+  ],
+  "chain_fee_token_map": {},
+  "nps_config": {
+    "start": "2025-02-02T12:00:00Z",
+    "end": "2025-02-16T12:00:00Z"
+  }
 }

@@ -8,21 +8,16 @@
     "blacklisted_markets",
     "blacklisted_pools",
     "blacklisted_tokens",
-    "token_name_override_map",
     "transfer_options",
     "network_fees",
-    "cross_selling_source_tokens",
     "external_chain_channels",
-    "additional_ibc_token_config"
+    "additional_ibc_token_config",
+    "chain_fee_token_map"
   ],
   "properties": {
     "network": {
       "type": "string",
-      "enum": [
-        "mainnet",
-        "testnet",
-        "devnet"
-      ]
+      "enum": ["mainnet", "testnet", "devnet"]
     },
     "prelaunch_markets": {
       "type": "array",
@@ -50,16 +45,6 @@
       "description": "List of blacklisted token denoms",
       "items": {
         "$ref": "#/$defs/blacklisted_token"
-      }
-    },
-    "token_name_override_map": {
-      "type": "object",
-      "description": "Object that contains token denoms and their respective token name overrides.",
-      "patternProperties": {
-        ".*": {
-          "type": "string",
-          "minLength": 2
-        }
       }
     },
     "transfer_options": {
@@ -137,12 +122,10 @@
         }
       }
     },
-    "cross_selling_source_tokens": {
-      "type": "array",
-      "description": "List of cross selling source token denoms",
-      "items": {
-        "$ref": "#/$defs/cross_selling_source_token"
-      }
+    "chain_fee_token_map": {
+      "type": "object",
+      "description": "Map of blockchain to onchain fee token(carbon denom equivalent) and actual decimals",
+      "$ref": "#/$defs/chain_fee_token_map"
     }
   },
   "typeform_widget_config": {
@@ -150,11 +133,7 @@
     "description": "Ongoing survey configs for typeform survey widget",
     "items": {
       "type": "object",
-      "required": [
-        "surveyLink",
-        "endTime",
-        "pages"
-      ],
+      "required": ["surveyLink", "endTime", "pages"],
       "properties": {
         "message": {
           "type": "string"
@@ -237,10 +216,7 @@
     "description": "List of banner information to be displayed over the TradingView chart for the required market",
     "items": {
       "type": "object",
-      "required": [
-        "market_id",
-        "content"
-      ],
+      "required": ["market_id", "content"],
       "properties": {
         "market_id": {
           "$ref": "#/$defs/market_id"
@@ -262,16 +238,7 @@
   },
   "native_depositor_contracts_map": {
     "type": "object",
-    "description": "Map of axelar connection ids to their respective native depositor contract addresses",
-    "patternProperties": {
-      ".*": {
-        "type": "string"
-      }
-    }
-  },
-  "native_token_contracts_map": {
-    "type": "object",
-    "description": "Map of token denoms to their respective contract addresses on the native chain",
+    "description": "Map of token denoms to their respective native depositor contract addresses",
     "patternProperties": {
       ".*": {
         "type": "string"
@@ -284,10 +251,7 @@
     "patternProperties": {
       "^\\d+$": {
         "type": "object",
-        "required": [
-          "start",
-          "end"
-        ],
+        "required": ["start", "end"],
         "properties": {
           "start": {
             "$ref": "#/$defs/start"
@@ -300,6 +264,13 @@
           }
         }
       }
+    }
+  },
+  "nitron_airdrops": {
+    "type": "array",
+    "description": "Array of airdrop groups at nitron including tokens and corresponding tooltip",
+    "items": {
+      "$ref": "#/$defs/nitron_airdrop"
     }
   },
   "$defs": {
@@ -382,10 +353,6 @@
       "type": "integer",
       "description": "The spin boost multiplier for boosted perp markets trading volume"
     },
-    "cross_selling_source_token": {
-      "type": "string",
-      "description": "Cross selling source token denom"
-    },
     "survey_end": {
       "type": "string",
       "description": "The end time of the tyepform survey",
@@ -410,10 +377,7 @@
     "additional_ibc_token_info": {
       "type": "object",
       "description": "Information for token that (1) is not added on Carbon blockchain or (2) requires packet forwarding.",
-      "required": [
-        "baseDenom",
-        "chainRoutes"
-      ],
+      "required": ["baseDenom", "chainRoutes"],
       "properties": {
         "baseDenom": {
           "type": "string",
@@ -453,10 +417,7 @@
       "description": "List of perp pool banners",
       "items": {
         "type": "object",
-        "required": [
-          "perp_pool_id",
-          "title"
-        ],
+        "required": ["perp_pool_id", "title"],
         "properties": {
           "perp_pool_id": {
             "$ref": "#/$defs/perp_pool_id"
@@ -514,10 +475,7 @@
     "announcement_banner": {
       "type": "object",
       "description": "Custom announcement banner through all or only on specificed paths",
-      "required": [
-        "content",
-        "show_only_on"
-      ],
+      "required": ["content", "show_only_on"],
       "patternProperties": {
         "show_from": {
           "$ref": "#/$defs/show_from"
@@ -544,7 +502,10 @@
     "quick_select_token": {
       "type": "object",
       "description": "Token denom for quick select in transfer form",
-      "required": ["label_denom", "target_denom"],
+      "required": [
+        "label_denom",
+        "target_denom"
+      ],
       "properties": {
         "label_denom": {
           "type": "string",
@@ -608,6 +569,170 @@
             }
           }
         }
+      }
+    },
+    "trading_league": {
+      "type": "object",
+      "description": "Trading League config",
+      "required": [
+        "startDate",
+        "endDate",
+        "competitionId",
+        "tradingLeague",
+        "tradingLeagueTitle"
+      ],
+      "properties": {
+        "start_date": {
+          "type": "string",
+          "description": "The start date of the trading league"
+        },
+        "end_date": {
+          "type": "string",
+          "description": "The end date of the trading league"
+        },
+        "competition_id": {
+          "type": "string",
+          "description": "The competition id of the trading league"
+        },
+        "trading_teague": {
+          "type": "string",
+          "description": "The trading league name"
+        },
+        "trading_league_title": {
+          "type": "string",
+          "description": "The trading league title"
+        }
+      }
+    },
+    "trading_leagues": {
+      "type": "object",
+      "description": "Map of trading league with their paths",
+      "items": {
+        "$ref": "#/$defs/trading_league"
+      }
+    },
+    "lst_native_apr": {
+      "type": "object",
+      "description": "API for query LST native APR show on Nitron",
+      "required": [
+        "protocol",
+        "api_url",
+        "lst_denoms"
+      ],
+      "properties": {
+        "protocol": {
+          "type": "string",
+          "description": "Protocol name"
+        },
+        "api_url": {
+          "type": "string",
+          "description": "API URL"
+        },
+        "lst_denoms": {
+          "type": "string",
+          "description": "Reward denom map"
+        }
+      }
+    },
+    "lst_native_aprs": {
+      "type": "array",
+      "description": "List of APIs for fetch LST Native APR show on Nitron",
+      "items": {
+        "$ref": "#/$defs/lst_native_apr"
+      }
+    },
+    "nps_config": {
+      "type": "object",
+      "description": "Config parameters for managing NPS survey",
+      "required": [
+        "start",
+        "end"
+      ],
+      "properties": {
+        "start": {
+          "$ref": "#/$defs/start"
+        },
+        "end": {
+          "$ref": "#/$defs/end"
+        }
+      }
+    },
+    "chain_fee_token_map": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "object",
+          "required": [
+            "denom",
+            "decimals"
+          ],
+          "properties": {
+            "denom": {
+              "type": "string",
+              "description": "The carbon denom of the token used to pay fees on the chain"
+            },
+            "decimals": {
+              "type": "integer",
+              "description": "The number of decimal places for the denom token"
+            }
+          }
+        }
+      }
+    },
+    "nitron_airdrop": {
+      "type": "object",
+      "properties": {
+        "tokens": {
+          "type": "array",
+          "description": "List of token denoms for the airdrop group",
+          "items": {
+            "type": "string",
+            "description": "Token denomination distributed as part of an airdrop on the Nitron"
+          }
+        },
+        "tooltip": {
+          "type": "string",
+          "description": "Tooltip content for airdrop group"
+        }
+      }
+    }
+  },
+  "direct_deposit": {
+    "type": "object",
+    "description": "Direct deposit config",
+    "required": ["domain"],
+    "properties": {
+      "domain": {
+        "type": "string",
+        "description": "Domain of the direct deposit"
+      }
+    }
+  },
+  "loss_protection": {
+    "type": "object",
+    "description": "Loss Protection config",
+    "required": [
+      "competition_id",
+      "reward_pool",
+      "start",
+      "end"
+    ],
+    "properties": {
+      "competition_id": {
+        "type": "string",
+        "description": "The competition id of the loss protection"
+      },
+      "reward_pool": {
+        "type": "integer",
+        "description": "The reward pool of the loss protection"
+      },
+      "start": {
+        "type": "integer",
+        "description": "The start date of the loss protection"
+      },
+      "end": {
+        "type": "integer",
+        "description": "The end date of the loss protection"
       }
     }
   }

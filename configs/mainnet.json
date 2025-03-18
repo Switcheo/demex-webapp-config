@@ -17,10 +17,6 @@
     "usdc.1.6.e70e14",
     "bit.1.2.9d68c4"
   ],
-  "token_name_override_map": {
-    "brdg/1299d2e94c483e72f64100088886b8a5b7c13595047e53e032c9938d07a98c20": "Ether (Arbitrum)",
-    "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377": "Ether (Ethereum)"
-  },
   "transfer_options": {
     "Mantle": 0,
     "Base": 1,
@@ -66,14 +62,8 @@
     "ibc/75249A18DEFBEFE55F83B1C70CAD234DF164F174C6BC51682EE92C2C81C18C93": 11,
     "ibc/B7864B03E1B9FD4F049243E92ABD691586F682137037A9F3FCA5222815620B3C": 12,
     "ibc/4E06CF24FEBFB3F5AF645377DCC0B70AA6183BAF6B918B8B6243FCDEB7D38118": 13,
-    "usdc.1.6.53ff75": 14,
-    "busd.1.6.754a80": 15,
-    "eth.1.19.c3b805": 16,
-    "cglp.1.19.1698d3": 17,
     "zil.1.18.1a4a06": 18,
-    "bneo.1.14.e2e5f6": 19,
-    "eth.1.2.942d87": 20,
-    "usdc.1.2.343151": 21
+    "bneo.1.14.e2e5f6": 19
   },
   "spot_history_market_list": {
     "cmkt/117": "BINANCE:ETHUSD",
@@ -110,7 +100,7 @@
     "cmkt/181": "BINANCE:1000PEPEUSDT.P",
     "cmkt/183": "CRYPTO:LUNAUSD",
     "cmkt/190": "BITGET:SLERFUSDT",
-    "cmkt/191": "BINANCE:FTMUSD",
+    "cmkt/191": "BINANCE:SUSD",
     "cmkt/192": "BYBIT:DEGENUSDT",
     "cmkt/200": "BINANCE:ETHBTC",
     "cmkt/201": "GATEIO:ARCHUSDT",
@@ -127,9 +117,9 @@
     "cmkt/245": "BINANCE:GOATUSDT.P",
     "cmkt/248": "KUCOIN:PURRUSDT",
     "cmkt/250": "PYTH:HYPEUSD",
-    "cmkt/254": "BINANCE:AIXBTUSDT.P",
-    "cmkt/255": "OKX:AI16ZUSDT.P",
-    "cmkt/256": "BINANCE:FARTCOINUSDT.P"
+    "cmkt/264": "BINANCE:AIXBTUSDT.P",
+    "cmkt/265": "OKX:AI16ZUSDT.P",
+    "cmkt/266": "BINANCE:FARTCOINUSDT.P"
   },
   "perp_pool_pie_chart_colors": {
     "cmkt/117": "#875DFF",
@@ -219,9 +209,17 @@
     "cmkt/251": "#b15efa",
     "cmkt/252": "#24d4f4",
     "cmkt/253": "#e8f6fa",
-    "cmkt/254": "#ad78f1",
-    "cmkt/255": "#ea892c",
-    "cmkt/256": "#343c39",
+    "cmkt/264": "#ad78f1",
+    "cmkt/265": "#ea892c",
+    "cmkt/266": "#343c39",
+    "cmkt/271": "#e6c979",
+    "cmkt/272": "#b07825",
+    "cmkt/273": "#222222",
+    "cmkt/274": "#236cd2",
+    "cmkt/275": "#f38d25",
+    "cmkt/276": "#084d3e",
+    "cmkt/277": "#ebce75",
+    "cmkt/278": "#3cffea",
     "Unused": "#7798E4"
   },
   "markets_override": {
@@ -274,7 +272,7 @@
   ],
   "demex_points_config": {
     "depositsPerSpin": 1000,
-    "tradingVolumePerSpin": 10000
+    "tradingVolumePerSpin": 12500
   },
   "perp_pool_promo": {
     "8": {
@@ -290,7 +288,6 @@
       "perpTradingBoost": 6
     }
   },
-  "cross_selling_source_tokens": ["swth"],
   "external_chain_channels": {
     "Archway": {
       "Noble": "channel-29"
@@ -416,27 +413,27 @@
     "banners": [
       {
         "perp_pool_id": "5",
-        "show_until": "2024-12-30T08:00+00:00",
+        "show_until": "2025-02-30T14:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "JTO (Jito) perp and RAY (Raydium) perp will be added to this pool on 3 Dec 02:00 PM UTC.",
-        "action_trigger_date": "2024-12-03T08:00+00:00",
-        "past_tense_text": "JTO (Jito) perp and RAY (Raydium) perp was added to this pool on 3 Dec 02:00 PM UTC."
-      },
-      {
-        "perp_pool_id": "9",
-        "show_until": "2024-12-30T08:00+00:00",
-        "title": "New Markets Added",
-        "added_markets": "HYPE (Hyperliquid) perp market will be added to this pool on 3 Dec 08:00 AM UTC.",
-        "action_trigger_date": "2024-12-03T08:00+00:00",
-        "past_tense_text": "HYPE (Hyperliquid) perp market was added to this pool on 3 Dec 08:00 AM UTC."
+        "added_markets": "LAYER (Solayer) perp will be added to this pool on 13 Feb 02:00 PM UTC.",
+        "action_trigger_date": "2025-02-13T14:00+00:00",
+        "past_tense_text": "LAYER (Solayer) perp was added to this pool on 13 Feb 02:00 PM UTC."
       },
       {
         "perp_pool_id": "7",
-        "show_until": "2025-01-30T08:00+00:00",
+        "show_until": "2025-02-28T08:00+00:00",
         "title": "New Markets Added",
-        "added_markets": "AIXBT, AI16Z, and FARTCOIN perp will be added to this pool on 3 Jan 2025 08:00 AM UTC.",
-        "action_trigger_date": "2025-01-03T08:00+00:00",
-        "past_tense_text": "AIXBT, AI16Z, and FARTCOIN perp will be added to this pool on 3 Jan 2025 08:00 AM UTC."
+        "added_markets": "KAITO (Kaito) perp market will be added to this pool on 20 Feb 02:00 PM UTC.",
+        "action_trigger_date": "2025-02-20T14:00+00:00",
+        "past_tense_text": "KAITO (Kaito) perp market was added to this pool on 20 Feb 02:00 PM UTC."
+      },
+      {
+        "perp_pool_id": "8",
+        "show_until": "2025-02-30T08:00+00:00",
+        "title": "New Markets Added",
+        "added_markets": "IP (Story Protocol) perp will be added to this pool on 13 Feb 2025 02:00 PM UTC.",
+        "action_trigger_date": "2025-02-13T14:00+00:00",
+        "past_tense_text": "IP (Story Protocol) perp was added to this pool on 13 Feb 2025 02:00 PM UTC"
       },
       {
         "perp_pool_id": "1",
@@ -447,21 +444,15 @@
     ]
   },
   "wswth_contract": "0x0e59f6Cf81B5Fae9F7a5912062Fe53909e7221C2",
-  "native_token_contracts_map": {
-    "brdg/6418666cedaf875fb344dbd90bea7c842300939872365b933f7ee8b6c1e825e8": "0x0000000000000000000000000000000000000000",
-    "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f": "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000",
-    "brdg/1299d2e94c483e72f64100088886b8a5b7c13595047e53e032c9938d07a98c20": "0x0000000000000000000000000000000000000000",
-    "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667": "0x0000000000000000000000000000000000000000",
-    "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377": "0x0000000000000000000000000000000000000000",
-    "brdg/e2238fb8fc5f08299c1789177d6d89bb2853238a65f6e48a9ec3b67e289f5601": "0x0000000000000000000000000000000000000000"
-  },
   "native_depositor_contracts_map": {
-    "3/arbitrum/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
-    "3/base/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xE9a99ba49BA992265227354d1Aa79b91eB0DB2da",
-    "3/binance/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
-    "3/ethereum/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
-    "3/mantle/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xE9a99ba49BA992265227354d1Aa79b91eB0DB2da",
-    "3/polygon/0x4ab44c7e881ee37cb02bc0c98547a0bbfad9291b": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65"
+    "brdg/1299d2e94c483e72f64100088886b8a5b7c13595047e53e032c9938d07a98c20": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
+    "brdg/6418666cedaf875fb344dbd90bea7c842300939872365b933f7ee8b6c1e825e8": "0xE9a99ba49BA992265227354d1Aa79b91eB0DB2da",
+    "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
+    "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
+    "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f": "0xE9a99ba49BA992265227354d1Aa79b91eB0DB2da",
+    "brdg/e2238fb8fc5f08299c1789177d6d89bb2853238a65f6e48a9ec3b67e289f5601": "0xd91a2AcbE1f9635277120fc200F73574f1Cdad65",
+    "brdg/cc0027d68ecd0fcf2151a09070efa6d67efaf6541bd1625307d7057562ce2345": "0xE9a99ba49BA992265227354d1Aa79b91eB0DB2da",
+    "brdg/34a330df380acf4845e3c3341722a73cc62b57819a2e9960fbb0e040a5210423": "0xE9a99ba49BA992265227354d1Aa79b91eB0DB2da"
   },
   "demex_referrer": {
     "address": "swth1prv0t8j8tqcdngdmjlt59pwy6dxxmtqgycy2h7",
@@ -481,6 +472,9 @@
       "end": "2025-01-17T08:00:00Z",
       "tooltip": "Trade MNT-PERP to earn 3x points in the Mantle Trading League!"
     }
+  },
+  "direct_deposit": {
+    "domain": "https://dagger.dem.exchange"
   },
   "spot_pool_config": {
     "show_apr_tooltip": true
@@ -508,6 +502,204 @@
     {
       "label_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f",
       "target_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f"
+    }
+  ],
+  "disabled_transfer_banner_config": {
+    "unsupported_tokens": ["zil.1.18.1a4a06"]
+  },
+  "chain_fee_token_map": {
+    "Archway": {
+      "denom": "ibc/652218B355FBD814037EEF28505F3D91F0489325A64FA5D865EF425DD59317BC",
+      "decimals": 18
+    },
+    "Axelar": {
+      "denom": "ibc/062588846168EDFECF20F7681F2A0A131A53B9A3C8535BCA8F7D1A268246974B",
+      "decimals": 6
+    },
+    "DYDX": {
+      "denom": "ibc/9DC57FF60E125F9B976EB0DF4F2122C580AD1DB8E27BA71E6D2C1AA56A5FD312",
+      "decimals": 18
+    },
+    "Osmosis": {
+      "denom": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
+      "decimals": 6
+    },
+    "Cosmos Hub": {
+      "denom": "ibc/A4DB47A9D3CF9A068D454513891B526702455D3EF08FB9EB558C561F9DC2B701",
+      "decimals": 6
+    },
+    "Kujira": {
+      "denom": "ibc/662914D0C1CEBCB070C68F061D035E8B10A07C79AB286E7342C85F3BE74612C5",
+      "decimals": 6
+    },
+    "Noble": {
+      "denom": "ibc/43897B9739BD63E3A08A88191999C632E052724AB96BD4C74AE31375C991F48D",
+      "decimals": 6
+    },
+    "Stargaze": {
+      "denom": "ibc/C688EBE80ECC20865331A18D8D19654754F6B189977715FED00FBA2BE41F144F",
+      "decimals": 6
+    },
+    "Stride": {
+      "denom": "ibc/3552CECB7BCE1891DB6070D37EC6E954C972B1400141308FCD85FD148BD06DE5",
+      "decimals": 18
+    },
+    "Terra": {
+      "denom": "ibc/2B58B8C147E8718EECCB3713271DF46DEE8A3A00A27242628604E31C2F370EF5",
+      "decimals": 6
+    },
+    "Mantle": {
+      "denom": "bit.1.2.9d68c4",
+      "decimals": 18
+    },
+    "Base": {
+      "denom": "brdg/6418666cedaf875fb344dbd90bea7c842300939872365b933f7ee8b6c1e825e8",
+      "decimals": 18
+    },
+    "Evmos": {
+      "denom": "ibc/35E771B8682D828173F4B795F6C307780F96DC64D6F914FAE4CC9B4666F66364",
+      "decimals": 6
+    },
+    "Juno": {
+      "denom": "ibc/9E3EB38E5E157AEBFF4A8EAC66E654BC8ECFCB1F758F4D1C0F2D65945E9E2935",
+      "decimals": 6
+    },
+    "Comdex": {
+      "denom": "ibc/5E60F861861B36902155FCADB0B3AD1D474376A6D4CFDBE1FC60E262016CEF7A",
+      "decimals": 6
+    },
+    "Stafihub": {
+      "denom": "ibc/0249D3BAB5191A1CB96C66F76DD5B54BBBE8A8391C38691C4B980E82F385086B",
+      "decimals": 6
+    },
+    "Persistence Core": {
+      "denom": "ibc/AAA241B0C1B237AA252F939C7CB7AB4C21A46BAA97464DDB8B5C92D4AF635E29",
+      "decimals": 6
+    },
+    "Canto": {
+      "denom": "ibc/92E974290AF9E2BC3AEEEC35305C8FD76AC5A22A74CF8D91270FDF5A1C41E861",
+      "decimals": 18
+    },
+    "Sommelier": {
+      "denom": "ibc/96BB9743B631E66525F13E5E944AF1A222AF928A4C870E457CDE932092F9528B",
+      "decimals": 18
+    },
+    "IRIS Hub": {
+      "denom": "ibc/4E06CF24FEBFB3F5AF645377DCC0B70AA6183BAF6B918B8B6243FCDEB7D38118",
+      "decimals": 6
+    },
+    "Ethereum": {
+      "denom": "brdg/e3877e2c8ed05e404e04417747e2f430285c11dc839663b943b39ff7cbb56377",
+      "decimals": 18
+    },
+    "Arbitrum": {
+      "denom": "brdg/1299d2e94c483e72f64100088886b8a5b7c13595047e53e032c9938d07a98c20",
+      "decimals": 18
+    },
+    "Polygon": {
+      "denom": "brdg/e2238fb8fc5f08299c1789177d6d89bb2853238a65f6e48a9ec3b67e289f5601",
+      "decimals": 18
+    },
+    "Binance Smart Chain": {
+      "denom": "brdg/1768794901f8a19c2ec795a5402653cef6cbfe6b3ec6398d39fc37de963cb667",
+      "decimals": 18
+    },
+    "Neo": {
+      "denom": "bneo.1.14.e2e5f6",
+      "decimals": 8
+    },
+    "Neo3": {
+      "denom": "bneo.1.14.e2e5f6",
+      "decimals": 8
+    },
+    "Optimism": {
+      "denom": "brdg/34a330df380acf4845e3c3341722a73cc62b57819a2e9960fbb0e040a5210423",
+      "decimals": 18
+    },
+    "Avalanche": {
+      "denom": "brdg/cc0027d68ecd0fcf2151a09070efa6d67efaf6541bd1625307d7057562ce2345",
+      "decimals": 18
+    }
+  },
+  "trading_leagues": {
+    "/rewards/mantle-trading-league": {
+      "start_date": "2024-12-23T08:00:00Z",
+      "end_date": "2025-01-17T08:00:00Z",
+      "competition_id": "tradingcomp27",
+      "trading_league": "Mantle",
+      "trading_league_title": "Mantle Trading League"
+    },
+    "/rewards/base-trading-league": {
+      "start_date": "2025-01-20T08:00:00Z",
+      "end_date": "2025-02-20T08:00:00Z",
+      "competition_id": "tradingcomp28",
+      "trading_league": "Base",
+      "trading_league_title": "Base Trading League"
+    },
+    "/rewards/mantle-rush": {
+      "start_date": "2025-02-24T10:00:00.000Z",
+      "end_date": "2025-03-26T10:00:00.000Z",
+      "competition_id": "tradingcomp32",
+      "trading_league": "Mantle Rush",
+      "trading_league_title": "Mantle Rush"
+    }
+  },
+  "lst_native_aprs": [
+    {
+      "protocol": "Drop",
+      "api_url": "https://app.drop.money/api/apy",
+      "lst_denoms": {
+        "dATOM": "ibc/EF37C83E78BD1F9B2401B3B3E5C00E0DBA71A648E2A8C3018861786F7A5F0105"
+      }
+    },
+    {
+      "protocol": "Stride",
+      "api_url": "https://edge.stride.zone/api/stake-stats",
+      "lst_denoms": {
+        "ATOM": "ibc/B7864B03E1B9FD4F049243E92ABD691586F682137037A9F3FCA5222815620B3C",
+        "OSMO": "ibc/75249A18DEFBEFE55F83B1C70CAD234DF164F174C6BC51682EE92C2C81C18C93",
+        "STARS": "ibc/8D749C5FB0213DF002E8FDCCB5B01E35DA241397EF825048C530C7EAE43BCE80",
+        "LUNA": "ibc/FBEE20115530F474F8BBE1460DA85437C3FBBFAF4A5DEBD71CA6B9C40559A161",
+        "EVMOS": "ibc/0BA1FA7A554B4347A87BD37AFF331683298730F9F8FCECB4896D58BED4B31F00",
+        "INJ": "ibc/2B9D089E73AC096934CD6BBBC71A1CD5DD2A4F8E94CC37CE7F861AC674044002",
+        "DYDX": "ibc/BAA1D21893B1D36865C6CA44D18F4ACF08BAD70CB6863C4722E0A61703808F77",
+        "TIA": "ibc/6569E05DEE32B339D9286A52BE33DFCEFC97267F23EF9CFDE0C055140967A9A5",
+        "DYM": "ibc/63BCB7805C5875C43F9CA101B2766E0AF1BA49DF928E9BC2A000D211614D3338",
+        "SAGA": "ibc/4EAAAE537853E9C0DDF458F0710C37BB3DE7C6A675AB75DB5731ACE93D6CC57B"
+      }
+    },
+    {
+      "protocol": "Lido",
+      "api_url": "https://eth-api.lido.fi/v1/protocol/steth/apr/sma",
+      "lst_denoms": {
+        "wstETH": "brdg/6901fa9eb45ef8351c0ab9e29fa45da3bb0538bfbc5a84ad1009e3544346d2c8"
+      }
+    },
+    {
+      "protocol": "MilkyWay",
+      "api_url": "https://apis.milkyway.zone/v2/protocols/osmosis.milkTIA",
+      "lst_denoms": {
+        "milkTIA": "ibc/16065EE5282C5217685C8F084FC44864C25C706AC37356B0D62811D50B96920F"
+      }
+    }
+  ],
+  "nps_config": {
+    "start": "2025-02-02T12:00:00Z",
+    "end": "2025-02-16T12:00:00Z"
+  },
+  "loss_protection": {
+    "competition_id": "lossprotection10feb2025",
+    "reward_pool": 1000,
+    "start": 1739174400,
+    "end": 1740009600
+  },
+  "nitron_airdrops": [
+    {
+      "tokens": [
+        "brdg/33937827d984b8b8daaef7e122113455ae06ea1ec0b1435544b5b552e91ec23a",
+        "brdg/235ea1e9c215addc00464bfbb7f69c23100e38f3d5b8512b2a1e2fb1da1d7453"
+      ],
+      "tooltip": "Lending this asset still earns you Powder on mETH Protocol for $COOK airdrop."
     }
   ]
 }

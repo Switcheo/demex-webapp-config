@@ -1,6 +1,8 @@
 import { CarbonSDK } from "carbon-js-sdk";
 import { PageRequest } from "carbon-js-sdk/lib/codec/cosmos/base/query/v1beta1/pagination";
+import { Network } from "carbon-js-sdk/lib/constant";
 import { BridgeMap } from "carbon-js-sdk/lib/util/blockchain";
+import { SimpleMap } from "carbon-js-sdk/lib/util/type";
 import * as fs from "fs";
 import Long from "long";
 
@@ -13,7 +15,6 @@ interface ConfigJSON {
   blacklisted_markets: string[];
   blacklisted_pools: string[];
   blacklisted_tokens: string[];
-  token_name_override_map: TokenNameOverrideMap;
   transfer_options: {
     [chainKey: string]: number;
   };
@@ -24,7 +25,6 @@ interface ConfigJSON {
   perp_pool_promo: {
     [perpPoolId: string]: PerpPoolPromo;
   };
-  cross_selling_source_tokens: string[];
   typeform_widget_config: TypeFormWidgetConfig[];
   external_chain_channels: ExternalChannelsObj;
   additional_ibc_token_config: AdditionalIbcTokenConfigItem[];
@@ -32,11 +32,20 @@ interface ConfigJSON {
   perp_pools: PerpPoolConfig;
   wswth_contract?: string;
   market_banners?: MarketBanner[];
-  market_promo?: {[marketId: string]: MarketPromo};
+  market_promo?: { [marketId: string]: MarketPromo };
+  direct_deposit: DirectDeposit;
   spot_pool_config?: SpotPoolConfig;
   disabled_transfer_banner_config?: DisabledTransferBannerConfig;
   announcement_banner: AnnouncementBanner;
   quick_select_deposit_options?: QuickSelectToken[];
+  chain_fee_token_map: ChainFeeTokenMap;
+  lst_native_aprs?: LstNativeAPR[];
+  nps_config?: NPSConfig;
+  nitron_airdrop: NitronAirdrop[];
+}
+
+interface DirectDeposit {
+  domain: string;
 }
 
 interface InvalidEntry {
@@ -60,10 +69,6 @@ interface PerpPoolBanner {
   action_trigger_date?: string;
   past_tense_text?: string;
   subtext?: string;
-}
-
-type TokenNameOverrideMap = {
-  [denom: string]: string;
 }
 
 interface DemexPointsConfig {
@@ -159,6 +164,27 @@ interface QuickSelectToken {
   target_denom: string;
 }
 
+interface ChainFeeTokenMap {
+  [chain: string]: {
+    denom: string;
+    decimals: number;
+  }
+}
+interface LstNativeAPR {
+  protocol: string;
+  api_url: string;
+  lst_denoms: SimpleMap<string>;
+}
+
+interface NPSConfig {
+  start: string;
+  end: string;
+}
+export interface NitronAirdrop {
+  tokens: string[],
+  tooltip: string
+}
+
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
 
 const outcomeMap: OutcomeMap = {
@@ -244,17 +270,6 @@ function checkBlacklistedMarkets(marketData: string[], blacklistedMarkets: strin
   };
 }
 
-function isValidTokenNameOverrideMap(tokenNameOverrideMap: TokenNameOverrideMap, denoms: string[], network: CarbonSDK.Network): boolean {
-  const denomKeysArr = Object.keys(tokenNameOverrideMap);
-  const invalidDenomsOutcome = checkValidEntries(denomKeysArr, denoms);
-  if (isErrorOutcome(invalidDenomsOutcome)) {
-    const invalidTokensStr = joinEntriesIntoStr(invalidDenomsOutcome.entry!);
-    console.error(`[ERROR] token_name_override_map of ${network}.json has the following invalid token denom keys: ${invalidTokensStr}. Please make sure to input only valid token denoms.`);
-    return false;
-  }
-  return true;
-}
-
 function isValidExternalChainChannels(chainChannels: ExternalChannelsObj, bridges: string[], network: CarbonSDK.Network): boolean {
   const duplicateChainKeys: string[] = [];
   const invalidChainKeys: string[] = [];
@@ -274,17 +289,17 @@ function isValidExternalChainChannels(chainChannels: ExternalChannelsObj, bridge
 
   if (duplicateChainKeys.length > 0) {
     const duplicateChainsStr = duplicateChainKeys.length > 1 ? `${duplicateChainKeys.slice(0, -1).join(", ")} and ${duplicateChainKeys[duplicateChainKeys.length - 1]}` : duplicateChainKeys[0];
-    console.error(`[ERROR] external_chain_channels of ${network}.json has duplicate chains in the ${duplicateChainsStr} object(s). Please make sure to input each chain only once in each object.`);
+    console.error(`ERROR: external_chain_channels of ${network}.json has duplicate chains in the ${duplicateChainsStr} object(s). Please make sure to input each chain only once in each object.`);
     return false;
   }
   if (invalidChainKeys.length > 0) {
     const invalidChainsStr = invalidChainKeys.length > 1 ? `${invalidChainKeys.slice(0, -1).join(", ")} and ${invalidChainKeys[invalidChainKeys.length - 1]}` : invalidChainKeys[0];
-    console.error(`[ERROR] external_chain_channels of ${network}.json has invalid chains in the ${invalidChainsStr} object(s). Please make sure to input only IBC chains in each object.`);
+    console.error(`ERROR: external_chain_channels of ${network}.json has invalid chains in the ${invalidChainsStr} object(s). Please make sure to input only IBC chains in each object.`);
     return false;
   }
   if (invalidChannelRegexValues.length > 0) {
     const invalidChannelIdStr = invalidChannelRegexValues.length > 1 ? `${invalidChannelRegexValues.slice(0, -1).join(", ")} and ${invalidChannelRegexValues[invalidChannelRegexValues.length - 1]}` : invalidChannelRegexValues[0];
-    console.error(`[ERROR] external_chain_channels of ${network}.json has invalid channel ids in the ${invalidChannelIdStr} object(s). Please make sure to input valid IBC channel ids in each object.`);
+    console.error(`ERROR: external_chain_channels of ${network}.json has invalid channel ids in the ${invalidChannelIdStr} object(s). Please make sure to input valid IBC channel ids in each object.`);
     return false;
   }
   return true;
@@ -305,12 +320,12 @@ function isValidAdditionalIbcTokenConfig(addTokenConfigArr: AdditionalIbcTokenCo
 
   if (invalidChainIndexes.length > 0) {
     const invalidChainsStr = invalidChainIndexes.length > 1 ? `${invalidChainIndexes.slice(0, -1).join(", ")} and ${invalidChainIndexes[invalidChainIndexes.length - 1]}` : invalidChainIndexes[0].toString(10);
-    console.error(`[ERROR] additional_ibc_token_config of ${network}.json has invalid chains in the objects at index position(s) ${invalidChainsStr}. Please make sure to input only IBC chains in each object.`);
+    console.error(`ERROR: additional_ibc_token_config of ${network}.json has invalid chains in the objects at index position(s) ${invalidChainsStr}. Please make sure to input only IBC chains in each object.`);
     return false;
   }
   if (invalidDenomIndexes.length > 0) {
     const invalidDenomsStr = invalidDenomIndexes.length > 1 ? `${invalidDenomIndexes.slice(0, -1).join(", ")} and ${invalidDenomIndexes[invalidDenomIndexes.length - 1]}` : invalidDenomIndexes[0].toString(10);
-    console.error(`[ERROR] additional_ibc_token_config of ${network}.json has invalid denomInCarbon values in the objects at index position(s) ${invalidDenomsStr}. Please make sure to input valid token denoms in each object.`);
+    console.error(`ERROR: additional_ibc_token_config of ${network}.json has invalid denomInCarbon values in the objects at index position(s) ${invalidDenomsStr}. Please make sure to input valid token denoms in each object.`);
     return false;
   }
   return true;
@@ -393,37 +408,37 @@ function isValidAnnouncementBanner(announcementBanner: AnnouncementBanner, netwo
   return true
 }
 
-function isValidMarketPromo(marketPromo: {[marketId: string]: MarketPromo}, network: CarbonSDK.Network, marketIds: string[]): boolean {
-    const marketPromoIds = Object.keys(marketPromo)
-    const hasInvalidMarketPromoIds = checkValidEntries(marketPromoIds, marketIds)
-    const hasDuplicateMarketPromoIds = checkDuplicateEntries(marketPromoIds)
+function isValidMarketPromo(marketPromo: { [marketId: string]: MarketPromo }, network: CarbonSDK.Network, marketIds: string[]): boolean {
+  const marketPromoIds = Object.keys(marketPromo)
+  const hasInvalidMarketPromoIds = checkValidEntries(marketPromoIds, marketIds)
+  const hasDuplicateMarketPromoIds = checkDuplicateEntries(marketPromoIds)
 
-    if (hasInvalidMarketPromoIds.status && hasInvalidMarketPromoIds.entry) {
-      let listOfInvalidIds: string = hasInvalidMarketPromoIds.entry.join(", ");
-      console.error(`ERROR: ${network}.json has the following invalid market ids under the market_promo field: ${listOfInvalidIds}`)
+  if (hasInvalidMarketPromoIds.status && hasInvalidMarketPromoIds.entry) {
+    let listOfInvalidIds: string = hasInvalidMarketPromoIds.entry.join(", ");
+    console.error(`ERROR: ${network}.json has the following invalid market ids under the market_promo field: ${listOfInvalidIds}`)
+    outcomeMap[network] = false;
+  }
+
+  if (hasDuplicateMarketPromoIds.status && hasDuplicateMarketPromoIds.entry) {
+    let listOfDuplicates: string = hasDuplicateMarketPromoIds.entry.join(", ");
+    console.error(`ERROR: ${network}.json has duplicated market promos for the following market ids: ${listOfDuplicates}. Please make sure to input each market promo only once in ${network}`);
+    outcomeMap[network] = false;
+  }
+
+  for (const promoId of marketPromoIds) {
+    const promoInfo = marketPromo[promoId];
+    const startTimeStr = promoInfo.start;
+    const endTimeStr = promoInfo.end;
+
+    const startTime = new Date(startTimeStr);
+    const endTime = new Date(endTimeStr);
+
+    if (endTime < startTime) {
+      console.error(`ERROR: ${network}.json has invalid end time (${endTimeStr}) is before start time (${startTimeStr}) for market promo id ${promoId}.`);
       outcomeMap[network] = false;
+      break;
     }
-
-    if (hasDuplicateMarketPromoIds.status && hasDuplicateMarketPromoIds.entry) {
-      let listOfDuplicates: string = hasDuplicateMarketPromoIds.entry.join(", ");
-      console.error(`ERROR: ${network}.json has duplicated market promos for the following market ids: ${listOfDuplicates}. Please make sure to input each market promo only once in ${network}`);
-      outcomeMap[network] = false;
-    }
-
-    for (const promoId of marketPromoIds) {
-      const promoInfo = marketPromo[promoId];
-      const startTimeStr = promoInfo.start;
-      const endTimeStr = promoInfo.end;
-
-      const startTime = new Date(startTimeStr);
-      const endTime = new Date(endTimeStr);
-
-      if (endTime < startTime) {
-        console.error(`ERROR: ${network}.json has invalid end time (${endTimeStr}) is before start time (${startTimeStr}) for market promo id ${promoId}.`);
-        outcomeMap[network] = false;
-        break;
-      }
-    }
+  }
 
   return true;
 }
@@ -436,7 +451,7 @@ function isValidDisabledTransferBannerConfig(transferBanner: DisabledTransferBan
 
     if (validUnsupportedTokensOutcome.status && isErrorOutcome(validUnsupportedTokensOutcome)) {
       const invalidUnsupportedTokensStr = joinEntriesIntoStr(validUnsupportedTokensOutcome.entry!);
-      console.error(`[ERROR] disabled_transfer_banner_config.unsupported_tokens of ${network}.json has the following invalid token denoms: ${invalidUnsupportedTokensStr}. Please make sure to input only valid token denoms.`);
+      console.error(`ERROR: disabled_transfer_banner_config.unsupported_tokens of ${network}.json has the following invalid token denoms: ${invalidUnsupportedTokensStr}. Please make sure to input only valid token denoms.`);
       return false
     }
   }
@@ -447,7 +462,7 @@ function isValidDisabledTransferBannerConfig(transferBanner: DisabledTransferBan
 
     if (validDisabledTknsOutcome.status && isErrorOutcome(validDisabledTknsOutcome)) {
       const invalidDisabledTokensStr = joinEntriesIntoStr(validDisabledTknsOutcome.entry!);
-      console.error(`[ERROR] disabled_transfer_banner_config.temp_disabled_transfer_tokens of ${network}.json has the following invalid token denoms: ${invalidDisabledTokensStr}. Please make sure to input only valid token denoms.`);
+      console.error(`ERROR: disabled_transfer_banner_config.temp_disabled_transfer_tokens of ${network}.json has the following invalid token denoms: ${invalidDisabledTokensStr}. Please make sure to input only valid token denoms.`);
       return false
     }
 
@@ -469,7 +484,7 @@ function isValidDisabledTransferBannerConfig(transferBanner: DisabledTransferBan
     const validDisabledBridgesOutcome = checkValidEntries(disabledBridgeKeys, bridges);
     if (validDisabledBridgesOutcome.status && isErrorOutcome(validDisabledBridgesOutcome)) {
       const invalidDisabledBridgesStr = joinEntriesIntoStr(validDisabledBridgesOutcome.entry!);
-      console.error(`[ERROR] disabled_transfer_banner_config.temp_disabled_bridges of ${network}.json has the following invalid bridge addresses: ${invalidDisabledBridgesStr}. Please make sure to input only valid bridge addresses.`);
+      console.error(`ERROR: disabled_transfer_banner_config.temp_disabled_bridges of ${network}.json has the following invalid bridge addresses: ${invalidDisabledBridgesStr}. Please make sure to input only valid bridge addresses.`);
       return false
     }
 
@@ -515,6 +530,51 @@ function isValidQuickSelectTokens(quickSelectTokens: QuickSelectToken[], network
   return true;
 }
 
+function isValidLSTNativeDenom(lstNativeAPRs: LstNativeAPR[], network: CarbonSDK.Network, denoms: string[]): boolean {
+  const lstDenoms = lstNativeAPRs.reduce((acc: string[], lst) => {
+    return acc.concat(Object.values(lst.lst_denoms))
+  }, [])
+
+  const duplicateLstDenoms = checkDuplicateEntries(lstDenoms);
+  if (duplicateLstDenoms.status && duplicateLstDenoms.entry) {
+    let listOfDuplicates: string = duplicateLstDenoms.entry.join(", ");
+    console.error(`ERROR: ${network}.json has the following duplicated lst native prs denoms: ${listOfDuplicates}. Please make sure to input each token denom only once in ${network}`);
+    return false;
+  }
+
+  const invalidLstDenoms = checkValidEntries(lstDenoms, denoms);
+  if (invalidLstDenoms.status && invalidLstDenoms.entry) {
+    let listOfInvalidDenoms: string = invalidLstDenoms.entry.join(", ");
+    console.error(`ERROR: ${network}.json has the following invalid lst native prs denoms: ${listOfInvalidDenoms}. Please make sure to only input valid token denoms in ${network}`);
+    return false;
+  }
+
+
+  return true;
+}
+
+function isValidDirectDeposit(directDeposit: DirectDeposit, network: Network): boolean {
+  const { domain } = directDeposit;
+  if (!domain) {
+    console.error(`ERROR: direct_deposit.domain is required in ${network}.json`);
+    return false;
+  }
+  return true;
+}
+
+function isValidNPSConfig(npsConfig: NPSConfig, network: CarbonSDK.Network): boolean {
+  const { start, end } = npsConfig;
+  const startTime = new Date(start);
+  const endTime = new Date(end);
+
+  if (endTime < startTime) {
+    console.error(`ERROR: nps_config.end is before nps_config.start in ${network}.json`);
+    return false;
+  }
+
+  return true;
+}
+
 async function main() {
   for (const net of myArgs) {
     let network: CarbonSDK.Network;
@@ -543,6 +603,14 @@ async function main() {
     }
 
     const sdk = await CarbonSDK.instance({ network });
+
+    try {
+      await sdk.tmClient.health();
+    } catch (err) {
+      console.error(`ERROR: unable to initialize sdk for ${network}. Skipping validation for ${network}`);
+      continue;
+    }
+
 
     if (jsonData) {
       // query all markets
@@ -657,24 +725,6 @@ async function main() {
       }, []);
 
       bridgesArr = polynetworkBridges.concat(ibcBridges).concat(axelarBridges)
-
-      // token_name_override_map check
-      const isTokenNameOverrideMapValid = isValidTokenNameOverrideMap(jsonData.token_name_override_map, tokens, network);
-      if (!isTokenNameOverrideMapValid) outcomeMap[network] = false;
-
-      const hasInvalidCrossSellingTokens = checkValidEntries(jsonData.cross_selling_source_tokens, tokens);
-      if (hasInvalidCrossSellingTokens.status && hasInvalidCrossSellingTokens.entry) {
-        let listOfInvalidTokens: string = hasInvalidCrossSellingTokens.entry.join(', ');
-        console.error(`ERROR: ${network}.json has the following invalid cross selling source token denom entries: ${listOfInvalidTokens}. Please make sure to only input valid token denom in ${network}`);
-        outcomeMap[network] = false;
-      }
-
-      const hasDuplicateCrossSellingTokens = checkDuplicateEntries(jsonData.cross_selling_source_tokens);
-      if (hasDuplicateCrossSellingTokens.status && hasDuplicateCrossSellingTokens.entry) {
-        let listOfDuplicates: string = hasDuplicateCrossSellingTokens.entry.join(", ");
-        console.error(`ERROR: ${network}.json has the following duplicated cross selling source token denom entries: ${listOfDuplicates}. Please make sure to input each token denom only once in ${network}`);
-        outcomeMap[network] = false;
-      }
 
       // Checking transfer options
       const transferOptionsArr = Object.keys(jsonData.transfer_options)
@@ -858,15 +908,15 @@ async function main() {
         }
       }
 
-      if(jsonData.market_banners && !isValidMarketBanners(jsonData.market_banners, network, marketIds)) {
+      if (jsonData.market_banners && !isValidMarketBanners(jsonData.market_banners, network, marketIds)) {
         outcomeMap[network] = false;
       }
 
-      if(jsonData.market_promo && !isValidMarketPromo(jsonData.market_promo, network, marketIds)) {
+      if (jsonData.market_promo && !isValidMarketPromo(jsonData.market_promo, network, marketIds)) {
         outcomeMap[network] = false;
       }
 
-      if(jsonData.announcement_banner && !isValidAnnouncementBanner(jsonData.announcement_banner, network)) {
+      if (jsonData.announcement_banner && !isValidAnnouncementBanner(jsonData.announcement_banner, network)) {
         outcomeMap[network] = false;
       }
 
@@ -897,16 +947,27 @@ async function main() {
       if (jsonData.disabled_transfer_banner_config && !isValidDisabledTransferBannerConfig(jsonData.disabled_transfer_banner_config, tokens, bridgesArr, network)) {
         outcomeMap[network] = false;
       }
-
       // check for validate quick select tokens
       if (jsonData.quick_select_deposit_options && !isValidQuickSelectTokens(jsonData.quick_select_deposit_options, network, tokens)) {
+        outcomeMap[network] = false;
+      }
+
+      // check for LST native denom duplicate, existed
+      if (jsonData.lst_native_aprs && !isValidLSTNativeDenom(jsonData.lst_native_aprs, network, tokens)) {
+        outcomeMap[network] = false;
+      }
+      // check for NPS config
+      if (jsonData.nps_config && !isValidNPSConfig(jsonData.nps_config, network)) {
+        outcomeMap[network] = false;
+      }
+
+      if (jsonData.direct_deposit && !isValidDirectDeposit(jsonData.direct_deposit, network)) {
         outcomeMap[network] = false;
       }
     }
   }
   const outcomeArr = Object.values(outcomeMap);
   if (outcomeArr.includes(false)) {
-    console.error("Error!");
     console.log("Please check the error message(s) above to correct the errors.");
     process.exit(1);
   } else {
@@ -915,6 +976,11 @@ async function main() {
   }
 }
 
+
+
 main()
-  .catch(console.error)
+  .catch(error => {
+    console.error(error);
+    process.exit(1);
+  })
   .finally(() => process.exit(0));

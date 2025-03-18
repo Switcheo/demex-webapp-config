@@ -1,21 +1,12 @@
 {
   "network": "testnet",
   "prelaunch_markets": [],
-  "blacklisted_markets": [
-    "swth_btc",
-    "swth_btc2",
-    "swth_nex",
-    "swth_nexo",
-    "swth_dai"
-  ],
+  "blacklisted_markets": [],
   "blacklisted_pools": [],
   "blacklisted_tokens": [],
-  "token_name_override_map": {},
   "transfer_options": {},
   "network_fees": {
-    "swth": 0,
-    "usdc": 1,
-    "eth": 2
+    "swth": 0
   },
   "markets_override": {
     "cmkt/13": {
@@ -25,22 +16,29 @@
       "groupQuantity": 1000
     }
   },
-  "cross_selling_source_tokens": ["swth"],
   "external_chain_channels": {},
   "additional_ibc_token_config": [],
   "demex_trading_league_config": {
-    "promoMarkets": ["ATOM_PERP.CGUSD"],
+    "promoMarkets": [],
     "currentPrizeSymbol": "USDC",
     "currentCompPerpPoolId": 1
   },
   "perp_pools": {
     "incentives": {
-      "proxy": "0x74261efC64caE332E912F5bc645e4A9dcaC5EFaa",
-      "distributors": ["0x0c1f4B22A2B86971ee8581684bBC500b2E824559"]
+      "proxy": "0xBd5b326168a7832797D409BFE16460B86B71BFe2",
+      "distributors": [
+        "0x2494442A20FD5883CfDb423a3E6bCe04E6eE8335",
+        "0xFBC1120003466A633deBa07d54c069517AB9207c"
+      ]
     },
     "banners": []
   },
-  "wswth_contract": "0xb4A23b09eBBA7dbA01A7bF95EFd41b3600fF22F9",
+  "wswth_contract": "0xA3554d2FaEc65D1A171319d31F551a5CB8DD9CAa",
+  "native_depositor_contracts_map": {
+    "brdg/f643cae9853deeeb93b9cc497528b452f9c96558160125701f9e1b3f1cb1345c": "0x5Ee011dCe71970BB7DA6d4a0F20a5438a8F89515",
+    "brdg/058df3a0734c28f905ea8a9ce7f8183a6f76fb10ed1b8cf70acb5f697f5d7009": "0x5Ee011dCe71970BB7DA6d4a0F20a5438a8F89515",
+    "brdg/2bc2ea742ea056d2f462286086aa691c239f7a5654c2e359b18589f46d807b75": "0x983dFc86578C11C2Cc219c1d71e3A12e6f41dc00"
+  },
   "market_banners": [
     {
       "market_id": "cmkt/2",
@@ -67,32 +65,16 @@
     {
       "label_denom": "swth",
       "target_denom" : "swth"
-    },
-    {
-      "label_denom": "usdc",
-      "target_denom" : "usdc"
-    },
-    {
-      "label_denom": "eth",
-      "target_denom" : "eth"
-    },
-    {
-      "label_denom": "dai",
-      "target_denom" : "dai"
     }
   ],
-  "disabled_transfer_banner_config": {
-    "unsupported_tokens": ["atom"],
-    "temp_disabled_transfer_tokens": {
-      "ibc/6558A1C0F4CF9A09078ECBD681868C99C2E8086F41715A2332CC44A3AECCEA09": {
-        "end": "2025-01-06T08:30:00.000Z"
-      }
-    },
-    "temp_disabled_bridges": {
-      "channel-48": {},
-      "3/bsc-testnet/0x71fdf04d5280ca1fbb25d2114858995695b04991": {
-        "start": "2025-01-06T08:00:00Z"
-      }
+  "chain_fee_token_map": {
+    "BSC testnet": {
+      "denom": "brdg/058df3a0734c28f905ea8a9ce7f8183a6f76fb10ed1b8cf70acb5f697f5d7009",
+      "decimals": 18
     }
+  },
+  "nps_config": {
+    "start": "2025-02-02T12:00:00Z",
+    "end": "2025-02-16T12:00:00Z"
   }
 }
