@@ -21,6 +21,7 @@ interface ConfigJSON {
   network_fees: {
     [denom: string]: number;
   };
+  user_created_markets_whitelist: string[];
   demex_points_config: DemexPointsConfig;
   perp_pool_promo: {
     [perpPoolId: string]: PerpPoolPromo;
@@ -648,6 +649,13 @@ async function main() {
       if (hasDuplicateBlacklistedMarkets.status && hasDuplicateBlacklistedMarkets.entry) {
         let listOfDuplicates: string = hasDuplicateBlacklistedMarkets.entry.join(", ");
         console.error(`ERROR: ${network}.json has the following duplicated blacklisted market entries: ${listOfDuplicates}. Please make sure to only input each market once in ${network}`);
+        outcomeMap[network] = false;
+      }
+
+      const hasDuplicateUserCreatedMarketsWhitelist = checkDuplicateEntries(jsonData.user_created_markets_whitelist);
+      if (hasDuplicateUserCreatedMarketsWhitelist.status && hasDuplicateUserCreatedMarketsWhitelist.entry) {
+        let listOfDuplicates: string = hasDuplicateUserCreatedMarketsWhitelist.entry.join(", ");
+        console.error(`ERROR: ${network}.json has the following duplicated user created markets whitelist entries: ${listOfDuplicates}. Please make sure to only input each address once in ${network}`);
         outcomeMap[network] = false;
       }
 

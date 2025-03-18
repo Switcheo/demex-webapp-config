@@ -33,6 +33,13 @@
         "$ref": "#/$defs/blacklisted_market"
       }
     },
+    "user_created_markets_whitelist": {
+      "type": "array",
+      "description": "List of addresses that are exempt from displaying the user-created-market banner",
+      "items": {
+        "$ref": "#/$defs/user_created_markets_whitelist"
+      }
+    },
     "blacklisted_pools": {
       "type": "array",
       "description": "List of blacklisted pool ids",
