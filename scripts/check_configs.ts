@@ -25,7 +25,6 @@ interface ConfigJSON {
   perp_pool_promo: {
     [perpPoolId: string]: PerpPoolPromo;
   };
-  cross_selling_source_tokens: string[];
   typeform_widget_config: TypeFormWidgetConfig[];
   external_chain_channels: ExternalChannelsObj;
   additional_ibc_token_config: AdditionalIbcTokenConfigItem[];
@@ -42,6 +41,7 @@ interface ConfigJSON {
   chain_fee_token_map: ChainFeeTokenMap;
   lst_native_aprs?: LstNativeAPR[];
   nps_config?: NPSConfig;
+  nitron_airdrop: NitronAirdrop[];
 }
 
 interface DirectDeposit {
@@ -179,6 +179,10 @@ interface LstNativeAPR {
 interface NPSConfig {
   start: string;
   end: string;
+}
+export interface NitronAirdrop {
+  tokens: string[],
+  tooltip: string
 }
 
 type OutcomeMap = { [key in CarbonSDK.Network]: boolean }; // true = success, false = failure
@@ -721,20 +725,6 @@ async function main() {
       }, []);
 
       bridgesArr = polynetworkBridges.concat(ibcBridges).concat(axelarBridges)
-
-      const hasInvalidCrossSellingTokens = checkValidEntries(jsonData.cross_selling_source_tokens, tokens);
-      if (hasInvalidCrossSellingTokens.status && hasInvalidCrossSellingTokens.entry) {
-        let listOfInvalidTokens: string = hasInvalidCrossSellingTokens.entry.join(', ');
-        console.error(`ERROR: ${network}.json has the following invalid cross selling source token denom entries: ${listOfInvalidTokens}. Please make sure to only input valid token denom in ${network}`);
-        outcomeMap[network] = false;
-      }
-
-      const hasDuplicateCrossSellingTokens = checkDuplicateEntries(jsonData.cross_selling_source_tokens);
-      if (hasDuplicateCrossSellingTokens.status && hasDuplicateCrossSellingTokens.entry) {
-        let listOfDuplicates: string = hasDuplicateCrossSellingTokens.entry.join(", ");
-        console.error(`ERROR: ${network}.json has the following duplicated cross selling source token denom entries: ${listOfDuplicates}. Please make sure to input each token denom only once in ${network}`);
-        outcomeMap[network] = false;
-      }
 
       // Checking transfer options
       const transferOptionsArr = Object.keys(jsonData.transfer_options)

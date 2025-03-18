@@ -16,9 +16,6 @@
       "groupQuantity": 1000
     }
   },
-  "cross_selling_source_tokens": [
-    "swth"
-  ],
   "external_chain_channels": {},
   "additional_ibc_token_config": [],
   "demex_trading_league_config": {
@@ -28,14 +25,20 @@
   },
   "perp_pools": {
     "incentives": {
-      "proxy": "0x74261efC64caE332E912F5bc645e4A9dcaC5EFaa",
+      "proxy": "0xBd5b326168a7832797D409BFE16460B86B71BFe2",
       "distributors": [
-        "0x0c1f4B22A2B86971ee8581684bBC500b2E824559"
+        "0x2494442A20FD5883CfDb423a3E6bCe04E6eE8335",
+        "0xFBC1120003466A633deBa07d54c069517AB9207c"
       ]
     },
     "banners": []
   },
-  "wswth_contract": "0xb4A23b09eBBA7dbA01A7bF95EFd41b3600fF22F9",
+  "wswth_contract": "0xA3554d2FaEc65D1A171319d31F551a5CB8DD9CAa",
+  "native_depositor_contracts_map": {
+    "brdg/f643cae9853deeeb93b9cc497528b452f9c96558160125701f9e1b3f1cb1345c": "0x5Ee011dCe71970BB7DA6d4a0F20a5438a8F89515",
+    "brdg/058df3a0734c28f905ea8a9ce7f8183a6f76fb10ed1b8cf70acb5f697f5d7009": "0x5Ee011dCe71970BB7DA6d4a0F20a5438a8F89515",
+    "brdg/2bc2ea742ea056d2f462286086aa691c239f7a5654c2e359b18589f46d807b75": "0x983dFc86578C11C2Cc219c1d71e3A12e6f41dc00"
+  },
   "market_banners": [
     {
       "market_id": "cmkt/2",

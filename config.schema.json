@@ -10,7 +10,6 @@
     "blacklisted_tokens",
     "transfer_options",
     "network_fees",
-    "cross_selling_source_tokens",
     "external_chain_channels",
     "additional_ibc_token_config",
     "chain_fee_token_map"
@@ -121,13 +120,6 @@
             }
           }
         }
-      }
-    },
-    "cross_selling_source_tokens": {
-      "type": "array",
-      "description": "List of cross selling source token denoms",
-      "items": {
-        "$ref": "#/$defs/cross_selling_source_token"
       }
     },
     "chain_fee_token_map": {
@@ -274,6 +266,13 @@
       }
     }
   },
+  "nitron_airdrops": {
+    "type": "array",
+    "description": "Array of airdrop groups at nitron including tokens and corresponding tooltip",
+    "items": {
+      "$ref": "#/$defs/nitron_airdrop"
+    }
+  },
   "$defs": {
     "prelaunch_market": {
       "type": "string",
@@ -353,10 +352,6 @@
     "perpTradingBoost": {
       "type": "integer",
       "description": "The spin boost multiplier for boosted perp markets trading volume"
-    },
-    "cross_selling_source_token": {
-      "type": "string",
-      "description": "Cross selling source token denom"
     },
     "survey_end": {
       "type": "string",
@@ -681,6 +676,23 @@
               "description": "The number of decimal places for the denom token"
             }
           }
+        }
+      }
+    },
+    "nitron_airdrop": {
+      "type": "object",
+      "properties": {
+        "tokens": {
+          "type": "array",
+          "description": "List of token denoms for the airdrop group",
+          "items": {
+            "type": "string",
+            "description": "Token denomination distributed as part of an airdrop on the Nitron"
+          }
+        },
+        "tooltip": {
+          "type": "string",
+          "description": "Tooltip content for airdrop group"
         }
       }
     }

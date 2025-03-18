@@ -2,7 +2,6 @@
   "network": "devnet",
   "prelaunch_markets": [],
   "blacklisted_markets": [
-    "swth_btc2",
     "ETH_PERP.USDC",
     "BTC_PERP.USDC"
   ],
@@ -26,7 +25,6 @@
       }
     }
   },
-  "cross_selling_source_tokens": [],
   "external_chain_channels": {},
   "additional_ibc_token_config": [],
   "market_banners": [

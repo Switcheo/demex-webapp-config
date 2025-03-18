@@ -272,7 +272,6 @@
       "perpTradingBoost": 6
     }
   },
-  "cross_selling_source_tokens": ["swth"],
   "external_chain_channels": {
     "Archway": {
       "Noble": "channel-29"
@@ -489,6 +488,9 @@
       "target_denom": "brdg/a02afc2c1edf77cc023eefa25fc036c184612faf9365cda9c1daa3b1675ebf8f"
     }
   ],
+  "disabled_transfer_banner_config": {
+    "unsupported_tokens": ["zil.1.18.1a4a06"]
+  },
   "chain_fee_token_map": {
     "Archway": {
       "denom": "ibc/652218B355FBD814037EEF28505F3D91F0489325A64FA5D865EF425DD59317BC",
@@ -674,5 +676,14 @@
     "reward_pool": 1000,
     "start": 1742374800,
     "end": 1742979600
-  }
+  },
+  "nitron_airdrops": [
+    {
+      "tokens": [
+        "brdg/33937827d984b8b8daaef7e122113455ae06ea1ec0b1435544b5b552e91ec23a",
+        "brdg/235ea1e9c215addc00464bfbb7f69c23100e38f3d5b8512b2a1e2fb1da1d7453"
+      ],
+      "tooltip": "Lending this asset still earns you Powder on mETH Protocol for $COOK airdrop."
+    }
+  ]
 }
