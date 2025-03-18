@@ -289,6 +289,10 @@
       "type": "string",
       "description": "Market name of Promo market"
     },
+    "user_created_markets_whitelist": {
+      "type": "string",
+      "description": "user created markets whitelist"
+    },
     "blacklisted_market": {
       "type": "string",
       "description": "Blacklisted market name"
