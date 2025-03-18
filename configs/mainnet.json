@@ -670,9 +670,9 @@
     "end": "2025-02-16T12:00:00Z"
   },
   "loss_protection": {
-    "competition_id": "lossprotection10feb2025",
+    "competition_id": "lossprotectionmar2025",
     "reward_pool": 1000,
-    "start": 1739174400,
-    "end": 1740009600
+    "start": 1742346000,
+    "end": 1742950800
   }
 }
