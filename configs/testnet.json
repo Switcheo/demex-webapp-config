@@ -73,8 +73,26 @@
       "decimals": 18
     }
   },
-  "nps_config": {
-    "start": "2025-02-02T12:00:00Z",
-    "end": "2025-02-16T12:00:00Z"
+  "whitelisted_rpc_urls": {
+    "Arbitrum": "https://rinkeby.arbitrum.io/rpc",
+    "Avalanche": "https://ava-testnet.public.blastapi.io/ext/bc/C/rpc",
+    "Base": "https://base-sepolia-rpc.publicnode.com",
+    "Binance Smart Chain": "https://data-seed-prebsc-1-s2.binance.org:8545/",
+    "Ethereum": "https://sepolia.drpc.org",
+    "Mantle": "https://rpc.sepolia.mantle.xyz",
+    "OKC": "https://exchaintestrpc.okex.org",
+    "Optimism": "https://sepolia.optimism.io",
+    "Polygon": "https://rpc-mumbai.maticvigil.com"
+  },
+  "chain_name_to_evm_id_map": {
+    "Arbitrum": 421611,
+    "Avalanche": 43113,
+    "Binance Smart Chain": 97,
+    "Ethereum": 5,
+    "Mantle": 5003,
+    "OKC": 65,
+    "Optimism": 11155420,
+    "Polygon": 80001,
+    "Base": 84532
   }
 }
