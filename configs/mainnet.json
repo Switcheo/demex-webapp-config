@@ -254,6 +254,13 @@
       "groupQuantity": 1000000
     }
   },
+  "user_created_markets_whitelist": [
+    "swth1afk9zr2hn2jsac63h4hm60vl9z3e5u69gndzf7c99cqge3vzwjzsun7t4c",
+    "swth1vsk3995wqgwfykmumqwcl36sg7mjl0ugmdpky3",
+    "swth1wcu2uc3ucalkuevccn8qzml3e95f6tefv35se2",
+    "swth1hexzxh3apqpqzzchhgynks2xr8ar8qvdf3m9cw",
+    "swth13ufs5uyseyeeuaruvr6gpsxwyrav3us7j306x2"
+  ],
   "demex_points_config": {
     "depositsPerSpin": 1000,
     "tradingVolumePerSpin": 12500
@@ -672,10 +679,10 @@
     "end": "2025-02-16T12:00:00Z"
   },
   "loss_protection": {
-    "competition_id": "lossprotection10feb2025",
+    "competition_id": "lossprotectionmar2025",
     "reward_pool": 1000,
-    "start": 1739174400,
-    "end": 1740009600
+    "start": 1742374800,
+    "end": 1742979600
   },
   "nitron_airdrops": [
     {
