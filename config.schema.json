@@ -746,5 +746,23 @@
         "description": "The end date of the loss protection"
       }
     }
+  },
+  "whitelisted_rpc_urls": {
+    "type": "object",
+    "description": "Map of EVM chain name to whitelisted RPC URLs",
+    "patternProperties": {
+      ".*": {
+        "type": "string"
+      }
+    }
+  },
+  "chain_name_to_evm_id_map": {
+    "type": "object",
+    "description": "Map of chain name to EVM chain ID",
+    "patternProperties": {
+      ".*": {
+        "type": "integer"
+      }
+    }
   }
 }
