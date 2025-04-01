@@ -695,14 +695,9 @@
   ],
   "whitelisted_rpc_urls": {
     "Arbitrum": "https://arb1.arbitrum.io/rpc",
-    "Avalanche": "https://api.avax.network/ext/bc/C/rpc",
     "Base": "https://base-rpc.publicnode.com",
     "Binance Smart Chain": "https://bsc-dataseed2.binance.org/",
-    "Ethereum": "https://ethereum-rpc.publicnode.com",
-    "Mantle": "https://rpc.mantle.xyz",
-    "OKC": "https://exchainrpc.okex.org",
-    "Optimism": "https://mainnet.optimism.io",
-    "Polygon": "https://polygon-rpc.com"
+    "Ethereum": "https://ethereum-rpc.publicnode.com"
   },
   "chain_name_to_evm_id_map": {
     "Arbitrum": 42161,
