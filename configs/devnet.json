@@ -1,10 +1,7 @@
 {
   "network": "devnet",
   "prelaunch_markets": [],
-  "blacklisted_markets": [
-    "ETH_PERP.USDC",
-    "BTC_PERP.USDC"
-  ],
+  "blacklisted_markets": [],
   "blacklisted_pools": [],
   "blacklisted_tokens": [],
   "transfer_options": {},
