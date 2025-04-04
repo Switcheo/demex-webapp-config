@@ -699,5 +699,22 @@
       ],
       "tooltip": "Lending this asset still earns you Powder on mETH Protocol for $COOK airdrop."
     }
-  ]
+  ],
+  "whitelisted_rpc_urls": {
+    "Arbitrum": "https://arb1.arbitrum.io/rpc",
+    "Base": "https://base-rpc.publicnode.com",
+    "Binance Smart Chain": "https://bsc-dataseed2.binance.org/",
+    "Ethereum": "https://ethereum-rpc.publicnode.com"
+  },
+  "chain_name_to_evm_id_map": {
+    "Arbitrum": 42161,
+    "Avalanche": 43114,
+    "Binance Smart Chain": 56,
+    "Ethereum": 1,
+    "Mantle": 5000,
+    "OKC": 66,
+    "Optimism": 10,
+    "Polygon": 137,
+    "Base": 8453
+  }
 }
