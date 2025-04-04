@@ -87,6 +87,14 @@
     "start": 1742284800,
     "end": 1742374800
   },
+  "trading_leagues": {
+    "/rewards/demex-endgame": {
+      "start_date": "2025-04-01T08:00:00.000Z",
+      "end_date": "2025-04-03T08:00:00.000Z",
+      "competition_id": "endgametest",
+      "trading_league": "Demex Endgame",
+      "trading_league_title": "Demex Endgame"
+    }
   "whitelisted_rpc_urls": {
     "BSC Testnet": "https://data-seed-prebsc-1-s2.binance.org:8545/"
   },

@@ -633,6 +633,13 @@
       "competition_id": "tradingcomp32",
       "trading_league": "Mantle Rush",
       "trading_league_title": "Mantle Rush"
+    },
+    "/rewards/demex-endgame": {
+      "start_date": "2025-04-02T08:00:00.000Z",
+      "end_date": "2025-04-30T08:00:00.000Z",
+      "competition_id": "tradingcomp33",
+      "trading_league": "Demex Endgame",
+      "trading_league_title": "Demex Endgame"
     }
   },
   "lst_native_aprs": [
