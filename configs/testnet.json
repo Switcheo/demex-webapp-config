@@ -94,14 +94,15 @@
       "competition_id": "endgametest",
       "trading_league": "Demex Endgame",
       "trading_league_title": "Demex Endgame"
+    },
+    "whitelisted_rpc_urls": {
+      "BSC Testnet": "https://data-seed-prebsc-1-s2.binance.org:8545/"
+    },
+    "chain_name_to_evm_id_map": {
+      "BSC Testnet": 97,
+      "Mantle Testnet": 5003,
+      "OP Sepolia Testnet": 11155420,
+      "Monad Testnet": 10143
     }
-  "whitelisted_rpc_urls": {
-    "BSC Testnet": "https://data-seed-prebsc-1-s2.binance.org:8545/"
-  },
-  "chain_name_to_evm_id_map": {
-    "BSC Testnet": 97,
-    "Mantle Testnet": 5003,
-    "OP Sepolia Testnet": 11155420,
-    "Monad Testnet": 10143
   }
 }
