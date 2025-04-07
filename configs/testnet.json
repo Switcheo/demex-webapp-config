@@ -103,6 +103,12 @@
       "Mantle Testnet": 5003,
       "OP Sepolia Testnet": 11155420,
       "Monad Testnet": 10143
+    },
+    "override_evm_chain_name_map": {
+      "BSC Testnet": "Binance Smart Chain",
+      "Mantle Testnet": "Mantle",
+      "OP Sepolia Testnet": "Optimism",
+      "Monad Testnet": "Monad"
     }
   }
 }
