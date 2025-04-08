@@ -764,5 +764,14 @@
         "type": "integer"
       }
     }
+  },
+  "override_evm_chain_name_map": {
+    "type": "object",
+    "description": "Map of chain name to mainnet EVM chain name",
+    "patternProperties": {
+      ".*": {
+        "type": "string"
+      }
+    }
   }
 }

@@ -37,6 +37,7 @@ Each json file under the [configs](../../configs) folder correspond to their res
 | `nitron_airdrops`           | `NitronAirdrop[]`                     | false    | Array of airdrop groups at nitron including tokens and corresponding tooltip                                                                                                                     |                                                                                                                                                           |
 | `whitelisted_rpc_urls`            | `object`                       | false    | Map of EVM blockchains to a corresponding RPC URL |
 | `chain_name_to_evm_id_map`        | `object`                       | false    | Map of blockchain names to their corresponding EVM chain ID |
+| `override_evm_chain_name_map`     | `object`                       | false    | Map of blockchain names to their corresponding mainnet EVM chain names |
 
 ## Maintenance Data Structure
 
