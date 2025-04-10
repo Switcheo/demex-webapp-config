@@ -46,24 +46,26 @@
   "quick_select_deposit_options": [
     {
       "label_denom": "swth",
-      "target_denom" : "swth"
+      "target_denom": "swth"
     },
     {
       "label_denom": "usdc",
-      "target_denom" : "usdc"
+      "target_denom": "usdc"
     },
     {
       "label_denom": "eth",
-      "target_denom" : "eth"
+      "target_denom": "eth"
     },
     {
       "label_denom": "dai",
-      "target_denom" : "dai"
+      "target_denom": "dai"
     }
   ],
   "chain_fee_token_map": {},
   "nps_config": {
     "start": "2025-02-02T12:00:00Z",
     "end": "2025-02-16T12:00:00Z"
-  }
+  },
+  "whitelisted_rpc_urls": {},
+  "chain_name_to_evm_id_map": {}
 }
