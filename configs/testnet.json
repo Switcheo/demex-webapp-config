@@ -28,11 +28,10 @@
   },
   "perp_pools": {
     "incentives": {
-      "proxy": "0x23f6a93E7995978c7FE415a9D2cCdcc227B5BA5f",
+      "proxy": "0x96FD1171AB081556682Fa62f6baeE665379adb58",
       "distributors": [
         "0x2494442A20FD5883CfDb423a3E6bCe04E6eE8335",
-        "0xFBC1120003466A633deBa07d54c069517AB9207c",
-        "0x2dbCC8391e7e7A022098682f4f9869c5f5847E05"
+        "0xFBC1120003466A633deBa07d54c069517AB9207c"
       ]
     },
     "banners": []
