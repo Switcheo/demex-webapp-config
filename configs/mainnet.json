@@ -391,7 +391,7 @@
   "nitron_promo_tokens": [],
   "perp_pools": {
     "incentives": {
-      "proxy": "0x7b1C7216C117cC62D875e3086518B238392cf04d",
+      "proxy": "0x7f5Ce5FF65E0feA4375f63e85a7F4E679979258f",
       "distributors": [
         "0x93903Ad6599271b2c23b5e5065da835dee2105b7",
         "0xD3997de7D72943d62a34f1089E52027C86b4764F",
