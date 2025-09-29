@@ -88,12 +88,12 @@
     "end": 1742374800
   },
   "trading_leagues": {
-    "/rewards/demex-endgame": {
-      "start_date": "2025-04-01T08:00:00.000Z",
-      "end_date": "2025-04-03T08:00:00.000Z",
-      "competition_id": "endgametest",
-      "trading_league": "Demex Endgame",
-      "trading_league_title": "Demex Endgame"
+    "/rewards/degen-arena": {
+      "start_date": "2025-09-01T08:00:00.000Z",
+      "end_date": "2025-11-03T08:00:00.000Z",
+      "competition_id": "degen_arena_2025_test",
+      "trading_league": "Degen Arena",
+      "trading_league_title": "Degen Trading Arena"
     }
   },
   "whitelisted_rpc_urls": {
