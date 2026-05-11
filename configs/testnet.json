@@ -110,5 +110,6 @@
     "Mantle Testnet": "Mantle",
     "OP Sepolia Testnet": "Optimism",
     "Monad Testnet": "Monad"
-  }
+  },
+  "maintenance": {}
 }
